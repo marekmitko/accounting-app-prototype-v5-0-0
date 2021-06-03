@@ -1,9 +1,9 @@
 import React from 'react'
 import { Edit, SimpleForm, TextInput } from 'react-admin'
 
-const UserEdit = (props) => {
+const ClientEdit = (props) => {
   return (
-    <Edit title='Edit User' {...props}>
+    <Edit title='edit client' {...props}>
       <SimpleForm>
         <TextInput disabled source='id' />
         <TextInput source='name' />
@@ -13,4 +13,4 @@ const UserEdit = (props) => {
   )
 }
 
-export default UserEdit
+export default ClientEdit

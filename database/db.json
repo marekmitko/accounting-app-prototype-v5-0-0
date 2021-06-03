@@ -1,0 +1,122 @@
+{
+    "invoices-db": [
+        {
+        "id": "5df3180a09ea165f910",
+        "inv_id": "5df3180a09ea16dc4b95f910",
+        "inv_no": "201906-28",
+        "payment_info": {
+            "issue_date": "2019-10-12",
+            "payment_date": "2019-10-12",
+            "balance": "$2,283.74"
+            },
+        "customer": {
+            "name": "Jak",
+            "email": "susanafuentes@mantrix.com",
+            "phone": "+1 (872) 588-3809",
+            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+            },
+        "company": {
+            "name": "Jak",
+            "email": "susanafuentes@mantrix.com",
+            "phone": "+1 (872) 588-3809",
+            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+            },
+        "inv_info": {
+            "items": [
+                {
+                "sno": "1",
+                "desc": "ad sunt culpa occaecat qui",
+                "qty": "5",
+                "rate": "405.89"
+                },
+                {
+                "sno": "2",
+                "desc": "cillum quis sunt qui aute",
+                "qty": "5",
+                "rate": "373.11"
+                }
+                ]
+            }
+        },
+        {
+            "id": "5dsdasa165f910",
+            "inv_id": "5df3180a09esefef5f910",
+            "inv_no": "20faawf28",
+            "payment_info": {
+                "issue_date": "2000-02-12",
+                "payment_date": "2001-10-12",
+                "balance": "$44,283.74"
+                },
+            "customer": {
+                "name": "Jweewqk",
+                "email": "susanafuentes@mantrix.com",
+                "phone": "+1 (872) 588-3809",
+                "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+                },
+            "company": {
+                "name": "Jak",
+                "email": "susanafuentes@mantrix.com",
+                "phone": "+1 (872) 588-3809",
+                "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+                },
+            "inv_info": {
+                "items": [
+                    {
+                    "sno": "1",
+                    "desc": "ad sunt culpa occaecat qui",
+                    "qty": "5",
+                    "rate": "405.89"
+                    },
+                    {
+                    "sno": "2",
+                    "desc": "cillum quis sunt qui aute",
+                    "qty": "5",
+                    "rate": "373.11"
+                    }
+                    ]
+                }
+            }   
+    ],
+
+    "clients-db": [
+        { 
+        "id": "92udfsdL",
+        "client_id": "client-00000001",
+        "customer": {
+            "name": "Jan",
+            "company": "JanCenter",
+            "forename": "Jak",
+            "surname": "",
+            "email": "susanafuentes@mantrix.com",
+            "phone": "+1 (872) 588-3809",
+            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+            }
+        },
+        { 
+        "id": "92uarasdf",
+        "client_id": "client-00000002",
+        "customer": {
+            "name": "Łoś",
+            "company": "ŁośCenter",
+            "forename": "Jurek",
+            "surname": "Ogórek",
+            "email": "jurek@ogorek.pl",
+            "phone": "+1 (872) 588-3809",
+            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+            }
+        },
+        { 
+        "id": "92uersersL",
+        "client_id": "client-00000003",
+        "customer": {
+            "name": "asfas",
+            "company": "dasdasd",
+            "forename": "Marek",
+            "surname": "Ogórek",
+            "email": "marek@ogorek.pl",
+            "phone": "+1 (872) 588-3809",
+            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+            }
+        }
+    ]
+}

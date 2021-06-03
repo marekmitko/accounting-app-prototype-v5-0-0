@@ -14,7 +14,7 @@ npm install
 cd ..
 
 # Run client and server (Visit http://localhost:3000)
-npm run dev
+npm run goall
 
 # Run server only (:5000)
 npm run server

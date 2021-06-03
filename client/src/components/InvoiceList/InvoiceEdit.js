@@ -1,9 +1,9 @@
 import React from 'react'
 import { Edit, SimpleForm, TextInput, DateInput } from 'react-admin'
 
-const PostEdit = (props) => {
+const InvoiceEdit = (props) => {
   return (
-    <Edit title='Edit Post' {...props}>
+    <Edit title='edit invoice' {...props}>
       <SimpleForm>
         <TextInput disabled source='id' />
         <TextInput source='title' />
@@ -14,4 +14,4 @@ const PostEdit = (props) => {
   )
 }
 
-export default PostEdit
+export default InvoiceEdit

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Create, SimpleForm, TextInput } from 'react-admin'
 
-const UserCreate = (props) => {
+const ClientCreate = (props) => {
   return (
-    <Create title='Create a User' {...props}>
+    <Create title='create client' {...props}>
       <SimpleForm>
-        <TextInput source='name' />
+        <TextInput source='customer.name' />
         <TextInput source='email' />
       </SimpleForm>
     </Create>
   )
 }
 
-export default UserCreate
+export default ClientCreate
