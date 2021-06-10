@@ -1,122 +1,357 @@
 {
-    "invoices-db": [
-        {
-        "id": "5df3180a09ea165f910",
-        "inv_id": "5df3180a09ea16dc4b95f910",
-        "inv_no": "201906-28",
-        "payment_info": {
-            "issue_date": "2019-10-12",
-            "payment_date": "2019-10-12",
-            "balance": "$2,283.74"
-            },
-        "customer": {
-            "name": "Jak",
-            "email": "susanafuentes@mantrix.com",
-            "phone": "+1 (872) 588-3809",
-            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-            },
-        "company": {
-            "name": "Jak",
-            "email": "susanafuentes@mantrix.com",
-            "phone": "+1 (872) 588-3809",
-            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-            },
-        "inv_info": {
-            "items": [
-                {
-                "sno": "1",
-                "desc": "ad sunt culpa occaecat qui",
-                "qty": "5",
-                "rate": "405.89"
-                },
-                {
-                "sno": "2",
-                "desc": "cillum quis sunt qui aute",
-                "qty": "5",
-                "rate": "373.11"
-                }
-                ]
-            }
-        },
-        {
-            "id": "5dsdasa165f910",
-            "inv_id": "5df3180a09esefef5f910",
-            "inv_no": "20faawf28",
-            "payment_info": {
-                "issue_date": "2000-02-12",
-                "payment_date": "2001-10-12",
-                "balance": "$44,283.74"
-                },
-            "customer": {
-                "name": "Jweewqk",
-                "email": "susanafuentes@mantrix.com",
-                "phone": "+1 (872) 588-3809",
-                "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-                },
-            "company": {
-                "name": "Jak",
-                "email": "susanafuentes@mantrix.com",
-                "phone": "+1 (872) 588-3809",
-                "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-                },
-            "inv_info": {
-                "items": [
-                    {
-                    "sno": "1",
-                    "desc": "ad sunt culpa occaecat qui",
-                    "qty": "5",
-                    "rate": "405.89"
-                    },
-                    {
-                    "sno": "2",
-                    "desc": "cillum quis sunt qui aute",
-                    "qty": "5",
-                    "rate": "373.11"
-                    }
-                    ]
-                }
-            }   
-    ],
-
-    "clients-db": [
-        { 
-        "id": "92udfsdL",
-        "client_id": "client-00000001",
-        "customer": {
-            "name": "Jan",
-            "company": "JanCenter",
-            "forename": "Jak",
-            "surname": "",
-            "email": "susanafuentes@mantrix.com",
-            "phone": "+1 (872) 588-3809",
-            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-            }
-        },
-        { 
-        "id": "92uarasdf",
-        "client_id": "client-00000002",
-        "customer": {
-            "name": "Łoś",
-            "company": "ŁośCenter",
-            "forename": "Jurek",
-            "surname": "Ogórek",
-            "email": "jurek@ogorek.pl",
-            "phone": "+1 (872) 588-3809",
-            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-            }
-        },
-        { 
-        "id": "92uersersL",
-        "client_id": "client-00000003",
-        "customer": {
-            "name": "asfas",
-            "company": "dasdasd",
-            "forename": "Marek",
-            "surname": "Ogórek",
-            "email": "marek@ogorek.pl",
-            "phone": "+1 (872) 588-3809",
-            "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-            }
-        }
-    ]
+  "invoices-db": [
+    {
+      "id": "5df3180a09ea165f910",
+      "inv_id": "5df3180a09ea16dc4b95f910",
+      "inv_no": "201906-28",
+      "payment_info": {
+        "issue_date": "2019-10-12",
+        "payment_date": "2019-10-12",
+        "balance": "$2,283.74"
+      },
+      "customer": {
+        "name": "Jak",
+        "email": "susanafuentes@mantrix.com",
+        "phone": "+1 (872) 588-3809",
+        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+      },
+      "company": {
+        "name": "Jak",
+        "email": "susanafuentes@mantrix.com",
+        "phone": "+1 (872) 588-3809",
+        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+      },
+      "inv_info": {
+        "items": [
+          {
+            "sno": "1",
+            "desc": "ad sunt culpa occaecat qui",
+            "qty": "5",
+            "rate": "405.89"
+          },
+          {
+            "sno": "2",
+            "desc": "cillum quis sunt qui aute",
+            "qty": "5",
+            "rate": "373.11"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5dsdasa165f910",
+      "inv_id": "5df3180a09esefef5f910",
+      "inv_no": "20faawf28",
+      "payment_info": {
+        "issue_date": "2000-02-12",
+        "payment_date": "2001-10-12",
+        "balance": "$44,283.74"
+      },
+      "customer": {
+        "name": "Jweewqk",
+        "email": "susanafuentes@mantrix.com",
+        "phone": "+1 (872) 588-3809",
+        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+      },
+      "company": {
+        "name": "Jak",
+        "email": "susanafuentes@mantrix.com",
+        "phone": "+1 (872) 588-3809",
+        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+      },
+      "inv_info": {
+        "items": [
+          {
+            "sno": "1",
+            "desc": "ad sunt culpa occaecat qui",
+            "qty": "5",
+            "rate": "405.89"
+          },
+          {
+            "sno": "2",
+            "desc": "cillum quis sunt qui aute",
+            "qty": "5",
+            "rate": "373.11"
+          }
+        ]
+      }
+    }
+  ],
+  "clients-db": [
+    {
+      "id": "92udfsdL",
+      "client_id": "client-00000001",
+      "customer": {
+        "name": "Jan",
+        "company": "JanCenter",
+        "forename": "Jak",
+        "surname": "",
+        "email": "susanafuentes@mantrix.com",
+        "phone": "+1 (872) 588-3809",
+        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+      }
+    },
+    {
+      "id": "92uarasdf",
+      "client_id": "client-00000002",
+      "customer": {
+        "name": "Łoś",
+        "company": "ŁośCenter",
+        "forename": "Jurek",
+        "surname": "Ogórek",
+        "email": "jurek@ogorek.pl",
+        "phone": "+1 (872) 588-3809",
+        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+      }
+    },
+    {
+      "id": "92uersersL",
+      "client_id": "client-00000003",
+      "customer": {
+        "name": "asfas",
+        "company": "dasdasd",
+        "forename": "Marek",
+        "surname": "Ogórek",
+        "email": "marek@ogorek.pl",
+        "phone": "+1 (872) 588-3809",
+        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
+      }
+    }
+  ],
+  "client-list": [
+    {
+      "id": "5e4e742a-9fee-4e21-8bb5-07bc39f1910e",
+      "company": "Lesch - Gerhold",
+      "fullname": "Luz Connelly",
+      "email": "Keenan19@gmail.com",
+      "address": {
+        "street": "87597 Carter Parks",
+        "city": "East Cruz",
+        "codeCity": "47301-9994"
+      },
+      "MVA": "0ba52ab3-1548-4453-aba4-977c630b988c",
+      "telephoneNumber": "(368) 755-4853 x30791"
+    },
+    {
+      "id": "4a7883fc-6747-42f7-9bf5-35ac07d441ac",
+      "company": "Cormier - Terry",
+      "fullname": "Francis Lindgren",
+      "email": "Chance.Spencer98@gmail.com",
+      "address": {
+        "street": "20907 Haley Stravenue",
+        "city": "North Daisy",
+        "codeCity": "27885"
+      },
+      "MVA": "8841220a-c029-4e4b-952f-a21dc5c85bcb",
+      "telephoneNumber": "(870) 910-7324 x5253"
+    },
+    {
+      "id": "1eeb58b0-00fd-4dae-93c8-677cc64a490d",
+      "company": "Feil - Hauck",
+      "fullname": "Norman Pfannerstill",
+      "email": "Emmalee20@gmail.com",
+      "address": {
+        "street": "856 Candelario Meadow",
+        "city": "Handmouth",
+        "codeCity": "26008-4003"
+      },
+      "MVA": "a7492eb1-8473-47d7-8f7e-d9d139b0f9ee",
+      "telephoneNumber": "207-472-0018"
+    },
+    {
+      "id": "921b7951-fa87-4068-91ea-4064e4186815",
+      "company": "Robel, Stracke and Casper",
+      "fullname": "Felicia Greenfelder",
+      "email": "Clarabelle44@hotmail.com",
+      "address": {
+        "street": "74250 Tillman Court",
+        "city": "Gregoryfort",
+        "codeCity": "50311"
+      },
+      "MVA": "458c41a8-b5ec-41cb-b1d9-5291d0578336",
+      "telephoneNumber": "(745) 780-9802 x98548"
+    },
+    {
+      "id": "aaf024ec-350c-4c1f-9d96-46d20552d087",
+      "company": "Jenkins LLC",
+      "fullname": "Sherry Steuber",
+      "email": "Kaylie.Franecki@yahoo.com",
+      "address": {
+        "street": "5200 Armani Lodge",
+        "city": "Cuyahoga Falls",
+        "codeCity": "95957-9904"
+      },
+      "MVA": "7b568def-2996-45af-b73a-909f42b0619c",
+      "telephoneNumber": "1-358-634-2145"
+    },
+    {
+      "id": "0df15744-7671-434f-b4ba-43f4659817a2",
+      "company": "Kub - Kiehn",
+      "fullname": "Audrey Olson",
+      "email": "Ariel.Beatty@hotmail.com",
+      "address": {
+        "street": "48110 Schiller Mills",
+        "city": "Riverside",
+        "codeCity": "79002"
+      },
+      "MVA": "f9a263f1-0fe6-4ff5-a602-87de810d40f0",
+      "telephoneNumber": "1-257-891-2829 x28975"
+    },
+    {
+      "id": "861dc6e4-f32d-4cfb-8500-d691d51f8f4e",
+      "company": "Halvorson, Stanton and Reynolds",
+      "fullname": "Katie Lowe",
+      "email": "Eda72@gmail.com",
+      "address": {
+        "street": "00425 Krajcik Overpass",
+        "city": "Framitown",
+        "codeCity": "85334-0690"
+      },
+      "MVA": "7746b7b3-cc70-4ae5-9370-d757390af87b",
+      "telephoneNumber": "976-960-8664 x739"
+    },
+    {
+      "id": "4f3d0f40-069c-4210-99d7-4be13085a152",
+      "company": "Pfannerstill LLC",
+      "fullname": "Lillian Davis",
+      "email": "Lexie_Smitham8@gmail.com",
+      "address": {
+        "street": "3493 Mitchell Greens",
+        "city": "Herzogchester",
+        "codeCity": "90949-0070"
+      },
+      "MVA": "0d9410e9-977d-45e2-8340-b148de9ce91f",
+      "telephoneNumber": "1-458-750-8340"
+    },
+    {
+      "id": "af3919c1-4203-45a3-8813-798eb170e033",
+      "company": "Witting, Gaylord and Pollich",
+      "fullname": "Brittany Stoltenberg",
+      "email": "Samson_Cole66@hotmail.com",
+      "address": {
+        "street": "471 Roberts Inlet",
+        "city": "Ontario",
+        "codeCity": "12694"
+      },
+      "MVA": "a20e264f-dd57-4f70-81cc-d4f994d05b95",
+      "telephoneNumber": "625-720-5245"
+    },
+    {
+      "id": "94fc80db-d306-4438-ad41-a4b60beef889",
+      "company": "Ondricka, Borer and Parisian",
+      "fullname": "Mr. Luz Rodriguez",
+      "email": "Rashad.Hessel@gmail.com",
+      "address": {
+        "street": "246 Hudson Falls",
+        "city": "Rockford",
+        "codeCity": "85446-8149"
+      },
+      "MVA": "b4a47b65-30f1-4d5a-bec8-04907b2066ea",
+      "telephoneNumber": "1-327-990-5388 x8884"
+    },
+    {
+      "id": "30b6d9c5-d6c3-4d18-a167-895a3437243b",
+      "company": "Schaefer, Blanda and Simonis",
+      "fullname": "Candace Marquardt",
+      "email": "Lucy_Wolff@yahoo.com",
+      "address": {
+        "street": "803 Cole Manors",
+        "city": "Lukasbury",
+        "codeCity": "69320"
+      },
+      "MVA": "5dd925a0-7d9d-4eec-abbc-48890c59bc49",
+      "telephoneNumber": "(552) 545-6270"
+    },
+    {
+      "id": "7beea2f6-e99a-407c-92f8-cdc03854a7a1",
+      "company": "Hudson - Padberg",
+      "fullname": "Frances Halvorson",
+      "email": "Juliana_Farrell@yahoo.com",
+      "address": {
+        "street": "23476 Sauer Field",
+        "city": "Lake Archburgh",
+        "codeCity": "03316"
+      },
+      "MVA": "920dbe70-3399-49a5-9dd5-e1d3b4275681",
+      "telephoneNumber": "1-983-210-1266"
+    },
+    {
+      "id": "0c26dfa2-75a7-445c-8678-56c929bc34ca",
+      "company": "King Group",
+      "fullname": "Milton Ortiz",
+      "email": "Cassandra7@gmail.com",
+      "address": {
+        "street": "17069 Barton Station",
+        "city": "Chesapeake",
+        "codeCity": "32573-3182"
+      },
+      "MVA": "1ce592b7-b3e5-4f0f-a57f-28b5a026b2b8",
+      "telephoneNumber": "1-218-593-4804"
+    },
+    {
+      "id": "0bc002b3-402d-4f2f-b938-d737a6a48e67",
+      "company": "Sanford Group",
+      "fullname": "Renee Kunze",
+      "email": "Rogelio49@gmail.com",
+      "address": {
+        "street": "13489 Madaline Islands",
+        "city": "Angieview",
+        "codeCity": "44872"
+      },
+      "MVA": "1d6ca6d1-11f5-409d-9c88-02593ee39cfa",
+      "telephoneNumber": "(914) 502-7665 x20969"
+    },
+    {
+      "id": "c869534e-e697-4f0e-8856-b8e575819643",
+      "company": "Watsica - White",
+      "fullname": "Moses Mayer",
+      "email": "Darrel_Keebler85@gmail.com",
+      "address": {
+        "street": "157 Douglas Ferry",
+        "city": "Sandyland",
+        "codeCity": "37705-4331"
+      },
+      "MVA": "3bbff87b-a7a9-4778-9ff0-089b7ce67afa",
+      "telephoneNumber": "(605) 662-4251 x52692"
+    },
+    {
+      "id": "85f2705f-403d-4052-8839-2bb85c76450e",
+      "company": "Goodwin LLC",
+      "fullname": "Robyn Rogahn",
+      "email": "Pierce_Waters@hotmail.com",
+      "address": {
+        "street": "924 Vincent Hill",
+        "city": "North Karina",
+        "codeCity": "40715"
+      },
+      "MVA": "a0c90aae-c14b-4c94-9a93-02bf9f3b1588",
+      "telephoneNumber": "267-418-7499"
+    },
+    {
+      "id": "668debaf-8186-4998-a8ff-48a632ac7ce4",
+      "company": "Feest and Sons",
+      "fullname": "Elena Buckridge I",
+      "email": "Daryl.Treutel@yahoo.com",
+      "address": {
+        "street": "73164 Heathcote Overpass",
+        "city": "Brandiville",
+        "codeCity": "80843-1820"
+      },
+      "MVA": "2ca08f6a-33bd-40eb-98e6-e38c2c21b800",
+      "telephoneNumber": "(374) 228-0106 x548"
+    },
+    {
+      "id": "a401d2ca-a7b0-4e89-8a9c-13ef8ffe3d22",
+      "company": "Oberbrunner - Hermann",
+      "fullname": "Cesar Cruickshank III",
+      "email": "Myron.Stiedemann81@gmail.com",
+      "address": {
+        "street": "5648 Nathanael Station",
+        "city": "Zenaview",
+        "codeCity": "64432"
+      },
+      "MVA": "73054979-b88e-4e3a-aeff-e992bfed1386",
+      "telephoneNumber": "(605) 369-5829"
+    }
+  ]
 }

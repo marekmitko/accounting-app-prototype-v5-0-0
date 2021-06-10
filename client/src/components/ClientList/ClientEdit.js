@@ -1,13 +1,17 @@
 import React from 'react'
-import { Edit, SimpleForm, TextInput } from 'react-admin'
+import { Edit, SimpleForm, TextInput, NumberInput } from 'react-admin'
 
 const ClientEdit = (props) => {
   return (
     <Edit title='edit client' {...props}>
       <SimpleForm>
         <TextInput disabled source='id' />
-        <TextInput source='name' />
-        <TextInput source='email' />
+        <TextInput source="company" />
+        <TextInput  source="fullname" />
+        <TextInput source="email" />
+        <TextInput source="address.street" />
+        <NumberInput source="MVA" />
+        <NumberInput source="telephoneNumber" />
       </SimpleForm>
     </Edit>
   )
