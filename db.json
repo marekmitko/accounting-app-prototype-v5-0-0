@@ -118,19 +118,19 @@
       }
     }
   ],
-  "client-list": [
+  "dbclientlist": [
     {
       "id": "5e4e742a-9fee-4e21-8bb5-07bc39f1910e",
       "company": "Lesch - Gerhold",
       "fullname": "Luz Connelly",
-      "email": "Keenan19@gmail.com",
+      "email": "jankowalski@gmail.com",
       "address": {
         "street": "87597 Carter Parks",
         "city": "East Cruz",
         "codeCity": "47301-9994"
       },
       "MVA": "0ba52ab3-1548-4453-aba4-977c630b988c",
-      "telephoneNumber": "(368) 755-4853 x30791"
+      "telephoneNumber": 5010556347207457
     },
     {
       "id": "4a7883fc-6747-42f7-9bf5-35ac07d441ac",
@@ -352,6 +352,17 @@
       },
       "MVA": "73054979-b88e-4e3a-aeff-e992bfed1386",
       "telephoneNumber": "(605) 369-5829"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "fullname": "Marek Mitko",
+      "email": "marekmitko@op.pl",
+      "address": {
+        "street": "Sienkiewicza 125/7"
+      },
+      "MVA": 475127852485124,
+      "telephoneNumber": 501066009,
+      "id": "2Dg0e_S"
     }
   ]
 }

@@ -16,19 +16,17 @@ export const ClientListIcon = SupervisorAccountIcon;
 // export const ClientEdit = ClientEdit;
 
 const ClientList = (props) => {
-  return (
+    return (
     <List {...props}>
-      {/* <Datagrid> */}
-      <Datagrid rowClick="edit">
-            <TextField disabled source="id" />
-            <TextField source="company" />
-            <TextField source="fullname" />
-            <EmailField source="email" />
-            <TextField source="address.street" />
-            <TextField source="MVA" />
-            <TextField source="telephoneNumber" />
-            <EditButton basePath='/client-list' />
-            <DeleteButton basePath='/client-list' />
+        <Datagrid>
+            <TextField label="NAZWA FIRMY" source="company" />
+            <TextField label="PRZEDSTAWICIEL" source="fullname" />
+            <EmailField label="EMAIL" source="email" />
+            <TextField label="ADRES" source="address.street" />
+            <TextField label="MVA" source="MVA" />
+            <TextField label="TELEFON" source="telephoneNumber" />
+            <EditButton label="EDYTUJ" basePath='/dbclientlist' />
+            <DeleteButton label="USUŃ" basePath='/dbclientlist' />
         </Datagrid>
     </List>
   )

@@ -15,10 +15,8 @@ import { ListGuesser } from 'react-admin';
 function App() {
   return (
     <Admin dataProvider={restProvider('http://localhost:3000')}>
-      <Resource name="client-list" list={ ListGuesser } />
-      <Resource name="client-list" list={ ListGuesser } />
       <Resource
-        name='client-list'
+        name='dbclientlist'
         options={{ label: 'Kontrahenci' }} 
         list={ClientList}
         create={ClientCreate}
@@ -31,7 +29,6 @@ function App() {
         list={InvoiceList}
         create={InvoiceCreate}
         edit={InvoiceEdit}
-
       />
     </Admin>
   )
