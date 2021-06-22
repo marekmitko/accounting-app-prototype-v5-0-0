@@ -6,7 +6,7 @@
       "inv_no": "201906-28",
       "payment_info": {
         "issue_date": "2019-10-12",
-        "payment_date": "2019-10-12",
+        "due_date": "2019-10-12",
         "balance": "$2,283.74"
       },
       "customer": {
@@ -44,7 +44,7 @@
       "inv_no": "20faawf28",
       "payment_info": {
         "issue_date": "2000-02-12",
-        "payment_date": "2001-10-12",
+        "due_date": "2001-10-12",
         "balance": "$44,283.74"
       },
       "customer": {

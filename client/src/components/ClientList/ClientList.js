@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     List,
     Datagrid,
@@ -6,7 +6,7 @@ import {
     EmailField,
     EditButton,
     DeleteButton,
-} from 'react-admin'
+} from 'react-admin';
 
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 export const ClientListIcon = SupervisorAccountIcon;
@@ -29,10 +29,10 @@ const ClientList = (props) => {
             <DeleteButton label="USUŃ" basePath='/dbclientlist' />
         </Datagrid>
     </List>
-  )
+  );
 }
 
-export default ClientList
+export default ClientList;
 
 
 

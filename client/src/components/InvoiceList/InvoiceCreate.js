@@ -1,6 +1,9 @@
 import React from 'react'
 import { Create, SimpleForm, TextInput, DateInput } from 'react-admin'
 
+import PostAddIcon from '@material-ui/icons/PostAdd';
+export const AddInvoiceIcon = PostAddIcon;
+
 const InvoiceCreate = (props) => {
   return (
     <Create title='create invoice' {...props}>

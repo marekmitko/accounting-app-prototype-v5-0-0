@@ -1,18 +1,22 @@
 import * as React from 'react'
 import { Admin, Resource } from 'react-admin'
 import restProvider from 'ra-data-simple-rest'
-import InvoiceList from '../components/InvoiceList/InvoicesList'
+import InvoiceList from '../components/InvoiceList/InvoiceList'
 import InvoiceCreate from '../components/InvoiceList/InvoiceCreate'
 import InvoiceEdit from '../components/InvoiceList/InvoiceEdit'
+import {InvoiceListIcon} from '../components/InvoiceList/InvoiceList'
+import {AddInvoiceIcon} from '../components/InvoiceList/InvoiceCreate'
 
 import ClientList from '../components/ClientList/ClientList'
 import ClientCreate from '../components/ClientList/ClientCreate'
 import ClientEdit from '../components/ClientList/ClientEdit'
 import {ClientListIcon} from '../components/ClientList/ClientList'
-import visitors from '../components/NewInvoice/visitors/index.ts'
+import {AddClientIcon} from '../components/ClientList/ClientCreate'
+
+// import visitors from '../components/NewInvoice/visitors/index.ts'
 
 
-// import { ListGuesser } from 'react-admin';
+import { ListGuesser } from 'react-admin';
 
 function App() {
     return (
@@ -26,10 +30,35 @@ function App() {
                 edit={ClientEdit}
                 icon={ClientListIcon}
             />
+            <Resource
+                name='dbclientlist/create'
+                label="Nowy Kontrahent"
+                options={{ label: 'Nowy Kontrahent' }} 
+                list={ClientCreate}
+                create={ClientCreate}
+                edit={ClientEdit}
+                icon={AddClientIcon}
+                />
+            <Resource
+                name='dbinvoices'
+                options={{ label: 'Faktury' }} 
+                list={InvoiceList}
+                create={InvoiceCreate}
+                edit={InvoiceEdit}
+                icon={InvoiceListIcon}
+                />
+            <Resource
+                name='dbinvoices'
+                options={{ label: 'Faktury' }} 
+                list={InvoiceList}
+                create={InvoiceCreate}
+                edit={InvoiceEdit}
+                icon={InvoiceListIcon}
+                />
 
 
 
-            <Resource 
+            {/* <Resource 
                 name="invoices-db" 
                 {...visitors}
             />
@@ -39,14 +68,7 @@ function App() {
                 list={InvoiceList}
                 create={InvoiceCreate}
                 edit={InvoiceEdit}
-            />
-            <Resource
-                // name='invoices-db'
-                options={{ label: 'Faktury' }} 
-                list={InvoiceList}
-                create={InvoiceCreate}
-                edit={InvoiceEdit}
-            />
+            /> */}
         </Admin>
     )
 }
