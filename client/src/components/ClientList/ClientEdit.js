@@ -3,7 +3,7 @@ import { Edit, SimpleForm, TextInput, NumberInput } from 'react-admin'
 
 const ClientEdit = (props) => {
     return (
-    <Edit title='edit client' {...props}>
+    <Edit title='Edytowanie danych Kontrahenta' {...props}>
         <SimpleForm>
             {/* <TextInput disabled source='id' /> */}
             <TextInput label="NAZWA FIRMY" source="company" />

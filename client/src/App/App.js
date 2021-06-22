@@ -9,29 +9,46 @@ import ClientList from '../components/ClientList/ClientList'
 import ClientCreate from '../components/ClientList/ClientCreate'
 import ClientEdit from '../components/ClientList/ClientEdit'
 import {ClientListIcon} from '../components/ClientList/ClientList'
+import visitors from '../components/NewInvoice/visitors/index.ts'
 
-import { ListGuesser } from 'react-admin';
+
+// import { ListGuesser } from 'react-admin';
 
 function App() {
-  return (
-    <Admin dataProvider={restProvider('http://localhost:3000')}>
-      <Resource
-        name='dbclientlist'
-        options={{ label: 'Kontrahenci' }} 
-        list={ClientList}
-        create={ClientCreate}
-        edit={ClientEdit}
-        icon={ClientListIcon}
-        />
-      <Resource
-        name='invoices-db'
-        options={{ label: 'Faktury' }} 
-        list={InvoiceList}
-        create={InvoiceCreate}
-        edit={InvoiceEdit}
-      />
-    </Admin>
-  )
+    return (
+        <Admin dataProvider={restProvider('http://localhost:3000')}>
+            <Resource
+                name='dbclientlist'
+                label="Kontrahenci"
+                options={{ label: 'Kontrahenci' }} 
+                list={ClientList}
+                create={ClientCreate}
+                edit={ClientEdit}
+                icon={ClientListIcon}
+            />
+
+
+
+            <Resource 
+                name="invoices-db" 
+                {...visitors}
+            />
+            <Resource
+                // name='invoices-db'
+                options={{ label: 'Wystaw Fakturę' }} 
+                list={InvoiceList}
+                create={InvoiceCreate}
+                edit={InvoiceEdit}
+            />
+            <Resource
+                // name='invoices-db'
+                options={{ label: 'Faktury' }} 
+                list={InvoiceList}
+                create={InvoiceCreate}
+                edit={InvoiceEdit}
+            />
+        </Admin>
+    )
 }
 
 export default App
