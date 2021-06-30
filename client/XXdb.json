@@ -1,81 +1,153 @@
 {
-  "invoices-db": [
-    {
-      "id": "5df3180a09ea165f910",
-      "inv_id": "5df3180a09ea16dc4b95f910",
-      "inv_no": "201906-28",
-      "payment_info": {
-        "issue_date": "2019-10-12",
-        "due_date": "2019-10-12",
-        "balance": "$2,283.74"
-      },
-      "customer": {
-        "name": "Jak",
-        "email": "susanafuentes@mantrix.com",
-        "phone": "+1 (872) 588-3809",
-        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-      },
-      "company": {
-        "name": "Jak",
-        "email": "susanafuentes@mantrix.com",
-        "phone": "+1 (872) 588-3809",
-        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-      },
-      "inv_info": {
-        "items": [
-          {
-            "sno": "1",
-            "desc": "ad sunt culpa occaecat qui",
-            "qty": "5",
-            "rate": "405.89"
-          },
-          {
-            "sno": "2",
-            "desc": "cillum quis sunt qui aute",
-            "qty": "5",
-            "rate": "373.11"
-          }
-        ]
-      }
-    },
-    {
-      "id": "5dsdasa165f910",
-      "inv_id": "5df3180a09esefef5f910",
-      "inv_no": "20faawf28",
-      "payment_info": {
-        "issue_date": "2000-02-12",
-        "due_date": "2001-10-12",
-        "balance": "$44,283.74"
-      },
-      "customer": {
-        "name": "Jweewqk",
-        "email": "susanafuentes@mantrix.com",
-        "phone": "+1 (872) 588-3809",
-        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-      },
-      "company": {
-        "name": "Jak",
-        "email": "susanafuentes@mantrix.com",
-        "phone": "+1 (872) 588-3809",
-        "address": "922 Campus Road, Drytown, Wisconsin, 1986"
-      },
-      "inv_info": {
-        "items": [
-          {
-            "sno": "1",
-            "desc": "ad sunt culpa occaecat qui",
-            "qty": "5",
-            "rate": "405.89"
-          },
-          {
-            "sno": "2",
-            "desc": "cillum quis sunt qui aute",
-            "qty": "5",
-            "rate": "373.11"
-          }
-        ]
-      }
-    }
+  "dbinvoiceslist": [
+            {
+                "id": "5df318sdaea165f910",
+                "inv_id": "5dfadfa09ea16dc4b95f910",
+                "inv_no": "201906-28",
+                "payment_info": {
+                    "issue_date": "2019-10-12",
+                    "payment_date": "2019-10-12",
+                    "balance": "$2,283.74"
+                },
+                "buyer": {
+                    "id": "5e4e742a-9fee-4e21-8bb5-07bc39f1910e",
+                    "company": "Lesch - Gerhold",
+                    "fullname": "Luz Connelly",
+                    "email": "jankowalski@gmail.com",
+                    "address": {
+                        "street": "87597 Carter Parks",
+                        "city": "East Cruz",
+                        "codeCity": "47301-9994"
+                    },
+                    "MVA": "0ba52ab3-1548-4453-aba4-977c630b988c",
+                    "telephoneNumber": "5858585"
+                },
+                "seller": {
+                    "id": "5e4econst",
+                    "company": "Center DADZWAO",
+                    "fullname": "Marek Mitko",
+                    "email": "maereksasr@gmail.com",
+                    "address": {
+                        "street": "87597 Carter Parks",
+                        "city": "East Cruz",
+                        "codeCity": "47301-9994"
+                    },
+                    "MVA": "0ba52ab3-aba4-977c630b988c",
+                    "telephoneNumber": "84593489"
+                },
+                "supplier": {
+                    "id": "921b7951-fa068-91ea-4064e4186815",
+                    "company": "Robel, Stracke and Casper",
+                    "fullname": "Felicia Greenfelder",
+                    "email": "Clarabelle44@hotmail.com",
+                    "address": {
+                        "street": "74250 Tillman Court",
+                        "city": "Gregoryfort",
+                        "codeCity": "50311"
+                    },
+                    "MVA": "458c41a8-b5ec-41cb-b1d9-5291d0578336",
+                    "telephoneNumber": "(745) 780-9802 x98548"
+                },
+                "inv_info": {
+                    "item_list": [
+                        {
+                            "item_id": "dasdas_1",
+                            "item_name": "Masło",
+                            "item_desc": "82% tłuszczu",
+                            "item_qty": "5",
+                            "rate": "5.89"
+                        },
+                        {
+                            "item_id": "dasdas_2",
+                            "item_name": "Masło Roślinne",
+                            "item_desc": "70% olej słonecznikowy",
+                            "item_qty": "10",
+                            "rate": "3.89"
+                        },
+                        {
+                            "item_id": "dasdas_3",
+                            "item_name": "Olej kokosowy",
+                            "item_desc": "rafinowany",
+                            "item_qty": "2",
+                            "rate": "15.89"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "5df3180aasd4910",
+                "inv_id": "5df31dad16dc4b95f910",
+                "inv_no": "202006-28",
+                "payment_info": {
+                    "issue_date": "2019-10-12",
+                    "payment_date": "2019-10-12",
+                    "balance": "$2,283.74"
+                },
+                "buyer": {
+                    "id": "5e4asdsda-9fee-4e21-8bb5-07bc39f1910e",
+                    "company": "Lesch - Gerhold",
+                    "fullname": "Luz Connelly",
+                    "email": "jankowalski@gmail.com",
+                    "address": {
+                        "street": "87597 Carter Parks",
+                        "city": "East Cruz",
+                        "codeCity": "47301-9994"
+                    },
+                    "MVA": "0ba52ab3-1548-4453-aba4-977c630b988c",
+                    "telephoneNumber": "5858585"
+                },
+                "seller": {
+                    "id": "5edasdsconst",
+                    "company": "Center DADZWAO",
+                    "fullname": "Marek Mitko",
+                    "email": "maereksasr@gmail.com",
+                    "address": {
+                        "street": "87597 Carter Parks",
+                        "city": "East Cruz",
+                        "codeCity": "47301-9994"
+                    },
+                    "MVA": "0bdasb3-aba4-977c630b988c",
+                    "telephoneNumber": "84593489"
+                },
+                "supplier": {
+                    "id": "921bdas1-fa068-91ea-4064e4186815",
+                    "company": "Robel, Stracke and Casper",
+                    "fullname": "Felicia Greenfelder",
+                    "email": "Clarabelle44@hotmail.com",
+                    "address": {
+                        "street": "74250 Tillman Court",
+                        "city": "Gregoryfort",
+                        "codeCity": "50311"
+                    },
+                    "MVA": "458c41a8-b5ec-41cb-b1d9-5291d0578336",
+                    "telephoneNumber": "(745) 780-9802 x98548"
+                },
+                "inv_info": {
+                    "item_list": [
+                        {
+                            "item_id": "dasddasas_1",
+                            "item_name": "Masło",
+                            "item_desc": "82% tłuszczu",
+                            "item_qty": "5",
+                            "rate": "5.89"
+                        },
+                        {
+                            "item_id": "dasddasdas_2",
+                            "item_name": "Masło Roślinne",
+                            "item_desc": "70% olej słonecznikowy",
+                            "item_qty": "10",
+                            "rate": "3.89"
+                        },
+                        {
+                            "item_id": "dasdadsas_3",
+                            "item_name": "Olej kokosowy",
+                            "item_desc": "rafinowany",
+                            "item_qty": "2",
+                            "rate": "15.89"
+                        }
+                    ]
+                }
+            }
   ],
   "clients-db": [
     {

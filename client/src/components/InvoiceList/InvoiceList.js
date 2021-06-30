@@ -23,11 +23,11 @@ const InvoiceList = (props) => {
         <TextField label="WPŁACONO" />
         <TextField label="W DNIU" />
         <TextField label="OPERACJE" />
-        <EditButton basePath='/dbinvoices' />
-        <DeleteButton basePath='/dbinvoices' />
+        <EditButton basePath='/dbinvoiceslist' />
+        <DeleteButton basePath='/dbinvoiceslist' />
       </Datagrid>
     </List>
   )
 }
 
-export default InvoiceList
+export default InvoiceList;

@@ -1,3 +1,9 @@
+# Read 
+https://codesandbox.io/s/o7wfl
+
+https://stackoverflow.com/questions/52889909/how-is-the-correct-way-to-have-multiple-dataproviders-in-react-admin
+
+
 # React Admin Example
 
 > Example of React Admin. We use JSON-Server for our REST API
