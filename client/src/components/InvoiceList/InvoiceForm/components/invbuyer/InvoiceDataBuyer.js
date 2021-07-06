@@ -7,8 +7,18 @@ import {
     SaveButton,
     DeleteButton,
     NullableBooleanInput,
+    TextField,
+    ArrayInput, 
+    SimpleFormIterator,
+    Datagrid,
+    Create,
+    ArrayField,
+    SingleFiledList,
 } from 'react-admin';
 import { Typography, Box, Toolbar } from '@material-ui/core';
+
+
+
 
 const segments = [
     { id: 'compulsive', name: 'Compulsive' },
@@ -19,7 +29,7 @@ const segments = [
     { id: 'reviewer', name: 'Reviewer' },
 ];
 
-const NewInvoiceForm = props => (
+const InvoiceDataBuyer = props => (
     <FormWithRedirect
         {...props}
         render={formProps => (
@@ -27,9 +37,9 @@ const NewInvoiceForm = props => (
             <form>
                 <Box p="1em">
                     <Box display="flex">
-                        <Box flex={1} mr="1em">
 
-                            <Typography variant="h6" gutterBottom>Sprzedawca</Typography>
+                        <Box flex={1} ml="1em">
+                            <Typography variant="h6" gutterBottom>NABYWCA</Typography>
 
                             <Box display="flex">
                                 <Box flex={1} mr="0.5em">
@@ -54,17 +64,12 @@ const NewInvoiceForm = props => (
                                     <TextInput source="city" resource="customers" fullWidth />
                                 </Box>
                             </Box>
-                        </Box>
-
-                        <Box flex={1} ml="1em">
                             
-                            <Typography variant="h6" gutterBottom>Nabywca</Typography>
-
-                            <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth />
-                            <NullableBooleanInput source="has_newsletter" resource="customers" />
+                            
                         </Box>
 
                     </Box>
+
                 </Box>
                 <Toolbar>
                     <Box display="flex" justifyContent="space-between" width="100%">
@@ -79,3 +84,6 @@ const NewInvoiceForm = props => (
         )}
     />
 );
+
+
+export default InvoiceDataBuyer;

@@ -12,18 +12,22 @@ import ClientCreate from '../components/ClientList/ClientCreate'
 import ClientEdit from '../components/ClientList/ClientEdit'
 import {ClientListIcon} from '../components/ClientList/ClientList'
 import {AddClientIcon} from '../components/ClientList/ClientCreate'
-
 // import InvoiceForm1 from "../components/InvFinalFormEx/InvoiceForm";
 
 // import visitors from '../components/NewInvoice/visitors/index.ts';
 // import ItemProduct from '../components/InvoiceList/InvoiceForm/components/ItemProductList';
+import homepage from "../components/DynamicInvoiceList/homepage";
 import tags from '../components/InvoiceList/InvoiceForm/components/tags';
+import BuyerCreateAuto from '../components/InvoiceList/InvoiceForm/components/invbuyer/InvDBBuyerCreate.js';
 
 import { ListGuesser, EditGuesser } from 'react-admin';
 
 function App() {
     return (
         <Admin dataProvider={restProvider('http://localhost:3000')}>
+
+            <Resource name="homepage" {...homepage} />
+            <Resource name='newbuyer' create={BuyerCreateAuto} list={BuyerCreateAuto} />
 
             {/* <Resource name="dvinvfinalform" {...ItemProduct} /> */}
             <Resource name="dvinvfinalform" {...tags} />

@@ -1,4 +1,103 @@
 {
+  "homepage": [
+      {
+        "company": "Jenkins LLC",
+        "id": 1
+  }
+  ],
+    "newbuyer": [
+    {
+      "company": "Jenkins LLC",
+      "id": 1
+    },
+    {
+      "company": "Robel, Stracke and Casper",
+      "id": 2
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "email": "marekmitko@op.pl",
+      "fullname": "Marek Mitko",
+      "address": {
+        "street": "Sienkiewicza"
+      },
+      "id": 3
+    },
+    {
+      "company": "Schaefer, Blanda and Simonis",
+      "id": 4
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "email": "marekmitko@op.pl",
+      "fullname": "Marek Mitko",
+      "address": {
+        "street": "Sienkiewicza"
+      },
+      "id": 5
+    },
+    {
+      "newbuyer": {
+        "item_list": [
+          {
+            "item_name": "sdgd",
+            "item_desc": "ewf",
+            "item_qty": "fewf",
+            "rate": "fwef"
+          }
+        ]
+      },
+      "company": "Robel, Stracke and Casper",
+      "id": 6
+    },
+    {
+      "company": "Pfannerstill LLC",
+      "product_list": {
+        "item_list": [
+          {
+            "item_name": "Mało",
+            "item_desc": "82%",
+            "item_qty": "3",
+            "rate": "34"
+          },
+          {
+            "item_name": "Mleko",
+            "item_desc": "krowie",
+            "item_qty": "4",
+            "rate": "34"
+          }
+        ]
+      },
+      "fullname": "sadc",
+      "address": {
+        "street": "dsad"
+      },
+      "id": 7
+    },
+    {
+      "company": "Kub - Kiehn",
+      "product_list": {
+        "item_list": [
+          {
+            "item_name": "Masło",
+            "item_desc": "sss",
+            "item_qty": "3",
+            "rate": "45"
+          },
+          {
+            "item_name": "Mleko",
+            "item_desc": "Krowie",
+            "item_qty": "4",
+            "rate": "34"
+          }
+        ]
+      },
+      "address": {
+        "street": "eqw"
+      },
+      "id": 8
+    }
+  ],
   "dvinvfinalform": [
     {
       "id": "5df3180a09ea165f910",
@@ -185,6 +284,10 @@
       "item_qty": "fsdf",
       "rate": "gdf",
       "id": "cyTyw6U"
+    },
+    {
+      "company": "Witting, Gaylord and Pollich",
+      "id": "ZnzqOqK"
     }
   ],
   "datauser": [

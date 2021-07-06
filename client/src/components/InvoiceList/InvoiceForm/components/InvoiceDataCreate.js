@@ -17,7 +17,9 @@ import {
 } from 'react-admin';
 import { Typography, Box, Toolbar } from '@material-ui/core';
 
-import InvoiceItemCreate from './InvoiceItemListCreate.js';
+import InvoiceItemCreate from './invproduct/InvoiceItemCreate.js';
+import BuyerCreate from './invbuyer/InvDBBuyer.js';
+import BuyerCreateAuto from './invbuyer/InvDBBuyerCreate.js';
 
 
 
@@ -109,19 +111,10 @@ const InvoiceDataCreate = props => (
                                 <NullableBooleanInput source="has_newsletter" resource="customers" />
 
                         </Box>
-                                <ArrayField source="inv_info.item_list">
-         
-            <Datagrid>
-            <Box display="inline">
-                <TextField source="item_name" />
-                <TextField source="item_desc" />
-                <TextField source="item_qty" />
-                <TextField source="rate" />
-         </Box>
-            </Datagrid>
-            
-        </ArrayField>
+
         <InvoiceItemCreate />
+        <BuyerCreate />
+        <BuyerCreateAuto />
                 </Box>
                 <Toolbar>
                     <Box display="flex" justifyContent="space-between" width="100%">
