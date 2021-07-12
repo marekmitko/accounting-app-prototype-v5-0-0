@@ -1,6 +1,19 @@
+# React admin inter FormGroupContextProvider
+https://marmelab.com/react-admin/CreateEdit.html#variant
+# VAC interesting 
+https://www.benmvp.com/blog/25-vscode-extensions-max-productivity/
+# Featch 
+https://stackoverflow.com/questions/62454586/return-an-object-inside-useeffect-and-access-it-outside-in-react-after-having
+# Relace
+https://stackoverflow.com/questions/60900415/add-edit-multiple-resources-in-one-form
+# useQuery 
+https://www.youtube.com/watch?v=yccbCol546c
+
 # React Final Form
 https://stackoverflow.com/questions/60448361/validating-final-form-array-on-click
 
+# Doczytać o Array
+w ArrayInput & ArrayField
 
 # Ciekawe
 https://github.com/BigBasket/ra-treemenu

@@ -10,6 +10,7 @@ import {
   useQuery,
   TextInput,
   NumberInput,
+  ReferenceInput,
 } from 'react-admin';
 import InvoiceItemCreate from '../invproduct/InvoiceItemCreate.js';
 
@@ -22,10 +23,11 @@ const BuyerCreateAuto = (props) => {
     
     const onSuccess = ({ data }) => {
         notify(`New Buyer created `);
-        
+        // doczytaj o redirect
         // redirect(`/rentals?filter=%7B"id"%3A"${data.id}"%7D`);
         refresh();
     };
+
 
     const [customers, setCustomers] = useState([]);
     const { data: customer } = useQuery({
@@ -33,38 +35,39 @@ const BuyerCreateAuto = (props) => {
       resource: 'dbclientlist',
       payload: {
         pagination: { page: 1, perPage: 600 },
+        sort: { field: 'company', order: 'ASC' },
+        filter: {},
+      },
+    });
+  
+    const [emails, setEmails] = useState([]);
+    const { data: email } = useQuery({
+      type: 'getList',
+      resource: 'dbclientlist',
+      payload: {
+        pagination: { page: 1, perPage: 1000 },
         sort: { field: 'email', order: 'ASC' },
         filter: {},
       },
     });
-
-    const [films, setFilms] = useState([]);
-    const { data: film } = useQuery({
-    type: 'getList',
-    resource: 'dbclientlist',
-    payload: {
-      pagination: { page: 1, perPage: 1000 },
-      sort: { field: 'company', order: 'ASC' },
-      filter: {},
-    },
-  });
+  
 
 
-  useEffect(() => {
-    if (film) setFilms(film.map((d) => ({ id: d.title, name: d.title })));
-    if (customer)
-      setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));
-  }, [film, customer]);
+    useEffect(() => {
+        if (customer)
+        setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));
+        if (email) setEmails(email.map((d) => ({ id: d.email, name: d.email })));
+      }, [customer, email]);
 
 return (
-    <Create {...props} title='Create new Customer' onSuccess={onSuccess}>
+    <Create {...props} title='Create new Customer' onSuccess={onSuccess}  >
         <SimpleForm>
             {/* this works */}
             <NumberInput source="nb_views" />
             <SelectInput label="NAZWA" source='company' choices={customers} />
             <TextInput label="NAZWA FIRMY" source="company" />
-            <TextInput label="ADRES EMAIL" type="email" source="email" />
-
+            <SelectInput label="EMAIL" type="email" source="email" choices={emails} disabled/>
+            <TextInput label="EMAIL" type="email" source="email"  />
 
                 <TextInput label="IMIĘ I NAZWISKO"source="fullname" />
                 <TextInput label="ADRES"source="address.street" />

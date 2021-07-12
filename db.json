@@ -1,4 +1,34 @@
 {
+    "datauser": [
+      {
+        "id": "User1eeb58bsd",
+        "company": "Biuro Podróży Pawłowice",
+        "fullname": {
+          "forename": "Marek",
+          "surname": "Kowalski"
+          },
+    "address_id": "145",
+      "address":{
+          "id": "145",
+        "street": "Widawska 128",
+        "city": "Wrocław",
+        "ZIPCode": "58-202"
+        },
+    "contact": {
+        "email": "kowalskitravel@gmail.com",
+        "telephoneNumber": "5858585",
+        "faxNumber": "44475757575"
+    },
+        "orgId": {
+            "orgNumber": "15032603596",
+            "MVA": "true"
+          }
+      }
+      
+    ],
+    "NewInvoiceList": [
+
+    ],
   "homepage": [
       {
         "company": "Jenkins LLC",
@@ -290,30 +320,19 @@
       "id": "ZnzqOqK"
     }
   ],
-  "datauser": [
-    {
-      "id": "User1eeb58bsd",
-      "company": "Biuro Podróży Pawłowice",
-      "fullname": "Andrzej Kowalski",
-      "email": "kowalskitravel@gmail.com",
-      "address": {
-        "street": "Widawska 128",
-        "city": "Wrocław",
-        "codeCity": "58-202"
-      }
-    }
-  ],
   "dbclientlist": [
     {
       "id": "5e4e742a-9fee-4e21-8bb5-07bc39f1910e",
       "company": "Lesch - Gerhold",
       "fullname": "Luz Connelly",
       "email": "jankowalski@gmail.com",
-      "address": {
+      "address": [
+        {
         "street": "87597 Carter Parks",
         "city": "East Cruz",
         "codeCity": "47301-9994"
-      },
+        }
+    ],
       "MVA": "0ba52ab3-1548-4453-aba4-977c630b988c",
       "telephoneNumber": "5858585"
     },

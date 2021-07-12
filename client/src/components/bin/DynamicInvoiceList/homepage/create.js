@@ -1,10 +1,10 @@
 import React from "react";
 import { Create } from "react-admin";
-import DynamicForm from "../dynamicForm";
+// import DynamicForm from "../dynamicForm";
 
 const CreateHomePage = props => (
   <Create {...props}>
-    <DynamicForm />
+    {/* <DynamicForm /> */}
   </Create>
 );
 

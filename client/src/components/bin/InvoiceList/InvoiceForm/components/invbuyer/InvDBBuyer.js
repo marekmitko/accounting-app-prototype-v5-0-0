@@ -16,7 +16,7 @@ const MyTextInput = props => (
     </div>
 )
 const BuyerCreate = (props) => (
-    <Create title='Dodaj nowego kontrahenta' resource="buyer" basePath  {...props} >
+    <Create title='Dodaj nowego kontrahenta' resource="buyer" {...props} >
         <SimpleForm>
             {/* this works */}
             <MyTextInput source="title" />

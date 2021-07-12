@@ -1,6 +1,20 @@
 import React from 'react'
-import { List, Datagrid, TextField, ReferenceField, DateField, ArrayField, SingleFieldList, ChipField } from 'react-admin'
+import { List, Datagrid, TextField, ReferenceField, DateField, ArrayField, SingleFieldList, ChipField, Link, } from 'react-admin'
 
+
+// import { Link } from 'react-router-dom';
+
+const CreateRelatedCommentButton = ({ record }) => (
+    <Button
+        component={Link}
+        to={{
+            pathname: '/comments/create',
+            state: { record: { post_id: record.id } },
+        }}
+    >
+        Write a comment for that post
+    </Button>
+);
 
 
 

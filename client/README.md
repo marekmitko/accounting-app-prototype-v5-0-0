@@ -1,5 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+https://marmelab.com/react-admin/CreateEdit.html#variant
 ## Available Scripts
 
 In the project directory, you can run:

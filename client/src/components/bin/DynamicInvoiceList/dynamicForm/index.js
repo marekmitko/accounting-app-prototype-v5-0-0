@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import compose from "recompose/compose";
-import { DragDropContext } from "react-dnd";
+// import { DragDropContext } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { withStyles } from "@material-ui/core/styles";
 import isEqual from "lodash/isEqual";
@@ -163,19 +163,19 @@ DynamicFormView.defaultProps = {
   toolbar: <Toolbar />
 };
 
-const DynamicForm = compose(
-  DragDropContext(HTML5Backend),
-  connect((state, props) => ({
-    form: props.form || REDUX_FORM_NAME,
-    // initialValues: getDefaultValues(state, props),
-    saving: props.saving || state.admin.saving
-  })),
-//   translate, // Must be before reduxForm so that it can be used in validation
-//   reduxForm({
-//     enableReinitialize: true,
-//     keepDirtyOnReinitialize: true
-//   }),
-  withStyles(styles)
-)(DynamicFormView);
+// const DynamicForm = compose(
+//   DragDropContext(HTML5Backend),
+//   connect((state, props) => ({
+//     form: props.form || REDUX_FORM_NAME,
+//     // initialValues: getDefaultValues(state, props),
+//     saving: props.saving || state.admin.saving
+//   })),
+// //   translate, // Must be before reduxForm so that it can be used in validation
+// //   reduxForm({
+// //     enableReinitialize: true,
+// //     keepDirtyOnReinitialize: true
+// //   }),
+//   withStyles(styles)
+// )(DynamicFormView);
 
-export default DynamicForm;
+// export default DynamicForm;
