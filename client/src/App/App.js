@@ -12,35 +12,55 @@ import ClientCreate from '../components/ClientList/ClientCreate'
 import ClientEdit from '../components/ClientList/ClientEdit'
 import {ClientListIcon} from '../components/ClientList/ClientList'
 import {AddClientIcon} from '../components/ClientList/ClientCreate'
-// import InvoiceForm1 from "../components/InvFinalFormEx/InvoiceForm";
 
-// import visitors from '../components/NewInvoice/visitors/index.ts';
-// import ItemProduct from '../components/InvoiceList/InvoiceForm/components/ItemProductList';
-// import homepage from "../components/DynamicInvoiceList/homepage";
+
 import tags from '../components/bin/InvoiceList/InvoiceForm/components/tags';
 import BuyerCreateAuto from '../components/bin/InvoiceList/InvoiceForm/components/invbuyer/InvDBBuyerCreate.js';
 
 import NewInvoiceList from "../components/NewInvoiceList";
 
-import { ListGuesser, EditGuesser } from 'react-admin';
+// import { ListGuesser, EditGuesser } from 'react-admin';
+
+import dataProvider from "./addUserProfileOverrides";
+// ten działa 
+// import dataProvider from "./xxxxBINdataProvider";
+// import authProvider from "./authProvider";
+import { Route } from "react-router";
+// import { ProfileEdit } from "../userBar/profile";
+import MyLayout from "../userBar/MyLayout";
+import {ProfileEdit} from '../profile/ProfileEdit';
+
 
 function App() {
     return (
-        <Admin dataProvider={restProvider('http://localhost:3000')}>
+        <Admin 
+            // dataProvider={restProvider('http://localhost:3000')}
+            dataProvider={dataProvider}
+           
+            customRoutes={[
+                <Route
+                    key="my-profile"
+                    path="/my-profile"
+                    // render={() => <ProfileEdit />}
+                    component={ProfileEdit}
+                />
+            ]}
+            layout={MyLayout}
+        >
 
 
 
             <Resource
                 name='datauser'
-                list={ListGuesser}
-                edit={EditGuesser}
+                list={ProfileEdit}
+                edit={ProfileEdit}
 
             />
 
             {/* <Resource name="homepage" {...homepage} /> */}
             <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={NewInvoiceList.create} />
             <Resource options={{ label: '*Lista FV' }}  name="NewInvoiceList" {...NewInvoiceList} />
-            <Resource name='newbuyer' create={BuyerCreateAuto} list={BuyerCreateAuto} />
+            {/* <Resource name='newbuyer' create={BuyerCreateAuto} list={BuyerCreateAuto} /> */}
 
             {/* <Resource name="dvinvfinalform" {...ItemProduct} /> */}
             <Resource name="dvinvfinalform" {...tags} />

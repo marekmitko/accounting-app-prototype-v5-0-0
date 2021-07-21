@@ -1,38 +1,51 @@
 import * as React from "react";
-import { ArrayInput, SimpleFormIterator, TextInput, TextField, } from 'react-admin';
+import { ArrayInput, SimpleFormIterator, TextInput, TextField, FormDataConsumer} from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
-import BoxTextInput from "../../../../../mycomponentsMui/myMuiForm/BoxTextInput";
+import BoxItemTextInput from '../../../../../mycomponentsMui/myMuiForm/BoxItemTextInput';
+import BoxItemNumberInput from '../../../../../mycomponentsMui/myMuiForm/BoxItemNumberInput';
+import BoxTextInput from '../../../../../mycomponentsMui/myMuiForm/BoxTextInput';
+import BoxBootstrapInput  from '../../../../../mycomponentsMui/myMuiForm/BoxBootstrapInput.js';
+
 
 const useStyles = makeStyles({
-    inlineBlock: { 
-        display: 'flex',
-
-    },
-    itemProduct: {
-        display: 'flex',
-    }
+    inlineBlock: { display: 'inline-flex',
+},
+styleItem: { variant: 'outlined',},
 });
-
-// const TextFieldInForm = ({ variant, ...props }) => <BoxTextInput {...props} />;
-// TextFieldInForm.defaultProps = BoxTextInput.defaultProps;
 
 const InvoiceItemCreate = (props) => {
     const classes = useStyles();
+    
+    
+    const BoxTextInputInForm = ({ variant, ...props }) => <BoxTextInput {...props} />;
+    BoxTextInputInForm.defaultProps = BoxTextInput.defaultProps;
+
     return (
-        <ArrayInput  label="DODAJ PRODUKT" source="product_list.item_info" >
-             {/* <SimpleFormIterator addButton={<CustomAddButton />} removeButton={<CustomRemoveButton </SimpleFormIterator>/>}> */}
-            <SimpleFormIterator   mr="0.1em" p="0" fullWidth formClassName={classes.itemProduct}>
-            <Box display="flex" mb="-1.2em" fullWidth>
-                        <BoxTextInput variant="outlined" flex={5} label="Nazwa" source="item_name" resource="products" className={classes.inlineBlock} mr="0.5em" />
-                        <BoxTextInput variant="outlined" flex={3} label="Opis" source="item_desc" resource="products" className={classes.inlineBlock} mr="0.5em" />
-                        <BoxTextInput variant="outlined" flex={3} label="Ilość" source="item_qty" resource="products" className={classes.inlineBlock} mr="0.5em" />
-                        <BoxTextInput variant="outlined" flex={3} label="Cena" source="rate" resource="products" className={classes.inlineBlock} mr="0.5em" />     
-            </Box>
-            </SimpleFormIterator>
-        </ArrayInput>
-            
-    );
+    <ArrayInput {...props} label="DODAJ PRODUKT"  source="product_list">
+        <SimpleFormIterator>
+        <FormDataConsumer>
+            {({ getSource, scopedFormData }) => {
+                return (
+                    //Nie wiem czy to nie powino być tylko w tym Box ? 
+                    <Box display="inline-flex" mr="0.1em" p="0" mb="-1.2em" fullWidth>
+                        <BoxItemTextInput flex={5} label="Nazwa" source={getSource("item_name")}  resource="products" ml="-1.2em"/>
+                        <BoxItemTextInput flex={3} label="Typ" source={getSource("item_desc")} resource="products"/>
+                        <BoxItemNumberInput flex={1} label="Ilość" source={getSource("item_qty")} resource="products"/>
+                        <BoxItemNumberInput flex={1} label="Netto" source={getSource("item_qty")} resource="products"/>
+                        <BoxItemNumberInput flex={1} label="VAT" source={getSource("item_vat")} resource="products"/>
+                        <BoxItemNumberInput flex={1} label="Ilość" source={getSource("sum_netto")} resource="products"/>
+                        <BoxItemNumberInput flex={1} label="Ilość" source={getSource("sum_vat")} resource="products"/>
+                        <BoxItemNumberInput flex={1} label="Brutto" source={getSource("sum_brutto")} resource="products"/>   
+                    </Box>
+                );
+            }}
+        </FormDataConsumer>
+        </SimpleFormIterator>
+   </ArrayInput>
+
+);
 };
 
-export default InvoiceItemCreate
+
+export default InvoiceItemCreate;

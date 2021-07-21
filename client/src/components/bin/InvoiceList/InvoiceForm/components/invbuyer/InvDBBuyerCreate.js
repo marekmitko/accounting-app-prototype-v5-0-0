@@ -51,25 +51,25 @@ const BuyerCreateAuto = (props) => {
 
 
 
-// useEffect(() => {
-//     if (customer)
-//     setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));
-//     if (email) setEmails(email.map((d) => ({ id: d.email, name: d.email })));
-// }, [customer, email]);
+useEffect(() => {
+    if (customer)
+    setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));
+    if (email) setEmails(email.map((d) => ({ id: d.email, name: d.email })));
+}, [customer, email]);
 
-const [userData, setUserData] = useState({});
+// const [userData, setUserData] = useState({});
 
 // const addressUser = () => {Object.fromEntries(userData.address.map((team) => [team.id, team]))};
 
 
-useEffect(() => {
-    // GET request using fetch inside useEffect React hook
-    fetch('http://localhost:3000//datauser/User1eeb58bsd')
-    .then(response => response.json())
-    .then(data => setUserData(data));
+// useEffect(() => {
+//     // GET request using fetch inside useEffect React hook
+//     fetch('http://localhost:3000//datauser/User1eeb58bsd')
+//     .then(response => response.json())
+//     .then(data => setUserData(data));
     
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-}, []);
+//     // empty dependency array means this effect will only run once (like componentDidMount in classes)
+// }, []);
 
 return (
     <Create {...props} title='Create new Customer' onSuccess={onSuccess}  >
@@ -77,8 +77,8 @@ return (
             {/* this works */}
             <NumberInput source="nb_views" />
             <SelectInput label="NAZWA" source='company' choices={customers} />
-            <TextInput label="NAZWA FIRMY" source="userData.company" />
-            <SelectInput label="EMAIL" type="email" source="email" choices={emails} disabled/>
+            <TextInput label="NAZWA FIRMY" source="company" />
+            <SelectInput label="EMAIL" type="email" source="email" choices={emails}/>
             <TextInput label="EMAIL" type="email" source="email"  />
 
                 <TextInput label="IMIĘ I NAZWISKO"source="fullname" />

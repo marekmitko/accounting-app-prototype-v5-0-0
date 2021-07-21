@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {ReactFragnent} from "react";
 import {
     FormWithRedirect,
     DateInput,
@@ -13,6 +13,7 @@ import { Card, Typography, Box, Toolbar } from '@material-ui/core';
 import BoxTextInput from '../../../../mycomponentsMui/myMuiForm/BoxTextInput.js';
 
 
+
 const InvoiceBuyerForm = props => {
 
     return (
@@ -25,7 +26,7 @@ const InvoiceBuyerForm = props => {
                         <BoxTextInput source="fullname.forename" resource="buyer" mr="0.5em" />
                         <BoxTextInput source="fullname.surname" resource="buyer"/>
                     </Box>
-                    <BoxTextInput flex={2} mt="0" mb="-1em" source="contact.email" resource="buyer" type="email" disabled />
+                    <BoxTextInput flex={2} mt="0" mb="-1em" source="contact.email" resource="buyer" type="email" />
                     {/* <DateInput source="birthday" resource="customers" /> */}
 
                     <Typography  variant="body2" align="right">

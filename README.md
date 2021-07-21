@@ -1,3 +1,23 @@
+#  linki ze 
+
+# Global Context 
+# Global Context 
+https://pl.reactjs.org/docs/context.html
+
+# DataPicker
+https://material-ui-pickers.dev/getting-started/installation
+https://github.com/vascofg/react-admin-date-inputs
+
+
+
+
+# WAŻNE!!!!
+https://storybook.ra-enterprise.marmelab.com/?path=/story/ra-editable-datagrid-custom-form--custom
+    -> https://marmelab.com/ra-enterprise-demo/#/tours/ra-editable-datagrid
+
+# przekazanie danych 
+https://github.com/marmelab/react-admin/issues/3762
+
 # React admin inter FormGroupContextProvider
 https://marmelab.com/react-admin/CreateEdit.html#variant
 # VAC interesting 
