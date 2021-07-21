@@ -28,7 +28,9 @@ import dataProvider from "./addUserProfileOverrides";
 import { Route } from "react-router";
 // import { ProfileEdit } from "../userBar/profile";
 import MyLayout from "../userBar/MyLayout";
-import {ProfileEdit} from '../profile/ProfileEdit';
+import { ProfileEdit } from '../profile/profile';
+import { UserList } from '../profile/users';
+import UserIcon from "@material-ui/icons/Group";
 
 
 function App() {
@@ -36,20 +38,19 @@ function App() {
         <Admin 
             // dataProvider={restProvider('http://localhost:3000')}
             dataProvider={dataProvider}
-           
+            // authProvider={authProvider}
             customRoutes={[
                 <Route
                     key="my-profile"
                     path="/my-profile"
-                    // render={() => <ProfileEdit />}
-                    component={ProfileEdit}
+                    render={() => <ProfileEdit />}
                 />
             ]}
             layout={MyLayout}
         >
 
 
-
+            <Resource name="users" icon={UserIcon} list={UserList} />
             <Resource
                 name='datauser'
                 list={ProfileEdit}
