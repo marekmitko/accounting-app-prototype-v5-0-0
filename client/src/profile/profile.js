@@ -67,7 +67,7 @@ export const ProfileEdit = ({ staticContext, ...props }) => {
     <SaveContextProvider value={saveContext}>
       <SimpleForm save={handleSave} record={identity ? identity : {}}>
         <TextInput source="fullName" validate={required()} />
-        <FileInput source="avatar" validate={required()} />
+        {/* <FileInput source="avatar" validate={required()} /> */}
       </SimpleForm>
     </SaveContextProvider>
   );

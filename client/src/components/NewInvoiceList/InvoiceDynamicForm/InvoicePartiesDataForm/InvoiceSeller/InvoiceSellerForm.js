@@ -8,6 +8,7 @@ import {
 import { Card, Typography, Box, Toolbar } from '@material-ui/core';
 
 import BoxTextInput from '../../../../mycomponentsMui/myMuiForm/BoxTextInput.js';
+import UserProfile from '../../../../../my-profile/userDataProvider.js';
 
 
 // import FetchRelated from '../../XsetData/FetchRelated';
@@ -40,19 +41,22 @@ const dataUser2 = ( userId ) => useGetOne('datauser', userId);
 
 
 const InvoiceSellerForm = props => {
-    
-    const User124 = dataUser2("User12356x");
 
-    const [dataUser, setUserData] = useState({});
-    useEffect(() => {
-            // GET request using fetch inside useEffect React hook
-            fetch('http://localhost:3000//datauser/User12356x')
-            .then(response => response.json())
-            .then(data => setUserData(data));
-        
-            // empty dependency array means this effect will only run once (like componentDidMount in classes)
-        }, []);
     
+    // const User124 = dataUser2("User12356x");
+    
+    // const [dataUser, setUserData] = useState({});
+    // useEffect(() => {
+    //         // GET request using fetch inside useEffect React hook
+    //         fetch('http://localhost:3000//datauser/User12356x')
+    //         .then(response => response.json())
+    //         .then(data => setUserData(data));
+            
+    //         // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    //     }, []);
+        
+        const MyDatatProfile = (...props) => UserProfile("Profile12356x");
+
     return (
         <Card variant="outlined" source='seller' p="1em">
             <Box display="flex">
@@ -60,8 +64,10 @@ const InvoiceSellerForm = props => {
                     <Typography variant="subtitle1" gutterBottom>
                 DANE SPRZEDAWCY</Typography>
                     <Box display="flex" mb="-1em">
-                    <BoxTextInput source="company" resource="seller" initialValue={dataUser.company} variant="standard"  mr="0.5em" disabled />
-                    <BoxTextInput source="surname" resource="seller" initialValue={User124.email} variant="standard"  disabled />
+                    {/* <BoxTextInput source="company" resource="seller" initialValue={dataUser.company} variant="standard"  mr="0.5em" disabled /> */}
+                    <BoxTextInput source="user.name"  variant="standard"  mr="0.5em" disabled />
+                    <BoxTextInput source="MyDatatProfile.name"  variant="standard"  mr="0.5em" disabled />
+                    <BoxTextInput source="MyDatatProfile.name"  name="MyUserProfile" resource="MyUserProfile" initialValue={MyDatatProfile.name} variant="standard"  disabled />
                     </Box>
                     <BoxTextInput variant="standard" flex={2} mt="0" mb="-1em" source="contact.email" resource="seller" type="email" disabled />
                     {/* <DateInput source="birthday" resource="customers" /> */}

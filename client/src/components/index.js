@@ -1,4 +1,4 @@
-import ProfileEdit from './ProfileEdit';
+import ProfileEdit from '../profile/ProfileEdit';
 
 export default {
     edit: ProfileEdit

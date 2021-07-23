@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import {
   Create,
   SimpleForm,
@@ -38,15 +38,11 @@ const BuyerCreateAuto = (props) => {
         },
     });
   
-    const [emails, setEmails] = useState([]);
-    const { data: email } = useQuery({
-        type: 'getList',
+    const [customerData, setCustomerData] = useState([]);
+    const { data } = useQuery({
+        type: 'getOne',
       resource: 'dbclientlist',
-      payload: {
-          pagination: { page: 1, perPage: 1000 },
-        sort: { field: 'email', order: 'ASC' },
-        filter: {},
-    },
+      payload: { id: "4a7883fc-6747-42f7-9bf5-35ac07d441ac" }
 });
 
 
@@ -54,8 +50,9 @@ const BuyerCreateAuto = (props) => {
 useEffect(() => {
     if (customer)
     setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));
-    if (email) setEmails(email.map((d) => ({ id: d.email, name: d.email })));
-}, [customer, email]);
+    if (data) setCustomerData(data.map((d) => ({
+            id: d.id, fullname: d.fullname})));
+}, [customer, data]);
 
 // const [userData, setUserData] = useState({});
 
@@ -78,7 +75,7 @@ return (
             <NumberInput source="nb_views" />
             <SelectInput label="NAZWA" source='company' choices={customers} />
             <TextInput label="NAZWA FIRMY" source="company" />
-            <SelectInput label="EMAIL" type="email" source="email" choices={emails}/>
+            {/* <SelectInput label="EMAIL" type="email" source="email" choices={emails}/> */}
             <TextInput label="EMAIL" type="email" source="email"  />
 
                 <TextInput label="IMIĘ I NAZWISKO"source="fullname" />

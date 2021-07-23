@@ -3,7 +3,7 @@ import React, {
     useState,
     useCallback,
     useMemo,
-    useContext
+    useContext,
   } from "react";
   import {
     TextInput,
@@ -13,6 +13,7 @@ import React, {
     required,
     useDataProvider,
     useNotify,
+    SaveContextProvider,
     useGetIdentity
   } from "react-admin";
   
@@ -36,8 +37,15 @@ import React, {
     );
   };
   
-  export const useProfile = () => useContext(ProfileContext);
-
+//   export const useProfile = () => useContext(ProfileContext);
+export function useProfile(){
+    const context = useContext(ProfileContext);
+    if (!context){
+        throw new Error("useProfile debe estar dentro del proveedor ProfileContext");
+    }
+    return context;
+};
+  
   export const ProfileEdit = ({ staticContext, ...props }) => {
     console.log("ProfileEdit");
     const dataProvider = useDataProvider();
@@ -47,6 +55,20 @@ import React, {
   
     const { loaded, identity } = useGetIdentity();
   
+    // const PostDetail = ({ id }) => {
+    //     const { data: post, loading: postLoading } = useGetOne('posts', id);
+    //     const { identity, loading: identityLoading } = useGetIdentity();
+    //     if (postLoading || identityLoading) return <>Loading...</>;
+    //     if (!post.lockedBy || post.lockedBy === identity.id) {
+    //         // post isn't locked, or is locked by me
+    //         return <PostEdit post={post} />
+    //     } else {
+    //         // post is locked by someone else and cannot be edited
+    //         return <PostShow post={post} />
+    //     }
+    // }
+
+
     const handleSave = useCallback(
       (values) => {
         setSaving(true);
@@ -90,14 +112,15 @@ import React, {
     }
   
     return (
-    //   <SaveContextProvider value={saveContext}>
-        <SimpleForm value={saveContext} save={handleSave} record={identity ? identity : {}}>
+      <SaveContextProvider value={saveContext}>
+        {/* <SimpleForm save={handleSave} record={identity ? identity : {}}> */}
+        <SimpleForm save={handleSave} record={identity ? identity : {}}>
           <TextInput source="fullName" validate={required()} />
           {/* <ImageInput source="avatar" validate={required()}>
             <ImageField />
           </ImageInput> */}
         </SimpleForm>
-    //   </SaveContextProvider>
+      </SaveContextProvider>
     );
   };
   

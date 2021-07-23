@@ -11,11 +11,12 @@ import {
 import { Card, Typography, Box, Toolbar } from '@material-ui/core';
 
 import BoxTextInput from '../../../../mycomponentsMui/myMuiForm/BoxTextInput.js';
+import UserProfile from '../../../../../my-profile/userDataProvider.js'
 
 
 
 const InvoiceBuyerForm = props => {
-
+console.log(UserProfile("Profile12356x"));
     return (
         <Card variant="outlined" p="1em">
             <Box display="flex">
@@ -37,7 +38,10 @@ const InvoiceBuyerForm = props => {
                         <BoxTextInput flex={2} source="addres.city" resource="buyer"/>
                     </Box>
                 </Box>
+
+          
             </Box>
+                
         </Card>
     )
 };

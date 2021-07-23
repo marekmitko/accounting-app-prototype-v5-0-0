@@ -13,17 +13,17 @@ const addUserProfileOverrides = (dataProvider) => ({
     return Promise.resolve({ data });
   },
   async updateUserProfile({ data }) {
-    // Convert a newly uploaded file to b64
-    const avatar = await (data.avatar.rawFile instanceof File
-      ? convertFileToBase64(data.avatar)
-      : data.avatar);
+    // // Convert a newly uploaded file to b64
+    // const avatar = await (data.avatar.rawFile instanceof File
+    //   ? convertFileToBase64(data.avatar)
+    //   : data.avatar);
 
     localStorage.setItem(
       "userProfile",
       JSON.stringify({
         ...data,
         id: "unique_id",
-        avatar
+        // avatar
       })
     );
     return Promise.resolve({ data });
@@ -35,15 +35,15 @@ const addUserProfileOverrides = (dataProvider) => ({
  * That's not the most optimized way to store images in production, but it's
  * enough to illustrate the idea of data provider decoration.
  */
-const convertFileToBase64 = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
+// const convertFileToBase64 = (file) =>
+//   new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.onload = () => resolve(reader.result);
+//     reader.onerror = reject;
 
-    reader.readAsDataURL(file.rawFile);
-  });
+//     reader.readAsDataURL(file.rawFile);
+//   });
 
 export default addUserProfileOverrides(
-    restProvider("restProvider('http://localhost:3000')")
+    restProvider("http://localhost:3000")
 );

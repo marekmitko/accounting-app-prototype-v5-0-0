@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "react-admin";
 import MyAppBar from "./MyAppBar";
-import { ProfileProvider } from "./profile";
+import { ProfileProvider } from "../v2profile/profile";
 
 const MyLayout = (props) => (
   <ProfileProvider>

@@ -1,4 +1,32 @@
 {
+    "userProfile": [
+        {
+            "id": "Profile12356x",
+            "company": "Biuro Podróży Pawłowice",
+            "fullName": "Marek Kdsadsaski",
+            "fullname": {
+              "forename": "Marek",
+              "surname": "Kowalski"
+              },
+        "address_id": "145",
+          "address":{
+              "id": "145",
+            "street": "Widawska 128",
+            "city": "Wrocław",
+            "ZIPCode": "58-202"
+            },
+        "email": "kowalskitravel@gmail.com",
+        "contact": {
+            "email": "kowalskitravel@gmail.com",
+            "telephoneNumber": "5858585",
+            "faxNumber": "44475757575"
+        },
+            "orgId": {
+                "orgNumber": "15032603596",
+                "MVA": "true"
+              }
+          }
+    ],
     "datauser": [
       {
         "id": "User12356x",
@@ -32,6 +60,7 @@
         {
           "id": "Profile12356x",
           "company": "Biuro Podróży Pawłowice",
+          "name": "Nazwa Użytkownika",
           "fullName": "Marek Kowalski",
           "fulllname": {
             "forename": "Marek",

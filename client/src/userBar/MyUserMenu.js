@@ -1,7 +1,7 @@
 import React from "react";
 import { UserMenu, MenuItemLink } from "react-admin";
 import SettingsIcon from "@material-ui/icons/Settings";
-import { useProfile } from "./profile";
+import { useProfile } from "../v2profile/profile";
 
 const MyUserMenu = (props) => {
   const { profileVersion } = useProfile();

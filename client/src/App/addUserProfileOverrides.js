@@ -17,7 +17,7 @@ const addUserProfileOverrides = dataProvider => ({
                 // As we are only storing this information in the localstorage, we don't really care about this id
                 id: 'unique-id',
                 fullName: "",
-                avatar: ""
+                // avatar: ""
             },
         });
     },
