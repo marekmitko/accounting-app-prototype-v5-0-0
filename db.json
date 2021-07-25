@@ -88,7 +88,8 @@
       ],
     "profile": [
         {
-          "id": "Profile12356x",
+          "id": "my-profile",
+          "nickname": "Marek User",
           "company": "Biuro Podróży Pawłowice",
           "fullName": "Marek Kowalski",
           "fulllname": {

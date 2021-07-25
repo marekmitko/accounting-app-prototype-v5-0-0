@@ -19,39 +19,48 @@ import BuyerCreateAuto from '../bin/InvoiceList/InvoiceForm/components/invbuyer/
 
 import NewInvoiceList from "../components/NewInvoiceList";
 
-// import { ListGuesser, EditGuesser } from 'react-admin';
 
-// import dataProvider from "./addUserProfileOverrides";
+import { Route } from "react-router-dom";
 
-import { Route } from "react-router";
-
-import MyLayout from "../userBar/MyLayout";
+// import MyLayout from "../userBar/MyLayout";
 // import { ProfileEdit } from '../profile/profile';
-import { UserList } from '../profile/users';
+import { UserList } from '../xprofile/users';
 import UserIcon from "@material-ui/icons/Group";
 
 import { ProfileEdit } from "../v2profile/profile";
-import addUserProfileOverrides from "../v2profile/dataProvider";
-import authProvider from "../v2profile/authProvider";
+// import addUserProfileOverrides from "../v2profile/dataProvider";
+// import authProvider from "../v2profile/authProvider";
+
+import dataProvider from '../my-profile/myDataProvider';
+import profile from '../my-profile/profile';
+import MyLayout from '../my-profile/myUserBar/MyLayout';
+
+const renderProfileEditor = (routeProps) => {
+    let id = null;  // get your id howsoever, e.g. from localStorage 
+    return (
+    <profile.edit ProfileEdit id={id} {...routeProps} /> ) };
+
 
 
 function App() {
     return (
         <Admin 
             // dataProvider={restProvider('http://localhost:3000')}
-            dataProvider={addUserProfileOverrides}
+            // dataProvider={addUserProfileOverrides}
             // authProvider={authProvider}
+            dataProvider={dataProvider}
             customRoutes={[
-            <Route
-                key="my-profile"
-                path="/my-profile"
-                render={() => <ProfileEdit />}
-            />
+                <Route
+                    key="my-profile"
+                    path="/my-profile"
+                    // component={profile.edit}
+                    render={renderProfileEditor} 
+                />
             ]}
-            layout={MyLayout}
+            appLayout={MyLayout}
         >
 
-
+            <Resource name="profile" />
             <Resource name="users" icon={UserIcon} list={UserList} />
             <Resource name="userProfile"/>
             <Resource
@@ -60,7 +69,6 @@ function App() {
                 edit={ProfileEdit}
 
             />
-             <Resource name="profile" />
 
             {/* <Resource name="homepage" {...homepage} /> */}
             <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={NewInvoiceList.create} />
