@@ -25,7 +25,7 @@ class MyUserMenuView extends Component {
     render() {
         const { crudGetOne, profile, ...props } = this.props;
         return (
-            <UserMenu label={profile ? profile.nickname : ''} {...props}>
+            <UserMenu label={profile} {...props}>
                 <MenuItemLink
                     to="/my-profile"
                     primaryText="My profile"
@@ -38,7 +38,7 @@ class MyUserMenuView extends Component {
 
 const mapStateToProps = state => {
     const resource = 'profile';
-    const id = 'my-profile';
+    const id = 'MyProfile';
 
     return {
         profile: state.admin.resources[resource]

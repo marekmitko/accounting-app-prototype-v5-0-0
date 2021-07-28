@@ -14,13 +14,13 @@ import {
     ResourceName,
     dataProvider,
     useGetOne,
-    useQuery,
+        useQuery,
     Loading, Error, 
 } from 'react-admin';
 import { Card, Typography, Box, Toolbar } from '@material-ui/core';
 import BoxTextInput from '../../../mycomponentsMui/myMuiForm/BoxTextInput';
 
-
+    
 
 const InvoiceInfoForm = props => {
 

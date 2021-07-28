@@ -12,9 +12,8 @@ import {
 import { Card, Typography, Box, Toolbar,} from '@material-ui/core';
 
 
-// const postDefaultValue = () => ({ id: uuid(), created_at: new Date(), nb_views: 0 })
+const postDefaultValue = () => ({ created_at: new Date(), nb_views: 0 });
 
-//użyj create
 
 const InvoiceHeaderData = props => (
     <Card variant="outlined" p="1em">
@@ -25,10 +24,10 @@ const InvoiceHeaderData = props => (
                         </Box>
                             <DateInput source="first_name" resource="customers" fullWidth />
                         <Box flex={1} ml="0.5em">
-                            <DateInput source="last_name" resource="customers" fullWidth />
+                            <DateInput initialValue={new Date()} fullWidth />
                         </Box>
-                        <Box flex={1} ml="0.5em">
-                            <NumberInput source="nb_views:" postDefaultValue={0} fullWidth />
+                        <Box flex={2} ml="0.5em">
+                        <NumberInput source="nb_views" defaultValue={0} />
                         </Box>
      
     </Box>

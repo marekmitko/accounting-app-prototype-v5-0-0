@@ -21,54 +21,58 @@ import NewInvoiceList from "../components/NewInvoiceList";
 
 
 import { Route } from "react-router-dom";
-
-// import MyLayout from "../userBar/MyLayout";
-// import { ProfileEdit } from '../profile/profile';
 import { UserList } from '../xprofile/users';
 import UserIcon from "@material-ui/icons/Group";
 
-import { ProfileEdit } from "../v2profile/profile";
+
+// import { ProfileEdit } from "../v2profile/profile";
+// import MyLayout from "../userBar/MyLayout";
+// import { ProfileEdit } from '../profile/profile';
 // import addUserProfileOverrides from "../v2profile/dataProvider";
 // import authProvider from "../v2profile/authProvider";
 
-import dataProvider from '../my-profile/myDataProvider';
-import profile from '../my-profile/profile';
-import MyLayout from '../my-profile/myUserBar/MyLayout';
+// import dataProvider from '../my-profile/myDataProvider';
+// import MyLayout from '../my-profile/myUserBar/MyLayout';
+// import profile from '../my-profile/profile';
+// import ProfileEdit from '../my-profile/profile/ProfileEdit';
 
-const renderProfileEditor = (routeProps) => {
-    let id = null;  // get your id howsoever, e.g. from localStorage 
-    return (
-    <profile.edit ProfileEdit id={id} {...routeProps} /> ) };
 
 
 
 function App() {
+    
+    // const renderProfileEditor = (routeProps) => {
+    //     let id = 'MyProfile';  
+    //     // get your id howsoever, e.g. from localStorage 
+    //     return (
+    //     <profile.edit ProfileEdit id={id} {...routeProps} /> ) };
+
     return (
         <Admin 
-            // dataProvider={restProvider('http://localhost:3000')}
+            dataProvider={restProvider('http://localhost:3000')}
             // dataProvider={addUserProfileOverrides}
             // authProvider={authProvider}
-            dataProvider={dataProvider}
-            customRoutes={[
-                <Route
-                    key="my-profile"
-                    path="/my-profile"
-                    // component={profile.edit}
-                    render={renderProfileEditor} 
-                />
-            ]}
-            appLayout={MyLayout}
+            // // dataProvider={dataProvider}
+            // customRoutes={[
+            //     <Route
+            //         key="my-profile"
+            //         path="/my-profile"
+            //         component={ProfileEdit}
+            //         // render={renderProfileEditor} 
+            //     />
+            // ]}
+            // appLayout={MyLayout}
         >
-
-            <Resource name="profile" />
+{/* // to jest źle zrobione  */}
+            <Resource name="profile"  />
             <Resource name="users" icon={UserIcon} list={UserList} />
             <Resource name="userProfile"/>
-            <Resource
+            {/* <Resource
                 name='datauser'
                 list={ProfileEdit}
                 edit={ProfileEdit}
 
-            />
+            /> */}
 
             {/* <Resource name="homepage" {...homepage} /> */}
             <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={NewInvoiceList.create} />
