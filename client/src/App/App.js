@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Admin, Resource } from 'react-admin'
 import restProvider from 'ra-data-simple-rest'
-import InvoiceList from '../bin/InvoiceList/InvoiceList'
-import InvoiceCreate from '../bin/InvoiceList/InvoiceCreate'
-import InvoiceEdit from '../bin/InvoiceList/InvoiceEdit'
-import {InvoiceListIcon} from '../bin/InvoiceList/InvoiceList'
-import {AddInvoiceIcon} from '../bin/InvoiceList/InvoiceCreate'
+import InvoiceList from '../../../database/bin/InvoiceList/InvoiceList'
+import InvoiceCreate from '../../../database/bin/InvoiceList/InvoiceCreate'
+import InvoiceEdit from '../../../database/bin/InvoiceList/InvoiceEdit'
+import {InvoiceListIcon} from '../../../database/bin/InvoiceList/InvoiceList'
+import {AddInvoiceIcon} from '../../../database/bin/InvoiceList/InvoiceCreate'
 
 import ClientList from '../components/ClientList/ClientList'
 import ClientCreate from '../components/ClientList/ClientCreate'
@@ -14,8 +14,8 @@ import {ClientListIcon} from '../components/ClientList/ClientList'
 import {AddClientIcon} from '../components/ClientList/ClientCreate'
 
 
-import tags from '../bin/InvoiceList/InvoiceForm/components/tags';
-import BuyerCreateAuto from '../bin/InvoiceList/InvoiceForm/components/invbuyer/InvDBBuyerCreate.js';
+import tags from '../../../database/bin/InvoiceList/InvoiceForm/components/tags';
+import BuyerCreateAuto from '../../../database/bin/InvoiceList/InvoiceForm/components/invbuyer/InvDBBuyerCreate.js.js.js';
 
 import NewInvoiceList from "../components/NewInvoiceList";
 

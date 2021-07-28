@@ -8,7 +8,7 @@ import {
 import { Card, Typography, Box, Toolbar } from '@material-ui/core';
 
 import BoxTextInput from '../../../../mycomponentsMui/myMuiForm/BoxTextInput.js';
-import UserProfile from '../../../../../my-profile/userDataProvider.js';
+import UserProfile from '../../../../../../../database/bin/my-profile/userDataProvider.js';
 
 
 // import FetchRelated from '../../XsetData/FetchRelated';
