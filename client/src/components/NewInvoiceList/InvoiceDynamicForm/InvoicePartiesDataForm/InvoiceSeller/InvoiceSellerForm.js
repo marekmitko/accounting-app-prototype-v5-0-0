@@ -8,7 +8,7 @@ import {
 import { Card, Typography, Box, Toolbar } from '@material-ui/core';
 
 import BoxTextInput from '../../../../mycomponentsMui/myMuiForm/BoxTextInput.js';
-import UserProfile from '../../../../../../../database/bin/my-profile/userDataProvider.js';
+// import UserProfile from '../../../../../../../database/bin/my-profile/userDataProvider.js';
 
 
 // import FetchRelated from '../../XsetData/FetchRelated';
@@ -55,7 +55,7 @@ const InvoiceSellerForm = props => {
     //         // empty dependency array means this effect will only run once (like componentDidMount in classes)
     //     }, []);
         
-        const MyDatatProfile = (...props) => UserProfile("Profile12356x");
+      
 
     return (
         <Card variant="outlined" source='seller' p="1em">
@@ -66,8 +66,8 @@ const InvoiceSellerForm = props => {
                     <Box display="flex" mb="-1em">
                     {/* <BoxTextInput source="company" resource="seller" initialValue={dataUser.company} variant="standard"  mr="0.5em" disabled /> */}
                     <BoxTextInput source="user.name"  variant="standard"  mr="0.5em" disabled />
-                    <BoxTextInput source="MyDatatProfile.name"  variant="standard"  mr="0.5em" disabled />
-                    <BoxTextInput source="MyDatatProfile.name"  name="MyUserProfile" resource="MyUserProfile" initialValue={MyDatatProfile.name} variant="standard"  disabled />
+                    {/* <BoxTextInput source="MyDatatProfile.name"  variant="standard"  mr="0.5em" disabled />
+                    <BoxTextInput source="MyDatatProfile.name"  name="" resource="" initialValue={MyDatatProfile.name} variant="standard"  disabled /> */}
                     </Box>
                     <BoxTextInput variant="standard" flex={2} mt="0" mb="-1em" source="contact.email" resource="seller" type="email" disabled />
                     {/* <DateInput source="birthday" resource="customers" /> */}
