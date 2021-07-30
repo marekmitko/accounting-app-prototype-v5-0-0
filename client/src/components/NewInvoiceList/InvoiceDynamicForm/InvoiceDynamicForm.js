@@ -1,14 +1,27 @@
 import * as React from "react";
 import {
     FormWithRedirect,
-    DateInput,
     SelectArrayInput,
-    TextInput,
     SaveButton,
     DeleteButton,
     NullableBooleanInput,
+    TabbedForm,
+    SimpleForm,
+    FormTab,
+    Edit,
+    Datagrid,
+    TextField,
+    DateField,
+    TextInput,
+    ReferenceManyField,
+    NumberInput,    
+    DateInput,
+    BooleanInput,
+    EditButton,
+    TabbedFormTabs,
+    FormGroupContextProvider, useFormGroup,
 } from 'react-admin';
-import { Typography, Box, Toolbar } from '@material-ui/core';
+import {Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar, Grid, } from '@material-ui/core';
 
 import InvoiceSellerForm from './InvoicePartiesDataForm/InvoiceSeller/InvoiceSellerForm.js';
 import InvoiceBuyerForm from './InvoicePartiesDataForm/InvoiceBuyer/InvoiceBuyerForm.js';
@@ -33,61 +46,59 @@ const segments = [
 ];
 
 
-const InvoiceDynamicForm = props => (
-    <FormWithRedirect
+
+export const AddInvCreate = (props) => (
+
+<FormWithRedirect
         {...props}
         render={formProps => (
             // here starts the custom form layout
             <form>
-                <Box p="1em">
-                    <Box flex={1} m="0.5em">
+                 <Grid container spacing={2}>
+                    <Grid item xs={12}>
                         <InvoiceHeaderForm />
-                    </Box>
-                    <Box flex={1} m="0.5em">
+                    </Grid>
+                    <Grid item xs={12}>
                         <InvoiceDocumentTitle />
-                    </Box>
-                    <Box display="flex">
-                        <Box flex={1} m="0.5em" mr="0.5em">
-                            <InvoiceSellerForm />
-                        </Box>
-                        <Box flex={1} m="0.5em" ml="0.5em" >
-                            <InvoiceBuyerForm />
-                        </Box> 
-                    </Box>
-                        <Box flex={1} m="0.5em" ml="0.5em" >
-                            <InvoiceInfoForm />
-                            <Box display="flex">
-                                <Box flex={2} m="0.5em" ml="0.5em" >
-                                    <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
-                                </Box>
-                                <Box flex={2} m="0.5em" ml="0.5em" >
-                                     <NullableBooleanInput source="has_newsletter" resource="customers" />
-                                </Box>
-                            </Box>
-                        </Box> 
-
-                    
-                    <Box display="flex">
-                        <Box flex={1} m="0.5em">
-                            {/* <Typography variant="h6" gutterBottom>Pod Status </Typography>
-                            <Box flex={1} m="0.5em">
-                                <InvoiceInfoForm />
-                                < BoxBootstrapInput />
-                            </Box> */}
-                                {/* <Typography variant="h6" gutterBottom>Stats</Typography> */}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <InvoiceSellerForm />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <InvoiceSellerForm />
+                    </Grid>
+                    <Grid item xs={12}>
                         <InvoiceHeaderList>
-                        <InvoiceItemCreate fullWidth />
+                            <InvoiceItemCreate fullWidth />
                         </InvoiceHeaderList>
-                            </Box>
-                            </Box>
-                    <Box display="flex">
-                    <Box flex={1} m="0.5em">
-                            <InvoiceFooterForm />
-                    </Box>
-                    </Box>
+                        <InvoiceInfoForm />
+                    </Grid>
+                    <Grid item xs={12} sm={8}>
+                        <InvoiceFooterForm />
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                    <InvoiceInfoForm />
+                        <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
+                        <NullableBooleanInput source="has_newsletter" resource="customers" />
+                    </Grid>
+                </Grid>
+            <TextInput source="title" />
+            <FormGroupContextProvider name="options">
+                <Accordion>
+                    <AccordionSummary
+                        // expandIcon={<ExpandMoreIcon />}
+                        // aria-controls="options-content"
+                        // id="options-header"
+                    >
+                        <AccordionSectionTitle name="options">Options</AccordionSectionTitle>
+                    </AccordionSummary>
+                    <AccordionDetails id="options-content" aria-labelledby="options-header">
+                        <TextInput source="teaser" />
+                    </AccordionDetails>
+                </Accordion>
+            </FormGroupContextProvider>
   
-                           
-            </Box>
+
                 <Toolbar>
                     <Box display="flex" justifyContent="space-between" width="100%">
                         <SaveButton
@@ -100,6 +111,17 @@ const InvoiceDynamicForm = props => (
             </form>
         )}
     />
+
+
 );
 
-export default InvoiceDynamicForm;
+const AccordionSectionTitle = ({ children, name }) => {
+    const formGroupState = useFormGroup(name);
+
+    return (
+        <Typography color={formGroupState.invalid && formGroupState.dirty ? 'error' : 'inherit'}>
+            {children}
+        </Typography>
+    );
+}
+

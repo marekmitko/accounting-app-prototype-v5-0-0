@@ -1,5 +1,10 @@
 import * as React from 'react'
-import { Admin, Resource } from 'react-admin'
+import { 
+        Admin, 
+        Resource,
+        ListGuesser,
+        CreateGuesser,
+ } from 'react-admin'
 import restProvider from 'ra-data-simple-rest'
 
 import clients from '../pages/clients'
@@ -14,13 +19,7 @@ import UserIcon from "@material-ui/icons/Group";
 
 
 function App() {
-    
-    // const renderProfileEditor = (routeProps) => {
-    //     let id = 'MyProfile';  
-    //     // get your id howsoever, e.g. from localStorage 
-    //     return (
-    //     <profile.edit ProfileEdit id={id} {...routeProps} /> ) };
-
+ 
     return (
         <Admin 
             dataProvider={restProvider('http://localhost:3000')}
@@ -28,18 +27,17 @@ function App() {
             <Resource name="profile"  />
             <Resource name="userProfile"/>
 
+            {/* <Resource
+                name="dbinvoiceslist" 
+                label="Add INV"
+                options={{ label: '*Add INV' }}  
+                list={ListGuesser}
+            /> */}
             <Resource name="homepage" {...homepage} />
             <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={NewInvoiceList.create} />
             <Resource options={{ label: '_Lista FV_' }}  name="NewInvoiceList" {...NewInvoiceList} />
 
-            <Resource
-                name='dbinvoiceslist'
-                // options={{ label: 'Lista Faktur' }} 
-                // list={InvoiceList}
-                // create={InvoiceCreate}
-                // edit={InvoiceEdit}
-                // icon={InvoiceListIcon}
-            />
+    
             <Resource
                 name='dbclientlist'
                 label="Kontrahenci"

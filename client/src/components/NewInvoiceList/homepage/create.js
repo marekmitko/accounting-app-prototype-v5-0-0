@@ -1,11 +1,14 @@
 import React from "react";
 import { Create } from "react-admin";
-import InvoiceDynamicForm from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
+// import InvoiceDynamicForm from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
+import {AddInvCreate }from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
 
 
 const CreateHomePage = props => (
-  <Create {...props}>
-    <InvoiceDynamicForm />
+    <Create {...props}>
+     
+      <AddInvCreate/>
+
   </Create>
 );
 
