@@ -2,10 +2,10 @@ import * as React from "react";
 import { ArrayInput, SimpleFormIterator, TextInput, TextField, FormDataConsumer} from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
-import BoxItemTextInput from '../../../../../mycomponentsMui/myMuiForm/BoxItemTextInput';
-import BoxItemNumberInput from '../../../../../mycomponentsMui/myMuiForm/BoxItemNumberInput';
-import BoxTextInput from '../../../../../mycomponentsMui/myMuiForm/BoxTextInput';
-import BoxBootstrapInput  from '../../../../../mycomponentsMui/myMuiForm/BoxBootstrapInput.js';
+import BoxItemTextInput from '../../../../../../myComponentsMui/myMuiForm/BoxItemTextInput';
+import BoxItemNumberInput from '../../../../../../myComponentsMui/myMuiForm/BoxItemNumberInput';
+import BoxTextInput from '../../../../../../myComponentsMui/myMuiForm/BoxTextInput';
+import BoxBootstrapInput  from '../../../../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js.js.js';
 
 
 const useStyles = makeStyles({

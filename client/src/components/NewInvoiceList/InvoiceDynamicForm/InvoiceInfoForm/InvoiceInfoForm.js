@@ -18,7 +18,7 @@ import {
     Loading, Error, 
 } from 'react-admin';
 import { Card, Typography, Box, Toolbar } from '@material-ui/core';
-import BoxTextInput from '../../../mycomponentsMui/myMuiForm/BoxTextInput';
+import BoxTextInput from '../../../../myComponentsMui/myMuiForm/BoxTextInput';
 
     
 

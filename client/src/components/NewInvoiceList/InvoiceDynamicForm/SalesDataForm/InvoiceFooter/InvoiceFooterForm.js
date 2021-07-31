@@ -9,7 +9,7 @@ import {
     NullableBooleanInput,
 } from 'react-admin';
 import { Card, Typography, Box, Toolbar } from '@material-ui/core';
-import BoxBootstrapInput from "../../../../mycomponentsMui/myMuiForm/BoxBootstrapInput";
+import BoxBootstrapInput from "../../../../../myComponentsMui/myMuiForm/BoxBootstrapInput";
 
 const InvoiceFooterForm = props => (<React.Fragment>
     <Card variant="outlined" p="1em">

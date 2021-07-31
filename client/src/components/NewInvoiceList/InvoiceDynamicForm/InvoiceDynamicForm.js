@@ -30,8 +30,8 @@ import InvoiceHeaderForm from './SalesDataForm/InvoiceHeader/InvoiceHeader.js';
 import InvoiceHeaderList from './SalesDataForm/InvoiceProductList/InvoiceHeaderList.js';
 import InvoiceInfoForm from './InvoiceInfoForm/InvoiceInfoForm.js';
 import InvoiceFooterForm from './SalesDataForm/InvoiceFooter/InvoiceFooterForm.js';
-import BoxItemTextInput from '../../mycomponentsMui/myMuiForm/BoxItemTextInput.js';
-import BoxBootstrapInput  from '../../mycomponentsMui/myMuiForm/BoxBootstrapInput.js';
+import BoxItemTextInput from '../../../myComponentsMui/myMuiForm/BoxItemTextInput.js.js.js';
+import BoxBootstrapInput  from '../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js.js.js';
 import InvoiceDocumentTitle from "./capition/DocumentTitle.js";
 
 
