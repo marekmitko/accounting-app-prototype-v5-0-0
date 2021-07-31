@@ -17,10 +17,7 @@ const InvoiceHeaderForm = props => (
                         <Box flex={1} mr="0.5em">
                             <Typography variant="h6" gutterBottom>Data</Typography>
                         </Box>
-                            {/* <DateInput source="first_name" resource="customers" fullWidth />
-                        <Box flex={1} ml="0.5em">
-                            <DateInput source="last_name" resource="customers" fullWidth />
-                        </Box> */}
+                
      
     </Box>
     </Card>

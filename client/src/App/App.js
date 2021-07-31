@@ -53,15 +53,6 @@ function App() {
                 icon={clients.icon}
             />
 
-            {/* <Resource name="customers" {...visitors} /> */}
-            
-            {/* <Resource
-                // name='invoices-db'
-                options={{ label: 'Wystaw Fakturę' }} 
-                list={InvoiceList}
-                create={InvoiceCreate}
-                edit={InvoiceEdit}
-            /> */}
         </Admin>
     );
 }

@@ -16,7 +16,7 @@ const InvoiceHeader = props => (
     <Card variant="outlined" p="1em">
         <Box display='flex' >
             <Box flex={1} m="0.5em">
-                <InvoiceHeaderForm />
+        
                 <InvoiceHeaderForm />
             </Box>
             <Box flex={2} m="0.5em">

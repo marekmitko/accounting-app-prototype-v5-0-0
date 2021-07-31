@@ -5,9 +5,10 @@ import {AddInvCreate }from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
 
 
 const CreateHomePage = props => (
+    
     <Create {...props}>
      
-      <AddInvCreate/>
+      <AddInvCreate />
 
   </Create>
 );

@@ -21,7 +21,7 @@ import {
     TabbedFormTabs,
     FormGroupContextProvider, useFormGroup,
 } from 'react-admin';
-import {Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar, Grid, } from '@material-ui/core';
+import {Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar, Grid, CardHeader, Card, Avatar, CardContent,  } from '@material-ui/core';
 
 import InvoiceSellerForm from './InvoicePartiesDataForm/InvoiceSeller/InvoiceSellerForm.js';
 import InvoiceBuyerForm from './InvoicePartiesDataForm/InvoiceBuyer/InvoiceBuyerForm.js';
@@ -45,27 +45,70 @@ const segments = [
     { id: 'reviewer', name: 'Reviewer' },
 ];
 
-
+const backlinksDefaultValue = [
+    {
+        date: new Date(),
+        url: 'http://google.com',
+    },
+];
 
 export const AddInvCreate = (props) => (
 
-<FormWithRedirect
-        {...props}
-        render={formProps => (
-            // here starts the custom form layout
-            <form>
+   
+    <FormWithRedirect
+    {...props}
+    render={formProps => (
+        // here starts the custom form layout
+        <form>
                  <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <InvoiceHeaderForm />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sm={6}>
+                        <FormGroupContextProvider name="Seller">
+                            <InvoiceSellerForm />
+                        </FormGroupContextProvider>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <FormGroupContextProvider name="Buyer">
+                            <InvoiceBuyerForm />
+                        </FormGroupContextProvider>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <FormGroupContextProvider name="options">
+                            <Card  variant="outlined">
+                            <CardHeader 
+                                    avatar={
+                                    <Avatar aria-label="recipe">
+                                        R
+                                    </Avatar>
+                                    }
+                                    title="Shrimp and Chorizo Paella"
+                                    subheader="September 14, 2016"
+                                    aria-controls="options-content"
+                                    id="options-header"
+                                />
+                                <AccordionSummary
+                                    // expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="options-content"
+                                    id="options-header"
+                                >
+                                    {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                                </AccordionSummary>
+                                <AccordionDetails id="options-content" aria-labelledby="options-header">
+                                    <TextInput source="teaser" />
+                                </AccordionDetails>
+                            </Card>
+                        </FormGroupContextProvider>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
                         <InvoiceDocumentTitle />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <InvoiceSellerForm />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <InvoiceSellerForm />
+                        <InvoiceBuyerForm />
                     </Grid>
                     <Grid item xs={12}>
                         <InvoiceHeaderList>
@@ -87,17 +130,36 @@ export const AddInvCreate = (props) => (
                 <Accordion>
                     <AccordionSummary
                         // expandIcon={<ExpandMoreIcon />}
-                        // aria-controls="options-content"
-                        // id="options-header"
+                        aria-controls="options-content"
+                        id="options-header"
                     >
-                        <AccordionSectionTitle name="options">Options</AccordionSectionTitle>
+                        {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
                     </AccordionSummary>
                     <AccordionDetails id="options-content" aria-labelledby="options-header">
                         <TextInput source="teaser" />
                     </AccordionDetails>
                 </Accordion>
             </FormGroupContextProvider>
-  
+            <FormGroupContextProvider name="options2">
+                            <InvoiceSellerForm />
+                            <Card  variant="outlined">
+                                <CardHeader 
+                                    avatar={
+                                    <Avatar aria-label="recipe"> S </Avatar>}
+                                    title={<Typography variant="h7" component="h4">SPRZEDAWCA</Typography>}
+                                    subheader="September 14, 2016"
+                                    aria-controls="options-content"
+                                    id="options-header"
+                                />
+                                <CardContent 
+                                        // expandIcon={<ExpandMoreIcon />}
+                                        id="options-content" aria-labelledby="options-header"
+                                >
+                                     <InvoiceSellerForm />
+                                    {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                                </CardContent>
+                            </Card>
+                </FormGroupContextProvider>
 
                 <Toolbar>
                     <Box display="flex" justifyContent="space-between" width="100%">
@@ -115,13 +177,13 @@ export const AddInvCreate = (props) => (
 
 );
 
-const AccordionSectionTitle = ({ children, name }) => {
-    const formGroupState = useFormGroup(name);
+// const AccordionSectionTitle = ({ children, name }) => {
+//     const formGroupState = useFormGroup(name);
 
-    return (
-        <Typography color={formGroupState.invalid && formGroupState.dirty ? 'error' : 'inherit'}>
-            {children}
-        </Typography>
-    );
-}
+//     return (
+//         <Typography color={formGroupState.invalid && formGroupState.dirty ? 'error' : 'inherit'}>
+//             {children}
+//         </Typography>
+//     );
+// }
 
