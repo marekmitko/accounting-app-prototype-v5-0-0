@@ -30,9 +30,11 @@ import InvoiceHeaderForm from './SalesDataForm/InvoiceHeader/InvoiceHeader.js';
 import InvoiceHeaderList from './SalesDataForm/InvoiceProductList/InvoiceHeaderList.js';
 import InvoiceInfoForm from './InvoiceInfoForm/InvoiceInfoForm.js';
 import InvoiceFooterForm from './SalesDataForm/InvoiceFooter/InvoiceFooterForm.js';
-import BoxItemTextInput from '../../../myComponentsMui/myMuiForm/BoxItemTextInput.js.js.js';
-import BoxBootstrapInput  from '../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js.js.js';
+import BoxItemTextInput from '../../../myComponentsMui/myMuiForm/BoxItemTextInput.js';
+import BoxBootstrapInput from '../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
 import InvoiceDocumentTitle from "./capition/DocumentTitle.js";
+
+import myGridSanitized from "../../../myComponents/myGridSanitized.js";
 
 
 
@@ -53,27 +55,32 @@ const backlinksDefaultValue = [
 ];
 
 export const AddInvCreate = (props) => (
-
-   
-    <FormWithRedirect
-    {...props}
-    render={formProps => (
-        // here starts the custom form layout
-        <form>
-                 <Grid container spacing={2}>
-                    <Grid item xs={12}>
+    <SimpleForm>
+        {/* <myGridSanitized container spacing={3} style={{ width: "100%" }}> */}
+        <myGridSanitized 
+                container
+                direction="row"
+                
+                >
+              
+            
+            
+                    <Grid item xs={11} >
                         <InvoiceHeaderForm />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+    
+                    <Grid item xs={11} sm={5}>
                         <FormGroupContextProvider name="Seller">
                             <InvoiceSellerForm />
                         </FormGroupContextProvider>
                     </Grid>
+             
                     <Grid item xs={12} sm={6}>
                         <FormGroupContextProvider name="Buyer">
                             <InvoiceBuyerForm />
                         </FormGroupContextProvider>
                     </Grid>
+                
                     <Grid item xs={12} sm={6}>
                         <FormGroupContextProvider name="options">
                             <Card  variant="outlined">
@@ -124,7 +131,6 @@ export const AddInvCreate = (props) => (
                         <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
                         <NullableBooleanInput source="has_newsletter" resource="customers" />
                     </Grid>
-                </Grid>
             <TextInput source="title" />
             <FormGroupContextProvider name="options">
                 <Accordion>
@@ -132,7 +138,7 @@ export const AddInvCreate = (props) => (
                         // expandIcon={<ExpandMoreIcon />}
                         aria-controls="options-content"
                         id="options-header"
-                    >
+                        >
                         {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
                     </AccordionSummary>
                     <AccordionDetails id="options-content" aria-labelledby="options-header">
@@ -160,23 +166,18 @@ export const AddInvCreate = (props) => (
                                 </CardContent>
                             </Card>
                 </FormGroupContextProvider>
-
                 <Toolbar>
                     <Box display="flex" justifyContent="space-between" width="100%">
-                        <SaveButton
+                        {/* <SaveButton
                             saving={formProps.saving}
                             handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
-                        />
-                        <DeleteButton record={formProps.record} />
+                            />
+                        <DeleteButton record={formProps.record} /> */}
                     </Box>
                 </Toolbar>
-            </form>
-        )}
-    />
-
-
+    </myGridSanitized>
+ </SimpleForm>
 );
-
 // const AccordionSectionTitle = ({ children, name }) => {
 //     const formGroupState = useFormGroup(name);
 

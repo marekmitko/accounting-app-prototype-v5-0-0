@@ -5,7 +5,7 @@ import { Box } from '@material-ui/core';
 import BoxItemTextInput from '../../../../../../myComponentsMui/myMuiForm/BoxItemTextInput';
 import BoxItemNumberInput from '../../../../../../myComponentsMui/myMuiForm/BoxItemNumberInput';
 import BoxTextInput from '../../../../../../myComponentsMui/myMuiForm/BoxTextInput';
-import BoxBootstrapInput  from '../../../../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js.js.js';
+import BoxBootstrapInput  from '../../../../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
 
 
 const useStyles = makeStyles({
