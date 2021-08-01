@@ -30,20 +30,18 @@ const InvoiceInfoForm = props => {
             <Box display="flex">
                 <Box flex={2} m="1em">
                     <Typography variant="subtitle1" gutterBottom>
-                FORMA PŁATNOŚCI</Typography>
+                SUMA</Typography>
                     <Box display="flex" mb="-1em">
-                        {/* <BoxTextInput source="fullname.forename" resource="seller" initialValue="company" variant="standard"  mr="0.5em" disabled />
-                        <BoxTextInput source="fullname.surname" resource="seller" variant="standard"  disabled /> */}
+                        
                     </Box>
-                    <BoxTextInput variant="standard" flex={2} mt="0" mb="-1em" source="contact.email" resource="seller" type="email" disabled />
-                    {/* <DateInput source="birthday" resource="customers" /> */}
+                    <BoxTextInput variant="standard" flex={2} mt="0" mb="-1em" source="cadd.note" resource="npte" type="email" disabled />
+                  
 
                     <Typography  variant="body2" align="right">
-                ADRES SPRZEDAWCY</Typography>
-                    <BoxTextInput variant="standard" mb="-1.5em" mt="-0.5em" source="addres.street" resource="seller" multiline disabled />
+                Note</Typography>
+                    <BoxTextInput variant="standard" mb="-1.5em" mt="-0.5em" source="note.street" resource="note" multiline disabled />
                     <Box display="flex" mb="-1.5em">
-                        {/* <BoxTextInput  variant="standard" source="addres.ZIPCode" resource="seller" mr="0.5em" disabled/>
-                        <BoxTextInput  variant="standard" flex={2} source="addres.city" resource="seller" disabled/> */}
+        
                     </Box>
                 </Box>
             </Box>

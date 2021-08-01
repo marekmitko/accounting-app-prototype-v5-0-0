@@ -26,15 +26,15 @@ import {Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar,
 import InvoiceSellerForm from './InvoicePartiesDataForm/InvoiceSeller/InvoiceSellerForm.js';
 import InvoiceBuyerForm from './InvoicePartiesDataForm/InvoiceBuyer/InvoiceBuyerForm.js';
 import InvoiceItemCreate from './SalesDataForm/InvoiceProductList/InvoiceItem/InvoiceItemCreate.js';
-import InvoiceHeaderForm from './InvoiceHeader/InvoiceHeader.js';
+import InvoiceHeaderLogotype from './InvoiceHeader/InvoiceHeaderLogotype.js'
+import InvoiceHeaderData from './InvoiceHeader/InvoiceHeaderData.js';
 import InvoiceHeaderList from './SalesDataForm/InvoiceProductList/InvoiceHeaderList.js';
 import InvoiceInfoForm from './InvoiceInfoForm/InvoiceInfoForm.js';
 import InvoiceFooterForm from './SalesDataForm/InvoiceFooter/InvoiceFooterForm.js';
+import InvoiceDocumentTitle from "./capition/DocumentTitle.js";
+import myGridSanitized from "../../../myComponents/myGridSanitized.js";
 import BoxItemTextInput from '../../../myComponentsMui/myMuiForm/BoxItemTextInput.js';
 import BoxBootstrapInput from '../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
-import InvoiceDocumentTitle from "./capition/DocumentTitle.js";
-
-import myGridSanitized from "../../../myComponents/myGridSanitized.js";
 
 
 
@@ -66,16 +66,19 @@ const AddInvCreate = props => {
     const classes = useStyles();
 return (
     <SimpleForm  className={classes.gridSimpleForm} >
-        {/* <myGridSanitized container spacing={3} style={{ width: "100%" }}> */}
-        {/* <myGridSanitized container spacing={3} formClassName={classes.root}> */}
-        <myGridSanitized container formClassName={classes.gridSimpleForm} >
-            <Grid item xs={12}>
-                <InvoiceHeaderForm />
+        <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} >
+            <Grid container spacing={3} direction="row" justifyContent="center" alignItems="baseline" >
+                <Grid item xs={12} sm={4} >
+                    <InvoiceHeaderLogotype />
+                </Grid>
+                <Grid item xs={12} sm={8} >
+                    <InvoiceHeaderData />
+                </Grid>
             </Grid>
             {/* <Grid item xs={12}>
                 <InvoiceDocumentTitle />
             </Grid> */}
-            <Grid container spacing={2} >
+            <Grid container spacing={3} >
                 <Grid item xs={12} sm={6}>
                     {/* <FormGroupContextProvider name="Seller"> */}
                         <InvoiceSellerForm />
@@ -87,12 +90,29 @@ return (
                     {/* </FormGroupContextProvider> */}
                 </Grid>
             </Grid>
-            <Grid item xs={12}>
-                <InvoiceHeaderList>
-                    <InvoiceItemCreate fullWidth />
-                </InvoiceHeaderList>
-                <InvoiceInfoForm />
+            <Grid container spacing={3} >
+                <Grid item xs={12} >
+                    <InvoiceHeaderList>
+                        <InvoiceItemCreate fullWidth />
+                    </InvoiceHeaderList>
+                </Grid>
+                <Grid container spacing={0} >
+                    <Grid item  xs={12} sm={4} >
+                        <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
+                        <NullableBooleanInput source="has_newsletter" resource="customers" />
+                    </Grid>
+                    <Grid item  xs={12} sm={8} >
+                        <InvoiceInfoForm />
+                    </Grid>
+                </Grid>
+                <Grid item xs={12} >
+                    <InvoiceFooterForm />
+                </Grid>
             </Grid>
+
+
+{/* 
+
                             <Grid item xs={12} sm={6}>
                                 <FormGroupContextProvider name="options">
                                     <Card  variant="outlined">
@@ -112,7 +132,7 @@ return (
                                             aria-controls="options-content"
                                             id="options-header"
                                         >
-                                            {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                                             <AccordionSectionTitle name="options">Options</AccordionSectionTitle> 
                                         </AccordionSummary>
                                         <AccordionDetails id="options-content" aria-labelledby="options-header">
                                             <TextInput source="teaser" />
@@ -146,7 +166,7 @@ return (
                                 aria-controls="options-content"
                                 id="options-header"
                                 >
-                                {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                             <AccordionSectionTitle name="options">Options</AccordionSectionTitle>
                             </AccordionSummary>
                             <AccordionDetails id="options-content" aria-labelledby="options-header">
                                 <TextInput source="teaser" />
@@ -169,7 +189,7 @@ return (
                                                 id="options-content" aria-labelledby="options-header"
                                         >
                                             <InvoiceSellerForm />
-                                            {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                                     <AccordionSectionTitle name="options">Options</AccordionSectionTitle> 
                                         </CardContent>
                                     </Card>
                         </FormGroupContextProvider>
@@ -179,9 +199,9 @@ return (
                                     saving={formProps.saving}
                                     handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
                                     />
-                                <DeleteButton record={formProps.record} /> */}
+                                <DeleteButton record={formProps.record} /> 
                             </Box>
-                        </Toolbar>
+                        </Toolbar> */}
     </myGridSanitized>
  </SimpleForm>
     
