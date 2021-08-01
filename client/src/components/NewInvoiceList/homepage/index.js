@@ -1,4 +1,4 @@
-import AddInvCreate from "../InvoiceDynamicForm/InvoiceDynamicForm";
+import AddInvCreate from "../InvoiceDynamicForm";
 // import homepagecreate from "./create";
 // import homepageedit from "./edit";
 import homepagelist from "./list";

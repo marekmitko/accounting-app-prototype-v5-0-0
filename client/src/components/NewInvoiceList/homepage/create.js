@@ -1,16 +1,16 @@
-import React from "react";
-import { Create } from "react-admin";
-// import InvoiceDynamicForm from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
-import {AddInvCreate }from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
+// import React from "react";
+// import { Create } from "react-admin";
+// // import InvoiceDynamicForm from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
+// import {AddInvCreate }from "../InvoiceDynamicForm/InvoiceDynamicForm.js";
 
 
-const CreateHomePage = props => (
+// const CreateHomePage = props => (
     
-    <Create {...props}>
+//     <Create {...props}>
      
-      <AddInvCreate />
+//       <AddInvCreate />
 
-  </Create>
-);
+//   </Create>
+// );
 
-export default CreateHomePage;
+// export default CreateHomePage;
