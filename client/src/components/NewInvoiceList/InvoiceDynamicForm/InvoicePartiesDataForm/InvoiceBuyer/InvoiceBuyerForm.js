@@ -14,7 +14,7 @@ import BoxTextInput from '../../../../../myComponentsMui/myMuiForm/BoxTextInput.
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(0.5),
       textAlign: 'center',
     //   color: theme.palette.text.secondary,
     },
@@ -25,10 +25,10 @@ const InvoiceBuyerForm = props => {
 // console.log(UserProfile("Profile12356x"));
 const classes = useStyles();
     return (
-        <Card variant="outlined" p="1em" className={classes.paper}>
+        <Card variant="outlined" className={classes.paper}>
             <Box display="flex">
                 <Box flex={2} m="1em">
-                    <Typography variant="subtitle1" gutterBottom>
+                    <Typography variant="subtitle1" gutterButtom>
                 DANE NABYWCY</Typography>
                     <Box display="flex" mb="-1.5em">
                         <BoxTextInput source="fullname.forename" resource="buyer" mr="0.5em" />
@@ -37,7 +37,7 @@ const classes = useStyles();
                     <BoxTextInput flex={2} mt="0" mb="-1em" source="contact.email" resource="buyer" type="email" />
                     {/* <DateInput source="birthday" resource="customers" /> */}
 
-                    <Typography  variant="body2" align="right">
+                    <Typography  variant="body2" align="left">
                 ADRES NABYWCY</Typography>
                     <BoxTextInput mb="-1.5em" mt="-0.5em" source="addres.street" resource="buyer" multiline  />
                     <Box display="flex" mb="-1.75em">

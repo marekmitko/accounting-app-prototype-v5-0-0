@@ -5,7 +5,7 @@ import {
     useQuery,
     Loading, Error, 
 } from 'react-admin';
-import { Card, Typography, Box, Toolbar } from '@material-ui/core';
+import { Card, Typography, Box, Toolbar, makeStyles, } from '@material-ui/core';
 
 import BoxTextInput from '../../../../../myComponentsMui/myMuiForm/BoxTextInput.js';
 // import UserProfile from '../../../../../../../database/bin/my-profile/userDataProvider.js';
@@ -38,7 +38,13 @@ const dataUser2 = ( userId ) => useGetOne('datauser', userId);
 // const addressUser = () => {Object.fromEntries(userData.address.map((team) => [team.id, team]))};
 
 
-
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      padding: theme.spacing(0.5),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }));
 
 const InvoiceSellerForm = props => {
 
@@ -55,15 +61,15 @@ const InvoiceSellerForm = props => {
     //         // empty dependency array means this effect will only run once (like componentDidMount in classes)
     //     }, []);
         
-      
+      const classes = useStyles();
 
     return (
-        <Card variant="outlined" source='seller' p="1em">
+        <Card variant="outlined" className={classes.paper}>
             <Box display="flex">
                 <Box flex={2} m="1em">
                     <Typography variant="subtitle1" gutterBottom>
                 DANE SPRZEDAWCY</Typography>
-                    <Box display="flex" mb="-1em">
+                    <Box display="flex" mb="-1.5em">
                     {/* <BoxTextInput source="company" resource="seller" initialValue={dataUser.company} variant="standard"  mr="0.5em" disabled /> */}
                     <BoxTextInput source="user.name"  variant="standard"  mr="0.5em" disabled />
                     {/* <BoxTextInput source="MyDatatProfile.name"  variant="standard"  mr="0.5em" disabled />
@@ -72,7 +78,7 @@ const InvoiceSellerForm = props => {
                     <BoxTextInput variant="standard" flex={2} mt="0" mb="-1em" source="contact.email" resource="seller" type="email" disabled />
                     {/* <DateInput source="birthday" resource="customers" /> */}
 
-                    <Typography  variant="body2" align="right">
+                    <Typography  variant="body2" align="left">
                 ADRES SPRZEDAWCY</Typography>
                     <BoxTextInput variant="standard" mb="-1.5em" mt="-0.5em" source="addres.street" resource="seller" multiline disabled />
                     <Box display="flex" mb="-1.5em">

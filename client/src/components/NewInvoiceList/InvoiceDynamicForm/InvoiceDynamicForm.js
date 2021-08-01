@@ -72,6 +72,9 @@ return (
             <Grid item xs={12}>
                 <InvoiceHeaderForm />
             </Grid>
+            {/* <Grid item xs={12}>
+                <InvoiceDocumentTitle />
+            </Grid> */}
             <Grid container spacing={2} >
                 <Grid item xs={12} sm={6}>
                     {/* <FormGroupContextProvider name="Seller"> */}
@@ -83,6 +86,12 @@ return (
                         <InvoiceBuyerForm/>
                     {/* </FormGroupContextProvider> */}
                 </Grid>
+            </Grid>
+            <Grid item xs={12}>
+                <InvoiceHeaderList>
+                    <InvoiceItemCreate fullWidth />
+                </InvoiceHeaderList>
+                <InvoiceInfoForm />
             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <FormGroupContextProvider name="options">
@@ -114,12 +123,7 @@ return (
                             <Grid item xs={12} sm={6}>
                                 <InvoiceDocumentTitle />
                             </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <InvoiceSellerForm />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <InvoiceBuyerForm />
-                            </Grid>
+                           
                             <Grid item xs={12}>
                                 <InvoiceHeaderList>
                                     <InvoiceItemCreate fullWidth />
