@@ -1,9 +1,10 @@
-import homepagecreate from "./create";
-import homepageedit from "./edit";
+import AddInvCreate from "../InvoiceDynamicForm/InvoiceDynamicForm";
+// import homepagecreate from "./create";
+// import homepageedit from "./edit";
 import homepagelist from "./list";
 
 export default {
-  create: homepagecreate,
-  edit:  homepageedit,
+  create: AddInvCreate,
+  edit:  AddInvCreate,
   list: homepagelist,
 };

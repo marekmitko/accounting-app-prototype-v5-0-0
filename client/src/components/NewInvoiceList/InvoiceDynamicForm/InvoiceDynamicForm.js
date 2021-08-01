@@ -21,12 +21,12 @@ import {
     TabbedFormTabs,
     FormGroupContextProvider, useFormGroup,
 } from 'react-admin';
-import {Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar, Grid, CardHeader, Card, Avatar, CardContent,  } from '@material-ui/core';
+import {Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar, Grid, CardHeader, Card, Avatar, CardContent, makeStyles  } from '@material-ui/core';
 
 import InvoiceSellerForm from './InvoicePartiesDataForm/InvoiceSeller/InvoiceSellerForm.js';
 import InvoiceBuyerForm from './InvoicePartiesDataForm/InvoiceBuyer/InvoiceBuyerForm.js';
 import InvoiceItemCreate from './SalesDataForm/InvoiceProductList/InvoiceItem/InvoiceItemCreate.js';
-import InvoiceHeaderForm from './SalesDataForm/InvoiceHeader/InvoiceHeader.js';
+import InvoiceHeaderForm from './InvoiceHeader/InvoiceHeader.js';
 import InvoiceHeaderList from './SalesDataForm/InvoiceProductList/InvoiceHeaderList.js';
 import InvoiceInfoForm from './InvoiceInfoForm/InvoiceInfoForm.js';
 import InvoiceFooterForm from './SalesDataForm/InvoiceFooter/InvoiceFooterForm.js';
@@ -54,130 +54,135 @@ const backlinksDefaultValue = [
     },
 ];
 
-export const AddInvCreate = (props) => (
-    <SimpleForm>
+const useStyles = makeStyles(() => ({
+    gridSimpleForm: {
+      
+       flexGrow: 1,
+    },
+    // inlineBlock: { display: 'inline-flex', marginRight: '1rem' },
+    }));
+
+const AddInvCreate = props => {
+    const classes = useStyles();
+return (
+    <SimpleForm  className={classes.gridSimpleForm} >
         {/* <myGridSanitized container spacing={3} style={{ width: "100%" }}> */}
-        <myGridSanitized 
-                container
-                direction="row"
-                
-                >
-              
-            
-            
-                    <Grid item xs={11} >
-                        <InvoiceHeaderForm />
-                    </Grid>
-    
-                    <Grid item xs={11} sm={5}>
-                        <FormGroupContextProvider name="Seller">
-                            <InvoiceSellerForm />
-                        </FormGroupContextProvider>
-                    </Grid>
-             
-                    <Grid item xs={12} sm={6}>
-                        <FormGroupContextProvider name="Buyer">
-                            <InvoiceBuyerForm />
-                        </FormGroupContextProvider>
-                    </Grid>
-                
-                    <Grid item xs={12} sm={6}>
-                        <FormGroupContextProvider name="options">
-                            <Card  variant="outlined">
-                            <CardHeader 
-                                    avatar={
-                                    <Avatar aria-label="recipe">
-                                        R
-                                    </Avatar>
-                                    }
-                                    title="Shrimp and Chorizo Paella"
-                                    subheader="September 14, 2016"
-                                    aria-controls="options-content"
-                                    id="options-header"
-                                />
-                                <AccordionSummary
-                                    // expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="options-content"
-                                    id="options-header"
-                                >
-                                    {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
-                                </AccordionSummary>
-                                <AccordionDetails id="options-content" aria-labelledby="options-header">
-                                    <TextInput source="teaser" />
-                                </AccordionDetails>
-                            </Card>
-                        </FormGroupContextProvider>
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <InvoiceDocumentTitle />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
+        {/* <myGridSanitized container spacing={3} formClassName={classes.root}> */}
+        <myGridSanitized container formClassName={classes.gridSimpleForm} >
+            <Grid item xs={12}>
+                <InvoiceHeaderForm />
+            </Grid>
+            <Grid container spacing={2} >
+                <Grid item xs={12} sm={6}>
+                    {/* <FormGroupContextProvider name="Seller"> */}
                         <InvoiceSellerForm />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <InvoiceBuyerForm />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <InvoiceHeaderList>
-                            <InvoiceItemCreate fullWidth />
-                        </InvoiceHeaderList>
-                        <InvoiceInfoForm />
-                    </Grid>
-                    <Grid item xs={12} sm={8}>
-                        <InvoiceFooterForm />
-                    </Grid>
-                    <Grid item xs={12} sm={4}>
-                    <InvoiceInfoForm />
-                        <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
-                        <NullableBooleanInput source="has_newsletter" resource="customers" />
-                    </Grid>
-            <TextInput source="title" />
-            <FormGroupContextProvider name="options">
-                <Accordion>
-                    <AccordionSummary
-                        // expandIcon={<ExpandMoreIcon />}
-                        aria-controls="options-content"
-                        id="options-header"
-                        >
-                        {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
-                    </AccordionSummary>
-                    <AccordionDetails id="options-content" aria-labelledby="options-header">
-                        <TextInput source="teaser" />
-                    </AccordionDetails>
-                </Accordion>
-            </FormGroupContextProvider>
-            <FormGroupContextProvider name="options2">
-                            <InvoiceSellerForm />
-                            <Card  variant="outlined">
-                                <CardHeader 
-                                    avatar={
-                                    <Avatar aria-label="recipe"> S </Avatar>}
-                                    title={<Typography variant="h7" component="h4">SPRZEDAWCA</Typography>}
-                                    subheader="September 14, 2016"
-                                    aria-controls="options-content"
-                                    id="options-header"
-                                />
-                                <CardContent 
-                                        // expandIcon={<ExpandMoreIcon />}
-                                        id="options-content" aria-labelledby="options-header"
+                    {/* </FormGroupContextProvider> */}
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    {/* <FormGroupContextProvider name="Buyer"> */}
+                        <InvoiceBuyerForm/>
+                    {/* </FormGroupContextProvider> */}
+                </Grid>
+            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <FormGroupContextProvider name="options">
+                                    <Card  variant="outlined">
+                                    <CardHeader 
+                                            avatar={
+                                            <Avatar aria-label="recipe">
+                                                R
+                                            </Avatar>
+                                            }
+                                            title="Shrimp and Chorizo Paella"
+                                            subheader="September 14, 2016"
+                                            aria-controls="options-content"
+                                            id="options-header"
+                                        />
+                                        <AccordionSummary
+                                            // expandIcon={<ExpandMoreIcon />}
+                                            aria-controls="options-content"
+                                            id="options-header"
+                                        >
+                                            {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                                        </AccordionSummary>
+                                        <AccordionDetails id="options-content" aria-labelledby="options-header">
+                                            <TextInput source="teaser" />
+                                        </AccordionDetails>
+                                    </Card>
+                                </FormGroupContextProvider>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <InvoiceDocumentTitle />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <InvoiceSellerForm />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <InvoiceBuyerForm />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <InvoiceHeaderList>
+                                    <InvoiceItemCreate fullWidth />
+                                </InvoiceHeaderList>
+                                <InvoiceInfoForm />
+                            </Grid>
+                            <Grid item xs={12} sm={8}>
+                                <InvoiceFooterForm />
+                            </Grid>
+                            <Grid item xs={12} sm={4}>
+                            <InvoiceInfoForm />
+                                <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
+                                <NullableBooleanInput source="has_newsletter" resource="customers" />
+                            </Grid>
+                    <TextInput source="title" />
+                    <FormGroupContextProvider name="options">
+                        <Accordion>
+                            <AccordionSummary
+                                // expandIcon={<ExpandMoreIcon />}
+                                aria-controls="options-content"
+                                id="options-header"
                                 >
-                                     <InvoiceSellerForm />
-                                    {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
-                                </CardContent>
-                            </Card>
-                </FormGroupContextProvider>
-                <Toolbar>
-                    <Box display="flex" justifyContent="space-between" width="100%">
-                        {/* <SaveButton
-                            saving={formProps.saving}
-                            handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
-                            />
-                        <DeleteButton record={formProps.record} /> */}
-                    </Box>
-                </Toolbar>
+                                {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                            </AccordionSummary>
+                            <AccordionDetails id="options-content" aria-labelledby="options-header">
+                                <TextInput source="teaser" />
+                            </AccordionDetails>
+                        </Accordion>
+                    </FormGroupContextProvider>
+                    <FormGroupContextProvider name="options2">
+                                    <InvoiceSellerForm />
+                                    <Card  variant="outlined">
+                                        <CardHeader 
+                                            avatar={
+                                            <Avatar aria-label="recipe"> S </Avatar>}
+                                            title={<Typography variant="h7" component="h4">SPRZEDAWCA</Typography>}
+                                            subheader="September 14, 2016"
+                                            aria-controls="options-content"
+                                            id="options-header"
+                                        />
+                                        <CardContent 
+                                                // expandIcon={<ExpandMoreIcon />}
+                                                id="options-content" aria-labelledby="options-header"
+                                        >
+                                            <InvoiceSellerForm />
+                                            {/* <AccordionSectionTitle name="options">Options</AccordionSectionTitle> */}
+                                        </CardContent>
+                                    </Card>
+                        </FormGroupContextProvider>
+                        <Toolbar>
+                            <Box display="flex" justifyContent="space-between" width="100%">
+                                {/* <SaveButton
+                                    saving={formProps.saving}
+                                    handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
+                                    />
+                                <DeleteButton record={formProps.record} /> */}
+                            </Box>
+                        </Toolbar>
     </myGridSanitized>
  </SimpleForm>
-);
+    
+
+);};
 // const AccordionSectionTitle = ({ children, name }) => {
 //     const formGroupState = useFormGroup(name);
 
@@ -188,3 +193,4 @@ export const AddInvCreate = (props) => (
 //     );
 // }
 
+export default AddInvCreate;

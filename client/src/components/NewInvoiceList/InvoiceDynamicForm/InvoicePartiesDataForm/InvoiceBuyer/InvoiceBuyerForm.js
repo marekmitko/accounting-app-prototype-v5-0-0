@@ -8,17 +8,24 @@ import {
     DeleteButton,
     NullableBooleanInput,
 } from 'react-admin';
-import { Card, Typography, Box, Toolbar } from '@material-ui/core';
+import { Card, Typography, Box, Toolbar, Paper, makeStyles } from '@material-ui/core';
 
 import BoxTextInput from '../../../../../myComponentsMui/myMuiForm/BoxTextInput.js';
 
-
+const useStyles = makeStyles((theme) => ({
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+    //   color: theme.palette.text.secondary,
+    },
+  }));
 
 
 const InvoiceBuyerForm = props => {
 // console.log(UserProfile("Profile12356x"));
+const classes = useStyles();
     return (
-        <Card variant="outlined" p="1em">
+        <Card variant="outlined" p="1em" className={classes.paper}>
             <Box display="flex">
                 <Box flex={2} m="1em">
                     <Typography variant="subtitle1" gutterBottom>
