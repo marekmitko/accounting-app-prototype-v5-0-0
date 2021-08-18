@@ -1,132 +1,129 @@
 {
-    "userProfile": [
-        {
-            "id": "Profile12356x",
-            "company": "Biuro Podróży Pawłowice",
-            "fullName": "Marek Kdsadsaski",
-            "fullname": {
-              "forename": "Marek",
-              "surname": "Kowalski"
-              },
-        "address_id": "145",
-          "address":{
-              "id": "145",
-            "street": "Widawska 128",
-            "city": "Wrocław",
-            "ZIPCode": "58-202"
-            },
-        "email": "kowalskitravel@gmail.com",
-        "contact": {
-            "email": "kowalskitravel@gmail.com",
-            "telephoneNumber": "5858585",
-            "faxNumber": "44475757575"
-        },
-            "orgId": {
-                "orgNumber": "15032603596",
-                "MVA": "true"
-              }
-          }
-    ],
-    "datauser": [
-      {
-        "id": "User12356x",
-        "company": "Biuro Podróży Pawłowice",
-        "fullName": "Marek Kdsadsaski",
-        "fullname": {
-          "forename": "Marek",
-          "surname": "Kowalski"
-          },
-    "address_id": "145",
-      "address":{
-          "id": "145",
+  "userProfile": [
+    {
+      "id": "Profile12356x",
+      "company": "Biuro Podróży Pawłowice",
+      "fullName": "Marek Kdsadsaski",
+      "fullname": {
+        "forename": "Marek",
+        "surname": "Kowalski"
+      },
+      "address_id": "145",
+      "address": {
+        "id": "145",
         "street": "Widawska 128",
         "city": "Wrocław",
         "ZIPCode": "58-202"
-        },
-    "email": "kowalskitravel@gmail.com",
-    "contact": {
+      },
+      "email": "kowalskitravel@gmail.com",
+      "contact": {
         "email": "kowalskitravel@gmail.com",
         "telephoneNumber": "5858585",
         "faxNumber": "44475757575"
-    },
-        "orgId": {
-            "orgNumber": "15032603596",
-            "MVA": "true"
-          }
+      },
+      "orgId": {
+        "orgNumber": "15032603596",
+        "MVA": "true"
       }
-      
-    ],
-    "users": [
-        {
-          "id": "Profile12356x",
-          "company": "Biuro Podróży Pawłowice",
-          "name": "Nazwa Użytkownika",
-          "fullName": "Marek Kowalski",
-          "fulllname": {
-            "forename": "Marek",
-            "surname": "Kowalski"
-            },
-      "address_id": "145",
-        "address":{
-            "id": "145",
-          "street": "Widawska 128",
-          "city": "Wrocław",
-          "ZIPCode": "58-202"
-          },
-      "email": "kowalskitravel@gmail.com",
-      "contact": {
-          "email": "kowalskitravel@gmail.com",
-          "telephoneNumber": "5858585",
-          "faxNumber": "44475757575"
-      },
-          "orgId": {
-              "orgNumber": "15032603596",
-              "MVA": "true"
-            }
-        }
-        
-      ],
-    "profile": [
-        {
-          "id": "MyProfile",
-          "nickname": "Marek User",
-          "company": "Biuro Podróży Pawłowice",
-          "fullName": "Marek Kowalski",
-          "fulllname": {
-            "forename": "Marek",
-            "surname": "Kowalski"
-            },
-      "address_id": "145",
-        "address":{
-            "id": "145",
-          "street": "Widawska 128",
-          "city": "Wrocław",
-          "ZIPCode": "58-202"
-          },
-      "email": "kowalskitravel@gmail.com",
-      "contact": {
-          "email": "kowalskitravel@gmail.com",
-          "telephoneNumber": "5858585",
-          "faxNumber": "44475757575"
-      },
-          "orgId": {
-              "orgNumber": "15032603596",
-              "MVA": "true"
-            }
-        }
-        
-      ],
-    "NewInvoiceList": [
-        {},
-        {}
-    ],
-  "homepage": [
-      {
-        "company": "Jenkins LLC",
-        "id": 1
-  }
+    }
   ],
-    "newbuyer": [
+  "datauser": [
+    {
+      "id": "User12356x",
+      "company": "Biuro Podróży Pawłowice",
+      "fullName": "Marek Kdsadsaski",
+      "fullname": {
+        "forename": "Marek",
+        "surname": "Kowalski"
+      },
+      "address_id": "145",
+      "address": {
+        "id": "145",
+        "street": "Widawska 128",
+        "city": "Wrocław",
+        "ZIPCode": "58-202"
+      },
+      "email": "kowalskitravel@gmail.com",
+      "contact": {
+        "email": "kowalskitravel@gmail.com",
+        "telephoneNumber": "5858585",
+        "faxNumber": "44475757575"
+      },
+      "orgId": {
+        "orgNumber": "15032603596",
+        "MVA": "true"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "Profile12356x",
+      "company": "Biuro Podróży Pawłowice",
+      "name": "Nazwa Użytkownika",
+      "fullName": "Marek Kowalski",
+      "fulllname": {
+        "forename": "Marek",
+        "surname": "Kowalski"
+      },
+      "address_id": "145",
+      "address": {
+        "id": "145",
+        "street": "Widawska 128",
+        "city": "Wrocław",
+        "ZIPCode": "58-202"
+      },
+      "email": "kowalskitravel@gmail.com",
+      "contact": {
+        "email": "kowalskitravel@gmail.com",
+        "telephoneNumber": "5858585",
+        "faxNumber": "44475757575"
+      },
+      "orgId": {
+        "orgNumber": "15032603596",
+        "MVA": "true"
+      }
+    }
+  ],
+  "profile": [
+    {
+      "id": "MyProfile",
+      "nickname": "Marek User",
+      "company": "Biuro Podróży Pawłowice",
+      "fullName": "Marek Kowalski",
+      "fulllname": {
+        "forename": "Marek",
+        "surname": "Kowalski"
+      },
+      "address_id": "145",
+      "address": {
+        "id": "145",
+        "street": "Widawska 128",
+        "city": "Wrocław",
+        "ZIPCode": "58-202"
+      },
+      "email": "kowalskitravel@gmail.com",
+      "contact": {
+        "email": "kowalskitravel@gmail.com",
+        "telephoneNumber": "5858585",
+        "faxNumber": "44475757575"
+      },
+      "orgId": {
+        "orgNumber": "15032603596",
+        "MVA": "true"
+      }
+    }
+  ],
+  "NewInvoiceList": [
+    {},
+    {}
+  ],
+  "homepage": [
+    {
+      "company": "Jenkins LLC",
+      "id": 1
+    }
+  ],
+  "newbuyer": [
     {
       "company": "Jenkins LLC",
       "id": 1
@@ -419,11 +416,11 @@
       "email": "jankowalski@gmail.com",
       "address": [
         {
-        "street": "87597 Carter Parks",
-        "city": "East Cruz",
-        "codeCity": "47301-9994"
+          "street": "87597 Carter Parks",
+          "city": "East Cruz",
+          "codeCity": "47301-9994"
         }
-    ],
+      ],
       "MVA": "0ba52ab3-1548-4453-aba4-977c630b988c",
       "telephoneNumber": "5858585"
     },
@@ -706,6 +703,40 @@
       },
       "telephoneNumber": 501066009,
       "id": "dIhOZtC"
+    },
+    {
+      "name": "Marek Mitko",
+      "username": "slipowska@o2.pl",
+      "id": "hwKmKwp"
+    },
+    {
+      "name": "Bussu Riese",
+      "username": "slipowska@o2.pl",
+      "company": {
+        "name": "liliolio"
+      },
+      "id": "HsTKjJF"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "username": "demo",
+      "id": "E6H74SD"
+    },
+    {
+      "company": "Indywidualna Specjalistyczna Praktyka Lekarska Sylwia Lipowska",
+      "address": {
+        "street": "Liskego 8"
+      },
+      "email": "efsf",
+      "fullname": "sefses",
+      "id": "aBvn6I9"
     }
   ],
   "dbinvoiceslist": [

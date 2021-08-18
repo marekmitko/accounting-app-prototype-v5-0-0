@@ -27,27 +27,13 @@ function App() {
             <Resource name="profile"  />
             <Resource name="userProfile"/>
 
-            {/* <Resource
-                name="dbinvoiceslist" 
-                label="Add INV"
-                options={{ label: '*Add INV' }}  
-                list={ListGuesser}
-            /> */}
             <Resource name="homepage" {...homepage} />
-            <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={NewInvoiceList.create} />
-            <Resource options={{ label: '_Lista FV_' }}  name="NewInvoiceList" {...NewInvoiceList} />
+            <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={homepage.create} />
+            <Resource options={{ label: '_Lista FV_' }}  name="NewInvoiceList" {...homepage} />
 
     
-            <Resource
-                name='dbclientlist'
-                label="Kontrahenci"
-                options={{ label: 'Kontrahenci' }} 
-                {...clients}
-            />
-            <Resource
-                name='dbclientlist/create'
-                label="Nowy Kontrahent"
-                options={{ label: 'Nowy Kontrahent' }} 
+            <Resource options={{ label: 'Kontrahenci' }} name='dbclientlist' label="Kontrahenci"  {...clients} />
+            <Resource options={{ label: 'Nowy Kontrahent' }} name='dbclientlist/create' label="Nowy Kontrahent"  
                 list={clients.create}
                 edit={clients.edit}
                 icon={clients.icon}
