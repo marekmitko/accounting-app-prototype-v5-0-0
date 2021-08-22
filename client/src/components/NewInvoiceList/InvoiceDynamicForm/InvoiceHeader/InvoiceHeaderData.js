@@ -14,10 +14,7 @@ import {
 import { Card, Typography, Box, Toolbar,} from '@material-ui/core';
 import { useFormState } from 'react-final-form';
 
-// const transform = data => ({
-//     ...data,
-//     createAt: new Date(),
-// })
+
 
 
 // const postDefaultValue = () => ({ created_at: new Date(), nb_views: 0 });
@@ -67,13 +64,6 @@ const InvoiceHeaderData = props => {
     const add14day = 12096e5;
     const date14 = new Date();
 
-    // const [number1, setNumber1] = useState(0);
-    // const [number2, setNumber2] = useState(0);
-    // const [total, setTotal] = useState(number1 + number2);
-  
-    // function calculateTotal() {
-    //   setTotal(number1 + number2);
-    // }
 
     return (
         <Card variant="outlined" p="1em">

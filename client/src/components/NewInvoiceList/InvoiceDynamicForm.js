@@ -41,6 +41,8 @@ import BoxBootstrapInput from '../../myComponentsMui/myMuiForm/BoxBootstrapInput
 
 import ClientCreateButton from '../../pages/clients/ClientCreateButton.js'
 
+import CustomIterator from './InvoiceDynamicForm/SalesDataForm/CustomIterator'
+
 
 const segments = [
     { id: 'compulsive', name: 'Compulsive' },
@@ -83,6 +85,9 @@ const AddInvCreate = (props) => {
                 <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} >
             {/* ->CONTAINER=>HeadlineDate */}
                     <Grid container spacing={3}  >
+                        <Grid  item xs={12} >
+                            <CustomIterator/>
+                        </Grid>
                         <Grid item xs={12} sm={4} >
                             <InvoiceHeaderLogotype />
                         </Grid>
