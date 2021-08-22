@@ -4,12 +4,12 @@ import { TextInput, NumberInput } from 'react-admin';
 import Add from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
-import Table from '@material-ui/core/Table'; // new
-import TableBody from '@material-ui/core/TableBody'; // new
-import TableCell from '@material-ui/core/TableCell'; // new
-import TableContainer from '@material-ui/core/TableContainer'; // new
-import TableRow from '@material-ui/core/TableRow'; // new
-import DragHandleIcon from '@material-ui/icons/DragHandle'; // new
+import Table from '@material-ui/core/Table';  
+import TableBody from '@material-ui/core/TableBody';  
+import TableCell from '@material-ui/core/TableCell';  
+import TableContainer from '@material-ui/core/TableContainer';  
+import TableRow from '@material-ui/core/TableRow';  
+import DragHandleIcon from '@material-ui/icons/DragHandle';  
 
 const CustomIterator = ({ record }) => {
    return (
@@ -17,31 +17,31 @@ const CustomIterator = ({ record }) => {
            {(fieldProps) => {
                return (
                    <React.Fragment>
-                       <TableContainer> // new
-                           <Table aria-label="questions list"> // new
-                               <TableBody> // new
+                       <TableContainer>  
+                           <Table aria-label="questions list">  
+                               <TableBody>  
                                    {fieldProps.fields.map((question, index) => {
                                        return (
-                                           <TableRow hover tabIndex={-1} key={index}> // new
-                                               <TableCell> // new
-                                                   <DragHandleIcon /> // new
-                                               </TableCell> // new
-                                               <TableCell align="left"> // new
+                                           <TableRow hover tabIndex={-1} key={index}>  
+                                               <TableCell>  
+                                                   <DragHandleIcon />  
+                                               </TableCell>  
+                                               <TableCell align="left">  
                                                    <NumberInput helperText="Unique id" label="Question ID" source={`questions[${index}].id`} />
-                                               </TableCell> // new
-                                               <TableCell align="left"> // new
+                                               </TableCell>  
+                                               <TableCell align="left">  
                                                    <TextInput helperText="i.e. How do you do?" label="Question Text" source={`questions[${index}].text`} />
-                                               </TableCell> // new
-                                               <TableCell align="right"> // new
+                                               </TableCell>  
+                                               <TableCell align="right">  
                                                    <Button style={{ color: 'red' }} type="button" onClick={() => fieldProps.fields.remove(index)}>
                                                        Remove
                                                    </Button>
-                                               </TableCell> // new
-                                           </TableRow> // new
+                                               </TableCell>  
+                                           </TableRow>  
                                        )
                                    })}
-                               </TableBody> // new
-                           </Table> // new
+                               </TableBody>  
+                           </Table>  
                            <Button
                                type="button"
                                onClick={() => fieldProps.fields.push({ id: '', question: '' })}
@@ -51,14 +51,14 @@ const CustomIterator = ({ record }) => {
                            >
                                <Add />
                            </Button>
-                       </TableContainer> // new
-                   <React.Fragment/>
+                       </TableContainer>  
+                   </React.Fragment>
                )
            }
            }
        </FieldArray>
    )
-};
+}
 
 
 export default CustomIterator;

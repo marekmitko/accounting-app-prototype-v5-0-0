@@ -7,24 +7,27 @@ import {
     SaveButton,
     DeleteButton,
     NullableBooleanInput,
-    TabbedForm,
     SimpleForm,
-    FormTab,
-    Edit,
-    Datagrid,
-    TextField,
-    DateField,
-    TextInput,
-    ReferenceManyField,
-    NumberInput,    
-    DateInput,
-    BooleanInput,
-    EditButton,
-    TabbedFormTabs,
-    FormGroupContextProvider, useFormGroup, DataInput,
-    
 } from 'react-admin';
-import {Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar, Grid, CardHeader, Card, Avatar, CardContent, makeStyles  } from '@material-ui/core';
+import { Grid,  makeStyles  } from '@material-ui/core';
+
+// dasdasd{
+   // CardHeader, Card, Avatar, CardContent,
+   //Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar,
+    // FormTab,
+    // Edit,
+    // Datagrid,
+    // TextField,
+    // DateField,
+    // TextInput,
+    // ReferenceManyField,
+    // NumberInput,    
+    // DateInput,
+    // BooleanInput,
+    // EditButton,
+    // TabbedFormTabs,
+    // FormGroupContextProvider, useFormGroup, DataInput,
+// }
 
 import InvoiceSellerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceSeller/InvoiceSellerForm.js';
 import InvoiceBuyerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceBuyer/InvoiceBuyerForm.js';
@@ -34,10 +37,10 @@ import InvoiceHeaderData from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderD
 import InvoiceHeaderList from './InvoiceDynamicForm/SalesDataForm/InvoiceProductList/InvoiceHeaderList.js';
 import SumItemListIteratorForm from './InvoiceDynamicForm/InvoiceInfoForm/SumItemListIteratorForm.js'
 import InvoiceFooterForm from './InvoiceDynamicForm/SalesDataForm/InvoiceFooter/InvoiceFooterForm.js';
-import InvoiceDocumentTitle from "./InvoiceDynamicForm/capition/DocumentTitle.js";
-import myGridSanitized from "../../myComponents/myGridSanitized.js";
-import BoxItemTextInput from '../../myComponentsMui/myMuiForm/BoxItemTextInput.js';
-import BoxBootstrapInput from '../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
+// import InvoiceDocumentTitle from "./InvoiceDynamicForm/capition/DocumentTitle.js";
+// import myGridSanitized from "../../myComponents/myGridSanitized.js";
+// import BoxItemTextInput from '../../myComponentsMui/myMuiForm/BoxItemTextInput.js';
+// import BoxBootstrapInput from '../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
 
 import ClientCreateButton from '../../pages/clients/ClientCreateButton.js'
 
@@ -87,7 +90,8 @@ const AddInvCreate = (props) => {
                     <Grid container spacing={3}  >
                         <Grid  item xs={12} >
                             <CustomIterator/>
-                        </Grid>
+                        </Grid
+                        >
                         <Grid item xs={12} sm={4} >
                             <InvoiceHeaderLogotype />
                         </Grid>

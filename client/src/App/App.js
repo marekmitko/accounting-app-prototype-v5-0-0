@@ -22,9 +22,9 @@ function App() {
         <Admin 
             dataProvider={restProvider('http://localhost:3000')}
         >
-            {/* <Resource name="profile"  /> */}
-            <Resource name="datauser"  />
-            {/* <Resource name="userProfile"/> */}
+            {/* <Resource name="profile"  />
+            <Resource name="datauser"  /> */}
+            <Resource name="userProfile"/>
 
             <Resource name="homepage" {...homepage} />
             <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={homepage.create} />

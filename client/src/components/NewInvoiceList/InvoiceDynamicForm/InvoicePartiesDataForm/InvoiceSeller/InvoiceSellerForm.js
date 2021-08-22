@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useMemo, } from 'react';
-import {
-    FormWithRedirect,
-    useQuery,
-    Loading, Error, 
-    ResourceContextProvider,
-    useGetOne,
-} from 'react-admin';
-import { Card, Typography, Box, Toolbar, makeStyles, } from '@material-ui/core';
+import { useGetOne } from 'react-admin';
+import { Card, Typography, Box, makeStyles, } from '@material-ui/core';
 import BoxTextInput from '../../../../../myComponentsMui/myMuiForm/BoxTextInput.js';
 
 const useStyles = makeStyles((theme) => ({
