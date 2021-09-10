@@ -44,7 +44,7 @@ import InvoiceFooterForm from './InvoiceDynamicForm/SalesDataForm/InvoiceFooter/
 
 import ClientCreateButton from '../../pages/clients/ClientCreateButton.js'
 
-import CustomIterator from './InvoiceDynamicForm/SalesDataForm/CustomIterator'
+import SalesProductTable from './InvoiceDynamicForm/SalesDataForm/SalesProductTable/SalesProductTable'
 
 
 const segments = [
@@ -88,10 +88,6 @@ const AddInvCreate = (props) => {
                 <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} >
             {/* ->CONTAINER=>HeadlineDate */}
                     <Grid container spacing={3}  >
-                        <Grid  item xs={12} >
-                            <CustomIterator/>
-                        </Grid
-                        >
                         <Grid item xs={12} sm={4} >
                             <InvoiceHeaderLogotype />
                         </Grid>
@@ -116,6 +112,13 @@ const AddInvCreate = (props) => {
                         </Grid>
                     </Grid>  
             {/* <-CONTAINER=>Seller&Buyer */}
+            {/* ->CONTAINER=>SalesProductTable */}
+                    <Grid container spacing={3}  >
+                        <Grid  item xs={12} >
+                            <SalesProductTable />
+                        </Grid>
+                    </Grid>
+            {/* <-CONTAINER=>SalesProductTable */}
             {/* ->CONTAINER=>DatagridProducts*/}
                     <Grid container spacing={3} >
                         <Grid item xs={12} >
