@@ -44,7 +44,8 @@ import InvoiceFooterForm from './InvoiceDynamicForm/SalesDataForm/InvoiceFooter/
 
 import ClientCreateButton from '../../pages/clients/ClientCreateButton.js'
 
-import SalesProductTable from './InvoiceDynamicForm/SalesDataForm/SalesProductTable/SalesProductTable'
+import SalesProductTable from './InvoiceDynamicForm/SalesProductTable/componentsSumSpanningTable/SalesProductTable'
+import SpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable'
 
 
 const segments = [
@@ -117,6 +118,9 @@ const AddInvCreate = (props) => {
                         <Grid  item xs={12} >
                             <SalesProductTable />
                         </Grid>
+                        <Grid  item xs={12} >
+                            <SpanningTable />
+                        </Grid>
                     </Grid>
             {/* <-CONTAINER=>SalesProductTable */}
             {/* ->CONTAINER=>DatagridProducts*/}
@@ -143,6 +147,9 @@ const AddInvCreate = (props) => {
                 <Grid container spacing={3} >
                     <Grid item  xs={12}  >
                         <InvoiceFooterForm />
+                    </Grid>
+                    <Grid item  xs={12}  >
+                        <SalesProductTable />
                     </Grid>
                 </Grid>
             {/* <-CONTAINER=>AddedInfo*/}

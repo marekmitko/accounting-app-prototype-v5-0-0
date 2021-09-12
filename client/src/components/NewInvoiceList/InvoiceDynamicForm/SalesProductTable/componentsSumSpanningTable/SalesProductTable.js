@@ -3,10 +3,13 @@ import React from 'react';
 import { ArrayInput } from 'react-admin';
 
 import CustomIterator from './CustomIterator';
+import SpanningTable from '../SumSpanningTable';
 
 const SalesProductTable = props => (
+  
     <ArrayInput label="Lista produktów" source="questions">
         <CustomIterator />
+       
     </ArrayInput>
 );
 

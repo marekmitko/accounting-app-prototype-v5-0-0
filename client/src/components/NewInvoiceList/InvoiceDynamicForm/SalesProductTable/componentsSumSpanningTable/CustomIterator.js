@@ -11,6 +11,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';  
 import DragHandleIcon from '@material-ui/icons/DragHandle';  
 
+import AddedRowIterator from '../AddedRowIterator';
+
 const CustomIterator = ({ record }) => {
     return (
         <FieldArray name="questions">
@@ -23,6 +25,10 @@ const CustomIterator = ({ record }) => {
                                     {fieldProps.fields.map((question, index) => {
                                         return (
                                             <TableRow hover tabIndex={-1} key={index}>  
+                                                <AddedRowIterator/>
+                                                {/* <TableCell>  
+                                                <NumberInput  initialValue={index} label="Question ID" source={`questions[${index}].id`} />
+                                                </TableCell>  
                                                 <TableCell>  
                                                     <DragHandleIcon />  
                                                 </TableCell>  
@@ -36,7 +42,7 @@ const CustomIterator = ({ record }) => {
                                                     <Button style={{ color: 'red' }} type="button" onClick={() => fieldProps.fields.remove(index)}>
                                                         Remove
                                                     </Button>
-                                                </TableCell>  
+                                                </TableCell>   */}
                                             </TableRow>  
                                         )
                                     })}

@@ -29,14 +29,14 @@ const InvoiceItemCreate = (props) => {
                 return (
                     //Nie wiem czy to nie powino być tylko w tym Box ? 
                     <Box display="inline-flex" mr="0.1em" p="0" mb="-1.2em" fullWidth>
-                        <BoxItemTextInput flex={5} label="Nazwa" source={getSource("item_name")}  resource="products" ml="-1.2em"/>
-                        <BoxItemTextInput flex={3} label="Typ" source={getSource("item_desc")} resource="products"/>
-                        <BoxItemNumberInput flex={1} label="Ilość" source={getSource("item_qty")} resource="products"/>
-                        <BoxItemNumberInput flex={1} label="Netto" source={getSource("item_qty")} resource="products"/>
-                        <BoxItemNumberInput flex={1} label="VAT" source={getSource("item_vat")} resource="products"/>
-                        <BoxItemNumberInput flex={1} label="Ilość" source={getSource("sum_netto")} resource="products"/>
-                        <BoxItemNumberInput flex={1} label="Ilość" source={getSource("sum_vat")} resource="products"/>
-                        <BoxItemNumberInput flex={1} label="Brutto" source={getSource("sum_brutto")} resource="products"/>   
+                        <BoxItemTextInput flex={7} label="Nazwa" source={getSource("item_name")}  resource="products" ml="-1.2em"/>
+                        <BoxItemTextInput flex={5} label="Typ" source={getSource("item_desc")} resource="products"/>
+                        <BoxItemNumberInput flex={2} label="Ilość" source={getSource("item_qty")} resource="products"/>
+                        <BoxItemNumberInput flex={2} label="Netto" source={getSource("item_qty")} resource="products"/>
+                        <BoxItemNumberInput flex={2} label="VAT" source={getSource("item_vat")} resource="products"/>
+                        <BoxItemNumberInput flex={2} label="Ilość" source={getSource("sum_netto")} resource="products"/>
+                        <BoxItemNumberInput flex={2} label="Ilość" source={getSource("sum_vat")} resource="products"/>
+                        <BoxItemNumberInput flex={2} label="Brutto" source={getSource("sum_brutto")} resource="products"/>   
                     </Box>
                 );
             }}
