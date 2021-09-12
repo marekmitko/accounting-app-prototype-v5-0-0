@@ -422,13 +422,15 @@
       "id": "E6H74SD"
     },
     {
-      "company": "Indywidualna Specjalistyczna Praktyka Lekarska Sylwia Lipowska",
+      "company": "Janusz Florkiewicz",
       "address": {
-        "street": "Liskego 8"
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
       },
-      "email": "efsf",
-      "fullname": "sefses",
-      "id": "aBvn6I9"
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "zRIZDp8"
     }
   ],
   "dbinvoiceslist": [

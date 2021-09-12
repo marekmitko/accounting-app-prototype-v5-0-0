@@ -115,9 +115,9 @@ const AddInvCreate = (props) => {
             {/* <-CONTAINER=>Seller&Buyer */}
             {/* ->CONTAINER=>SalesProductTable */}
                     <Grid container spacing={3}  >
-                        <Grid  item xs={12} >
+                        {/* <Grid  item xs={12} >
                             <SalesProductTable />
-                        </Grid>
+                        </Grid> */}
                         <Grid  item xs={12} >
                             <SpanningTable />
                         </Grid>
@@ -147,9 +147,6 @@ const AddInvCreate = (props) => {
                 <Grid container spacing={3} >
                     <Grid item  xs={12}  >
                         <InvoiceFooterForm />
-                    </Grid>
-                    <Grid item  xs={12}  >
-                        <SalesProductTable />
                     </Grid>
                 </Grid>
             {/* <-CONTAINER=>AddedInfo*/}
