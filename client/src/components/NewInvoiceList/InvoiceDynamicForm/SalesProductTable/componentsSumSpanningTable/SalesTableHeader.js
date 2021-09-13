@@ -43,16 +43,16 @@ const SalesTableHeader = (props) => {
                     <TableCell colSpan={1} align="right"/>
                 </TableRow> */}
             <TableRow >
-                <StyledTableSubHeader colSpan={1}>L.P.</StyledTableSubHeader>
-                <StyledTableSubHeader colSpan={7} align="center">NAZWA</StyledTableSubHeader>
-                <StyledTableSubHeader colSpan={3} align="center">TYP</StyledTableSubHeader>
-                <StyledTableSubHeader colSpan={5} align="center">ILOŚĆ</StyledTableSubHeader>
+                <StyledTableSubHeader >L.P.</StyledTableSubHeader>
+                <StyledTableSubHeader colSpan={5} align="center">NAZWA</StyledTableSubHeader>
+                <StyledTableSubHeader  align="center">TYP</StyledTableSubHeader>
                 <StyledTableSubHeader colSpan={2} align="center">NETTO</StyledTableSubHeader>
-                <StyledTableSubHeader colSpan={2} align="center">VAT</StyledTableSubHeader>
+                <StyledTableSubHeader  align="center">VAT</StyledTableSubHeader>
+                <StyledTableSubHeader  align="center">ILOŚĆ</StyledTableSubHeader>
                 <StyledTableSubHeader colSpan={2} align="right">WARTOŚĆ NETTO</StyledTableSubHeader>
                 <StyledTableSubHeader colSpan={2} align="center">WARTOŚĆ VAT</StyledTableSubHeader>
                 <StyledTableSubHeader colSpan={2} align="left">WARTOŚĆ BRUTTO</StyledTableSubHeader>
-                <StyledTableSubHeader colSpan={1} align="center">X</StyledTableSubHeader>
+                <StyledTableSubHeader  align="center">X</StyledTableSubHeader>
             </TableRow>
         </TableHead>
     );

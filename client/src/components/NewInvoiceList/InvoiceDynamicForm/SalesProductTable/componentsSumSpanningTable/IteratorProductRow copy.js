@@ -32,8 +32,8 @@ const IteratorProductRow = (props) => {
                             // <Box display="inline-flex" mr="0.1em" p="0" mb="-1.2em" fullWidth>
                             <TableRow>
                                 <BoxItemTextInput flex={7} label="Nazwa" source={getSource("item_name")}  resource="products" ml="-1.2em"/>
-                                <BoxItemTextInput flex={5} label="Typ" source={getSource("item_desc")} resource="products"/>
-                                <BoxItemNumberInput flex={2} label="Ilość" source={getSource("item_qty")} resource="products"/>
+                                <BoxItemTextInput flex={1} label="Typ" source={getSource("item_desc")} resource="products"/>
+                                <BoxItemNumberInput flex={1} label="Ilość" source={getSource("item_qty")} resource="products"/>
                                 <BoxItemNumberInput flex={2} label="Netto" source={getSource("item_qty")} resource="products"/>
                                 <BoxItemNumberInput flex={2} label="VAT" source={getSource("item_vat")} resource="products"/>
                                 <BoxItemNumberInput flex={2} label="Ilość" source={getSource("sum_netto")} resource="products"/>

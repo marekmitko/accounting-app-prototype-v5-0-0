@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
 
 
-import  { TextInput, NumberInput }  from 'react-admin';
+import  { TextInput, NumberInput, SelectInput }  from 'react-admin';
 import DragHandleIcon from '@material-ui/icons/DragHandle';  
 
 import Add from '@material-ui/icons/Add';
@@ -66,7 +66,22 @@ const invoiceSubtotal = subtotal(rows);
 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
-
+const type = [
+    { id: 'usługi', name: 'Usugi' },
+    { id: 'towar', name: 'Towary' },
+    { id: 'najem', name: 'Najem' },
+    { id: 'Prowizja', name: 'Prowizja' },
+    { id: 'MVA', name: 'MVA' },
+    { id: 'Sprzedaż 0% MVA', name: '0% MVA' },
+    { id: 'Sprzedaż zwolniona MVA', name: 'Zwolniony' },
+];
+const TAX = [
+    { id: '25%', name: '25 %', value: 0.25 },
+    { id: '15%', name: '15 %', value: 0.15 },
+    { id: '12%', name: '12 %', value: 0.12 },
+    { id: '6%', name: '6 %', value: 0.06 },
+    { id: '0%', name: '0 %', value: 0 },
+];
 
 const SpanningTable = ( record ) => {
     
@@ -85,37 +100,36 @@ const SpanningTable = ( record ) => {
                         <TableBody>  
                             {fieldProps.fields.map((question, index) => {
                                 return (
-                                    <TableRow hover tabIndex={-1} key={index}>  
-                                    {/* <TableRow hover tabIndex={-1} key={index}>   */}
-                                        <TableCell align="center"colSpan={1}  >
+                                    <TableRow  hover tabIndex={-1} key={index}>  
+                                        <TableCell align="center"   >
                                         {index+1}
                                             {/* <DragHandleIcon />   */}
                                         </TableCell>  
-                                        <TableCell colSpan={7} >  
-                                        <TextInput variant ="outlined" initialValue="produka" label="Produkt Name" source={`questions[${index}].item_name`} />
+                                        <TableCell colSpan={5} >  
+                                        <TextInput  variant ="outlined" label="Nazwa" source={`questions[${index}].item_name`} fullWidth />
                                         </TableCell>  
-                                        <TableCell colSpan={3} align="left">  
-                                            <TextInput variant ="outlined" helperText="Unique id" label="Question ID" source={`questions[${index}].id`} />
-                                        </TableCell>  
-                                        <TableCell colSpan={5}  align="left">  
-                                            <TextInput variant ="outlined" helperText="i.e. " label="Question Text" source={`questions[${index}].text`} />
+                                        <TableCell  align="left">  
+                                            <SelectInput  label="Wybierz Typ" variant ="outlined" source={`questions[${index}].type`} choices={type}/>
                                         </TableCell>  
                                         <TableCell colSpan={2}  align="left">  
-                                            <TextInput variant ="outlined" helperText="i.e. " label="Question Text" source={`questions[${index}].text`} />
+                                            <TextInput variant ="outlined"  label="Kwota netto" source={`questions[${index}].netto`} />
+                                        </TableCell>  
+                                        <TableCell  align="left">  
+                                            <SelectInput variant ="outlined"   label="VAT" source={`questions[${index}].tax`} choices={TAX}/>
+                                        </TableCell>  
+                                        <TableCell   align="left">  
+                                            <NumberInput variant ="outlined"  label="Podaj ilość" source={`questions[${index}].qty`} />
                                         </TableCell>  
                                         <TableCell colSpan={2} align="left">  
-                                            <TextInput variant ="outlined" helperText="i.e. " label="Question Text" source={`questions[${index}].text`} />
+                                            <TextInput   label="Question Text" source={`questions[${index}].text`} disabled/>
                                         </TableCell>  
                                         <TableCell colSpan={2} align="left">  
-                                            <TextInput variant ="outlined" helperText="i.e. " label="Question Text" source={`questions[${index}].text`} />
+                                            <TextInput    label="Question Text" source={`questions[${index}].text`} disabled/>
                                         </TableCell>  
                                         <TableCell colSpan={2} align="left">  
-                                            <TextInput variant ="outlined" helperText="i.e. " label="Question Text" source={`questions[${index}].text`} />
+                                            <TextInput      label="Question Text" source={`questions[${index}].text`} disabled />
                                         </TableCell>  
-                                        <TableCell colSpan={2} align="left">  
-                                            <TextInput variant ="outlined" helperText="i.e. " label="Question Text" source={`questions[${index}].text`} />
-                                        </TableCell>  
-                                        <TableCell colSpan={1} align="right">  
+                                        <TableCell  align="right">  
                                             <Button style={{ color: 'red' }} type="button" onClick={() => fieldProps.fields.remove(index)}>
                                                 X
                                             </Button>
@@ -123,6 +137,8 @@ const SpanningTable = ( record ) => {
                                     </TableRow>  
                                 )
                             })}
+
+
                         </TableBody>  
 
                         {/* <TableBody>
@@ -149,21 +165,21 @@ const SpanningTable = ( record ) => {
                         <Add />
                     </Button>
                    <Table>
-            <TableRow>
-                <TableCell rowSpan={3} />
-                <TableCell >Subtotal</TableCell>
-                <TableCell  align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell>Tax</TableCell>
-                <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-            </TableRow>
-            <TableRow> 
-                <TableCell  align="right">Total</TableCell>
-                <TableCell  align="right">{ccyFormat(invoiceTotal)}</TableCell>
-            </TableRow>
-            </Table>
+                    <TableRow align="right">
+                            <TableCell colSpan={5} rowSpan={3} />
+                            <TableCell colSpan={2} >Subtotal</TableCell>
+                            <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell  >Tax</TableCell>
+                            <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                            <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell colSpan={2}>Total</TableCell>
+                            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
+                        </TableRow>
+                    </Table>
         </TableContainer>
             )
 
