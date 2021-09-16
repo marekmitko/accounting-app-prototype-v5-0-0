@@ -41,17 +41,6 @@ const BuyerCreateAuto = (props) => {
       },
     });
   
-    const [emails, setEmails] = useState([]);
-    const { data: email } = useQuery({
-      type: 'getList',
-      resource: 'dbclientlist',
-      payload: {
-        pagination: { page: 1, perPage: 1000 },
-        sort: { field: 'email', order: 'ASC' },
-        filter: {},
-      },
-    });
-  
 
 
     useEffect(() => {

@@ -8,6 +8,7 @@ import {
     DeleteButton,
     NullableBooleanInput,
     SimpleForm,
+    ArrayInput,
 } from 'react-admin';
 import { Grid,  makeStyles  } from '@material-ui/core';
 
@@ -37,15 +38,12 @@ import InvoiceHeaderData from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderD
 import InvoiceHeaderList from './InvoiceDynamicForm/SalesDataForm/InvoiceProductList/InvoiceHeaderList.js';
 import SumItemListIteratorForm from './InvoiceDynamicForm/InvoiceInfoForm/SumItemListIteratorForm.js'
 import InvoiceFooterForm from './InvoiceDynamicForm/SalesDataForm/InvoiceFooter/InvoiceFooterForm.js';
-// import InvoiceDocumentTitle from "./InvoiceDynamicForm/capition/DocumentTitle.js";
-// import myGridSanitized from "../../myComponents/myGridSanitized.js";
-// import BoxItemTextInput from '../../myComponentsMui/myMuiForm/BoxItemTextInput.js';
-// import BoxBootstrapInput from '../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
 
-import ClientCreateButton from '../../pages/clients/ClientCreateButton.js'
+import ClientCreateButton from '../../pages/clients/ClientCreateButton.js';
+import SumSpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable';
 
-import SalesProductTable from './InvoiceDynamicForm/SalesProductTable/componentsSumSpanningTable/SalesProductTable'
-import SpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable'
+
+
 
 
 const segments = [
@@ -93,7 +91,8 @@ const AddInvCreate = (props) => {
                             <InvoiceHeaderLogotype />
                         </Grid>
                         <Grid item xs={12} sm={8} >
-                            <InvoiceHeaderData />
+                            
+  {/* <InvoiceHeaderData /> */}
                         </Grid>
                     </Grid>
             {/* <-CONTAINER=>HeadlineDate */}
@@ -101,7 +100,7 @@ const AddInvCreate = (props) => {
                     <Grid container spacing={3} > 
                         <Grid item xs={12} sm={6}> 
                             {/* <FormGroupContextProvider name="Seller"> */}
-                                <InvoiceSellerForm />
+  {/* <InvoiceSellerForm /> */}
                             {/* </FormGroupContextProvider> */}
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -115,11 +114,10 @@ const AddInvCreate = (props) => {
             {/* <-CONTAINER=>Seller&Buyer */}
             {/* ->CONTAINER=>SalesProductTable */}
                     <Grid container spacing={3}  >
-                        {/* <Grid  item xs={12} >
-                            <SalesProductTable />
-                        </Grid> */}
                         <Grid  item xs={12} >
-                            <SpanningTable />
+                            {/* <ArrayInput {...props} source="questions"> */}
+                                <SumSpanningTable  />
+                            {/* </ArrayInput> */}
                         </Grid>
                     </Grid>
             {/* <-CONTAINER=>SalesProductTable */}
@@ -147,6 +145,7 @@ const AddInvCreate = (props) => {
                 <Grid container spacing={3} >
                     <Grid item  xs={12}  >
                         <InvoiceFooterForm />
+                     
                     </Grid>
                 </Grid>
             {/* <-CONTAINER=>AddedInfo*/}

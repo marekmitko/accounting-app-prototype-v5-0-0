@@ -7,7 +7,7 @@ import SpanningTable from '../SumSpanningTable';
 
 const SalesProductTable = props => (
   
-    <ArrayInput label="Lista produktów" source="questions">
+    <ArrayInput label="Lista produktów" source="questionujys">
         <CustomIterator />
        
     </ArrayInput>

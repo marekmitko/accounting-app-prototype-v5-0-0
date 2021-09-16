@@ -26,9 +26,9 @@ function App() {
             <Resource name="datauser"  /> */}
             <Resource name="userProfile"/>
 
-            <Resource name="homepage" {...homepage} />
-            <Resource options={{ label: '*Wystaw FV' }}  name="NewInvoiceList/create" list={homepage.create} />
-            <Resource options={{ label: '_Lista FV_' }}  name="NewInvoiceList" {...homepage} />
+            <Resource options={{ label: '*Lista FV' }} name="homepage" {...homepage} />
+            <Resource options={{ label: '*Wystaw FV' }}  name="homepage/create" {...homepage}/>
+            {/* <Resource options={{ label: '_Lista FV_' }}  name="NewInvoiceList" {...homepage} /> */}
 
     
             <Resource options={{ label: 'Kontrahenci' }} name='dbclientlist' label="Kontrahenci"  {...clients} />

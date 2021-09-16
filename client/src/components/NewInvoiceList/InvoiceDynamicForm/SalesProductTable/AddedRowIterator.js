@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ArrayInput, SimpleFormIterator, TextInput, TextField, FormDataConsumer} from 'react-admin';
+import { ArrayInput, SimpleFormIterator, TextInput, TextField, FormDataConsumer, NumberInput, } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 import BoxItemTextInput from '../../../../myComponentsMui/myMuiForm/BoxItemTextInput'
@@ -7,6 +7,7 @@ import BoxItemNumberInput from '../../../../myComponentsMui/myMuiForm/BoxItemNum
 import BoxTextInput from '../../../../myComponentsMui/myMuiForm/BoxTextInput';
 import BoxBootstrapInput  from '../../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
 
+import SalesTableHeader from './componentsSumSpanningTable/SalesTableHeader';
 
 const useStyles = makeStyles({
     inlineBlock: { display: 'inline-flex',
@@ -14,34 +15,71 @@ const useStyles = makeStyles({
 styleItem: { variant: 'outlined',},
 });
 
+const useIteratorStyle = makeStyles(() => ({
+
+    // ustawienie wierrsza
+            // root: {
+            // display: 'flex',
+            // flexDirection: 'column',
+            // },
+
+    // ustawienia komórek
+    form: {
+      
+      display: 'inline-flex',
+    },
+    line: {
+      border: 0,
+    },
+    li: {
+         display: 'inline-flex',
+    },
+    card: { display: 'inline-flex',
+},
+styleItem: { variant: 'outlined',},
+  }));
+
 const AddedRowIterator = (props) => {
     const classes = useStyles();
-    
     
     const BoxTextInputInForm = ({ variant, ...props }) => <BoxTextInput {...props} />;
     BoxTextInputInForm.defaultProps = BoxTextInput.defaultProps;
 
+      const iteratorClasses = useIteratorStyle();
+
     return (
         <ArrayInput {...props} label="DODAJ PRODUKT"  source="product_list">
     {/* ->CONTAINER=>ProductList */}
-            <SimpleFormIterator>
-                <FormDataConsumer>
-                    {({ getSource, scopedFormData }) => {
+            <SimpleFormIterator classes={iteratorClasses}  >
+
+            {/* <TextInput label="IMIĘ I NAZWISKO"source="fullname" />
+                <TextInput label="ADRES EMAIL" type="email" source="email" />
+                {/* <TextInput label="ADRES"source="address.street" /> */}
+                <NumberInput label="quantity" source="quantity" />
+                <NumberInput label="unitprice" source="unitprice" /> */}
+
+              
+               <FormDataConsumer>
+                    {({
+                        formData, // The whole form data
+                        scopedFormData, // The data for this item of the ArrayInput
+                        getSource, // A function to get the valid source inside an ArrayInput
+                        ...rest
+                    }) => {
+                        if (typeof scopedFormData !== 'undefined') {
+                        scopedFormData.total = scopedFormData.quantity * scopedFormData.unitprice;
                         return (
-                            //Nie wiem czy to nie powino być tylko w tym Box ? 
-                            <Box display="inline-flex" mr="0.1em" p="0" mb="-1.2em" fullWidth>
-                                <BoxItemTextInput flex={7} label="Nazwa" source={getSource("item_name")}  resource="products" ml="-1.2em"/>
-                                <BoxItemTextInput flex={5} label="Typ" source={getSource("item_desc")} resource="products"/>
-                                <BoxItemNumberInput flex={2} label="Ilość" source={getSource("item_qty")} resource="products"/>
-                                <BoxItemNumberInput flex={2} label="Netto" source={getSource("item_qty")} resource="products"/>
-                                <BoxItemNumberInput flex={2} label="VAT" source={getSource("item_vat")} resource="products"/>
-                                <BoxItemNumberInput flex={2} label="Ilość" source={getSource("sum_netto")} resource="products"/>
-                                <BoxItemNumberInput flex={2} label="Ilość" source={getSource("sum_vat")} resource="products"/>
-                                <BoxItemNumberInput flex={2} label="Brutto" source={getSource("sum_brutto")} resource="products"/>   
-                            </Box>
-                        );
-                    }}
-                </FormDataConsumer>
+                            <NumberInput disabled defaultValue={scopedFormData.total} label="Total" source={getSource('total')} {...rest} />
+                        )
+                        } else {
+                        return(
+                            <NumberInput disabled label="Total" source={getSource('total')} />
+                        )
+                        }            
+                    }} 
+
+            </FormDataConsumer>
+          
             </SimpleFormIterator>
     {/* <-CONTAINER=ProductList */}
         </ArrayInput>

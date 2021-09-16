@@ -26,7 +26,7 @@ const IteratorProductRow = (props) => {
     {/* ->CONTAINER=>ProductList */}
             <SimpleFormIterator>
                 <FormDataConsumer>
-                    {({ getSource, scopedFormData }) => {
+                    {({ getSource, scopedFormData, }) => {
                         return (
                             // Nie wiem czy to nie powino być tylko w tym Box ? 
                             <Box display="inline-flex" mr="0.1em" p="0" mb="-1.2em" fullWidth>

@@ -1,4 +1,4 @@
-import React, {ReactFragnent} from "react";
+import React, { Fragnent, useState, useEffect, } from "react";
 import {
     FormWithRedirect,
     DateInput,
@@ -7,6 +7,9 @@ import {
     SaveButton,
     DeleteButton,
     NullableBooleanInput,
+    ReferenceInput,
+    SelectInput,
+    useQuery,
 } from 'react-admin';
 import { Card, Typography, Box, Toolbar, Paper, makeStyles } from '@material-ui/core';
 
@@ -23,6 +26,28 @@ const useStyles = makeStyles((theme) => ({
 
 const InvoiceBuyerForm = props => {
 // console.log(UserProfile("Profile12356x"));
+
+const [customers, setCustomers] = useState([]);
+const { data: customer } = useQuery({
+  type: 'getList',
+  resource: 'dbclientlist',
+  payload: {
+    pagination: { page: 1, perPage: 600 },
+    sort: { field: 'company', order: 'ASC' },
+    filter: {},
+  },
+});
+
+useEffect(() => {
+    if (customer)
+    setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));
+  }, [customers]);
+
+
+  const [version, setVersion] = React.useState(0);
+  const handleChange = React.useCallback(() => setVersion(version + 1), [version]);
+
+ 
 const classes = useStyles();
     return (
         <Card variant="outlined" className={classes.paper}>
@@ -30,6 +55,11 @@ const classes = useStyles();
                 <Box flex={2} m="1em">
                     <Typography variant="subtitle1" gutterButtom>
                 DANE NABYWCY</Typography>
+                    <Box display="flex" mb="-1.5em">
+                    <ReferenceInput key={version} source="company" reference="dbclientlist">
+  <SelectInput optionText="name" />
+</ReferenceInput>
+                        </Box>
                     <Box display="flex" mb="-1.5em">
                         <BoxTextInput source="fullname.forename" resource="buyer" mr="0.5em" />
                         <BoxTextInput source="fullname.surname" resource="buyer"/>
