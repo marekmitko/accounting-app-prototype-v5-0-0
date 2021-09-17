@@ -12,23 +12,6 @@ import {
 } from 'react-admin';
 import { Grid,  makeStyles  } from '@material-ui/core';
 
-// dasdasd{
-   // CardHeader, Card, Avatar, CardContent,
-   //Accordion, AccordionDetails, AccordionSummary, Typography, Box, Toolbar,
-    // FormTab,
-    // Edit,
-    // Datagrid,
-    // TextField,
-    // DateField,
-    // TextInput,
-    // ReferenceManyField,
-    // NumberInput,    
-    // DateInput,
-    // BooleanInput,
-    // EditButton,
-    // TabbedFormTabs,
-    // FormGroupContextProvider, useFormGroup, DataInput,
-// }
 
 import InvoiceSellerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceSeller/InvoiceSellerForm.js';
 import InvoiceBuyerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceBuyer/InvoiceBuyerForm.js';
@@ -124,9 +107,9 @@ const AddInvCreate = (props) => {
             {/* ->CONTAINER=>DatagridProducts*/}
                     <Grid container spacing={3} >
                         <Grid item xs={12} >
-                            <InvoiceHeaderList>
+                            {/* <InvoiceHeaderList>
                                 <InvoiceItemCreate fullWidth />
-                            </InvoiceHeaderList>
+                            </InvoiceHeaderList> */}
                         </Grid>
                 {/* ->subCONTAINER=>SelectChoices&Sum*/}
                         <Grid item container spacing={6} >

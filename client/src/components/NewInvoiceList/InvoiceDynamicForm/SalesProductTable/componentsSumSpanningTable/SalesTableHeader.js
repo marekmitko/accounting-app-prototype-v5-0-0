@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Delete from '@material-ui/icons/Delete';
 
 
 const StyledTableHeader = withStyles((theme) => ({
@@ -45,7 +46,7 @@ const SalesTableHeader = (props) => {
                 <StyledTableSubHeader  align="right">WARTOŚĆ NETTO</StyledTableSubHeader>
                 <StyledTableSubHeader  align="center">WARTOŚĆ VAT</StyledTableSubHeader>
                 <StyledTableSubHeader  align="left">WARTOŚĆ BRUTTO</StyledTableSubHeader>
-                <StyledTableSubHeader  align="center">X</StyledTableSubHeader>
+                <StyledTableSubHeader  align="center"><Delete /></StyledTableSubHeader>
             </TableRow>
         </TableHead>
     );

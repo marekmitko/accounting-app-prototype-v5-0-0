@@ -22,20 +22,34 @@ import DragHandleIcon from '@material-ui/icons/DragHandle';
 
 import Add from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
+import Input  from '@material-ui/core/Input';
 
 import SalesTableHeader from './componentsSumSpanningTable/SalesTableHeader';
-import SalesProductTable from './componentsSumSpanningTable/SalesProductTable';
-import IteratorProductRow from './componentsSumSpanningTable/IteratorProductRow';
-import CustomIterator from './componentsSumSpanningTable/CustomIterator';
-import InvoiceItemCreate from '../SalesDataForm/InvoiceProductList/InvoiceItem/InvoiceItemCreate';
 
-import AddedRowIterator from "./AddedRowIterator"
-
-import myFormDataConsumeSanitized from '../../../../myComponents/myFormDataConsumeSanitized';
-
+import ItemFormIteratorPartGetSum from './ItemFormIteratorRow/ItemFormIteratorPartGetSum'
 import { useForm, useFormState } from 'react-final-form';
 
-const useStyles = makeStyles({
+// const IteratorRowProduct = withStyles((theme) => ({
+
+
+  
+//     MuiFormHelperText: {
+//         backgroundColor: 'SteelBlue',
+//         '& MuiFormHelperText': {
+//             display: 'none',
+//             '& root': {
+//               color: 'blue',
+//             },
+//           },
+//     },
+
+// }))(TableRow);
+
+
+
+const useStyles
+
+= makeStyles({
   table: {
     minWidth: 700,
     borderSpacing: 0,
@@ -66,13 +80,18 @@ const rows = [
   createRow('Paper (Case)', 10, 45.99),
   createRow('Waste Basket', 2, 17.99),
 ];
+
+
+
+const ariaLabel = { 'aria-label': 'description' };
+
 const TAX_RATE = 0.07;
 
 const invoiceSubtotal = subtotal(rows);
 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
-const type = [
+const item_type = [
     { id: 'usługi', name: 'Usugi' },
     { id: 'towar', name: 'Towary' },
     { id: 'najem', name: 'Najem' },
@@ -81,7 +100,7 @@ const type = [
     { id: 'Sprzedaż 0% MVA', name: '0% MVA' },
     { id: 'Sprzedaż zwolniona MVA', name: 'Zwolniony' },
 ];
-const TAX = [
+const item_tax = [
     { id: '25%', name: '25 %', value: 0.25 },
     { id: '15%', name: '15 %', value: 0.15 },
     { id: '12%', name: '12 %', value: 0.12 },
@@ -90,7 +109,7 @@ const TAX = [
 ];
 
 
-const SumSpanningTable = () => {
+const SumSpanningTable = (props) => {
     
     const formGroupState = useFormGroup();
         
@@ -100,10 +119,9 @@ const SumSpanningTable = () => {
     const resource = useResourceContext();
     // const refArrayInput = useReferenceArrayInputController();
 
-    const arrayQuestion = formGroupState.questions;
 
     return (
-        <FormGroupContextProvider name="questions">
+      
          <FieldArray name="questions"> 
         {(fieldProps) => {
             // console.log("resourceContext", resource);
@@ -115,14 +133,15 @@ const SumSpanningTable = () => {
             return (
                 <TableContainer component={Paper}>
                 
-                    <Table className={classes.table} aria-label="questions list">
+                    <Table className={classes.table} aria-label="sales_List">
+                    {/* <Table className={classes.table} aria-label="questions list"> */}
                         <SalesTableHeader/>
             
                         {/* <TableBody>  
                       
                         <AddedRowIterator />
                         </TableBody>   */}
-                        <TableBody>  
+                        <TableBody  >  
 
                
                             {fieldProps.fields.map((question, index) => {
@@ -131,85 +150,69 @@ const SumSpanningTable = () => {
                                   
                                 return (
                                     
-                                    <TableRow  hover tabIndex={-1} key={index}>  
-                                           <TableCell>              
+                                    <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
+                                           {/* <TableCell>              
                                         <NumberInput  label="Question ID" source={`questions[${index}].id`} />
-                                        </TableCell>  
+                                        </TableCell>   */}
                                         <TableCell align="center"   >
                                         {index+1}
                                             {/* <DragHandleIcon />   */}
                                         </TableCell>  
-                                        <TableCell colSpan={5} >  
-                                        <TextInput  variant ="outlined" label="Nazwa" source={`questions[${index}].item_name`} fullWidth />
+                                        <TableCell colSpan={2} >  
+                                        <TextInput  label="Nazwa"  variant="outlined" source={`questions[${index}].item_name`} fullWidth />
                                         </TableCell>  
-                                        <TableCell  align="left">  
-                                            <SelectInput  label="Wybierz Typ" variant ="outlined" source={`questions[${index}].type`} choices={type}/>
-                                        </TableCell>  
-                                        <TableCell colSpan={2}  align="left">  
-                                            <NumberInput variant ="outlined"  defaultValue={610} label="Kwota netto" source={`questions[${index}].netto`} />
-                                        </TableCell>  
-                                        <TableCell  align="left">  
-                                            <SelectInput variant ="outlined"   label="VAT" source={`questions[${index}].tax`} choices={TAX}/>
+                                        <TableCell align="left">  
+                                            <SelectInput  label="Wybierz Typ" variant ="outlined" source={`questions[${index}].item_type`} choices={item_type}/>
                                         </TableCell>  
                                         <TableCell   align="left">  
-                                            <NumberInput variant ="outlined"  defaultValue={5} label="Podaj ilość" source={`questions[${index}].my_first_input`} />
+                                            <NumberInput    label="Ilość" variant ="outlined" source={`questions[${index}].item_qty`} />
                                         </TableCell>  
-                                        <TableRow colSpan={2} align="left">  
-                                        <FormDataConsumer  subscription={{ values: true }}>
+                                        <TableCell  align="left" children={
+                                                <NumberInput  label="Kwota netto" variant ="outlined"  source={`questions[${index}].item_netto`} />} />  
+                                            {/* <NumberInput  label="Kwota netto" variant ="outlined"  source={`questions[${index}].item_netto`} />
+                                        </TableCell>   */}
+                                        <TableCell   align="left">  
+                                            <SelectInput   label="Stawka VAT" variant ="outlined" source={`questions[${index}].item_tax`} choices={item_tax}/>
+                                        </TableCell>  
+  
+                                        <FormDataConsumer  subscription={{ values: true }} >
                                         {/* <myFormDataConsumeSanitized {...rest} source={question} subscription={{ values: true }}> */}
                     {({
                         formData, // The whole form data
                         scopedFormData, // The data for this item of the ArrayInput
                         getSource, // A function to get the valid source inside an ArrayInput
                         ...rest
-                    }) => {
-                        console.log("valueFormData", formData);
-                        console.log("valueformquestion", formData["questions"]);
-                        console.log("valueformquestionTab", formData["questions"][index]);
-                        console.log("valueformquestionTabValue", formData["questions"][index]["item_qty"]);
-                        console.log(typeof formData["questions"][index]["item_qty"]);
-                        console.log("iterdupa", scopedFormData);
-                        
-                        if(formData) {
-                            return ( <TableCell   align="left">  
-                                        <NumberInput variant ="outlined" label="Wartość Netto" source={`questions[${index}].item_qty`} />
-                                        <NumberInput variant ="outlined"  label="vataa"    source={`questions[${index}].item_vat`} />
-                                        <NumberInput variant ="outlined"   label="Wartość Netto"    source={`questions[${index}].totalw`} />
-                                        
-            
-                                      </TableCell>  ); 
-                        }  if (formData["questions"][index]["item_vat"]) {
-                            const Price = formData["questions"][index]["item_vat"] * formData["questions"][index]["item_qty"];
-                                                return (
-                                                    <TableCell   align="left"> 
-                            <NumberInput variant ="outlined" defaultValue={Price} label="Total" source={`questions[${index}].total`} />
-                            </TableCell>
-                                                );} else {
-                        return(
-                            <TableCell>
-                            <NumberInput disabled label="Total" source={`questions[${index}].total`}  />
-                            </TableCell>
-                        );
-                        }            
-                    }} 
+                    }) => {         
+                        if(formData["questions"][index]["item_netto"] !== 'undefined' ) {
+                            formData["questions"][index]["sum_item_netto"] = formData["questions"][index]["item_netto"] * formData["questions"][index]["item_qty"];
+                            return ( 
+                                <TableCell   align="left">  
+                                    <NumberInput  initialValues={formData["questions"][index]["sum_item_netto"]}  source={`questions[${index}].sum_item_netto`} label="Wartość Netto"   {...rest} disabled />
+                                </TableCell>  
+                            ); 
+                        }   else {
+                            return(
+                                <TableCell  align="left">
+                                        <NumberInput  label="Wartość Netto" source={`questions[${index}].sum_item_netto`}  disabled  />
+                                    </TableCell>
+                                );
+                            }            
+                        }} 
 
-            </FormDataConsumer>
-      
-                                        </TableRow>  
+                 </FormDataConsumer>
+                        
+                        {/* <TableRow>
+                        <ItemFormIteratorPartGetSum index={index} fieldProps={fieldProps} {...props} />
+                        </TableRow> */}
+                                      
                                      
-                                        <TableCell colSpan={2} align="left">  
+                                        <TableCell  align="left">  
                                             <TextInput   variant ="outlined"  label="Wartość VAT" source={`questions[${index}].sumTax`} disabled/>
                                         </TableCell>  
-                                        <TableCell colSpan={2} align="left">  
-                               
-                                        </TableCell>  
-                                        <TableCell colSpan={2} align="left">  
+                                        <TableCell  align="left">  
                                             <NumberInput   variant ="outlined"  defaultValue={question.qty}  label="Wartość Brutto" source={`questions[${index}].sumBrutto`} disabled />
                                         </TableCell>  
-                                        <TableCell colSpan={2} align="left">  
-
-                                                   
-                                </TableCell>  
+                                        
                                         <TableCell  align="right">  
                                             <Button style={{ color: 'red' }} type="button" onClick={() => fieldProps.fields.remove(index)}>
                                                 X
@@ -268,8 +271,7 @@ const SumSpanningTable = () => {
             }
             }
         </FieldArray>
-         </FormGroupContextProvider>
-   
+       
     )
 };
 

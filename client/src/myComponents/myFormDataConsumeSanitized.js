@@ -4,7 +4,7 @@ import { ArrayInput, FormDataConsumer  } from 'react-admin';
 
 
 const myFormDataConsumeSanitized = (props) => (
-    <ArrayInput source="questions"  {...props} >
+    <ArrayInput source="sales_item"  {...props} >
             <FormDataConsumer {...props} />
     </ArrayInput>
 )
