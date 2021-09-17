@@ -35,7 +35,7 @@ const defaultSubscription = {
 const ClientCreateButton = ({ version, onChange }) => {
     const [open, setOpen] = React.useState(false); // Controls modal 
 
-    const [create, { loading }] = useCreate('dbclientlist'); // Access dataProvider API call
+    const [create, { loading }] = useCreate('tradePartners_list'); // Access dataProvider API call
     const notify = useNotify(); // Initialize notify object to send notification to dashboard
     const form = useForm(); // Gains access to the values in the
  

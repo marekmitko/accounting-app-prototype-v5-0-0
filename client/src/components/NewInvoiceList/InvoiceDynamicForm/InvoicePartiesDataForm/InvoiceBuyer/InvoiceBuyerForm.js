@@ -30,7 +30,7 @@ const InvoiceBuyerForm = props => {
 const [customers, setCustomers] = useState([]);
 const { data: customer } = useQuery({
   type: 'getList',
-  resource: 'dbclientlist',
+  resource: 'tradePartners_list',
   payload: {
     pagination: { page: 1, perPage: 600 },
     sort: { field: 'company', order: 'ASC' },
@@ -39,9 +39,9 @@ const { data: customer } = useQuery({
 });
 
 useEffect(() => {
-    if (customer)
-    setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));
-  }, [customers]);
+    if (customer) {
+    setCustomers(customer.map((d) => ({ id: d.company, name: d.company })));};
+  }, [customer]);
 
 
   const [version, setVersion] = React.useState(0);
@@ -49,6 +49,8 @@ useEffect(() => {
 
  
 const classes = useStyles();
+// console.log(tradePartners_list);
+console.log(customers);
     return (
         <Card variant="outlined" className={classes.paper}>
             <Box display="flex">
@@ -56,9 +58,12 @@ const classes = useStyles();
                     <Typography variant="subtitle1" gutterButtom>
                 DANE NABYWCY</Typography>
                     <Box display="flex" mb="-1.5em">
-                    <ReferenceInput key={version} source="company" reference="dbclientlist">
-  <SelectInput optionText="name" />
-</ReferenceInput>
+                    
+                    {/* <ReferenceInput key={version} source="customers" reference="tradePartners_list"> */}
+                    {/* <ReferenceInput key={version} source="userId" reference="users"> */}
+                            <SelectInput  label="Wybierz Kontrahenta" variant ="outlined" source='company' choices={customers} fullWidth />
+                    {/* </ReferenceInput> */}
+
                         </Box>
                     <Box display="flex" mb="-1.5em">
                         <BoxTextInput source="fullname.forename" resource="buyer" mr="0.5em" />

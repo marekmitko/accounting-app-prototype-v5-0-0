@@ -114,7 +114,7 @@ const SumSpanningTable = (props) => {
                                             <TextInput  label="Nazwa"  variant="outlined" source={`sales_list[${index}].item_name`} />
                                         </TableCell>  
                                         <TableCell align="left">  
-                                            <SelectInput  label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}/>
+                                            <SelectInput label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}/>
                                         </TableCell>  
                                         <TableCell   align="left">  
                                             <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} />
@@ -126,46 +126,55 @@ const SumSpanningTable = (props) => {
                                             <SelectInput   label="Stawka VAT" variant ="outlined" source={`sales_list[${index}].item_tax`} choices={item_tax}/>
                                         </TableCell>  
                                         <TableCell    align="right">  
+                                {/*sumNETTO ->tabCELL=>sum_item_netto*/}
                                             <FormDataConsumer  subscription={{ values: true }} >
                                                 {({ formData, ...rest  }) => {         
                                                         if(typeof formData["sales_list"][index]["item_netto"] !== 'undefined' ) {
-                                                            formData["sales_list"][index]["sum_item_netto"] = formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"];
-                                                            return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_netto"]}  source={`sales_list[${index}].sum_item_netto`} label="Wartość Netto"   {...rest} disabled />
+                                                            formData["sales_list"][index]["sum_item_netto"] = 
+                                                                                                            formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"];
+                                                            return ( <NumberInput variant="filled" initialValues={formData["sales_list"][index]["sum_item_netto"]}  source={`sales_list[${index}].sum_item_netto`} label="Wartość Netto"   {...rest} disabled />
                                                             );}  else {
-                                                                    return( <NumberInput  label="Wartość Netto" source={`sales_list[${index}].sum_item_netto`}  disabled  />
+                                                                    return( <NumberInput variant="filled" label="Wartość Netto" source={`sales_list[${index}].sum_item_netto`}  disabled  />
                                                                     );}            
                                                     }
                                                 } 
                                             </FormDataConsumer>
+                                {/*sumNETTO <-tabCELL=>sum_item_netto*/}
                                         </TableCell>
                                         <TableCell  align="center">  
+                                {/*sumTAX ->tabCELL=>sum_item_tax*/}
                                             <FormDataConsumer  subscription={{ values: true }} >
                                                     {({ formData, ...rest  }) => {     
                                                         console.log('vat', formData["sales_list"][index]["item_tax"] )    
-                                                            if(typeof formData["sales_list"][index]["item_tax"] !== 'undefined' ) {
-                                                                formData["sales_list"][index]["sum_item_tax"] = formData["sales_list"][index]["item_tax"] * formData["sales_list"][index]["item_qty"];
-                                                                return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_tax"]}  source={`sales_list[${index}].sum_item_tax`} label="Wartość VAT"   {...rest} disabled />
-                                                                );}  else {
-                                                                        return( <NumberInput  label="Wartość VAT" source={`sales_list[${index}].sum_item_tax`}  disabled  />
-                                                                        );}            
+                                                        if(typeof formData["sales_list"][index]["item_tax"] !== 'undefined' ) {
+                                                            formData["sales_list"][index]["sum_item_tax"] = 
+                                                                                                            (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
+                                                                                                            * formData["sales_list"][index]["item_tax"];
+                                                            return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_tax"]}  source={`sales_list[${index}].sum_item_tax`} label="Wartość VAT"   {...rest} disabled />
+                                                            );}  else {
+                                                                return( <NumberInput  label="Wartość VAT" source={`sales_list[${index}].sum_item_tax`}  disabled  />
+                                                                );}            
                                                         }
                                                     } 
                                             </FormDataConsumer>
+                                {/*sumTAX <-tabCELL=>sum_item_tax*/}
                                         </TableCell>  
                                         <TableCell  align="left">  
+                                {/*sumBRUTTO ->tabCELL=>sum_item_brutto*/}
                                             <FormDataConsumer  subscription={{ values: true }} >
                                                     {({ formData, ...rest  }) => {         
-                                                            if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
-                                                                formData["sales_list"][index]["sum_item_brutto"] = 
-                                                                        (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
-                                                                            * (formData["sales_list"][index]["item_tax"] + 1);
-                                                                return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_brutto"]}  source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto"   {...rest} disabled />
-                                                                );}  else {
-                                                                        return( <NumberInput  label="Wartość bretto" source={`sales_list[${index}].sum_item_brutto`}  disabled  />
-                                                                        );}            
+                                                        if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
+                                                            formData["sales_list"][index]["sum_item_brutto"] = 
+                                                                                                            (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
+                                                                                                            * (formData["sales_list"][index]["item_tax"] + 1);
+                                                                        return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_brutto"]}  source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto"   {...rest} disabled />
+                                                                        );}  else {
+                                                                            return( <NumberInput  label="Wartość bretto" source={`sales_list[${index}].sum_item_brutto`}  disabled  />
+                                                                            );}            
                                                         }
                                                     } 
                                             </FormDataConsumer>
+                                {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
                                         </TableCell>  
                                         <TableCell>  
                                           

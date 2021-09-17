@@ -25,19 +25,23 @@ function App() {
             {/* <Resource name="profile"  />
             <Resource name="datauser"  /> */}
             <Resource name="userProfile"/>
+  
+{/*pagesINVOICE ->db.json=>issuedInvoices_list*/}
+            <Resource options={{ label: 'Wystaw FV' }}  name="issuedInvoices_list/create" 
+                    list={homepage.create}
+                    edit={homepage.edit}
+                    />
+            <Resource options={{ label: 'Lista FV' }} name="issuedInvoices_list" {...homepage} />
+{/*pageINVOICEs <-db.json=>issuedInvoices_list*/}
 
-            <Resource options={{ label: '*Lista FV' }} name="homepage" {...homepage} />
-            <Resource options={{ label: '*Wystaw FV' }}  name="homepage/create" {...homepage}/>
-            {/* <Resource options={{ label: '_Lista FV_' }}  name="NewInvoiceList" {...homepage} /> */}
-
-    
-            <Resource options={{ label: 'Kontrahenci' }} name='dbclientlist' label="Kontrahenci"  {...clients} />
-            <Resource options={{ label: 'Nowy Kontrahent' }} name='dbclientlist/create' label="Nowy Kontrahent"  
+{/*pagePARTNER ->db.json=>tradePartners_list*/}
+            <Resource options={{ label: 'Nowy Kontrahent' }} name='tradePartners_list/create' label="Nowy Kontrahent"  
                 list={clients.create}
                 edit={clients.edit}
                 icon={clients.icon}
-            />
-
+                />
+            <Resource options={{ label: 'Kontrahenci' }} name='tradePartners_list' label="Kontrahenci"  {...clients} />
+{/*pagePARTNERs <-db.json=>tradePartners_list*/}
         </Admin>
     );
 }

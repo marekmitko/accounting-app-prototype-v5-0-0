@@ -7,7 +7,7 @@ const ClientCreate = (props) => {
   return (
     <Create title='Dodaj nowego kontrahenta' {...props}>
         <SimpleForm>
-                {/* <TextInput disabled source='id' /> */}
+                <TextInput disabled source='id' />
                 <TextInput label="NAZWA FIRMY" source="company" />
                 <TextInput label="IMIĘ I NAZWISKO"source="fullname" />
                 <TextInput label="ADRES EMAIL" type="email" source="email" />
