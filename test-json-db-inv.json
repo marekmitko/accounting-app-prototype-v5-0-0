@@ -1,3 +1,4 @@
+{
 "test-db-mix": [
     {
       "id": "5df3180a09ea165f910",
@@ -47,10 +48,6 @@
       }
     }
   ],
-
-
-
-  ,
   "dbvisitors": [
     {
       "id": "5df31e9ea165f910",
@@ -200,17 +197,7 @@
         ]
       }
     }
-  ]
-
-
-
-
-
-
-
-
-
-  ,
+  ],
   "newbuyer": [
     {
       "company": "Jenkins LLC",
@@ -496,5 +483,6 @@
       "id": "ZnzqOqK"
     }
   ]
+}
 
   

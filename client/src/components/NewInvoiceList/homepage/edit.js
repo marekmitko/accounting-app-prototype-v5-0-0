@@ -1,6 +1,6 @@
 import React from "react";
 import { Edit } from "react-admin";
-import AddInvCreate from "../InvoiceDynamicForm.js";
+import AddInvCreate from "../InvoiceDynamicForm";
 
 const EditHomePage = props => (
   <Edit {...props}>

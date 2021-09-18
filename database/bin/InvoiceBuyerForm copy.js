@@ -12,8 +12,8 @@ import {
 } from 'react-admin';
 import { Card, Typography, Box, Toolbar, Grid } from '@material-ui/core';
 
-import BoxTextInput from '../../../../../myComponentsMui/myMuiForm/BoxTextInput.js';
-import  myGridSanitized from "../../../../../myComponents/myGridSanitized"
+import BoxTextInput from '../../client/src/myComponentsMui/myMuiForm/BoxTextInput.js';
+import  myGridSanitized from "../../client/src/myComponents/myGridSanitized"
 import { Children } from "react";
 
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, } from 'react';
 import { useGetOne } from 'react-admin';
 import { Card, Typography, Box, makeStyles, } from '@material-ui/core';
-import BoxTextInput from '../../../../../myComponentsMui/myMuiForm/BoxTextInput.js';
+import BoxTextInput from '../../../../myComponentsMui/myMuiForm/BoxTextInput.js';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -11,18 +11,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const InvoiceSellerForm = (props) => {
+const InvoiceSellerForm = ( { dataUser }) => {
 
 // const { data } = useGetOne('userProfile', {userProfile.Profile12356x});
 
-    const [dataSeller, setSellerData] = useState({});
-    useEffect((dataSeller) => {
-            // GET request using fetch inside useEffect React hook
-            fetch('http://localhost:3000//userProfile/Profile12356x')
-            .then(response => response.json())
-            .then(data => setSellerData(data));
-            // empty dependency array means this effect will only run once (like componentDidMount in classes)
-        }, dataSeller);
+   
+    const dataSeller = dataUser;
 
     const classes = useStyles();
 

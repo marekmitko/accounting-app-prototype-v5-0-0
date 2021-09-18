@@ -32,7 +32,7 @@ const defaultSubscription = {
     invalid: true,
 };
 
-const ClientCreateButton = ({ version, onChange }) => {
+const createTradePartnerItemButton = ({ version, onChange }) => {
     const [open, setOpen] = React.useState(false); // Controls modal 
 
     const [create, { loading }] = useCreate('tradePartners_list'); // Access dataProvider API call
@@ -167,6 +167,7 @@ const ClientCreateButton = ({ version, onChange }) => {
                                         </div>
                                     )}
                                 </Field>
+                                  <TextField source="id" />
                                 <Button variant="contained" color="primary" type="submit" disabled={submitting || pristine}>
                                     <Save style={{ marginRight: '8px' }} /> Save
                                 </Button>
@@ -180,4 +181,4 @@ const ClientCreateButton = ({ version, onChange }) => {
 }
 
 
-export default ClientCreateButton;
+export default createTradePartnerItemButton;

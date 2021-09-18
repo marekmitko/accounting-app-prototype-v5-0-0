@@ -12,7 +12,7 @@ import homepage from '../components/NewInvoiceList/homepage'
 // import { Route } from "react-router-dom";
 // import { UserList } from '../xprofile/users';
 // import UserIcon from "@material-ui/icons/Group";
-
+import AddInvCreate from "../components/NewInvoiceList/InvoiceDynamicForm"
 
 
 
@@ -22,25 +22,22 @@ function App() {
         <Admin 
             dataProvider={restProvider('http://localhost:3000')}
         >
-            {/* <Resource name="profile"  />
-            <Resource name="datauser"  /> */}
+            
             <Resource name="userProfile"/>
   
 {/*pagesINVOICE ->db.json=>issuedInvoices_list*/}
-            <Resource options={{ label: 'Wystaw FV' }}  name="issuedInvoices_list/create" 
-                    list={homepage.create}
-                    edit={homepage.edit}
-                    />
             <Resource options={{ label: 'Lista FV' }} name="issuedInvoices_list" {...homepage} />
+            <Resource options={{ label: 'Wystaw FV' }}  name="issuedInvoices_list/create" {...homepage} />
 {/*pageINVOICEs <-db.json=>issuedInvoices_list*/}
 
 {/*pagePARTNER ->db.json=>tradePartners_list*/}
-            <Resource options={{ label: 'Nowy Kontrahent' }} name='tradePartners_list/create' label="Nowy Kontrahent"  
+            <Resource options={{ label: 'Kontrahenci' }} name='tradePartners_list' label="Kontrahenci"  {...clients} />
+            <Resource options={{ label: 'Nowy Kontrahent' }}  name='tradePartners_list/create'  label="Nowy Kontrahent"  
                 list={clients.create}
                 edit={clients.edit}
                 icon={clients.icon}
+           
                 />
-            <Resource options={{ label: 'Kontrahenci' }} name='tradePartners_list' label="Kontrahenci"  {...clients} />
 {/*pagePARTNERs <-db.json=>tradePartners_list*/}
         </Admin>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import AddInvCreate from "../InvoiceDynamicForm.js"
+import AddInvCreate from "../InvoiceDynamicForm"
 
 
 const CreateHomePage = props => (

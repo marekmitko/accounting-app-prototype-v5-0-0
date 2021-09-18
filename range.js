@@ -1,4 +1,4 @@
 module.exports = (req, res, next) => {
-  res.header('Content-Range', 'dbclientlist 0-20/20')
+  res.header('Content-Range', 'tradePartners_list 0-20/20')
   next()
 }

@@ -217,6 +217,176 @@
       ],
       "createAt": "2021-09-17T15:44:58.120Z",
       "id": 3
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": null
+        }
+      ],
+      "createAt": "2021-09-18T09:53:52.976Z",
+      "id": 4
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 281.25,
+          "item_name": "Maciek",
+          "item_type": "towar",
+          "item_qty": 5,
+          "item_netto": 45,
+          "sum_item_netto": 225,
+          "item_tax": 0.25,
+          "sum_item_tax": 56.25
+        }
+      ],
+      "createAt": "2021-09-18T09:54:53.395Z",
+      "id": "219a29b9-5b99-4bba-b361-5dab20c90075"
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 2250,
+          "item_name": "jkl",
+          "item_type": "najem",
+          "item_qty": 15,
+          "item_netto": 120,
+          "sum_item_netto": 1800,
+          "item_tax": 0.25,
+          "sum_item_tax": 450
+        }
+      ],
+      "createAt": "2021-09-18T09:55:50.672Z",
+      "id": 5
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "createAt": "2021-09-18T12:32:41.889Z",
+      "id": 6
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "createAt": "2021-09-18T12:37:19.236Z",
+      "id": 7
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "createAt": "2021-09-18T12:37:29.598Z",
+      "id": 8
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "createAt": "2021-09-18T12:42:26.608Z",
+      "id": 9
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "createAt": "2021-09-18T12:42:36.310Z",
+      "id": 10
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "createAt": "2021-09-18T12:43:01.163Z",
+      "id": 11
     }
   ],
   "tradePartners_list": [
@@ -491,6 +661,175 @@
       "Phone": "+48501066009",
       "username": "demo",
       "id": "_v6xXx0"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "YrL3Gcc"
+    },
+    {
+      "company": "ALEKSANDER MARIAŃSKI",
+      "address": {
+        "street": "Ramiszów, nr 153A",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "mitko.email@gmai.com",
+      "id": "eaA-XuJ"
+    },
+    {
+      "company": "Indywidualna Specjalistyczna Praktyka Lekarska Sylwia Lipowska",
+      "address": {
+        "street": "Liskego 8",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "id": "Y0tNwE2"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "LsCCFHp"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "F62iqmx"
+    },
+    {
+      "company": "4242cz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "MRuWAlo"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "YlcRpps"
+    },
+    {
+      "company": "ALEKSANDER MARIAŃSKI",
+      "address": {
+        "street": "Ramiszów, nr 153A",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "mitko.email@gmai.com",
+      "id": "EAZ5_fz"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "4PXXxhF"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "fullname": "Marek Mitko",
+      "email": "marekmitko@op.pl",
+      "address": {
+        "street": "Sienkiewicza, 125, 7"
+      },
+      "telephoneNumber": 501066009,
+      "id": "KP7DrQw"
+    },
+    {
+      "company": "ALEKSANDER MARIAŃSKI",
+      "fullname": "Marek Mitko",
+      "email": "mitko.email@gmai.com",
+      "address": {
+        "street": "Ramiszów, nr 153A"
+      },
+      "id": "VlfFqnd"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "fullname": "Marek Mitko",
+      "email": "marekmitko@op.pl",
+      "address": {
+        "street": "Sienkiewicza, 125, 7"
+      },
+      "telephoneNumber": 501066009,
+      "id": "Pa8V1ja"
+    },
+    {
+      "company": "ALEKSANDER MARIAŃSKI",
+      "fullname": "Marek Mitko",
+      "email": "mitko.email@gmai.com",
+      "address": {
+        "street": "Ramiszów, nr 153A"
+      },
+      "id": "g1-w-TR"
+    },
+    {
+      "company": "Indywidualna Specjalistyczna Praktyka Lekarska Sylwia Lipowska",
+      "address": {
+        "street": "Liskego 8"
+      },
+      "id": "R0bDxqi"
+    },
+    {
+      "company": "ALEKSANDER MARIAŃSKI",
+      "fullname": "Marek Mitko",
+      "email": "mitko.email@gmai.com",
+      "address": {
+        "street": "Ramiszów, nr 153A"
+      },
+      "id": "6bSDONa"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "fullname": "Marek Mitko",
+      "email": "marekmitko@op.pl",
+      "address": {
+        "street": "Sienkiewicza, 125, 7"
+      },
+      "telephoneNumber": 501066009,
+      "id": "G32N8lH"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "fullname": "Marek Mitko",
+      "email": "marekmitko@op.pl",
+      "address": {
+        "street": "Sienkiewicza, 125, 7"
+      },
+      "telephoneNumber": 501066009,
+      "id": "BOvgZ8Y"
     }
   ]
 }

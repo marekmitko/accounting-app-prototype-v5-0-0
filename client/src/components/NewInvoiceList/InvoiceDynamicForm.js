@@ -1,30 +1,26 @@
 import * as React from "react";
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import {
     Create,
-    FormWithRedirect,
     SelectArrayInput,
-    SaveButton,
-    DeleteButton,
     NullableBooleanInput,
     SimpleForm,
     ArrayInput,
+    ReferenceInput,
+    SelectInput,
 } from 'react-admin';
 import { Grid,  makeStyles  } from '@material-ui/core';
 
 
-import InvoiceSellerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceSeller/InvoiceSellerForm.js';
-import InvoiceBuyerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceBuyer/InvoiceBuyerForm.js';
-import InvoiceItemCreate from './InvoiceDynamicForm/SalesDataForm/InvoiceProductList/InvoiceItem/InvoiceItemCreate.js';
+import myGridSanitized from '../../myComponents/myGridSanitized';
+import InvoiceSellerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceSellerForm.js';
+import InvoiceBuyerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceBuyerForm.js';
 import InvoiceHeaderLogotype from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderLogotype.js'
 import InvoiceHeaderData from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderData.js';
-import InvoiceHeaderList from './InvoiceDynamicForm/SalesDataForm/InvoiceProductList/InvoiceHeaderList.js';
 import SumItemListIteratorForm from './InvoiceDynamicForm/InvoiceInfoForm/SumItemListIteratorForm.js'
-import InvoiceFooterForm from './InvoiceDynamicForm/SalesDataForm/InvoiceFooter/InvoiceFooterForm.js';
-
-import ClientCreateButton from '../../pages/clients/ClientCreateButton.js';
+import InvoiceFooterForm from './InvoiceDynamicForm/InvoiceFooter/InvoiceFooterForm.js';
+import AddTradePartnerItemButton from './InvoiceDynamicForm/InvoicePartiesDataForm/AddTradePartnerItemButton.js';
 import SumSpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable';
-
 
 
 
@@ -50,6 +46,21 @@ const useStyles = makeStyles(() => ({
 }));
 
 const AddInvCreate = (props) => {
+
+
+    const [dataSeller, setSellerData] = useState({});
+    useEffect((dataSeller) => {
+            // GET request using fetch inside useEffect React hook
+            fetch('http://localhost:3000//userProfile/Profile12356x')
+            .then(response => response.json())
+            .then(data => setSellerData(data));
+            // empty dependency array means this effect will only run once (like componentDidMount in classes)
+        }, dataSeller);
+
+
+
+
+
     const classes = useStyles();
 
     const transform = data => ({
@@ -75,7 +86,7 @@ const AddInvCreate = (props) => {
                         </Grid>
                         <Grid item xs={12} sm={8} >
                             
-  {/* <InvoiceHeaderData /> */}
+  <InvoiceHeaderData />
                         </Grid>
                     </Grid>
             {/* <-CONTAINER=>HeadlineDate */}
@@ -83,15 +94,27 @@ const AddInvCreate = (props) => {
                     <Grid container spacing={3} > 
                         <Grid item xs={12} sm={6}> 
                             {/* <FormGroupContextProvider name="Seller"> */}
-  {/* <InvoiceSellerForm /> */}
+  <InvoiceSellerForm dataUser={dataSeller} />
                             {/* </FormGroupContextProvider> */}
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            {/* <FormGroupContextProvider name="Buyer"> */}
-                                <ClientCreateButton  onChange={handleChange} />
-                                
-                                <InvoiceBuyerForm/>
-                            {/* </FormGroupContextProvider> */}
+                            <Grid container spacing={2}  > 
+                                {/* <createTradePartnerItemButton name="Buyer"> */}
+                                <Grid item xs={12} sm={6}>
+                                    <ReferenceInput  label="Wybierz Kontrahenta" key={version} source={"id"} reference="tradePartners_list" >
+                                        <SelectInput label="Wybierz Kontrahenta" variant ="outlined" fullWidth optionText="company" />
+                                    </ReferenceInput>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <AddTradePartnerItemButton onChange={handleChange} />
+                                </Grid>
+                                {/* <createTradePartnerItemButton name="Buyer"> */}
+                            </Grid>
+                            <Grid item xs={12} > 
+                                {/* <FormGroupContextProvider name="Buyer"> */}
+                                    <InvoiceBuyerForm/>
+                                {/* </FormGroupContextProvider> */}
+                            </Grid>
                         </Grid>
                     </Grid>  
             {/* <-CONTAINER=>Seller&Buyer */}
