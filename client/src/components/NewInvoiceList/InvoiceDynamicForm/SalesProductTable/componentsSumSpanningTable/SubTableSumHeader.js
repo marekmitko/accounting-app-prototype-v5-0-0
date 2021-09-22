@@ -25,13 +25,14 @@ const StyledSubTableSumHeader = withStyles((theme) => ({
 const SubTableSumHeader = (props) => {
 
     return(
-        <TableHead color="secondary">
+        <TableHead >
             <TableRow align="right">
-                <StyledSubTableSumHeader  align="center"></StyledSubTableSumHeader>
-                <StyledSubTableSumHeader align="right">SUMA NETTO</StyledSubTableSumHeader>
+                <TableCell  align="center"></TableCell>
+                <StyledSubTableSumHeader align="center">SUMA NETTO</StyledSubTableSumHeader>
                 <StyledSubTableSumHeader  align="center">SUMA VAT</StyledSubTableSumHeader>
-                <StyledSubTableSumHeader  align="left">SUMA BRUTTO</StyledSubTableSumHeader>
-                <TableCell colRow={3}  />
+                <StyledSubTableSumHeader  align="center">SUMA BRUTTO</StyledSubTableSumHeader>
+                <TableCell  colSpan={2}  />
+                
             </TableRow>
         </TableHead>
     );

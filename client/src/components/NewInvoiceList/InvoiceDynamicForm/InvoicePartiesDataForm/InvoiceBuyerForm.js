@@ -49,7 +49,7 @@ const InvoiceBuyerForm = props => {
 
  
 const classes = useStyles();
-
+const dataBuyer = "buyer";
     return (
         <Card variant="outlined" className={classes.paper}>
             <Box display="flex">
@@ -75,6 +75,21 @@ const classes = useStyles();
                     <Box display="flex" mb="-1.75em">
                         <BoxTextInput source="addres.ZIPCode" resource="buyer" mr="0.5em" />
                         <BoxTextInput flex={2} source="addres.city" resource="buyer"/>
+                    </Box>
+                    <Box mt="1em" mb="-1.5em">
+                        <Typography  variant="body2" align="right">
+                    DANE KTONTAKTOWE</Typography>
+                    </Box>
+                    <Box display="flex" mb="-1.5em">
+                        <BoxTextInput label="TELEFON" source="myPhoneNo"  initialValue={dataBuyer.myPhone} variant="standard"   mr="0.5em"  />
+                        <BoxTextInput label="" source="myEmail"  initialValue={dataBuyer.myEmail}  variant="standard" mr="0.5em" disabled /> 
+                    </Box>
+                    <Box display="flex" mt="-1.5em" mb="-1.5em">
+                        <Box mt="1em" mb="-1.5em">
+                            <Typography  variant="body2" align="right">
+                        NUMER ORG. </Typography>
+                        </Box>
+                        <BoxTextInput mt="-0.75em" ml="0.5em" label="" source="myMVA"  initialValue={dataBuyer.myMVA} variant="standard"   mr="0.5em"  />
                     </Box>
                 </Box>
 

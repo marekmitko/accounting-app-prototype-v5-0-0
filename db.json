@@ -471,6 +471,39 @@
       "invoice_type_EHF": true,
       "createAt": "2021-09-22T12:52:10.396Z",
       "id": 16
+    },
+    {
+      "published_at": "2021-09-22",
+      "dataTwoAdd14": "2021-09-08",
+      "nb_views": 0,
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "myNoBank": "00158282852858525",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 1.2651435789694425e+32,
+          "item_type": "towar",
+          "item_qty": 101211241242212420,
+          "item_netto": 1000002421424142,
+          "sum_item_netto": 1.012114863175554e+32,
+          "item_tax": 0.25,
+          "sum_item_tax": 2.530287157938885e+31
+        }
+      ],
+      "payment_method": "bank_transfer",
+      "send_invoice_by": [
+        "post",
+        "mail"
+      ],
+      "createAt": "2021-09-22T16:10:31.369Z",
+      "id": 17
     }
   ],
   "tradePartners_list": [

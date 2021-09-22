@@ -22,7 +22,7 @@ const InvoiceSellerForm = ( { dataUser }) => {
 
     return (
         <React.Fragment>
-        <Card variant="outlined" className={classes.paper}>
+        {/* <Card variant="outlined" className={classes.paper}>
                 <Box display="flex"  mt="1em" pl="1em" p="0.25em" >
                     <Box display="flex" mt="-1.5em" mb="-1.5em">
                         <Box mt="1em" mb="-1.5em">
@@ -32,7 +32,7 @@ const InvoiceSellerForm = ( { dataUser }) => {
                         <BoxTextInput mt="-0.75em" ml="0.5em" label="" source="myNoBank"  initialValue={dataSeller.noBank} variant="standard"   mr="0.5em" disabled />
                     </Box>
                 </Box>
-        </Card>
+        </Card> */}
         <Card variant="outlined" className={classes.paper}>
             <Box display="flex">
                 <Box flex={2} m="1em">
@@ -68,6 +68,17 @@ const InvoiceSellerForm = ( { dataUser }) => {
                     </Box>
                 </Box>
             </Box>
+        </Card>
+        <Card variant="outlined" className={classes.paper}>
+                <Box display="flex"  mt="1em" pl="1em" p="0.25em" >
+                    <Box display="flex" mt="-1.5em" mb="-1.5em">
+                        <Box mt="1em" mb="-1.5em">
+                            <Typography  variant="body2" align="right">
+                      NUMER RACHUNKU SPRZEDAWCY: </Typography>
+                        </Box>
+                        <BoxTextInput mt="-0.75em" ml="0.5em" label="" source="myNoBank"  initialValue={dataSeller.noBank} variant="standard"   mr="0.5em" disabled />
+                    </Box>
+                </Box>
         </Card>
         </React.Fragment>
     )

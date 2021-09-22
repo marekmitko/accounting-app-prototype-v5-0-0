@@ -43,10 +43,10 @@ const SalesTableHeader = (props) => {
                 <StyledTableSubHeader   align="center">ILOŚĆ</StyledTableSubHeader>
                 <StyledTableSubHeader  align="center">NETTO</StyledTableSubHeader>
                 <StyledTableSubHeader   align="center">VAT</StyledTableSubHeader>
-                <StyledTableSubHeader  align="right">WARTOŚĆ NETTO</StyledTableSubHeader>
+                <StyledTableSubHeader  align="center">WARTOŚĆ NETTO</StyledTableSubHeader>
                 <StyledTableSubHeader  align="center">WARTOŚĆ VAT</StyledTableSubHeader>
-                <StyledTableSubHeader  align="left">WARTOŚĆ BRUTTO</StyledTableSubHeader>
-                <StyledTableSubHeader  align="center"><Delete /></StyledTableSubHeader>
+                <StyledTableSubHeader  align="center">WARTOŚĆ BRUTTO</StyledTableSubHeader>
+                <StyledTableSubHeader  colSpan={2} align="center"><Delete /></StyledTableSubHeader>
             </TableRow>
         </TableHead>
     );

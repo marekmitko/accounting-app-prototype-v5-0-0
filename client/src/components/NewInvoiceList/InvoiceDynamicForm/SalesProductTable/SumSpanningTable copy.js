@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
 
 import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
-    CheckboxGroupInput, RadioButtonGroupInput,
+    CheckboxGroupInput, RadioButtonGroupInput, BooleanInput,
 }  from 'react-admin';
 
 
@@ -20,6 +21,10 @@ import Button from '@material-ui/core/Button';
 import Input  from '@material-ui/core/Input';
 
 import SalesTableHeader from './componentsSumSpanningTable/SalesTableHeader';
+import SubTableSumHeader from './componentsSumSpanningTable/SubTableSumHeader';
+
+
+import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
 
 import ItemFormIteratorPartGetSum from './ItemFormIteratorRow/ItemFormIteratorPartGetSum'
 import { useForm, useFormState } from 'react-final-form';
@@ -169,16 +174,18 @@ const SumSpanningTable = (props) => {
                                                             formData["sales_list"][index]["sum_item_brutto"] = 
                                                                                                             (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
                                                                                                             * (formData["sales_list"][index]["item_tax"] + 1);
-                                                                        return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_brutto"]}  source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto"   {...rest} disabled />
+                                                                        return ( <BoxNumberInput  initialValues={formData["sales_list"][index]["sum_item_brutto"]}  source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto"   {...rest} disabled />
                                                                         );}  else {
-                                                                            return( <NumberInput  label="Wartość bretto" source={`sales_list[${index}].sum_item_brutto`}  disabled  />
-                                                                            );}            
-                                                        }
-                                                    } 
+                                                                            return( <BoxNumberInput  mt="-0.75em" ml="0.5em" label="Wartość brutto" source={`sales_list[${index}].sum_item_brutto`}  variant="standard"   mr="0.5em"  />
+                                                                                );}            
+                                                                            }
+                                                                        } 
                                             </FormDataConsumer>
+                                                                
                                 {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
                                         </TableCell>  
-                                        <TableCell>  
+                                                                        {/* <mbNumberInput  label="Wartość brutto" source={`sales_list[${index}].sum_item_brutto`}  disabled  /> */}
+                                        <TableCell colSpan={2} align="center" >  
                                           
                                             <Button 
                                                 style={{ textAlign: 'center' }} 
@@ -209,47 +216,91 @@ const SumSpanningTable = (props) => {
 
                         </TableBody> */}
                     </Table>
-                    <Button
-                        type="button"
-                        onClick={() => fieldProps.fields.push({ id: '', sales_item: '' })}
-                        color="secondary"
-                        variant="contained"
-                        style={{ marginTop: '16px', marginLeft: '16px' }}
-                    >
-                        <Add />
-                    </Button>
-                   <Table>
-                        <TableRow align="right">
-                            <TableCell    colSpan={2} >
-                                <RadioButtonGroupInput label="WYBIERZ FORMĘ PŁATNOŚCI:" source="payment_method" choices={[
-                                        { id: 'bank_transfer', name: 'PRZELEW' },
-                                        { id: 'cash', name: 'GOTÓWKA' },
-                                    ]} 
-                                />
-                            </TableCell>
-                            <TableCell colSpan={2} >Subtotal</TableCell>
-                            <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                            <TableCell   />
-                        </TableRow>
-                        <TableRow>
-                            <TableCell   rowSpan={2} colSpan={2} >
-                                <CheckboxGroupInput label="WYBIERZ FORMĘ PŁATNOŚCI" source="send_invoice_by" choices={[
-                                        { id: 'post', name: 'pocztą' },
-                                        { id: 'mail', name: 'na e-mail' },
-                                    ]} 
-                                />
-                            </TableCell>
-                            <TableCell  >Tax</TableCell>
-                            <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                            <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                            <TableCell   />
-                        </TableRow>
-                        <TableRow>
-                            <TableCell colSpan={2}>Total</TableCell>
-                            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                            <TableCell   />
-                        </TableRow>
-                    </Table>
+                        <TableContainer>
+                            <Grid container  formClassName={classes.gridSimpleForm} >
+                                <Grid item xs={12}> 
+                                    <TableRow>
+                                        <Button
+                                            type="button"
+                                            onClick={() => fieldProps.fields.push({ id: '', sales_item: '' })}
+                                            color="secondary"
+                                            variant="contained"
+                                            style={{ marginTop: '16px', marginLeft: '16px' }}
+                                        >
+                                            <Add />
+                                        </Button>
+                                    </TableRow>
+                                </Grid>
+                                <Grid item xs={12} sm={6}> 
+                                    <Table size="small" >
+                                        <TableRow align="left">
+                                            <TableCell  />                                        
+                                            <TableCell  /> 
+                                            <TableCell >
+                                                <RadioButtonGroupInput label="WYBIERZ FORMĘ PŁATNOŚCI:" source="payment_method" choices={[
+                                                        { id: 'bank_transfer', name: 'PRZELEW' },
+                                                        { id: 'cash', name: 'GOTÓWKA' },
+                                                    ]} 
+                                                />
+                                            </TableCell>
+                                            <TableCell/>
+                                            <TableCell/>
+                                        </TableRow>
+                                        <TableRow align="left">
+                                             <TableCell  />   
+                                        <TableCell  /> 
+                                            <TableCell >
+                                                <CheckboxGroupInput label="PRZEŚLIJ FAKTURĘ ZA POŚREDNICTEM:" source="send_invoice_by" choices={[
+                                                    { id: 'post', name: 'poczty' },
+                                                    { id: 'mail', name: 'e-mail' },
+                                                ]} 
+                                            />
+                                            </TableCell>
+                                            <TableCell  />
+                                            <TableCell  />
+                                        </TableRow>
+                                        <TableRow align="left">
+                                            <TableCell  />
+                                            <TableCell  />   
+                                            <TableCell >
+                                                <BooleanInput label="Faktura EHF" source="invoice_type_EHF" />
+                                            </TableCell>
+                                            <TableCell  />
+                                            <TableCell  />
+                                        </TableRow>
+                                    </Table>
+                                </Grid >
+                                <Grid item xs={12} sm={6}> 
+                                    <Table  >
+                                        <SubTableSumHeader/>
+                                        <TableBody>    
+                                            <TableRow align="right">
+                                                <TableCell >Subtotal</TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell  align="center">{ccyFormat(invoiceSubtotal)}</TableCell>
+                                                <TableCell  colSpan={2}  />
+                                            </TableRow>
+                                            <TableRow align="right">
+                                                <TableCell >Tax</TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="center">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                                                <TableCell align="center">{ccyFormat(invoiceTaxes)}</TableCell>
+                                                <TableCell  colSpan={2}  />
+                                            </TableRow>
+                                            <TableRow align="right">
+                                                <TableCell >Total</TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="center">{ccyFormat(invoiceTotal)}</TableCell> 
+                                                <TableCell  colSpan={2}  />
+                                            </TableRow>
+                                        </TableBody>
+                                    </Table>
+                                </Grid>
+                            </Grid >
+                        </TableContainer>
+        
         </TableContainer>
             )
 

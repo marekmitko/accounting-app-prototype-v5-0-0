@@ -23,6 +23,9 @@ import Input  from '@material-ui/core/Input';
 import SalesTableHeader from './componentsSumSpanningTable/SalesTableHeader';
 import SubTableSumHeader from './componentsSumSpanningTable/SubTableSumHeader';
 
+
+import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
+
 import ItemFormIteratorPartGetSum from './ItemFormIteratorRow/ItemFormIteratorPartGetSum'
 import { useForm, useFormState } from 'react-final-form';
 
@@ -171,16 +174,20 @@ const SumSpanningTable = (props) => {
                                                             formData["sales_list"][index]["sum_item_brutto"] = 
                                                                                                             (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
                                                                                                             * (formData["sales_list"][index]["item_tax"] + 1);
-                                                                        return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_brutto"]}  source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto"   {...rest} disabled />
-                                                                        );}  else {
-                                                                            return( <NumberInput  label="Wartość bretto" source={`sales_list[${index}].sum_item_brutto`}  disabled  />
-                                                                            );}            
-                                                        }
-                                                    } 
-                                            </FormDataConsumer>
-                                {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
-                                        </TableCell>  
-                                        <TableCell>  
+
+                                                                            return ( <BoxNumberInput   source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto" variant="standard"   {...rest} disabled >
+                                                                        {formData["sales_list"][index]["sum_item_brutto"] = (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"]) * (formData["sales_list"][index]["item_tax"] + 1)}
+                                                                            </BoxNumberInput>
+                                                                            );}  else {
+                                                                                return( <BoxNumberInput  mt="-0.75em" ml="0.5em" label="Wartość brutto" source={`sales_list[${index}].sum_item_brutto`}  variant="standard"   mr="0.5em"  />
+                                                                                    );}            
+                                                                                }
+                                                                            } 
+                                                </FormDataConsumer>
+                                                                    
+                                    {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
+                                            </TableCell> 
+                                        <TableCell colSpan={2} align="center" >  
                                           
                                             <Button 
                                                 style={{ textAlign: 'center' }} 
@@ -228,9 +235,10 @@ const SumSpanningTable = (props) => {
                                 </Grid>
                                 <Grid item xs={12} sm={6}> 
                                     <Table size="small" >
-                                        <TableRow align="center">
-                                            <TableCell  />
-                                            <TableCell>
+                                        <TableRow align="left">
+                                            <TableCell  />                                        
+                                            <TableCell  /> 
+                                            <TableCell >
                                                 <RadioButtonGroupInput label="WYBIERZ FORMĘ PŁATNOŚCI:" source="payment_method" choices={[
                                                         { id: 'bank_transfer', name: 'PRZELEW' },
                                                         { id: 'cash', name: 'GOTÓWKA' },
@@ -238,23 +246,28 @@ const SumSpanningTable = (props) => {
                                                 />
                                             </TableCell>
                                             <TableCell/>
+                                            <TableCell/>
                                         </TableRow>
-                                        <TableRow align="center">
-                                            <TableCell  />
-                                            <TableCell   >
+                                        <TableRow align="left">
+                                             <TableCell  />   
+                                        <TableCell  /> 
+                                            <TableCell >
                                                 <CheckboxGroupInput label="PRZEŚLIJ FAKTURĘ ZA POŚREDNICTEM:" source="send_invoice_by" choices={[
                                                     { id: 'post', name: 'poczty' },
                                                     { id: 'mail', name: 'e-mail' },
                                                 ]} 
-                                                />
+                                            />
                                             </TableCell>
+                                            <TableCell  />
                                             <TableCell  />
                                         </TableRow>
-                                        <TableRow align="center">
+                                        <TableRow align="left">
                                             <TableCell  />
-                                            <TableCell>
+                                            <TableCell  />   
+                                            <TableCell >
                                                 <BooleanInput label="Faktura EHF" source="invoice_type_EHF" />
                                             </TableCell>
+                                            <TableCell  />
                                             <TableCell  />
                                         </TableRow>
                                     </Table>
@@ -265,21 +278,24 @@ const SumSpanningTable = (props) => {
                                         <TableBody>    
                                             <TableRow align="right">
                                                 <TableCell >Subtotal</TableCell>
-                                                <TableCell align="right"></TableCell>
                                                 <TableCell align="center"></TableCell>
-                                                <TableCell  align="left">{ccyFormat(invoiceSubtotal)}</TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell  align="center">{ccyFormat(invoiceSubtotal)}</TableCell>
+                                                <TableCell  colSpan={2}  />
                                             </TableRow>
                                             <TableRow align="right">
                                                 <TableCell >Tax</TableCell>
                                                 <TableCell align="center"></TableCell>
                                                 <TableCell align="center">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                                                <TableCell align="left">{ccyFormat(invoiceTaxes)}</TableCell>
+                                                <TableCell align="center">{ccyFormat(invoiceTaxes)}</TableCell>
+                                                <TableCell  colSpan={2}  />
                                             </TableRow>
                                             <TableRow align="right">
                                                 <TableCell >Total</TableCell>
-                                                <TableCell align="right"></TableCell>
                                                 <TableCell align="center"></TableCell>
-                                                <TableCell align="left">{ccyFormat(invoiceTotal)}</TableCell> 
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="center">{ccyFormat(invoiceTotal)}</TableCell> 
+                                                <TableCell  colSpan={2}  />
                                             </TableRow>
                                         </TableBody>
                                     </Table>

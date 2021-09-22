@@ -14,6 +14,7 @@ import { Grid,  makeStyles  } from '@material-ui/core';
 
 
 import myGridSanitized from '../../myComponents/myGridSanitized';
+import InvoiceNo from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceNo';
 import InvoiceSellerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceSellerForm.js';
 import InvoiceBuyerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceBuyerForm.js';
 import InvoiceHeaderLogotype from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderLogotype.js'
@@ -84,7 +85,7 @@ const AddInvCreate = (props) => {
         {/*-> MAIN CONTAINER */}
                 <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} >
             {/* ->CONTAINER=>HeadlineDate */}
-                    <Grid container spacing={3}  >
+                    <Grid container spacing={2}  >
                         <Grid item xs={12} sm={4} >
                             <InvoiceHeaderLogotype />
                         </Grid>
@@ -94,15 +95,19 @@ const AddInvCreate = (props) => {
                         </Grid>
                     </Grid>
             {/* <-CONTAINER=>HeadlineDate */}
-            {/* ->CONTAINER=>Seller&Buyer */}
-                    <Grid container spacing={3} > 
+                    <Grid container spacing={2} > 
+            {/* ->CONTAINER=>NewTradePartnerItemButton */}
                         <Grid item xs={12} sm={6}> 
-                            <FormGroupContextProvider name="inv_Seller">
-  <InvoiceSellerForm dataUser={dataSeller} />
-                            </FormGroupContextProvider>
+                            <Grid container spacing={  2}  > 
+                                <Grid item xs={12} sm={6}>
+                                    <InvoiceNo/>
+                                </Grid>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <Grid container spacing={2}  > 
+            {/* <-CONTAINER=>NewTradePartnerItemButton*/}
+                        <Grid item xs={12} sm={6}> 
+            {/* ->CONTAINER=>NewTradePartnerItemButton */}
+                            <Grid container spacing={  2}  > 
                                 {/* <createTradePartnerItemButton name="Buyer"> */}
                                 <Grid item xs={12} sm={6}>
                                     <ReferenceInput  label="Wybierz Kontrahenta" key={version} source={"id"} reference="tradePartners_list" >
@@ -114,6 +119,18 @@ const AddInvCreate = (props) => {
                                 </Grid>
                                 {/* <createTradePartnerItemButton name="Buyer"> */}
                             </Grid>
+            {/* <-CONTAINER=>NewTradePartnerItemButton*/}
+                        </Grid>
+                    </Grid>
+            {/* ->CONTAINER=>Seller&Buyer */}
+                    <Grid container spacing={2} > 
+                        <Grid item xs={12} sm={6}> 
+                            <FormGroupContextProvider name="inv_Seller">
+  <InvoiceSellerForm dataUser={dataSeller} />
+                            </FormGroupContextProvider>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            
                             <Grid item xs={12} > 
                                 {/* <FormGroupContextProvider name="Buyer"> */}
                                     <InvoiceBuyerForm/>
