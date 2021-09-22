@@ -21,6 +21,7 @@ import Button from '@material-ui/core/Button';
 import Input  from '@material-ui/core/Input';
 
 import SalesTableHeader from './componentsSumSpanningTable/SalesTableHeader';
+import SubTableSumHeader from './componentsSumSpanningTable/SubTableSumHeader';
 
 import ItemFormIteratorPartGetSum from './ItemFormIteratorRow/ItemFormIteratorPartGetSum'
 import { useForm, useFormState } from 'react-final-form';
@@ -259,29 +260,28 @@ const SumSpanningTable = (props) => {
                                     </Table>
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 
-                                    <Table>
-                                        <TableRow colRow={3} align="right">
-                                            <TableCell colRow={1} colSpan={4} />
-                                            <TableCell colRow={3} colSpan={1} />
-                                        </TableRow>
-                                        <TableRow align="right">
-                                            <TableCell >Subtotal</TableCell>
-                                            <TableCell align="center"></TableCell>
-                                            <TableCell align="right"></TableCell>
-                                            <TableCell  align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                                        </TableRow>
-                                        <TableRow align="right">
-                                            <TableCell >Tax</TableCell>
-                                            <TableCell align="center"></TableCell>
-                                            <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                                            <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                                        </TableRow>
-                                        <TableRow align="right">
-                                            <TableCell >Total</TableCell>
-                                            <TableCell align="center"></TableCell>
-                                            <TableCell align="right"></TableCell>
-                                            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell> 
-                                        </TableRow>
+                                    <Table  >
+                                        <SubTableSumHeader/>
+                                        <TableBody>    
+                                            <TableRow align="right">
+                                                <TableCell >Subtotal</TableCell>
+                                                <TableCell align="right"></TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell  align="left">{ccyFormat(invoiceSubtotal)}</TableCell>
+                                            </TableRow>
+                                            <TableRow align="right">
+                                                <TableCell >Tax</TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="center">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                                                <TableCell align="left">{ccyFormat(invoiceTaxes)}</TableCell>
+                                            </TableRow>
+                                            <TableRow align="right">
+                                                <TableCell >Total</TableCell>
+                                                <TableCell align="right"></TableCell>
+                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="left">{ccyFormat(invoiceTotal)}</TableCell> 
+                                            </TableRow>
+                                        </TableBody>
                                     </Table>
                                 </Grid>
                             </Grid >
