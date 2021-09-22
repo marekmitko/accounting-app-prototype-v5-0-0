@@ -14,14 +14,14 @@ import { Grid,  makeStyles  } from '@material-ui/core';
 
 
 import myGridSanitized from '../../myComponents/myGridSanitized';
-import InvoiceNo from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceNo';
-import InvoiceSellerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceSellerForm.js';
-import InvoiceBuyerForm from './InvoiceDynamicForm/InvoicePartiesDataForm/InvoiceBuyerForm.js';
+import InvoiceNo from './InvoiceDynamicForm/contractorsDataForm/InvoiceNo';
+import InvoiceSellerForm from './InvoiceDynamicForm/contractorsDataForm/InvoiceSellerForm.js';
+import InvoiceBuyerForm from './InvoiceDynamicForm/contractorsDataForm/InvoiceBuyerForm.js';
 import InvoiceHeaderLogotype from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderLogotype.js'
 import InvoiceHeaderData from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderData.js';
 import SumItemListIteratorForm from './InvoiceDynamicForm/InvoiceInfoForm/SumItemListIteratorForm.js'
 import InvoiceFooterForm from './InvoiceDynamicForm/InvoiceFooter/InvoiceFooterForm.js';
-import AddTradePartnerItemButton from './InvoiceDynamicForm/InvoicePartiesDataForm/AddTradePartnerItemButton.js';
+import AddTradePartnerItemButton from './InvoiceDynamicForm/contractorsDataForm/AddTradePartnerItemButton.js';
 import SumSpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable';
 
 // ad  ./components/NewInvoiceList/InvoiceDynamicForm/SalesProductTable/SumSpanningTable.js
@@ -142,9 +142,9 @@ const AddInvCreate = (props) => {
             {/* ->CONTAINER=>SalesProductTable */}
                     <Grid container spacing={3}  >
                         <Grid  item xs={12} >
-                            {/* <ArrayInput {...props} source="questions"> */}
-                                <SumSpanningTable  />
-                            {/* </ArrayInput> */}
+                            <ArrayInput label="" { ...props} source="sales_list">
+                                <SumSpanningTable { ...props }  />
+                            </ArrayInput>
                         </Grid>
                     </Grid>
             {/* <-CONTAINER=>SalesProductTable */}

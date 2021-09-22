@@ -6,10 +6,10 @@ import {
     TextInput,
     SaveButton,
     DeleteButton,
-    NullableBooleanInput,
+    BooleanInput,
     ReferenceInput,
     SelectInput,
-    useQuery,
+    useQuery, CheckboxInput,
 } from 'react-admin';
 import { Card, Typography, Box, Toolbar, Paper, makeStyles } from '@material-ui/core';
 
@@ -89,7 +89,8 @@ const dataBuyer = "buyer";
                             <Typography  variant="body2" align="right">
                         NUMER ORG. </Typography>
                         </Box>
-                        <BoxTextInput mt="-0.75em" ml="0.5em" label="" source="myMVA"  initialValue={dataBuyer.myMVA} variant="standard"   mr="0.5em"  />
+                        <BoxTextInput mt="-0.75em" ml="0.5em" label="" source="buyerMVA"  initialValue={dataBuyer.noMVA} variant="standard"   mr="0.5em"  />
+                        <BooleanInput label="MVA" source={dataBuyer.noMVA} />
                     </Box>
                 </Box>
 

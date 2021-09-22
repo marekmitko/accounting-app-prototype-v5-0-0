@@ -11,7 +11,8 @@ import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
 
 import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
-    CheckboxGroupInput, RadioButtonGroupInput, BooleanInput,
+    CheckboxGroupInput, RadioButtonGroupInput, BooleanInput, 
+
 }  from 'react-admin';
 
 
@@ -26,13 +27,16 @@ import SubTableSumHeader from './componentsSumSpanningTable/SubTableSumHeader';
 
 import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
 
-import ItemFormIteratorPartGetSum from './ItemFormIteratorRow/ItemFormIteratorPartGetSum'
 import { useForm, useFormState } from 'react-final-form';
 
 
-const useStyles
+// const { values: { sum_item_brutto }} = useFormState({ subscription: { values: true } });
+// { id: '', sales_item: '' }
 
-= makeStyles({
+
+
+
+const useStyles = makeStyles({
   table: {
     minWidth: 700,
     borderSpacing: 0,
@@ -92,16 +96,14 @@ const item_tax = [
 ];
 
 
-const SumSpanningTable = (props) => {
-    
+const SumSpanningTable = ({source, ...props}) => {
+    // const {source} = source;
     const formGroupState = useFormGroup();
         
     const classes = useStyles();
 
     const record = useRecordContext();
     const resource = useResourceContext();
-    // const refArrayInput = useReferenceArrayInputController();
-
 
     return (  
         <FieldArray name="sales_list"> 
@@ -112,6 +114,7 @@ const SumSpanningTable = (props) => {
                         <SalesTableHeader/>
                         <TableBody>  
                             {fieldProps.fields.map((sales_item, index) => {
+                         
                                 return (
                                     <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
                                         <TableCell align="center"   >
@@ -151,8 +154,7 @@ const SumSpanningTable = (props) => {
                                         <TableCell  align="center">  
                                 {/*sumTAX ->tabCELL=>sum_item_tax*/}
                                             <FormDataConsumer  subscription={{ values: true }} >
-                                                    {({ formData, ...rest  }) => {     
-                                                        console.log('vat', formData["sales_list"][index]["item_tax"] )    
+                                                    {({ formData, ...rest  }) => {       
                                                         if(typeof formData["sales_list"][index]["item_tax"] !== 'undefined' ) {
                                                             formData["sales_list"][index]["sum_item_tax"] = 
                                                                                                             (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
@@ -169,7 +171,7 @@ const SumSpanningTable = (props) => {
                                         <TableCell  align="left">  
                                 {/*sumBRUTTO ->tabCELL=>sum_item_brutto*/}
                                             <FormDataConsumer  subscription={{ values: true }} >
-                                                    {({ formData, ...rest  }) => {         
+                                                    {({ formData, ...rest  }) => {        
                                                         if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
                                                             formData["sales_list"][index]["sum_item_brutto"] = 
                                                                                                             (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
@@ -203,20 +205,6 @@ const SumSpanningTable = (props) => {
                                 )
                             })}
                         </TableBody>  
-
-                        {/* <TableBody>
-                    <IteratorProductRow/>
-                    <  CustomIterator/>
-                         {rows.map((row) => (
-                            <TableRow key={row.desc}>
-                            <TableCell>{row.desc}</TableCell>
-                            <TableCell align="right">{row.qty}</TableCell>
-                            <TableCell align="right">{row.unit}</TableCell>
-                            <TableCell align="right">{ccyFormat(row.price)}</TableCell>
-                            </TableRow>
-                        ))} 
-
-                        </TableBody> */}
                     </Table>
                         <TableContainer>
                             <Grid container  formClassName={classes.gridSimpleForm} >
@@ -224,7 +212,10 @@ const SumSpanningTable = (props) => {
                                     <TableRow>
                                         <Button
                                             type="button"
-                                            onClick={() => fieldProps.fields.push({ id: '', sales_item: '' })}
+                                            onClick={
+                                                () => fieldProps.fields.push({ id: '', sales_item: '', sum_item_brutto: '', })}
+                                                
+                                            
                                             color="secondary"
                                             variant="contained"
                                             style={{ marginTop: '16px', marginLeft: '16px' }}
@@ -235,6 +226,7 @@ const SumSpanningTable = (props) => {
                                 </Grid>
                                 <Grid item xs={12} sm={6}> 
                                     <Table size="small" >
+                                {console.log( "dupa", formGroupState["sales_list"] ) }
                                         <TableRow align="left">
                                             <TableCell  />                                        
                                             <TableCell  /> 
@@ -275,12 +267,19 @@ const SumSpanningTable = (props) => {
                                 <Grid item xs={12} sm={6}> 
                                     <Table  >
                                         <SubTableSumHeader/>
-                                        <TableBody>    
+                                        <TableBody>
                                             <TableRow align="right">
                                                 <TableCell >Subtotal</TableCell>
                                                 <TableCell align="center"></TableCell>
-                                                <TableCell align="center"></TableCell>
                                                 <TableCell  align="center">{ccyFormat(invoiceSubtotal)}</TableCell>
+                                        {/* <FormDataConsumer  subscription={{ values: true }} >
+                                                    {({ formData, ...rest  }) => {     
+                                                        return(
+                                              <TableCell  align="center">{formData["sales_list"].reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0)}</TableCell> 
+                                                        );
+                                                    }
+                                                } 
+                                        </FormDataConsumer> */}
                                                 <TableCell  colSpan={2}  />
                                             </TableRow>
                                             <TableRow align="right">
