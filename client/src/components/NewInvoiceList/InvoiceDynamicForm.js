@@ -8,6 +8,7 @@ import {
     ArrayInput,
     ReferenceInput,
     SelectInput,
+    FormGroupContextProvider,
 } from 'react-admin';
 import { Grid,  makeStyles  } from '@material-ui/core';
 
@@ -22,8 +23,11 @@ import InvoiceFooterForm from './InvoiceDynamicForm/InvoiceFooter/InvoiceFooterF
 import AddTradePartnerItemButton from './InvoiceDynamicForm/InvoicePartiesDataForm/AddTradePartnerItemButton.js';
 import SumSpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable';
 
+// ad  ./components/NewInvoiceList/InvoiceDynamicForm/SalesProductTable/SumSpanningTable.js
 
-
+const payment_method = [
+ 
+];
 
 const segments = [
     { id: 'compulsive', name: 'Compulsive' },
@@ -93,9 +97,9 @@ const AddInvCreate = (props) => {
             {/* ->CONTAINER=>Seller&Buyer */}
                     <Grid container spacing={3} > 
                         <Grid item xs={12} sm={6}> 
-                            {/* <FormGroupContextProvider name="Seller"> */}
+                            <FormGroupContextProvider name="inv_Seller">
   <InvoiceSellerForm dataUser={dataSeller} />
-                            {/* </FormGroupContextProvider> */}
+                            </FormGroupContextProvider>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Grid container spacing={2}  > 

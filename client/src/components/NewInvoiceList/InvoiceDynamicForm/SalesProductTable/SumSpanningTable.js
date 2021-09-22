@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,7 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
 
-import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext }  from 'react-admin';
+import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
+    CheckboxGroupInput, RadioButtonGroupInput, BooleanInput,
+}  from 'react-admin';
 
 
 import Add from '@material-ui/icons/Add';
@@ -207,35 +210,83 @@ const SumSpanningTable = (props) => {
 
                         </TableBody> */}
                     </Table>
-                    <Button
-                        type="button"
-                        onClick={() => fieldProps.fields.push({ id: '', sales_item: '' })}
-                        color="secondary"
-                        variant="contained"
-                        style={{ marginTop: '16px', marginLeft: '16px' }}
-                    >
-                        <Add />
-                    </Button>
-                   <Table>
-                    <TableRow align="right">
-                            <TableCell  rowSpan={3} />
-                            <TableCell  rowSpan={3} />
-                            <TableCell   rowSpan={3} />
-                            <TableCell   rowSpan={3} />
-                            <TableCell colSpan={2} >Subtotal</TableCell>
-                            <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                            <TableCell  rowSpan={3} />
-                        </TableRow>
-                        <TableRow>
-                            <TableCell  >Tax</TableCell>
-                            <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                            <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell colSpan={2}>Total</TableCell>
-                            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                        </TableRow>
-                    </Table>
+                        <TableContainer>
+                            <Grid container  formClassName={classes.gridSimpleForm} >
+                                <Grid item xs={12}> 
+                                    <TableRow>
+                                        <Button
+                                            type="button"
+                                            onClick={() => fieldProps.fields.push({ id: '', sales_item: '' })}
+                                            color="secondary"
+                                            variant="contained"
+                                            style={{ marginTop: '16px', marginLeft: '16px' }}
+                                        >
+                                            <Add />
+                                        </Button>
+                                    </TableRow>
+                                </Grid>
+                                <Grid item xs={12} sm={6}> 
+                                    <Table size="small" >
+                                        <TableRow align="center">
+                                            <TableCell  />
+                                            <TableCell>
+                                                <RadioButtonGroupInput label="WYBIERZ FORMĘ PŁATNOŚCI:" source="payment_method" choices={[
+                                                        { id: 'bank_transfer', name: 'PRZELEW' },
+                                                        { id: 'cash', name: 'GOTÓWKA' },
+                                                    ]} 
+                                                />
+                                            </TableCell>
+                                            <TableCell/>
+                                        </TableRow>
+                                        <TableRow align="center">
+                                            <TableCell  />
+                                            <TableCell   >
+                                                <CheckboxGroupInput label="PRZEŚLIJ FAKTURĘ ZA POŚREDNICTEM:" source="send_invoice_by" choices={[
+                                                    { id: 'post', name: 'poczty' },
+                                                    { id: 'mail', name: 'e-mail' },
+                                                ]} 
+                                                />
+                                            </TableCell>
+                                            <TableCell  />
+                                        </TableRow>
+                                        <TableRow align="center">
+                                            <TableCell  />
+                                            <TableCell>
+                                                <BooleanInput label="Faktura EHF" source="invoice_type_EHF" />
+                                            </TableCell>
+                                            <TableCell  />
+                                        </TableRow>
+                                    </Table>
+                                </Grid >
+                                <Grid item xs={12} sm={6}> 
+                                    <Table>
+                                        <TableRow colRow={3} align="right">
+                                            <TableCell colRow={1} colSpan={4} />
+                                            <TableCell colRow={3} colSpan={1} />
+                                        </TableRow>
+                                        <TableRow align="right">
+                                            <TableCell >Subtotal</TableCell>
+                                            <TableCell align="center"></TableCell>
+                                            <TableCell align="right"></TableCell>
+                                            <TableCell  align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
+                                        </TableRow>
+                                        <TableRow align="right">
+                                            <TableCell >Tax</TableCell>
+                                            <TableCell align="center"></TableCell>
+                                            <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                                            <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
+                                        </TableRow>
+                                        <TableRow align="right">
+                                            <TableCell >Total</TableCell>
+                                            <TableCell align="center"></TableCell>
+                                            <TableCell align="right"></TableCell>
+                                            <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell> 
+                                        </TableRow>
+                                    </Table>
+                                </Grid>
+                            </Grid >
+                        </TableContainer>
+        
         </TableContainer>
             )
 

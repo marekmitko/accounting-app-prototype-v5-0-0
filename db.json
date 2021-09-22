@@ -92,86 +92,6 @@
   ],
   "issuedInvoices_list": [
     {
-      "sales_item": [
-        {
-          "id": "",
-          "sales_item": "",
-          "sum_item_brutto": null
-        },
-        {
-          "id": "",
-          "sales_item": "",
-          "sum_item_brutto": null
-        }
-      ],
-      "sales_item_": [
-        {
-          "item_name": "klui",
-          "item_type": "najem",
-          "item_qty": 5,
-          "item_netto": 5,
-          "item_tax": 0.25
-        },
-        {
-          "item_name": "ljll",
-          "item_type": "najem",
-          "item_qty": 5,
-          "item_netto": 5,
-          "item_tax": 0.25
-        }
-      ],
-      "createAt": "2021-09-17T12:54:11.447Z",
-      "id": 1
-    },
-    {
-      "sales_list": [
-        {
-          "id": "",
-          "sales_item": "",
-          "sum_item_brutto": 125000,
-          "item_name": "fsfe",
-          "item_type": "towar",
-          "item_qty": 100,
-          "item_netto": 1000,
-          "sum_item_netto": 100000,
-          "item_tax": 0.25,
-          "sum_item_tax": 25
-        },
-        {
-          "id": "",
-          "sales_item": "",
-          "sum_item_brutto": 220412.16,
-          "item_name": "j..",
-          "item_type": "Prowizja",
-          "item_qty": 456,
-          "item_netto": 456,
-          "sum_item_netto": 207936,
-          "item_tax": 0.06,
-          "sum_item_tax": 27.36
-        },
-        {
-          "id": "",
-          "sales_item": "",
-          "sum_item_brutto": 10517.32,
-          "item_name": "l,liuk",
-          "item_type": "towar",
-          "item_qty": 41,
-          "item_netto": 242,
-          "sum_item_netto": 9922,
-          "item_tax": 0.06,
-          "sum_item_tax": 2.46
-        }
-      ],
-      "groups": [
-        "collector",
-        "ordered_once",
-        "returns"
-      ],
-      "has_newsletter": true,
-      "createAt": "2021-09-17T13:17:52.031Z",
-      "id": 2
-    },
-    {
       "published_at": "2021-09-17",
       "dataTwoAdd14": "2021-09-03",
       "nb_views": 0,
@@ -239,35 +159,6 @@
       ],
       "createAt": "2021-09-18T09:53:52.976Z",
       "id": 4
-    },
-    {
-      "published_at": "2021-09-18",
-      "dataTwoAdd14": "2021-09-04",
-      "nb_views": 0,
-      "myNoBank": "00158282852858525",
-      "myCompany": "Biuro Podróży Pawłowice",
-      "myStreet": "Widawska 128",
-      "myZIPCode": "58-202",
-      "myCity": "Wrocław",
-      "myPhoneNo": "501069054",
-      "myEmail": "kowalskitravel@gmail.com",
-      "myMVA": "9973786",
-      "sales_list": [
-        {
-          "id": "",
-          "sales_item": "",
-          "sum_item_brutto": 281.25,
-          "item_name": "Maciek",
-          "item_type": "towar",
-          "item_qty": 5,
-          "item_netto": 45,
-          "sum_item_netto": 225,
-          "item_tax": 0.25,
-          "sum_item_tax": 56.25
-        }
-      ],
-      "createAt": "2021-09-18T09:54:53.395Z",
-      "id": "219a29b9-5b99-4bba-b361-5dab20c90075"
     },
     {
       "published_at": "2021-09-18",
@@ -387,6 +278,199 @@
       "myMVA": "9973786",
       "createAt": "2021-09-18T12:43:01.163Z",
       "id": 11
+    },
+    {
+      "published_at": "2021-09-18",
+      "dataTwoAdd14": "2021-09-04",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "createAt": "2021-09-18T12:52:49.206Z",
+      "id": 12
+    },
+    {
+      "published_at": "2021-09-22",
+      "dataTwoAdd14": "2021-09-08",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 787.5,
+          "item_name": ";l;io;",
+          "item_type": "towar",
+          "item_qty": 14,
+          "item_netto": 45,
+          "sum_item_netto": 630,
+          "item_tax": 0.25,
+          "sum_item_tax": 157.5
+        }
+      ],
+      "createAt": "2021-09-22T06:19:13.760Z",
+      "id": 13
+    },
+    {
+      "published_at": "2021-09-22",
+      "dataTwoAdd14": "2021-09-08",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 31.25,
+          "item_name": "Mało",
+          "item_type": "towar",
+          "item_qty": 5,
+          "item_netto": 5,
+          "sum_item_netto": 25,
+          "item_tax": 0.25,
+          "sum_item_tax": 6.25
+        }
+      ],
+      "payment_method": "cash",
+      "send_invoice_by": [
+        "mail",
+        "post"
+      ],
+      "invoice_type_EHF": true,
+      "createAt": "2021-09-22T12:42:32.749Z",
+      "id": 14
+    },
+    {
+      "published_at": "2021-09-22",
+      "dataTwoAdd14": "2021-09-08",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 172.5,
+          "item_name": "Naprawa",
+          "item_type": "usługi",
+          "item_qty": 1,
+          "item_netto": 150,
+          "sum_item_netto": 150,
+          "item_tax": 0.15,
+          "sum_item_tax": 22.5
+        },
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 187.5,
+          "item_name": "Rynna",
+          "item_type": "towar",
+          "item_qty": 10,
+          "item_netto": 15,
+          "sum_item_netto": 150,
+          "item_tax": 0.25,
+          "sum_item_tax": 37.5
+        },
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 1724.9999999999998,
+          "item_name": "Lokal na 7 ",
+          "item_type": "najem",
+          "item_qty": 1,
+          "item_netto": 1500,
+          "sum_item_netto": 1500,
+          "item_tax": 0.15,
+          "sum_item_tax": 225
+        }
+      ],
+      "payment_method": "bank_transfer",
+      "send_invoice_by": [
+        "post"
+      ],
+      "invoice_type_EHF": true,
+      "createAt": "2021-09-22T12:44:27.473Z",
+      "id": 15
+    },
+    {
+      "published_at": "2021-09-22",
+      "dataTwoAdd14": "2021-09-08",
+      "nb_views": 0,
+      "myNoBank": "00158282852858525",
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 11368.000000000002,
+          "item_name": "Maciek",
+          "item_type": "najem",
+          "item_qty": 10,
+          "item_netto": 1015,
+          "sum_item_netto": 10150,
+          "item_tax": 0.12,
+          "sum_item_tax": 1218
+        },
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": 175,
+          "item_name": "Jurek",
+          "item_type": "towar",
+          "item_qty": 14,
+          "item_netto": 10,
+          "sum_item_netto": 140,
+          "item_tax": 0.25,
+          "sum_item_tax": 35
+        },
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": null,
+          "item_netto": 10,
+          "sum_item_netto": null,
+          "item_tax": 0.15,
+          "sum_item_tax": null
+        }
+      ],
+      "payment_method": "bank_transfer",
+      "send_invoice_by": [
+        "mail",
+        "post"
+      ],
+      "invoice_type_EHF": true,
+      "createAt": "2021-09-22T12:52:10.396Z",
+      "id": 16
     }
   ],
   "tradePartners_list": [
@@ -830,6 +914,15 @@
       },
       "telephoneNumber": 501066009,
       "id": "BOvgZ8Y"
+    },
+    {
+      "company": "ALEKSANDER MARIAŃSKI",
+      "fullname": "Marek Mitko",
+      "email": "mitko.email@gmai.com",
+      "address": {
+        "street": "Ramiszów, nr 153A"
+      },
+      "id": "dEOhqPq"
     }
   ]
 }

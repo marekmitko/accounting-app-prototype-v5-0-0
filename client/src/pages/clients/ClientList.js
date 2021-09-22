@@ -25,8 +25,8 @@ const ClientList = (props) => {
             <TextField label="ADRES" source="address.street" />
             <TextField label="MVA" source="MVA" />
             <TextField label="TELEFON" source="telephoneNumber" />
-            <EditButton label="EDYTUJ" basePath='/dbclientlist' />
-            <DeleteButton label="USUŃ" basePath='/dbclientlist' />
+            <EditButton label="EDYTUJ" basePath='/tradePartners_list' />
+            <DeleteButton label="USUŃ" basePath='/tradePartners_list' />
         </Datagrid>
     </List>
   );
