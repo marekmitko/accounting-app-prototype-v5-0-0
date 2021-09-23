@@ -92,7 +92,7 @@ const SumSpanningTable = (    {source, ...props}) => {
     return (  
         <FieldArray name="sales_list" decorators={[calculator]} > 
         {(fieldProps) => {
-         
+          console.log
         
             return (
 
@@ -213,7 +213,7 @@ const SumSpanningTable = (    {source, ...props}) => {
                                 </Grid>
                                 <Grid item xs={12} sm={6}> 
                                     <Table size="small" >
-                             
+                                {console.log( "dupa", formGroupState["sales_list"] ) }
                                         <TableRow align="left">
                                             <TableCell  />                                        
                                             <TableCell  /> 
@@ -259,11 +259,14 @@ const SumSpanningTable = (    {source, ...props}) => {
                                                 <TableCell >Subtotal</TableCell>
                                                 <TableCell align="center"></TableCell>
                                                 <TableCell  align="center">{ccyFormat(245,544)}</TableCell>
-                                       
-                                              {/* <TableCell  align="center">{fieldProps.fields.value.reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0)}</TableCell>  */}
-                                              {/* <TableCell  align="center">{fieldProps.fields.value}</TableCell>  */}
-                                                
-                                      
+                                        {/* <FormDataConsumer  subscription={{ values: true }} >
+                                                    {({ formData, ...rest  }) => {     
+                                                        return(
+                                              <TableCell  align="center">{formData["sales_list"].reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0)}</TableCell> 
+                                                        );
+                                                    }
+                                                } 
+                                        </FormDataConsumer> */}
                                                 <TableCell  colSpan={2}  />
                                             </TableRow>
                                             <TableRow align="right">
@@ -279,16 +282,6 @@ const SumSpanningTable = (    {source, ...props}) => {
                                                 <TableCell align="center"></TableCell>
                                                 <TableCell align="center">{ccyFormat(25,55)}</TableCell> 
                                                 <TableCell  colSpan={2}  />
-                                                {/* { console.log('endtablesum', fieldProps.fields.map((name, index)=> `sales_list[${index}]`... ))} */}
-                                                {/* sam string  */}
-                                                {/* { console.log('endtablesum', fieldProps.fields.map((name, index)=> name ))} */}
-                                                {/* tablica objektów  */}
-                                                {/* { console.log('endtablesum', fieldProps.fields.value.map(({sum_item_brutto}) => sum_item_brutto ))} */}
-                                                { console.log('endtablesum', fieldProps.fields.value )}
-                                                {/* { console.log('endtablesum', fieldProps.fields.value.reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0) )} */}
-                                                { console.log('2blesum', fieldProps.fields["sales_list"] )}
-
-                                                {/* return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0); */}
                                             </TableRow>
                                         </TableBody>
                                     </Table>
