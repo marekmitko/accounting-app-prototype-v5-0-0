@@ -48,7 +48,7 @@ const useStyles = makeStyles(() => ({
 const AddInvCreate = (props) => {
 
     const [dataSeller, setSellerData] = useState({});
-    useEffect((dataSeller) => {
+        useEffect((dataSeller) => {
             // GET request using fetch inside useEffect React hook
             fetch('http://localhost:3000//userProfile/Profile12356x')
             .then(response => response.json())
