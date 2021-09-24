@@ -21,8 +21,8 @@ import Delete from '@material-ui/icons/HighlightOff';
 import Button from '@material-ui/core/Button';
 import Input  from '@material-ui/core/Input';
 
-import SalesTableHeader from './componentsSumSpanningTable/SalesTableHeader';
-import SubTableSumHeader from './componentsSumSpanningTable/SubTableSumHeader';
+import SalesTableHeader from './componentsSalesTable/SalesTableHeader';
+import SubTableSumHeader from './componentsSalesTable/SubTableSumHeader';
 
 import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
 
@@ -74,36 +74,31 @@ const item_tax = [
     { id: 0, name: '0 %', value: 0 },
 ];
 
+                {/*>> ->CONTAINER=>HeadlineDate */}
+                {/* X <-CONTAINER=>HeadlineDate */}
+
+
 
 const SumSpanningTable = (    {source, ...props}) => {
-
-
-
-
     const formGroupState = useFormGroup();
-        
     const classes = useStyles();
-
     const record = useRecordContext();
     const resource = useResourceContext();
-
-    
-
     return (  
         <FieldArray name="sales_list" decorators={[calculator]} > 
-        {(fieldProps) => {
-         
-        
-            return (
-
-                <TableContainer component={Paper}>
+            {(fieldProps) => {
+                    return (
+                        <TableContainer component={Paper}>
+        {/*>> ->CONTAINER=> SalesTable in Table */}
                     <Table className={classes.table} aria-label="sales list table">
+            {/*>>  ->subCONTAINER=> HEADER-> sales_list in TableHead--SalesTable */}
                         <SalesTableHeader/>
+            {/* X <-subCONTAINER=> Header-> sales_list in TableHead--SalesTable */}
                         <TableBody>  
+            {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
                             {fieldProps.fields.map((sales_item, index) => {
-                         
-                                return (
-                                    <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
+                                    return (
+                                        <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
                                         <TableCell align="center"   >
                                             {index+1}
                                         </TableCell>  
@@ -173,11 +168,9 @@ const SumSpanningTable = (    {source, ...props}) => {
                                                                                 }
                                                                             } 
                                                 </FormDataConsumer>
-                                                                    
                                     {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
                                             </TableCell> 
                                         <TableCell colSpan={2} align="center" >  
-                                          
                                             <Button 
                                                 style={{ textAlign: 'center' }} 
                                                 color="error"
@@ -186,14 +179,15 @@ const SumSpanningTable = (    {source, ...props}) => {
                                                 onClick={() => fieldProps.fields.remove(index)}>
                                                 <Delete style={{ color: 'red' }} />
                                             </Button>
-                                      
                                         </TableCell>  
                                     </TableRow>  
-                                )
-                            })}
+                                    );
+                                }
+                            )}
+            {/* X <-subCONTAINER=> sales_item in TableRow--iteratorForm */}
                         </TableBody>  
-                    </Table>
-                        <TableContainer>
+            {/*>>  ->subCONTAINER=> addButton in TableRow--capition */}
+                        <capition>
                             <Grid container  formClassName={classes.gridSimpleForm} >
                                 <Grid item xs={12}> 
                                     <TableRow>
@@ -201,19 +195,25 @@ const SumSpanningTable = (    {source, ...props}) => {
                                             type="button"
                                             onClick={
                                                 () => fieldProps.fields.push({ id: '', sales_item: '', sum_item_brutto: '', })}
-                                                
-                                            
-                                            color="secondary"
+                                                color="secondary"
                                             variant="contained"
                                             style={{ marginTop: '16px', marginLeft: '16px' }}
-                                        >
+                                            >
                                             <Add />
                                         </Button>
                                     </TableRow>
                                 </Grid>
-                                <Grid item xs={12} sm={6}> 
+                            </Grid>
+                        </capition>
+            {/* X <-subCONTAINER=> addButton in TableRow--capition */}
+                    </Table>
+        {/* X <-CONTAINER=> SalesTable in Table */}
+                    <TableContainer>
+                {/*>> ->CONTAINER=> addOptions && sumSalesTable in TableContainer */}
+                            <Grid container  formClassName={classes.gridSimpleForm} >
+                                <Grid item xs={12} sm={6}>
+                        {/*>> ->subCONTAINER=> additional options on the invoice in TableContainer__Table */}
                                     <Table size="small" >
-                             
                                         <TableRow align="left">
                                             <TableCell  />                                        
                                             <TableCell  /> 
@@ -249,8 +249,8 @@ const SumSpanningTable = (    {source, ...props}) => {
                                                 }
                                 </TableRow>
                                         <TableRow align="left">
-                                             <TableCell  />   
-                                        <TableCell  /> 
+                                            <TableCell  />   
+                                            <TableCell  /> 
                                             <TableCell >
                                                 <CheckboxGroupInput label="PRZEŚLIJ FAKTURĘ ZA POŚREDNICTEM:" source="send_invoice_by" choices={[
                                                     { id: 'post', name: 'poczty' },
@@ -271,20 +271,17 @@ const SumSpanningTable = (    {source, ...props}) => {
                                             <TableCell  />
                                         </TableRow>
                                     </Table>
+                        {/* X <-subCONTAINER=> additional options on the invoice in TableContainer__Table  */}
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 
-                                    <Table  >
+                        {/*>> ->subCONTAINER=> additional options on the invoice in TableContainer__Table */}
+                                    <Table>
                                         <SubTableSumHeader/>
                                         <TableBody>
                                             <TableRow align="right">
                                                 <TableCell >Subtotal</TableCell>
                                                 <TableCell align="center"></TableCell>
                                                 <TableCell  align="center">{ccyFormat(245,544)}</TableCell>
-                                       
-                                              {/* <TableCell  align="center">{fieldProps.fields.value.reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0)}</TableCell>  */}
-                                              {/* <TableCell  align="center">{fieldProps.fields.value}</TableCell>  */}
-                                                
-                                      
                                                 <TableCell  colSpan={2}  />
                                             </TableRow>
                                             <TableRow align="right">
@@ -313,14 +310,14 @@ const SumSpanningTable = (    {source, ...props}) => {
                                             </TableRow>
                                         </TableBody>
                                     </Table>
+                        {/* X <-subCONTAINER=> additional options on the invoice in TableContainer__Table  */}
                                 </Grid>
                             </Grid >
-                        </TableContainer>
-        
-        </TableContainer>
-            )
-
-            }
+                {/* X <-subCONTAINER=> addOptions && sumSalesTable in TableContainer */}
+                    </TableContainer>
+                </TableContainer>
+                    );
+                }
             }
         </FieldArray>
        

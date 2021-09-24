@@ -7,7 +7,7 @@ import BoxItemNumberInput from '../../../../myComponentsMui/myMuiForm/BoxItemNum
 import BoxTextInput from '../../../../myComponentsMui/myMuiForm/BoxTextInput';
 import BoxBootstrapInput  from '../../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
 
-import SalesTableHeader from '../../InvoiceDynamicForm/SalesProductTable/componentsSumSpanningTable/SalesTableHeader';
+import SalesTableHeader from '../../InvoiceDynamicForm/SalesProductTable/componentsSalesTable/SalesTableHeader';
 
 const useStyles = makeStyles({
     inlineBlock: { display: 'inline-flex',
@@ -49,7 +49,7 @@ const AddedRowIterator = (props) => {
 
     return (
         <ArrayInput {...props} label="DODAJ PRODUKT"  source="product_list">
-    {/* ->CONTAINER=>ProductList */}
+    {/*>> ->CONTAINER=>ProductList */}
             <SimpleFormIterator classes={iteratorClasses}  >
 
             {/* <TextInput label="IMIĘ I NAZWISKO"source="fullname" />
@@ -81,7 +81,7 @@ const AddedRowIterator = (props) => {
             </FormDataConsumer>
           
             </SimpleFormIterator>
-    {/* <-CONTAINER=ProductList */}
+    {/* X <-CONTAINER=ProductList */}
         </ArrayInput>
 
 );

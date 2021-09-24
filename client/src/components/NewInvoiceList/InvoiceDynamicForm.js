@@ -12,7 +12,6 @@ import {
 } from 'react-admin';
 import { Grid,  makeStyles  } from '@material-ui/core';
 
-
 import myGridSanitized from '../../myComponents/myGridSanitized';
 import InvoiceNo from './InvoiceDynamicForm/contractorsDataForm/InvoiceNo';
 import InvoiceSellerForm from './InvoiceDynamicForm/contractorsDataForm/InvoiceSellerForm.js';
@@ -27,31 +26,26 @@ import SumSpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanning
 // ad  ./components/NewInvoiceList/InvoiceDynamicForm/SalesProductTable/SumSpanningTable.js
 
 const payment_method = [
- 
-];
-
+    ];
 const segments = [
-    { id: 'compulsive', name: 'Compulsive' },
-    { id: 'collector', name: 'Collector' },
-    { id: 'ordered_once', name: 'Ordered Once' },
-    { id: 'regular', name: 'Regular' },
-    { id: 'returns', name: 'Returns' },
-    { id: 'reviewer', name: 'Reviewer' },
-];
-
+        { id: 'compulsive', name: 'Compulsive' },
+        { id: 'collector', name: 'Collector' },
+        { id: 'ordered_once', name: 'Ordered Once' },
+        { id: 'regular', name: 'Regular' },
+        { id: 'returns', name: 'Returns' },
+        { id: 'reviewer', name: 'Reviewer' },
+    ];
 const backlinksDefaultValue = [
-    {
-        date: new Date(),
-        url: 'http://google.com',
-    },
-];
+        {
+            url: 'http://google.com',
+        },
+    ];
 
 const useStyles = makeStyles(() => ({
-    gridSimpleForm: { flexGrow: 1 },
-}));
+        gridSimpleForm: { flexGrow: 1 },
+    }));
 
 const AddInvCreate = (props) => {
-
 
     const [dataSeller, setSellerData] = useState({});
     useEffect((dataSeller) => {
@@ -62,19 +56,12 @@ const AddInvCreate = (props) => {
             // empty dependency array means this effect will only run once (like componentDidMount in classes)
         }, dataSeller);
 
-
-
-
-
     const classes = useStyles();
-
     const transform = data => ({
-        ...data,
-        createAt: new Date(),
-    })
-
+            ...data,
+            createAt: new Date(),
+        })
     const dateDefaultValue = useMemo(() => new Date(), []);
-
     const [version, setVersion] = React.useState(0);
     const handleChange = React.useCallback(() => setVersion(version + 1), [version]);
 
@@ -84,7 +71,7 @@ const AddInvCreate = (props) => {
             
         {/*-> MAIN CONTAINER */}
                 <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} >
-            {/* ->CONTAINER=>HeadlineDate */}
+            {/*>> ->CONTAINER=>HeadlineDate */}
                     <Grid container spacing={2}  >
                         <Grid item xs={12} sm={4} >
                             <InvoiceHeaderLogotype />
@@ -94,9 +81,9 @@ const AddInvCreate = (props) => {
   <InvoiceHeaderData />
                         </Grid>
                     </Grid>
-            {/* <-CONTAINER=>HeadlineDate */}
+            {/* X <-CONTAINER=>HeadlineDate */}
                     <Grid container spacing={2} > 
-            {/* ->CONTAINER=>NewTradePartnerItemButton */}
+            {/*>> ->CONTAINER=>NewTradePartnerItemButton */}
                         <Grid item xs={12} sm={6}> 
                             <Grid container spacing={  2}  > 
                                 <Grid item xs={12} sm={6}>
@@ -104,9 +91,9 @@ const AddInvCreate = (props) => {
                                 </Grid>
                             </Grid>
                         </Grid>
-            {/* <-CONTAINER=>NewTradePartnerItemButton*/}
+            {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
                         <Grid item xs={12} sm={6}> 
-            {/* ->CONTAINER=>NewTradePartnerItemButton */}
+            {/*>> ->CONTAINER=>NewTradePartnerItemButton */}
                             <Grid container spacing={  2}  > 
                                 {/* <createTradePartnerItemButton name="Buyer"> */}
                                 <Grid item xs={12} sm={6}>
@@ -119,10 +106,10 @@ const AddInvCreate = (props) => {
                                 </Grid>
                                 {/* <createTradePartnerItemButton name="Buyer"> */}
                             </Grid>
-            {/* <-CONTAINER=>NewTradePartnerItemButton*/}
+            {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
                         </Grid>
                     </Grid>
-            {/* ->CONTAINER=>Seller&Buyer */}
+            {/*>> ->CONTAINER=>Seller&Buyer */}
                     <Grid container spacing={2} > 
                         <Grid item xs={12} sm={6}> 
                             <FormGroupContextProvider name="inv_Seller">
@@ -138,8 +125,8 @@ const AddInvCreate = (props) => {
                             </Grid>
                         </Grid>
                     </Grid>  
-            {/* <-CONTAINER=>Seller&Buyer */}
-            {/* ->CONTAINER=>SalesProductTable */}
+            {/* X <-CONTAINER=>Seller&Buyer */}
+            {/*>> ->CONTAINER=>SalesProductTable */}
                     <Grid container spacing={3}  >
                         <Grid  item xs={12} >
                             <ArrayInput label="" source="sales_list">
@@ -147,15 +134,15 @@ const AddInvCreate = (props) => {
                             </ArrayInput>
                         </Grid>
                     </Grid>
-            {/* <-CONTAINER=>SalesProductTable */}
-            {/* ->CONTAINER=>DatagridProducts*/}
+            {/* X <-CONTAINER=>SalesProductTable */}
+            {/*>> ->CONTAINER=>DatagridProducts*/}
                     <Grid container spacing={3} >
                         <Grid item xs={12} >
                             {/* <InvoiceHeaderList>
                                 <InvoiceItemCreate fullWidth />
                             </InvoiceHeaderList> */}
                         </Grid>
-                {/* ->subCONTAINER=>SelectChoices&Sum*/}
+                {/*>> ->subCONTAINER=>SelectChoices&Sum*/}
                         <Grid item container spacing={6} >
                             <Grid item  xs={12} sm={4} >
                                 <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
@@ -165,17 +152,16 @@ const AddInvCreate = (props) => {
                                 <SumItemListIteratorForm />
                             </Grid>
                         </Grid>
-                {/* <- CONTAINER=>SelectChoices&Sum*/}
+                {/* X <- CONTAINER=>SelectChoices&Sum*/}
                     </Grid>  
-            {/* <-CONTAINER=>DatagridProducts*/}
-            {/* ->CONTAINER=>AddedInfo*/}
+            {/* X <-CONTAINER=>DatagridProducts*/}
+            {/*>> ->CONTAINER=>AddedInfo*/}
                 <Grid container spacing={3} >
                     <Grid item  xs={12}  >
                         <InvoiceFooterForm />
-                     
                     </Grid>
                 </Grid>
-            {/* <-CONTAINER=>AddedInfo*/}
+            {/* X <-CONTAINER=>AddedInfo*/}
                 </myGridSanitized>
         {/*<- MAIN CONTAINER */}
             </SimpleForm>
@@ -184,19 +170,6 @@ const AddInvCreate = (props) => {
 };
 
 export default AddInvCreate;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

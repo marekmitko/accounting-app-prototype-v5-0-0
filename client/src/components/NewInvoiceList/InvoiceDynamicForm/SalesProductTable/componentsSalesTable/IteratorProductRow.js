@@ -23,7 +23,7 @@ const IteratorProductRow = (props) => {
 
     return (
         <ArrayInput {...props} label="DODAJ PRODUKT"  source="product_list">
-    {/* ->CONTAINER=>ProductList */}
+    {/*>> ->CONTAINER=>ProductList */}
             <SimpleFormIterator>
                 <FormDataConsumer>
                     {({ getSource, scopedFormData, }) => {
@@ -45,7 +45,7 @@ const IteratorProductRow = (props) => {
                     }}
                 </FormDataConsumer>
             </SimpleFormIterator>
-   {/* ->CONTAINER=>ProductList */}
+   {/*>> ->CONTAINER=>ProductList */}
         </ArrayInput>
 
 );
