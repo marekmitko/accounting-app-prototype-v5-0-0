@@ -22,13 +22,15 @@ import Button from '@material-ui/core/Button';
 import Input  from '@material-ui/core/Input';
 
 import SalesTableHeader from './componentsSalesTable/SalesTableHeader';
-import SubTableSumHeader from './componentsSalesTable/SubTableSumHeader';
+// import SubTableSumHeader from './componentsSubSalesTable/SumSalesItemsHeader';
 
 import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
 
 import { useForm, useFormState } from 'react-final-form';
 
 import createDecorator from 'final-form-calculate'
+import AdditionalOptions from './componentsSubSalesTable/AdditionalOptions'
+import SumSalesItems from './componentsSubSalesTable/SumSalesItems';
 
 
 
@@ -39,9 +41,9 @@ const useStyles = makeStyles({
   },
 });
 
-function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
-}
+// function ccyFormat(num) {
+//   return `${num.toFixed(2)}`;
+// }
 
 function subtotal(items) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
@@ -209,119 +211,26 @@ const SumSpanningTable = (    {source, ...props}) => {
                     </Table>
         {/* X <-CONTAINER=> SalesTable in Table */}
                     <TableContainer>
-                {/*>> ->CONTAINER=> addOptions && sumSalesTable in TableContainer */}
+                {/*>> ->CONTAINER=> additional options on the invoice */}
                             <Grid container  formClassName={classes.gridSimpleForm} >
                                 <Grid item xs={12} sm={6}>
-                        {/*>> ->subCONTAINER=> additional options on the invoice in TableContainer__Table */}
-                                    <Table size="small" >
-                                        <TableRow align="left">
-                                            <TableCell  />                                        
-                                            <TableCell  /> 
-                                            <TableCell >
-                                                <RadioButtonGroupInput label="WYBIERZ FORMĘ PŁATNOŚCI:" source="payment_method" choices={[
-                                                        { id: 'bank_transfer', name: 'PRZELEW' },
-                                                        { id: 'cash', name: 'GOTÓWKA' },
-                                                    ]} 
-                                                />
-                                            </TableCell>
-                                                <TableCell>
-                                            <FormDataConsumer  subscription={{ values: true }} >
-                                                    {({ formData, ...rest  }) => { 
-
-                                                        if(formData.sales_list && formData.sales_list.length > 0 ) {
-
-                                                            const sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
-                                                                            return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
-                                                                    console.log("sumBrutto", sumBrutto );
-                                                            }
-                                                        }
-                                                    } 
-                                                </FormDataConsumer>
-                                                </TableCell>
-                                                                                                                                            
-                                            <TableCell>
-                                                    </TableCell>
-                                                { ({ fieldProps }) => { 
-                                                    console.log("propFieldsValue", typeof(fieldProps.fields.value ), fieldProps.fields.value )
-                                                    console.log("propFields", typeof(fieldProps.fields ), fieldProps.fields["sales_list"] )
-                                                
-                                                        }      
-                                                }
-                                </TableRow>
-                                        <TableRow align="left">
-                                            <TableCell  />   
-                                            <TableCell  /> 
-                                            <TableCell >
-                                                <CheckboxGroupInput label="PRZEŚLIJ FAKTURĘ ZA POŚREDNICTEM:" source="send_invoice_by" choices={[
-                                                    { id: 'post', name: 'poczty' },
-                                                    { id: 'mail', name: 'e-mail' },
-                                                ]} 
-                                            />
-                                            </TableCell>
-                                            <TableCell  />
-                                            <TableCell  />
-                                        </TableRow>
-                                        <TableRow align="left">
-                                            <TableCell  />
-                                            <TableCell  />   
-                                            <TableCell >
-                                                <BooleanInput label="Faktura EHF" source="invoice_type_EHF" />
-                                            </TableCell>
-                                            <TableCell  />
-                                            <TableCell  />
-                                        </TableRow>
-                                    </Table>
-                        {/* X <-subCONTAINER=> additional options on the invoice in TableContainer__Table  */}
+                        {/*>> ->subCONTAINER=> AdditionalOptions in Table */}
+                                    <AdditionalOptions />
+                        {/* X <-subCONTAINER=> AdditionalOptions in Table */}
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 
-                        {/*>> ->subCONTAINER=> additional options on the invoice in TableContainer__Table */}
-                                    <Table>
-                                        <SubTableSumHeader/>
-                                        <TableBody>
-                                            <TableRow align="right">
-                                                <TableCell >Subtotal</TableCell>
-                                                <TableCell align="center"></TableCell>
-                                                <TableCell  align="center">{ccyFormat(245,544)}</TableCell>
-                                                <TableCell  colSpan={2}  />
-                                            </TableRow>
-                                            <TableRow align="right">
-                                                <TableCell >Tax</TableCell>
-                                                <TableCell align="center"></TableCell>
-                                                <TableCell align="center"></TableCell>
-                                                <TableCell align="center">{ccyFormat(25,66)}</TableCell>
-                                                <TableCell  colSpan={2}  />
-                                            </TableRow>
-                                            <TableRow align="right">
-                                                <TableCell >Total</TableCell>
-                                                <TableCell align="center"></TableCell>
-                                                <TableCell align="center"></TableCell>
-                                                <TableCell align="center">{ccyFormat(25,55)}</TableCell> 
-                                                <TableCell  colSpan={2}  />
-                                                {/* { console.log('endtablesum', fieldProps.fields.map((name, index)=> `sales_list[${index}]`... ))} */}
-                                                {/* sam string  */}
-                                                {/* { console.log('endtablesum', fieldProps.fields.map((name, index)=> name ))} */}
-                                                {/* tablica objektów  */}
-                                                {/* { console.log('endtablesum', fieldProps.fields.value.map(({sum_item_brutto}) => sum_item_brutto ))} */}
-                                                {/* { console.log('endtablesum', fieldProps.fields.value )} */}
-                                                {/* { console.log('endtablesum', fieldProps.fields.value.reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0) )} */}
-                                                {/* { console.log('2blesum', fieldProps.fields["sales_list"] )} */}
-
-                                                {/* return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0); */}
-                                            </TableRow>
-                                        </TableBody>
-                                    </Table>
-                        {/* X <-subCONTAINER=> additional options on the invoice in TableContainer__Table  */}
+                        {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
+                                    <SumSalesItems />
+                        {/* X <-subCONTAINER=> SubTableSumSales in Table */}
                                 </Grid>
                             </Grid >
-                {/* X <-subCONTAINER=> addOptions && sumSalesTable in TableContainer */}
+                {/* X <-subCONTAINER=> additional options on the invoice */}
                     </TableContainer>
                 </TableContainer>
                     );
                 }
             }
         </FieldArray>
-       
     )
 };
-
- export default SumSpanningTable;
+export default SumSpanningTable;
