@@ -227,15 +227,43 @@ const SumSpanningTable = (    {source, ...props}) => {
                                                 <TableCell>
                                             <FormDataConsumer  subscription={{ values: true }} >
                                                     {({ formData, ...rest  }) => { 
+                                                        // console.log("fromData", typeof(formData), formData);
 
+                                                        // console.log("fromDataSalesList", typeof(formData.sales_list), formData.sales_list);
+                                                        // if( typeof(formData.sales_list) !== 'undefined' && formData.sales_list.length > 0 ) {
                                                         if(formData.sales_list && formData.sales_list.length > 0 ) {
 
+                                                                    console.log(formData.sale_list);
+
+                                                            // arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])
                                                             const sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
-                                                                            return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
+                                                                return (
+                                                                accumulator + obj['sum_item_brutto']
+                                                                )
+                                                            }, 0 )
+
                                                                     console.log("sumBrutto", sumBrutto );
+
+                                                                // const sumValue = formData.sales_list => Object.values(formData.sales_list);
+                                                                
+                                                            // for (const key in formData.sales_list ){
+                                                            //     let sum = 0;
+                                                            //     if(formData.sales_list[key]['sum_item_brutto'] && typeof(formData.sales_list[key]['sum_item_brutto']) !== isNaN ) {
+                                                                
+                                                            //         sum += formData.sales_list[key]['sum_item_brutto'];
+                                                            //         // console.log("sum", sum);
+                                                            // }
+                                                            // console.log(    "klucz", formData.sales_list[key]['sum_item_brutto']);
+                                                            
+                                                            
+                                                            
                                                             }
+                                                            
+                                                            // console.log("subfromDataSalesList", typeof(formData.sales_list), formData.sales_list.length );
                                                         }
-                                                    } 
+
+                                                        // reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0)
+                                                     } 
                                                 </FormDataConsumer>
                                                 </TableCell>
                                                                                                                                             

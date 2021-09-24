@@ -7,8 +7,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
+import { FieldArray, useFieldArray, } from 'react-final-form-arrays';
 import Paper from '@material-ui/core/Paper';
-import { FieldArray } from 'react-final-form-arrays';
 import { FinalForm } from 'react-final-form';
 import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
     CheckboxGroupInput, RadioButtonGroupInput, BooleanInput, 
@@ -75,35 +75,39 @@ const item_tax = [
 ];
 
 
-const SumSpanningTable = (    {source, ...props}) => {
+const SumSpanningTable = (props) => {
+
+    const dataSalesList = props.fields.value;
+    const metdataSalesList = props.fields;
 
 
-
-
-    const formGroupState = useFormGroup();
         
     const classes = useStyles();
 
-    const record = useRecordContext();
-    const resource = useResourceContext();
-
-    
 
     return (  
         <FieldArray name="sales_list" decorators={[calculator]} > 
+
         {(fieldProps) => {
-         
+            console.log("met", typeof(metdataSalesList), metdataSalesList );
+            
+            console.log( "value", typeof(dataSalesList), dataSalesList );
+            // console.log( "keys", Object.keys(dataSalesList));
+       
         
             return (
 
                 <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="sales list table">
                         <SalesTableHeader/>
-                        <TableBody>  
-                            {fieldProps.fields.map((sales_item, index) => {
-                         
+                    <TableBody>  
+                        {( fieldProps  ) => {
+                            const dataSource = fieldProps.fields.map((sales_item, index) => {
+                            //    rowKey: index
+
+                                
                                 return (
-                                    <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
+                                    <TableRow dataSource={dataSource} rowKey="rowKey" className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
                                         <TableCell align="center"   >
                                             {index+1}
                                         </TableCell>  
@@ -190,7 +194,9 @@ const SumSpanningTable = (    {source, ...props}) => {
                                         </TableCell>  
                                     </TableRow>  
                                 )
-                            })}
+                            })
+                        }
+                    }
                         </TableBody>  
                     </Table>
                         <TableContainer>
@@ -200,7 +206,7 @@ const SumSpanningTable = (    {source, ...props}) => {
                                         <Button
                                             type="button"
                                             onClick={
-                                                () => fieldProps.fields.push({ id: '', sales_item: '', sum_item_brutto: '', })}
+                                                () => fieldProps.dataSource.push({ id: '', sales_item: '', sum_item_brutto: '', })}
                                                 
                                             
                                             color="secondary"
@@ -224,30 +230,9 @@ const SumSpanningTable = (    {source, ...props}) => {
                                                     ]} 
                                                 />
                                             </TableCell>
-                                                <TableCell>
-                                            <FormDataConsumer  subscription={{ values: true }} >
-                                                    {({ formData, ...rest  }) => { 
-
-                                                        if(formData.sales_list && formData.sales_list.length > 0 ) {
-
-                                                            const sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
-                                                                            return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
-                                                                    console.log("sumBrutto", sumBrutto );
-                                                            }
-                                                        }
-                                                    } 
-                                                </FormDataConsumer>
-                                                </TableCell>
-                                                                                                                                            
-                                            <TableCell>
-                                                    </TableCell>
-                                                { ({ fieldProps }) => { 
-                                                    console.log("propFieldsValue", typeof(fieldProps.fields.value ), fieldProps.fields.value )
-                                                    console.log("propFields", typeof(fieldProps.fields ), fieldProps.fields["sales_list"] )
-                                                
-                                                        }      
-                                                }
-                                </TableRow>
+                                            <TableCell/>
+                                            <TableCell/>
+                                        </TableRow>
                                         <TableRow align="left">
                                              <TableCell  />   
                                         <TableCell  /> 
@@ -289,7 +274,26 @@ const SumSpanningTable = (    {source, ...props}) => {
                                             </TableRow>
                                             <TableRow align="right">
                                                 <TableCell >Tax</TableCell>
-                                                <TableCell align="center"></TableCell>
+                                                <TableCell align="center">
+                                                {/* <FormDataConsumer  subscription={{ values: true }} >
+                                        {({ 
+                                            formData, // The whole form data
+                                            scopedFormData, // The data for this item of the ArrayInput
+                                            getSource, // A function to get the valid source inside an ArrayInput
+                                            ...rest
+                                    }) => {       
+                                        console.log( "formData", typeof(formData), formData );
+                                        console.log( "formDataSalesList", typeof(formData.sales_list), formData.sales_list );
+                                        console.log( "scopedFormData", typeof(scopedFormData), scopedFormData );
+                                            if(typeof formData !== 'undefined' ) {
+                                                return ( <NumberInput     disabled />
+                                                );}  else {
+                                                    return( <NumberInput    disabled  />
+                                                    );}            
+                                            }
+                                        } 
+                                        </FormDataConsumer> */}
+                                            </TableCell>
                                                 <TableCell align="center"></TableCell>
                                                 <TableCell align="center">{ccyFormat(25,66)}</TableCell>
                                                 <TableCell  colSpan={2}  />

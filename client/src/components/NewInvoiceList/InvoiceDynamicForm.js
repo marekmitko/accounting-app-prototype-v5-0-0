@@ -142,7 +142,7 @@ const AddInvCreate = (props) => {
             {/* ->CONTAINER=>SalesProductTable */}
                     <Grid container spacing={3}  >
                         <Grid  item xs={12} >
-                            <ArrayInput label="" { ...props} source="sales_list">
+                            <ArrayInput label="" source="sales_list">
                                 <SumSpanningTable { ...props }  />
                             </ArrayInput>
                         </Grid>

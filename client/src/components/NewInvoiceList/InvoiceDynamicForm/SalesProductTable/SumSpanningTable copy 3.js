@@ -8,7 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { FieldArray } from 'react-final-form-arrays';
+import { FieldArray, useFieldArray } from 'react-final-form-arrays';
 import { FinalForm } from 'react-final-form';
 import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
     CheckboxGroupInput, RadioButtonGroupInput, BooleanInput, 
@@ -93,7 +93,8 @@ const SumSpanningTable = (    {source, ...props}) => {
         <FieldArray name="sales_list" decorators={[calculator]} > 
         {(fieldProps) => {
          
-        
+        const dataSales = useFieldArray();
+
             return (
 
                 <TableContainer component={Paper}>
@@ -101,6 +102,8 @@ const SumSpanningTable = (    {source, ...props}) => {
                         <SalesTableHeader/>
                         <TableBody>  
                             {fieldProps.fields.map((sales_item, index) => {
+
+                                console.log("mainArr", dataSales);
                          
                                 return (
                                     <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
