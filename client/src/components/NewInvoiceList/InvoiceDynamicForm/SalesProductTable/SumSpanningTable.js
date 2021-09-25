@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState,  } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -41,9 +41,9 @@ const useStyles = makeStyles({
   },
 });
 
-// function ccyFormat(num) {
-//   return `${num.toFixed(2)}`;
-// }
+function ccyFormatTwo(num) {
+  return `${num.toFixed(2)}`;
+}
 
 function subtotal(items) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
@@ -86,6 +86,10 @@ const SumSpanningTable = (    {source, ...props}) => {
     const classes = useStyles();
     const record = useRecordContext();
     const resource = useResourceContext();
+ 
+
+    const [liczba, setLiczba] = useState(2);
+
     return (  
         <FieldArray name="sales_list" decorators={[calculator]} > 
             {(fieldProps) => {
@@ -156,14 +160,11 @@ const SumSpanningTable = (    {source, ...props}) => {
                                 {/*sumBRUTTO ->tabCELL=>sum_item_brutto*/}
                                             <FormDataConsumer  subscription={{ values: true }} >
                                                     {({ formData, ...rest  }) => {        
-                                                        if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
+                                                        if( typeof formData["sales_list"][index]["item_tax"] !== 'undefined' ) {
                                                             formData["sales_list"][index]["sum_item_brutto"] = 
                                                                                                             (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
                                                                                                             * (formData["sales_list"][index]["item_tax"] + 1);
-
-                                                                            return ( <BoxNumberInput   source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto" variant="standard"   {...rest} disabled >
-                                                                        {formData["sales_list"][index]["sum_item_brutto"] = (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"]) * (formData["sales_list"][index]["item_tax"] + 1)}
-                                                                            </BoxNumberInput>
+                                                                            return ( <BoxNumberInput initialValues={formData["sales_list"][index]["sum_item_brutto"]}   source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto" variant="standard"   {...rest} disabled />
                                                                             );}  else {
                                                                                 return( <BoxNumberInput  mt="-0.75em" ml="0.5em" label="Wartość brutto" source={`sales_list[${index}].sum_item_brutto`}  variant="standard"   mr="0.5em"  />
                                                                                     );}            
@@ -196,7 +197,11 @@ const SumSpanningTable = (    {source, ...props}) => {
                                         <Button
                                             type="button"
                                             onClick={
-                                                () => fieldProps.fields.push({ id: '', sales_item: '', sum_item_brutto: '', })}
+                                                () => fieldProps.fields.push({
+                                                                                id: '', sales_item: '', 
+                                                                                sum_item_netto: 0,
+                                                                                sum_item_tax: 0,
+                                                                                sum_item_brutto: 0, })}
                                                 color="secondary"
                                             variant="contained"
                                             style={{ marginTop: '16px', marginLeft: '16px' }}
@@ -220,7 +225,8 @@ const SumSpanningTable = (    {source, ...props}) => {
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 
                         {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
-                                    <SumSalesItems />
+                                    <SumSalesItems setSumBrutto={setLiczba} />
+                                    <p>{liczba} {}</p>
                         {/* X <-subCONTAINER=> SubTableSumSales in Table */}
                                 </Grid>
                             </Grid >

@@ -1,4 +1,5 @@
 import React from 'react';
+import {store, useGlobalState} from 'state-pool'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -30,36 +31,62 @@ import SumSalesItemsHeader from './SumSalesItemsHeader';
 
 
 
+// const sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
+//     return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
+//     console.log("sumBrutto", sumBrutto );
 
 
-export default function SumSalesItems ({ props }) {
 
-    function ccyFormat(num) {
-        return `${num.toFixed(2)}`;
+function ccyFormat(num) {
+    return `${num.toFixed(2)}`;
+}
+// if(fromDataItems && fromDataItems.length > 0 ) 
+
+
+
+function getSumOfValues( valueName, formDataItems ) {
+        formDataItems.reduce(( accumulator, obj ) => {
+            return accumulator + (obj[`${valueName}`] || 0 ) }, 0 )    
+}
+store.setState("dupowato",150);
+
+export default function SumSalesItems({setSumBrutto}) {
+   
+    const [dupowato,setDupowato] = useGlobalState("dupowato");
+    function setD(e){
+        setDupowato(e.target.value)
     }
 
+    console.log("setDupowato", setDupowato );
+  
     return (
         <Table>
             <SumSalesItemsHeader/>
             <TableBody>
                 <TableRow align="right">
-                    <TableCell >Subtotal</TableCell>
+                
+                    <TableCell >
+                        <input value={dupowato} onChange={setD} />
+                    </TableCell>
                     <TableCell align="center"></TableCell>
                     <TableCell  align="center">
-                        {ccyFormat(245,544)}</TableCell>
-                    <TableCell   >
                     <FormDataConsumer  subscription={{ values: true }} >
-                            {({ formData, ...rest  }) => { 
-
+                        {({ formData, ...rest  }) => { 
                                 if(formData.sales_list && formData.sales_list.length > 0 ) {
-
                                     const sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
-                                                    return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
-                                            console.log("sumBrutto", sumBrutto );
-                                    }
+                                        return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
+                                        setSumBrutto(sumBrutto);
+                                        console.log("sumBrutto", sumBrutto );       
                                 }
-                            } 
-                        </FormDataConsumer>
+                                if(formData.sales_list && formData.sales_list.length > 0 )  {
+                                console.log( "fx", getSumOfValues( "sum_item_brutto", formData.sales_list ));
+                                }
+                            }
+                        } 
+                            </FormDataConsumer>
+                    </TableCell>
+                    <TableCell   >
+                    
                     </TableCell>
                 </TableRow>
                 <TableRow align="right">
@@ -73,18 +100,12 @@ export default function SumSalesItems ({ props }) {
                     <TableCell >Total</TableCell>
                     <TableCell align="center"></TableCell>
                     <TableCell align="center"></TableCell>
-                    <TableCell align="center">{ccyFormat(25,55)}</TableCell> 
+                    <TableCell align="center">
+                    
+                                                </TableCell>
+                   
                     <TableCell    />
-                    {/* { console.log('endtablesum', fieldProps.fields.map((name, index)=> `sales_list[${index}]`... ))} */}
-                    {/* sam string  */}
-                    {/* { console.log('endtablesum', fieldProps.fields.map((name, index)=> name ))} */}
-                    {/* tablica objektów  */}
-                    {/* { console.log('endtablesum', fieldProps.fields.value.map(({sum_item_brutto}) => sum_item_brutto ))} */}
-                    {/* { console.log('endtablesum', fieldProps.fields.value )} */}
-                    {/* { console.log('endtablesum', fieldProps.fields.value.reduce((suma, {sum_item_brutto}) => suma + sum_item_brutto, 0) )} */}
-                    {/* { console.log('2blesum', fieldProps.fields["sales_list"] )} */}
-
-                    {/* return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0); */}
+                    
                 </TableRow>
             </TableBody>
         </Table>

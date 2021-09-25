@@ -1,4 +1,5 @@
 import * as React from "react";
+import {store, useGlobalState} from 'state-pool'
 import { useMemo, useEffect, useState } from 'react';
 import {
     Create,
@@ -21,6 +22,7 @@ import InvoiceHeaderData from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderD
 import SumItemListIteratorForm from './InvoiceDynamicForm/InvoiceInfoForm/SumItemListIteratorForm.js'
 import InvoiceFooterForm from './InvoiceDynamicForm/InvoiceFooter/InvoiceFooterForm.js';
 import AddTradePartnerItemButton from './InvoiceDynamicForm/contractorsDataForm/AddTradePartnerItemButton.js';
+import AddTradePartnerItemButton2 from './InvoiceDynamicForm/contractorsDataForm/AddTradePartnerItemButton2.js';
 import SumSpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable';
 
 // ad  ./components/NewInvoiceList/InvoiceDynamicForm/SalesProductTable/SumSpanningTable.js
@@ -45,9 +47,13 @@ const useStyles = makeStyles(() => ({
         gridSimpleForm: { flexGrow: 1 },
     }));
 
-const AddInvCreate = (props) => {
-
-    const [dataSeller, setSellerData] = useState({});
+    
+    
+    const AddInvCreate = (props) => {
+        
+   
+        
+        const [dataSeller, setSellerData] = useState({});
         useEffect((dataSeller) => {
             // GET request using fetch inside useEffect React hook
             fetch('http://localhost:3000//userProfile/Profile12356x')
@@ -64,7 +70,7 @@ const AddInvCreate = (props) => {
     const dateDefaultValue = useMemo(() => new Date(), []);
     const [version, setVersion] = React.useState(0);
     const handleChange = React.useCallback(() => setVersion(version + 1), [version]);
-
+    const [dupowato, setDupowato] = useGlobalState("dupowato");
     return (
         <Create {...props} transform={ transform }>
             <SimpleForm  className={classes.gridSimpleForm} >
@@ -74,7 +80,8 @@ const AddInvCreate = (props) => {
             {/*>> ->CONTAINER=>HeadlineDate */}
                     <Grid container spacing={2}  >
                         <Grid item xs={12} sm={4} >
-                            <InvoiceHeaderLogotype />
+                        <input value={dupowato} onChange={setDupowato} />
+                                               <InvoiceHeaderLogotype />
                         </Grid>
                         <Grid item xs={12} sm={8} >
                             
@@ -102,7 +109,13 @@ const AddInvCreate = (props) => {
                                     </ReferenceInput>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
+                                    <ReferenceInput  label="Wybierz Kontrahenta" key={version} source={"id"} reference="tradePartners_list" >
+                                        <SelectInput label="Wybierz Kontrahenta" variant ="outlined" fullWidth optionText="email" />
+                                    </ReferenceInput>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
                                     <AddTradePartnerItemButton onChange={handleChange} />
+                                    <AddTradePartnerItemButton2 onChange={handleChange} />
                                 </Grid>
                                 {/* <createTradePartnerItemButton name="Buyer"> */}
                             </Grid>
