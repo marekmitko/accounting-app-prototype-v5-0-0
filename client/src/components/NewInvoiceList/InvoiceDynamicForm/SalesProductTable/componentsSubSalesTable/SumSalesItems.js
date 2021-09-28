@@ -32,28 +32,30 @@ import SumSalesItemsHeader from './SumSalesItemsHeader';
 
 
 
-export default function SumSalesItems ({ props }) {
+export default function SumSalesItems ({ fieldProps }) {
 
     function ccyFormat(num) {
         return `${num.toFixed(2)}`;
     }
-
+    console.log( 'fieldProps', fieldProps );
     return (
         <Table>
             <SumSalesItemsHeader/>
             <TableBody>
                 <TableRow align="right">
                     <TableCell >Subtotal</TableCell>
-                    <TableCell align="center"></TableCell>
+                    <TableCell align="center">
+                        
+                    </TableCell>
                     <TableCell  align="center">
                         {ccyFormat(245,544)}</TableCell>
                     <TableCell   >
                     <FormDataConsumer  subscription={{ values: true }} >
                             {({ formData, ...rest  }) => { 
-
+                                console.log('fromData', formData);
                                 if(formData.sales_list && formData.sales_list.length > 0 ) {
 
-                                    const sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
+                                    var sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
                                                     return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
                                             console.log("sumBrutto", sumBrutto );
                                     }

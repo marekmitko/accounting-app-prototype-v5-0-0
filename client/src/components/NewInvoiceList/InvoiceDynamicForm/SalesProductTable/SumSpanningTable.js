@@ -9,7 +9,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
-import { FinalForm } from 'react-final-form';
+import {  Field, } from 'react-final-form';
+import TextField from '@material-ui/core/TextField';
 import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
     CheckboxGroupInput, RadioButtonGroupInput, BooleanInput, 
 
@@ -28,9 +29,13 @@ import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput
 
 import { useForm, useFormState } from 'react-final-form';
 
+import { FormControl } from '@material-ui/core';
+
 import createDecorator from 'final-form-calculate'
 import AdditionalOptions from './componentsSubSalesTable/AdditionalOptions'
 import SumSalesItems from './componentsSubSalesTable/SumSalesItems';
+
+
 
 
 
@@ -101,11 +106,19 @@ const SumSpanningTable = (    {source, ...props}) => {
                             {fieldProps.fields.map((sales_item, index) => {
                                     return (
                                         <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
+
                                         <TableCell align="center"   >
                                             {index+1}
                                         </TableCell>  
                                         <TableCell colSpan={2} >  
-                                            <TextInput  label="Nazwa"  variant="outlined" source={`sales_list[${index}].item_name`} />
+                                        <Field
+                                        name={`sales_list[${index}].item_name`}
+                                        render={({input}) => (
+                                            <TextInput  label="Nazwa"  variant="outlined" source={`sales_list[${index}].item_name`} 
+                                        />
+                                    )}
+                                    placeholder="Nazwa"
+                                  />
                                         </TableCell>  
                                         <TableCell align="left">  
                                             <SelectInput label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}/>
@@ -220,7 +233,7 @@ const SumSpanningTable = (    {source, ...props}) => {
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 
                         {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
-                                    <SumSalesItems />
+                                    <SumSalesItems fieldProps={fieldProps} />
                         {/* X <-subCONTAINER=> SubTableSumSales in Table */}
                                 </Grid>
                             </Grid >
