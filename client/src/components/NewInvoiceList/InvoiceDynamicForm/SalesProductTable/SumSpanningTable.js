@@ -117,7 +117,7 @@ const SumSpanningTable = (    {source, ...props}) => {
                                             <TextInput  label="Nazwa"  variant="outlined" source={`sales_list[${index}].item_name`} 
                                         />
                                     )}
-                                    placeholder="Nazwa"
+                                    placeholder="NazwaProdukt"
                                   />
                                         </TableCell>  
                                         <TableCell align="left">  
