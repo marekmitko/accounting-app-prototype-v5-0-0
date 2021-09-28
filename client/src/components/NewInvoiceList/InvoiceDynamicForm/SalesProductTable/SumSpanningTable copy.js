@@ -10,13 +10,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
 import {  Field, } from 'react-final-form';
+import TextField from '@material-ui/core/TextField';
 import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
     CheckboxGroupInput, RadioButtonGroupInput, BooleanInput, 
-    
+
 }  from 'react-admin';
 
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 
 import Add from '@material-ui/icons/Add';
 import Delete from '@material-ui/icons/HighlightOff';
@@ -66,20 +65,20 @@ const calculator = createDecorator(
   
 
 const item_type = [
-    { label: 'Usługa', id: 'usługi', name: 'Usugi' },
-    { label: 'Towar', id: 'towar', name: 'Towary' },
-    { label: 'Najem', id: 'najem', name: 'Najem' },
-    { label: 'Prowizja', id: 'Prowizja', name: 'Prowizja' },
-    { label: 'MVA', id: 'MVA', name: 'MVA' },
-    { label: 'O% MVA', id: 'Sprzedaż 0% MVA', name: '0% MVA' },
-    { label: 'Zwolniona', id: 'Sprzedaż zwolniona MVA', name: 'Zwolniony' },
+    { id: 'usługi', name: 'Usugi' },
+    { id: 'towar', name: 'Towary' },
+    { id: 'najem', name: 'Najem' },
+    { id: 'Prowizja', name: 'Prowizja' },
+    { id: 'MVA', name: 'MVA' },
+    { id: 'Sprzedaż 0% MVA', name: '0% MVA' },
+    { id: 'Sprzedaż zwolniona MVA', name: 'Zwolniony' },
 ];
 const item_tax = [
-    { id: 0.25, name: '25 %', label: '25%', value: 0.25 },
-    { id: 0.15, name: '15 %', label: '15%', value: 0.15 },
-    { id: 0.12, name: '12 %', label: '12%', value: 0.12 },
-    { id: 0.06, name: '6 %',  label: '6%', value: 0.06 },
-    { id: 0,    name: '0 %',  label: '0%', value: 0    },
+    { id: 0.25, name: '25 %', value: 0.25 },
+    { id: 0.15, name: '15 %', value: 0.15 },
+    { id: 0.12, name: '12 %', value: 0.12 },
+    { id: 0.06, name: '6 %', value: 0.06 },
+    { id: 0, name: '0 %', value: 0 },
 ];
 
                 {/*>> ->CONTAINER=>HeadlineDate */}
@@ -87,18 +86,11 @@ const item_tax = [
 
 
 
-const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
+const SumSpanningTable = (    {source, ...props}) => {
     const formGroupState = useFormGroup();
     const classes = useStyles();
     const record = useRecordContext();
     const resource = useResourceContext();
-
-    
-
-    const handleChangeSelect = (event) => {
-        setTypeItem(event.target.value);
-    };
-
     return (  
         <FieldArray name="sales_list" decorators={[calculator]} > 
             {(fieldProps) => {
@@ -119,35 +111,17 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                             {index+1}
                                         </TableCell>  
                                         <TableCell colSpan={2} >  
-                                            <Field
-                                            name={`sales_list[${index}].item_name`}
-                                            render={({input}) => (
-                                                <TextField name={input.name} value={input.value} onChange={input.onChange} variant="outlined" />
-                                                )}  type="text" />
+                                        <Field
+                                        name={`sales_list[${index}].item_name`}
+                                        render={({input}) => (
+                                            <TextInput  label="Nazwa"  variant="outlined" source={`sales_list[${index}].item_name`} 
+                                        />
+                                    )}
+                                    placeholder="NazwaProdukt"
+                                  />
                                         </TableCell>  
                                         <TableCell align="left">  
-                                            {/* <SelectInput label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}/> */}
-                                            <Field
-                                            name={`sales_list[${index}].item_type`}
-                                            render={({input}) => (
-
-                                                <TextField
-                                                id="outlined-select-currency"
-                                                select
-                                                label="Select"
-                                                value={input.value}
-                                                onChange={input.onChange}
-                                                variant="outlined"
-                                                >
-                                                    {item_type.map((option, input) => (
-                                                        <MenuItem key={option.value} value={input.value}>
-                                                            {option.label}
-                                                        </MenuItem>
-                                                    ))}
-                                                </TextField>
-                                                // <TextField name={input.name} value={input.value} onChange={input.onChange} variant="outlined" />
-                                                )}   />
-                                        
+                                            <SelectInput label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}/>
                                         </TableCell>  
                                         <TableCell   align="left">  
                                             <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} />

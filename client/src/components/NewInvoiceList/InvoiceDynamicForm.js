@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect, useState, useCallback } from 'react';
 import {
     Create,
     SelectArrayInput,
@@ -62,8 +62,10 @@ const AddInvCreate = (props) => {
             createAt: new Date(),
         })
     const dateDefaultValue = useMemo(() => new Date(), []);
-    const [version, setVersion] = React.useState(0);
-    const handleChange = React.useCallback(() => setVersion(version + 1), [version]);
+    const [version, setVersion] = useState(0);
+    const handleChange = useCallback(() => setVersion(version + 1), [version]);
+
+    const [typeItem, setTypeItem] = useState('Wybierz');
 
     return (
         <Create {...props} transform={ transform }>
@@ -130,7 +132,7 @@ const AddInvCreate = (props) => {
                     <Grid container spacing={3}  >
                         <Grid  item xs={12} >
                             <ArrayInput label="" source="sales_list">
-                                <SumSpanningTable { ...props }  />
+                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem} { ...props }  />
                             </ArrayInput>
                         </Grid>
                     </Grid>
