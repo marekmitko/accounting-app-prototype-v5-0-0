@@ -10,45 +10,58 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
 import {  Field, } from 'react-final-form';
-import  { TextInput, NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
-    CheckboxGroupInput, RadioButtonGroupInput, BooleanInput, 
-    
+import  { NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
 }  from 'react-admin';
 
 import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import Add from '@material-ui/icons/Add';
 import Delete from '@material-ui/icons/HighlightOff';
 import Button from '@material-ui/core/Button';
-import Input  from '@material-ui/core/Input';
-
-import SalesTableHeader from './componentsSalesTable/SalesTableHeader';
-// import SubTableSumHeader from './componentsSubSalesTable/SumSalesItemsHeader';
 
 import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
 
-import { useForm, useFormState } from 'react-final-form';
-
-import { FormControl } from '@material-ui/core';
-
 import createDecorator from 'final-form-calculate'
-import AdditionalOptions from './componentsSubSalesTable/AdditionalOptions'
+import SalesTableHeader from './componentsSalesTable/SalesTableHeader';
+import AdditionalOptions from './componentsSubSalesTable/AdditionalOptions';
 import SumSalesItems from './componentsSubSalesTable/SumSalesItems';
 
 
 
-
-
 const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-    borderSpacing: 0,
-  },
+    table: {
+        minWidth: 700,
+        borderSpacing: 0,
+    },
+
+    select: {
+        "& ul": {
+            backgroundColor: "#cccccc",
+        },
+        "& li": {
+            fontSize: 14,
+        },
+    },
+    helperTextIsNONE: {
+        fontSize: 14,
+        "& p": {
+            display: 'none',
+        },
+    },
+
 });
 
 // function ccyFormat(num) {
 //   return `${num.toFixed(2)}`;
+// }
+
+// { ({ fieldProps }) => { 
+//     console.log("propFieldsValue", typeof(fieldProps.fields.value ), fieldProps.fields.value )
+//     console.log("propFields", typeof(fieldProps.fields ), fieldProps.fields["sales_list"] )
+
+//         }      
 // }
 
 function subtotal(items) {
@@ -93,9 +106,7 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
     const record = useRecordContext();
     const resource = useResourceContext();
 
-    
-
-    const handleChangeSelect = (event) => {
+    const handleChangeSelectType = (event) => {
         setTypeItem(event.target.value);
     };
 
@@ -114,114 +125,124 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                             {fieldProps.fields.map((sales_item, index) => {
                                     return (
                                         <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
-
-                                        <TableCell align="center"   >
-                                            {index+1}
-                                        </TableCell>  
-                                        <TableCell colSpan={2} >  
-                                            <Field
-                                            name={`sales_list[${index}].item_name`}
-                                            render={({input}) => (
-                                                <TextField name={input.name} value={input.value} onChange={input.onChange} variant="outlined" />
-                                                )}  type="text" />
-                                        </TableCell>  
-                                        <TableCell align="left">  
-                                            {/* <SelectInput label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}/> */}
-                                            <Field
-                                            name={`sales_list[${index}].item_type`}
-                                            render={({input}) => (
-
-                                                <TextField
-                                                id="outlined-select-currency"
-                                                select
-                                                label="Select"
-                                                value={input.value}
-                                                onChange={input.onChange}
-                                                variant="outlined"
-                                                >
-                                                    {item_type.map((option, input) => (
-                                                        <MenuItem key={option.value} value={input.value}>
-                                                            {option.label}
-                                                        </MenuItem>
-                                                    ))}
-                                                </TextField>
-                                                // <TextField name={input.name} value={input.value} onChange={input.onChange} variant="outlined" />
-                                                )}   />
-                                        
-                                        </TableCell>  
-                                        <TableCell   align="left">  
-                                            <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} />
-                                        </TableCell>  
-                                        <TableCell  align="left" >
-                                            <NumberInput  label="Kwota netto" variant ="outlined"  source={`sales_list[${index}].item_netto`} />
-                                        </TableCell>   
-                                        <TableCell   align="left">  
-                                            <SelectInput   label="Stawka VAT" variant ="outlined" source={`sales_list[${index}].item_tax`} choices={item_tax}/>
-                                        </TableCell>  
-                                        <TableCell    align="right">  
-                                {/*sumNETTO ->tabCELL=>sum_item_netto*/}
-                                            <FormDataConsumer  subscription={{ values: true }} >
-                                                {({ formData, ...rest  }) => {         
-                                                        if(typeof formData["sales_list"][index]["item_netto"] !== 'undefined' ) {
-                                                            formData["sales_list"][index]["sum_item_netto"] = 
-                                                                                                            formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"];
-                                                            return ( <NumberInput variant="filled" initialValues={formData["sales_list"][index]["sum_item_netto"]}  source={`sales_list[${index}].sum_item_netto`} label="Wartość Netto"   {...rest} disabled />
-                                                            );}  else {
-                                                                    return( <NumberInput variant="filled" label="Wartość Netto" source={`sales_list[${index}].sum_item_netto`}  disabled  />
-                                                                    );}            
-                                                    }
-                                                } 
-                                            </FormDataConsumer>
-                                {/*sumNETTO <-tabCELL=>sum_item_netto*/}
-                                        </TableCell>
-                                        <TableCell  align="center">  
-                                {/*sumTAX ->tabCELL=>sum_item_tax*/}
-                                            <FormDataConsumer  subscription={{ values: true }} >
-                                                    {({ formData, ...rest  }) => {       
-                                                        if(typeof formData["sales_list"][index]["item_tax"] !== 'undefined' ) {
-                                                            formData["sales_list"][index]["sum_item_tax"] = 
-                                                                                                            (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
-                                                                                                            * formData["sales_list"][index]["item_tax"];
-                                                            return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_tax"]}  source={`sales_list[${index}].sum_item_tax`} label="Wartość VAT"   {...rest} disabled />
-                                                            );}  else {
-                                                                return( <NumberInput  label="Wartość VAT" source={`sales_list[${index}].sum_item_tax`}  disabled  />
-                                                                );}            
+                                            <TableCell align="center"   >
+                                                {index+1}
+                                            </TableCell>  
+                                            <TableCell colSpan={2} >  
+                                                <Field
+                                                name={`sales_list[${index}].item_name`}
+                                                render={({input}) => (
+                                                    
+                                                    <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="outlined" 
+                                                                InputLabelProps={{ shrink: true }}  />
+                                                    )}  type="text" />
+                                            </TableCell>  
+                                            <TableCell align="left">  
+                                                {/* <Field
+                                                name={`sales_list[${index}].item_type`}
+                                                render={({input}) => (
+                                                    <SelectInput    label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}
+                                                                    className={ classes.helperTextIsNONE } />
+                                                    )}  type="text" />
+                                                    */}
+                                                <Field
+                                                    name={`sales_list[${index}].item_type`}
+                                                    component="SelectInput" >
+                                                        <SelectInput    label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}
+                                                                        className={ classes.helperTextIsNONE } />
+                                                </Field>
+                                            
+                                            </TableCell>  
+                                            <TableCell align="left">  
+                                                <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} 
+                                                                className={ classes.helperTextIsNONE } />
+                                            </TableCell>  
+                                            <TableCell align="left" >
+                                                <Field
+                                                    name={`sales_list[${index}].item_netto`}
+                                                    component="NumberInput" >
+                                                        <NumberInput    label="Kwota netto" variant ="outlined"  source={`sales_list[${index}].item_netto`} 
+                                                                        className={ classes.helperTextIsNONE } />
+                                                </Field>
+                                            </TableCell>   
+                                            <TableCell align="left">  
+                                                <Field
+                                                    name={`sales_list[${index}].item_tax`}
+                                                    component="SelectInput" >
+                                                        <SelectInput    label="Stawka VAT" variant ="outlined" source={`sales_list[${index}].item_tax`} choices={item_tax}
+                                                                        className={ classes.helperTextIsNONE } />
+                                                </Field>
+                                            </TableCell>  
+                                            <TableCell align="right">  
+                                    {/*sumNETTO ->tabCELL=>sum_item_netto*/}
+                                                <FormDataConsumer  subscription={{ values: true }} >
+                                                    {({ formData, ...rest  }) => {         
+                                                            if(typeof formData["sales_list"][index]["item_netto"] !== 'undefined' ) {
+                                                                formData["sales_list"][index]["sum_item_netto"] = 
+                                                                                                                formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"];
+                                                                return ( <NumberInput variant="filled" initialValues={formData["sales_list"][index]["sum_item_netto"]}  source={`sales_list[${index}].sum_item_netto`} label="Wartość Netto"   {...rest} disabled 
+                                                                                    className={ classes.helperTextIsNONE } />
+                                                                );}  else {
+                                                                        return( <NumberInput variant="filled" label="Wartość Netto" source={`sales_list[${index}].sum_item_netto`}  disabled  
+                                                                                            className={ classes.helperTextIsNONE } />
+                                                                        );}            
                                                         }
                                                     } 
-                                            </FormDataConsumer>
-                                {/*sumTAX <-tabCELL=>sum_item_tax*/}
-                                        </TableCell>  
-                                        <TableCell  align="left">  
-                                {/*sumBRUTTO ->tabCELL=>sum_item_brutto*/}
-                                            <FormDataConsumer  subscription={{ values: true }} >
-                                                    {({ formData, ...rest  }) => {        
-                                                        if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
-                                                            formData["sales_list"][index]["sum_item_brutto"] = 
-                                                                                                            (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
-                                                                                                            * (formData["sales_list"][index]["item_tax"] + 1);
-
-                                                                            return ( <BoxNumberInput   source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto" variant="standard"   {...rest} disabled >
-                                                                        {formData["sales_list"][index]["sum_item_brutto"] = (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"]) * (formData["sales_list"][index]["item_tax"] + 1)}
-                                                                            </BoxNumberInput>
-                                                                            );}  else {
-                                                                                return( <BoxNumberInput  mt="-0.75em" ml="0.5em" label="Wartość brutto" source={`sales_list[${index}].sum_item_brutto`}  variant="standard"   mr="0.5em"  />
-                                                                                    );}            
-                                                                                }
-                                                                            } 
                                                 </FormDataConsumer>
-                                    {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
-                                            </TableCell> 
-                                        <TableCell colSpan={2} align="center" >  
-                                            <Button 
-                                                style={{ textAlign: 'center' }} 
-                                                color="error"
-                                                type="button" 
-                                                // style={{ marginTop: '-5%' }}
-                                                onClick={() => fieldProps.fields.remove(index)}>
-                                                <Delete style={{ color: 'red' }} />
-                                            </Button>
-                                        </TableCell>  
-                                    </TableRow>  
+                                    {/*sumNETTO <-tabCELL=>sum_item_netto*/}
+                                            </TableCell>
+                                            <TableCell align="center">  
+                                    {/*sumTAX ->tabCELL=>sum_item_tax*/}
+                                                <FormDataConsumer  subscription={{ values: true }} >
+                                                        {({ formData, ...rest  }) => {       
+                                                            if(typeof formData["sales_list"][index]["item_tax"] !== 'undefined' ) {
+                                                                formData["sales_list"][index]["sum_item_tax"] = 
+                                                                                                                (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
+                                                                                                                * formData["sales_list"][index]["item_tax"];
+                                                                return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_tax"]}  source={`sales_list[${index}].sum_item_tax`} label="Wartość VAT"   {...rest} 
+                                                                                    className={ classes.helperTextIsNONE } disabled />
+                                                                );}  else {
+                                                                    return( <NumberInput  label="Wartość VAT" source={`sales_list[${index}].sum_item_tax`}  
+                                                                                        className={ classes.helperTextIsNONE } disabled  />
+                                                                    );}            
+                                                            }
+                                                        } 
+                                                </FormDataConsumer>
+                                    {/*sumTAX <-tabCELL=>sum_item_tax*/}
+                                            </TableCell>  
+                                            <TableCell align="left">  
+                                    {/*sumBRUTTO ->tabCELL=>sum_item_brutto*/}
+                                                <FormDataConsumer  subscription={{ values: true }} >
+                                                        {({ formData, ...rest  }) => {        
+                                                            if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
+                                                                formData["sales_list"][index]["sum_item_brutto"] = 
+                                                                                                                (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
+                                                                                                                * (formData["sales_list"][index]["item_tax"] + 1);
+
+                                                                                return ( <BoxNumberInput   source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto" variant="standard"   {...rest} 
+                                                                                                    className={ classes.helperTextIsNONE }  disabled >
+                                                                            {formData["sales_list"][index]["sum_item_brutto"] = (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"]) * (formData["sales_list"][index]["item_tax"] + 1)}
+                                                                                </BoxNumberInput>
+                                                                                );}  else {
+                                                                                    return( <BoxNumberInput  mt="-0.75em" ml="0.5em" label="Wartość brutto" source={`sales_list[${index}].sum_item_brutto`}  variant="standard"   mr="0.5em" 
+                                                                                                        className={ classes.helperTextIsNONE }  />
+                                                                                        );}            
+                                                                                    }
+                                                                                } 
+                                                    </FormDataConsumer>
+                                        {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
+                                                </TableCell> 
+                                            <TableCell colSpan={2} align="center" >  
+                                                <Button 
+                                                    style={{ textAlign: 'center' }} 
+                                                    color="error"
+                                                    type="button" 
+                                                    // style={{ marginTop: '-5%' }}
+                                                    onClick={() => fieldProps.fields.remove(index)}>
+                                                    <Delete style={{ color: 'red' }} />
+                                                </Button>
+                                            </TableCell>  
+                                        </TableRow>  
                                     );
                                 }
                             )}

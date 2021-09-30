@@ -65,7 +65,7 @@ const AddInvCreate = (props) => {
     const [version, setVersion] = useState(0);
     const handleChange = useCallback(() => setVersion(version + 1), [version]);
 
-    const [typeItem, setTypeItem] = useState('Wybierz');
+    const [typeItem, setTypeItem] = useState(true);
 
     return (
         <Create {...props} transform={ transform }>

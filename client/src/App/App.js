@@ -18,7 +18,7 @@ function App() {
         >
             
     {/*userPROFILE ->db.json=>userProfile*/}
-            <Resource name="userProfile"/>
+            <Resource name="userProfile" />
     {/*userPROFILE <-db.json=>userProfile*/}
     {/*pageINVOICEs ->db.json=>issuedInvoices_list*/}
             <Resource options={{ label: 'Lista FV' }} name="issuedInvoices_list" {...homepage} />
