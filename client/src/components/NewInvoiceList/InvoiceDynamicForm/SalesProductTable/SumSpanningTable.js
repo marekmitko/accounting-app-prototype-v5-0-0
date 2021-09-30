@@ -138,20 +138,12 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                                     )}  type="text" />
                                             </TableCell>  
                                             <TableCell align="left">  
-                                                {/* <Field
-                                                name={`sales_list[${index}].item_type`}
-                                                render={({input}) => (
-                                                    <SelectInput    label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}
-                                                                    className={ classes.helperTextIsNONE } />
-                                                    )}  type="text" />
-                                                    */}
                                                 <Field
                                                     name={`sales_list[${index}].item_type`}
                                                     component="SelectInput" >
                                                         <SelectInput    label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}
                                                                         className={ classes.helperTextIsNONE } />
                                                 </Field>
-                                            
                                             </TableCell>  
                                             <TableCell align="left">  
                                                 <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} 
