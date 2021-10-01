@@ -31,11 +31,28 @@ import SumSalesItems from './componentsSubSalesTable/SumSalesItems';
 
 
 const useStyles = makeStyles({
+    
     table: {
         minWidth: 700,
         borderSpacing: 0,
     },
+    IteratorRowProduct: {
+        "& tr": {
+            "& td": {
+                paddingTop: 14,
+                paddingLeft: 2,
+                paddingBottom: 14,
+                paddingRight: 2,
+                "& selectinput": {
+                    "& div": {
+                        minWidth: 80,
+                        },
+                    },
+                     
+            },
+        },
 
+    },
     select: {
         "& ul": {
             backgroundColor: "#cccccc",
@@ -116,16 +133,16 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                     return (
                         <TableContainer component={Paper}>
         {/*>> ->CONTAINER=> SalesTable in Table */}
-                    <Table className={classes.table} aria-label="sales list table">
+                    <Table className={classes.table } aria-label="sales list table">
             {/*>>  ->subCONTAINER=> HEADER-> sales_list in TableHead--SalesTable */}
                         <SalesTableHeader/>
             {/* X <-subCONTAINER=> Header-> sales_list in TableHead--SalesTable */}
-                        <TableBody>  
+                        <TableBody className={classes.IteratorRowProduct } >  
             {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
                             {fieldProps.fields.map((sales_item, index) => {
                                     return (
-                                        <TableRow className="IteratorRowProduct" hover tabIndex={-1} key={index}>  
-                                            <TableCell align="center"   >
+                                        <TableRow  hover tabIndex={-1} key={index}>  
+                                            <TableCell style={{ padding: 10 }} align="center"   >
                                                 {index+1}
                                             </TableCell>  
                                             <TableCell colSpan={2} >  
@@ -137,19 +154,20 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                                                 InputLabelProps={{ shrink: true }}  />
                                                     )}  type="text" />
                                             </TableCell>  
-                                            <TableCell align="left">  
+                                            <TableCell align="center">  
                                                 <Field
                                                     name={`sales_list[${index}].item_type`}
                                                     component="SelectInput" >
-                                                        <SelectInput    label="Wybierz Typ" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}
+                                                        <SelectInput    label="Wybierz" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}
                                                                         className={ classes.helperTextIsNONE } />
                                                 </Field>
                                             </TableCell>  
-                                            <TableCell align="left">  
+                                            <TableCell align="center">  
                                                 <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} 
-                                                                className={ classes.helperTextIsNONE } />
+                                                                className={ classes.helperTextIsNONE } 
+                                                                style={{ maxWidth: 90 }} />
                                             </TableCell>  
-                                            <TableCell align="left" >
+                                            <TableCell align="center" >
                                                 <Field
                                                     name={`sales_list[${index}].item_netto`}
                                                     component="NumberInput" >
@@ -161,26 +179,40 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                                 <Field
                                                     name={`sales_list[${index}].item_tax`}
                                                     component="SelectInput" >
-                                                        <SelectInput    label="Stawka VAT" variant ="outlined" source={`sales_list[${index}].item_tax`} choices={item_tax}
-                                                                        className={ classes.helperTextIsNONE } />
+                                                        <SelectInput    label="VAT" variant ="outlined" source={`sales_list[${index}].item_tax`} choices={item_tax}
+                                                                        className={ classes.helperTextIsNONE }
+                                                                        style={{ maxWidth: 40 }}
+                                                                         />
                                                 </Field>
                                             </TableCell>  
-                                            <TableCell align="right">  
                                     {/*sumNETTO ->tabCELL=>sum_item_netto*/}
-                                                <FormDataConsumer  subscription={{ values: true }} >
-                                                    {({ formData, ...rest  }) => {         
-                                                            if(typeof formData["sales_list"][index]["item_netto"] !== 'undefined' ) {
-                                                                formData["sales_list"][index]["sum_item_netto"] = 
-                                                                                                                formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"];
-                                                                return ( <NumberInput variant="filled" initialValues={formData["sales_list"][index]["sum_item_netto"]}  source={`sales_list[${index}].sum_item_netto`} label="Wartość Netto"   {...rest} disabled 
-                                                                                    className={ classes.helperTextIsNONE } />
+                                            <TableCell align="right">  
+                                                {/* <FormDataConsumer  subscription={{ values: true }} > */}
+                                                    {() => {     
+                                                        console.log('fieldProps', fieldProps.fields.value);    
+                                                            if(typeof fieldProps.fields["sales_list"][index]["item_netto"] !== 'undefined' ) {
+                                                                fieldProps.fields["sales_list"][index]["sum_item_netto"] = 
+                                                                                                                fieldProps.fields["sales_list"][index]["item_netto"] * fieldProps.fields["sales_list"][index]["item_qty"];
+                                                                return ( 
+                                                                        <Field
+                                                                            name={`sales_list[${index}].sum_item_netto`}
+                                                                            initialValues={fieldProps.fields["sales_list"][index]["sum_item_netto"]}
+                                                                            render={({input}) => (
+                                                                                <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="standart" 
+                                                                                            InputLabelProps={{ shrink: true }}  />
+                                                                                )}  type="number" />
                                                                 );}  else {
-                                                                        return( <NumberInput variant="filled" label="Wartość Netto" source={`sales_list[${index}].sum_item_netto`}  disabled  
-                                                                                            className={ classes.helperTextIsNONE } />
+                                                                        return( <Field
+                                                                            name={`sales_list[${index}].sum_item_netto`}
+                                                                            initialValues={0}
+                                                                            render={({input}) => (
+                                                                                <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="standart" 
+                                                                                            InputLabelProps={{ shrink: true }}  />
+                                                                                )}  type="number" />
                                                                         );}            
                                                         }
                                                     } 
-                                                </FormDataConsumer>
+                                              
                                     {/*sumNETTO <-tabCELL=>sum_item_netto*/}
                                             </TableCell>
                                             <TableCell align="center">  
@@ -191,11 +223,22 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                                                 formData["sales_list"][index]["sum_item_tax"] = 
                                                                                                                 (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
                                                                                                                 * formData["sales_list"][index]["item_tax"];
-                                                                return ( <NumberInput  initialValues={formData["sales_list"][index]["sum_item_tax"]}  source={`sales_list[${index}].sum_item_tax`} label="Wartość VAT"   {...rest} 
-                                                                                    className={ classes.helperTextIsNONE } disabled />
+                                                                return (                                                                       
+                                                                    <Field
+                                                                    name={`sales_list[${index}].sum_item_tax`}
+                                                                    initialValues={formData["sales_list"][index]["sum_item_tax"]}
+                                                                        component="NumberInput" >
+                                                                            <NumberInput    label="Kwota netto" variant ="field"  source={`sales_list[${index}].sum_item_tax`} 
+                                                                                            className={ classes.helperTextIsNONE } />
+                                                                    </Field>
                                                                 );}  else {
-                                                                    return( <NumberInput  label="Wartość VAT" source={`sales_list[${index}].sum_item_tax`}  
-                                                                                        className={ classes.helperTextIsNONE } disabled  />
+                                                                    return( 
+                                                                        <Field
+                                                                            name={`sales_list[${index}].sum_item_tax`}
+                                                                            component="NumberInput" >
+                                                                                <NumberInput    label="Kwota netto" variant ="outlined"  source={`sales_list[${index}].sum_item_tax`} 
+                                                                                                className={ classes.helperTextIsNONE } />
+                                                                        </Field>
                                                                     );}            
                                                             }
                                                         } 
@@ -240,28 +283,28 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                             )}
             {/* X <-subCONTAINER=> sales_item in TableRow--iteratorForm */}
                         </TableBody>  
+                    </Table>
+        {/* X <-CONTAINER=> SalesTable in Table */}
             {/*>>  ->subCONTAINER=> addButton in TableRow--capition */}
                         <capition>
                             <Grid container  formClassName={classes.gridSimpleForm} >
                                 <Grid item xs={12}> 
-                                    <TableRow>
-                                        <Button
-                                            type="button"
-                                            onClick={
-                                                () => fieldProps.fields.push({ id: '', sales_item: '', sum_item_brutto: '', })}
-                                                color="secondary"
-                                            variant="contained"
-                                            style={{ marginTop: '16px', marginLeft: '16px' }}
-                                            >
-                                            <Add />
-                                        </Button>
-                                    </TableRow>
+                                    <div>
+                                            <Button
+                                                type="button"
+                                                onClick={
+                                                    () => fieldProps.fields.push({ id: '', sales_item: '', sum_item_brutto: '', sum_item_netto: '', })}
+                                                    color="secondary"
+                                                variant="contained"
+                                                style={{ marginTop: '16px', marginLeft: '16px' }}
+                                                >
+                                                <Add />
+                                            </Button>
+                                    </div>
                                 </Grid>
                             </Grid>
                         </capition>
             {/* X <-subCONTAINER=> addButton in TableRow--capition */}
-                    </Table>
-        {/* X <-CONTAINER=> SalesTable in Table */}
                     <TableContainer>
                 {/*>> ->CONTAINER=> additional options on the invoice */}
                             <Grid container  formClassName={classes.gridSimpleForm} >

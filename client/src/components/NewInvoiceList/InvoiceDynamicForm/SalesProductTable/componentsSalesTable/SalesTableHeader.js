@@ -10,21 +10,16 @@ import Paper from '@material-ui/core/Paper';
 import Delete from '@material-ui/icons/Delete';
 
 
-const StyledTableHeader = withStyles((theme) => ({
-    head: {
-        backgroundColor: 'SteelBlue',
-        color: theme.palette.common.white,
-        borderBottom: "0",
-    },
-    body: {
-        fontSize: 14,
-    },
-}))(TableCell);
+
 
 const StyledTableSubHeader = withStyles((theme) => ({
     head: {
         backgroundColor: 'SteelBlue',
         color: theme.palette.common.white,
+        paddingTop: 14,
+        paddingLeft: 2,
+        paddingBottom: 14,
+        paddingRight: 2,
     },
     body: {
         fontSize: 14,
@@ -37,7 +32,7 @@ const SalesTableHeader = (props) => {
     return(
         <TableHead>
             <TableRow >
-                <StyledTableSubHeader >L.P.</StyledTableSubHeader>
+                <StyledTableSubHeader align="center" style={{ padding: 10 }} >L.P.</StyledTableSubHeader>
                 <StyledTableSubHeader colSpan={2} align="center">NAZWA</StyledTableSubHeader>
                 <StyledTableSubHeader   align="center">TYP</StyledTableSubHeader>
                 <StyledTableSubHeader   align="center">ILOŚĆ</StyledTableSubHeader>
