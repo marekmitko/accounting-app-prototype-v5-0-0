@@ -1213,6 +1213,17 @@
         "street": "Ramiszów, nr 153A"
       },
       "id": "dEOhqPq"
+    },
+    {
+      "company": "Janusz Florkiewicz",
+      "address": {
+        "street": "Sienkiewicza",
+        "city": "Wrocław",
+        "code": "Wrocław"
+      },
+      "email": "marekmitko@op.pl",
+      "Phone": "+48501066009",
+      "id": "kOfvXAI"
     }
   ]
 }

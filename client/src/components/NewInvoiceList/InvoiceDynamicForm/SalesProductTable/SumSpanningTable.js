@@ -118,7 +118,7 @@ const item_tax = [
 
 
 const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
-    const formGroupState = useFormGroup();
+    // const formGroupState = useFormGroup();
     const classes = useStyles();
     const record = useRecordContext();
     const resource = useResourceContext();

@@ -20,6 +20,7 @@ import { useFormState } from 'react-final-form';
 // const postDefaultValue = () => ({ created_at: new Date(), nb_views: 0 });
 
 const InvoiceHeaderData = props => {
+    console.log("dateFiles", props)
 
     // const date14DefaultValue = useMemo(() => new Date(), []);
    

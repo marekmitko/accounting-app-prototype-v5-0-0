@@ -32,7 +32,7 @@ const defaultSubscription = {
     invalid: true,
 };
 
-const createTradePartnerItemButton = ({ version, onChange }) => {
+const createTradePartnerItemButton = ({ versionPartnerList, onChange }) => {
     const [open, setOpen] = React.useState(false); // Controls modal 
 
     const [create, { loading }] = useCreate('tradePartners_list'); // Access dataProvider API call
@@ -71,7 +71,7 @@ const createTradePartnerItemButton = ({ version, onChange }) => {
                         onSubmit={handleSubmit}
                         mutators={{ ...arrayMutators }} // necessary for ArrayInput
                         subscription={defaultSubscription} // don't redraw entire form each time one field changes
-                        key={version} // support for refresh button
+                        key={versionPartnerList} // support for refresh button
                         keepDirtyOnReinitialize
                         render={({ handleSubmit, form, submitting, pristine, values }) => (
                             <form onSubmit={handleSubmit}>

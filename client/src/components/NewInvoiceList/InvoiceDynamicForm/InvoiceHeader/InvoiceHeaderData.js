@@ -22,7 +22,7 @@ import { useFormState } from 'react-final-form';
 const InvoiceHeaderData = props => {
 
     // const date14DefaultValue = useMemo(() => new Date(), []);
-   
+
     
     const dateFormatter = v => {
         // v is a `Date` object
