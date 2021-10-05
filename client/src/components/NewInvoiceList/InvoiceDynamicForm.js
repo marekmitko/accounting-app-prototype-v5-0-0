@@ -1,10 +1,8 @@
 import * as React from "react";
 import { useMemo, useEffect, useState, useCallback } from 'react';
 import {
-    Create,
     SelectArrayInput,
     NullableBooleanInput,
-    SimpleForm,
     ArrayInput,
     ReferenceInput,
     SelectInput,
@@ -12,11 +10,10 @@ import {
     SaveButton,
     DeleteButton,
     Toolbar,
-    useSaveContext,
     TextField, useNotify, useCreate,
-    FormContext,
+    useRecordContext,
     useFormContext,
-
+    FormWithRedirect,
 } from 'react-admin';
 import { Grid,  makeStyles,  withStyles, CardContent, Typography, Box, } from '@material-ui/core';
 
@@ -87,13 +84,35 @@ const useStyles = makeStyles(() => ({
     };
 
 
+    // const calculator = createDecorator(
 
+    //     {
+    //         field: /sales_list\[\d+\]\.item_netto/,
+    //         updates: (value, name, allValues) => {
+    //             const totalField = name.replace(".item_netto", ".total");
+    //             const quantityField = name.replace(".item_netto", ".item_qty");
+    //             return {
+    //             [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
+    //             };
+    //         },
+    //     },
+    //     {
+    //         field: /sales_list\[\d+\]\.item_qty/,
+    //         updates: (value, name, allValues) => {
+    //             const totalField = name.replace(".item_qty", ".total");
+    //             const priceField = name.replace(".item_qty", ".item_netto");
+    //             return {
+    //             [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
+    //             };
+    //         },
+    //         }
+    // );
 
 
 
 
 // const AddInvCreate = (props) => {
-const AddInvCreate = ({ basePath, record, save, saving, version, }) => {
+const AddInvCreate = (props) => {
         
 
   
@@ -125,151 +144,153 @@ const AddInvCreate = ({ basePath, record, save, saving, version, }) => {
     
     const [typeItem, setTypeItem] = useState(true);
     
-    const submit = values => {
-        // React-final-form removes empty values from the form state.
-        // To allow users to *delete* values, this must be taken into account 
-        save(sanitizeEmptyValues(record, values));
-    };
-    const  saveContext  =  useFormContext ( ) ;
-    const  formContext  =  useFormContext ( ) ;
+    // const submit = values => {
+    //     // React-final-form removes empty values from the form state.
+    //     // To allow users to *delete* values, this must be taken into account 
+    //     save(sanitizeEmptyValues(record, values));
+    // };
 
-    
+
+ 
     // render={({ handleSubmit, form, submitting, pristine, values }) => (
     return (
-        <Form
-            initialValues={record}
+        <FormWithRedirect { ...props }
+            // initialValues={record}
             // onSubmit={submit}
-            onSubmit={submit}
-            mutators={{ ...arrayMutators }} // necessary for ArrayInput
-            subscription={defaultSubscription} // don't redraw entire form each time one field changes
-            key={version} // support for refresh button
-            keepDirtyOnReinitialize
-            render={({ submit, form, submitting, pristine, values }) => (
-              
-              
-                        
-                    <Grid container spacing={3} formClassName={classes.gridSimpleForm} >
-                       
-             
-            {/* <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} > */}
-        {/* // <Create {...props} transform={ transform }>
-        //     <SimpleForm    className={classes.gridSimpleForm} > */}
-     
-        {/*-> MAIN CONTAINER */}
-            {/*>> ->CONTAINER=>HeadlineDate */}
-                    <Grid container spacing={2}  >
-                        <Grid item xs={12} sm={4} >
-                            <InvoiceHeaderLogotype />
-                        </Grid>
-                        <Grid item xs={12} sm={8} >
-                            
-  <InvoiceHeaderData />
-                        </Grid>
-                    </Grid>
-            {/* X <-CONTAINER=>HeadlineDate */}
-                    <Grid container spacing={2} > 
-            {/*>> ->CONTAINER=>NewTradePartnerItemButton */}
-                        <Grid item xs={12} sm={6}> 
-                            <Grid container spacing={  2}  > 
-                                <Grid item xs={12} sm={6}>
-                                    <InvoiceNo/>
+            // onSubmit={submit}
+            // mutators={{ ...arrayMutators }} // necessary for ArrayInput
+            // subscription={defaultSubscription} // don't redraw entire form each time one field changes
+            // key={version} // support for refresh button
+            // keepDirtyOnReinitialize
+            
+            render={(formProps) => {
+                console.log('InvFormProps', formProps);
+                return (
+                <form>
+
+                        <Grid container spacing={3} formClassName={classes.gridSimpleForm} >
+                            {/* <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} > */}
+                        {/* // <Create {...props} transform={ transform }>
+                        //     <SimpleForm    className={classes.gridSimpleForm} > */}
+                        {/*-> MAIN CONTAINER */}
+                            {/*>> ->CONTAINER=>HeadlineDate */}
+                                    <Grid container spacing={2}  >
+                                        <Grid item xs={12} sm={4} >
+                                            <InvoiceHeaderLogotype />
+                                        </Grid>
+                                        <Grid item xs={12} sm={8} >
+                                            
+                    <InvoiceHeaderData />
+                                        </Grid>
+                                    </Grid>
+                            {/* X <-CONTAINER=>HeadlineDate */}
+                                    <Grid container spacing={2} > 
+                            {/*>> ->CONTAINER=>NewTradePartnerItemButton */}
+                                        <Grid item xs={12} sm={6}> 
+                                            <Grid container spacing={  2}  > 
+                                                <Grid item xs={12} sm={6}>
+                                                    <InvoiceNo/>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                            {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
+                                        <Grid item xs={12} sm={6}> 
+                            {/*>> ->CONTAINER=>NewTradePartnerItemButton */}
+                                            <Grid container spacing={  2}  > 
+                                                {/* <createTradePartnerItemButton name="Buyer"> */}
+                                                <Grid item xs={12} sm={6}>
+                                                    <ReferenceInput  label="Wybierz Kontrahenta" key={versionPartnerList} source={"id"} reference="tradePartners_list" >
+                                                        <SelectInput label="Wybierz Kontrahenta" variant ="outlined" fullWidth optionText="company" />
+                                                    </ReferenceInput>
+                                                </Grid>
+                                                <Grid item xs={12} sm={6}>
+                                                    <AddTradePartnerItemButton onChange={handleChange} />
+                                                </Grid>
+                                                {/* <createTradePartnerItemButton name="Buyer"> */}
+                                            </Grid>
+                            {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
+                                        </Grid>
+                                    </Grid>
+                            {/*>> ->CONTAINER=>Seller&Buyer */}
+                                    <Grid container spacing={2} > 
+                                        <Grid item xs={12} sm={6}> 
+                                            {/* <FormGroupContextProvider name="inv_Seller"> */}
+                    <InvoiceSellerForm dataUser={dataSeller} />
+                                            {/* </FormGroupContextProvider> */}
+                                        </Grid>
+                                        <Grid item xs={12} sm={6}>
+                                            
+                                            <Grid item xs={12} > 
+                                                {/* <FormGroupContextProvider name="Buyer"> */}
+                                                    <InvoiceBuyerForm/>
+                                                {/* </FormGroupContextProvider> */}
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>  
+                            {/* X <-CONTAINER=>Seller&Buyer */}
+                            {/*>> ->CONTAINER=>SalesProductTable */}
+                                    <Grid container spacing={3}  >
+                                        <Grid  item xs={12} >
+                                            <ArrayInput label="" source="sales_list">
+                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}   />
+                                            </ArrayInput>
+                                        </Grid>
+                                    </Grid>
+                            {/* X <-CONTAINER=>SalesProductTable */}
+                            {/*>> ->CONTAINER=>DatagridProducts*/}
+                                    <Grid container spacing={3} >
+                                        <Grid item xs={12} >
+                                            {/* <InvoiceHeaderList>
+                                                <InvoiceItemCreate fullWidth />
+                                            </InvoiceHeaderList> */}
+                                        </Grid>
+                                {/*>> ->subCONTAINER=>SelectChoices&Sum*/}
+                                        <Grid item container spacing={6} >
+                                            <Grid item  xs={12} sm={4} >
+                                                <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
+                                                <NullableBooleanInput source="has_newsletter" resource="customers" />
+                                            </Grid>
+                                            <Grid item xs={12} sm={8}  >
+                                                <SumItemListIteratorForm />
+                                            </Grid>
+                                        </Grid>
+                                {/* X <- CONTAINER=>SelectChoices&Sum*/}
+                                    </Grid>  
+                            {/* X <-CONTAINER=>DatagridProducts*/}
+                            {/*>> ->CONTAINER=>AddedInfo*/}
+                                <Grid container spacing={3} >
+                                    <Grid item  xs={12}  >
+                                        <InvoiceFooterForm />
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Grid>
-            {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
-                        <Grid item xs={12} sm={6}> 
-            {/*>> ->CONTAINER=>NewTradePartnerItemButton */}
-                            <Grid container spacing={  2}  > 
-                                {/* <createTradePartnerItemButton name="Buyer"> */}
-                                <Grid item xs={12} sm={6}>
-                                    <ReferenceInput  label="Wybierz Kontrahenta" key={versionPartnerList} source={"id"} reference="tradePartners_list" >
-                                        <SelectInput label="Wybierz Kontrahenta" variant ="outlined" fullWidth optionText="company" />
-                                    </ReferenceInput>
+                                    
+                            {/* X <-CONTAINER=>AddedInfo*/}
+                            {/*>> ->CONTAINER=>Button*/}
+                                <Grid container spacing={3} >
+                                    <Grid item  xs={12}  >
+                                        <Toolbar>
+                                            <Box display="flex" justifyContent="space-between" width="100%">
+                                                <SaveButton
+                                                        saving={formProps.saving}
+                                                        handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
+                                                />
+                                                
+                                                {/* 
+                                                //moze to tylko w edit jest 
+                                                <DeleteButton record={formProps.record} /> */}
+                                            </Box>
+                                        </Toolbar>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <AddTradePartnerItemButton onChange={handleChange} />
-                                </Grid>
-                                {/* <createTradePartnerItemButton name="Buyer"> */}
-                            </Grid>
-            {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
+                            {/* X <-CONTAINER=>Button*/}
+                        {/*<- MAIN CONTAINER */}
+                        {/* //     </SimpleForm>
+                        // </Create> */}
                         </Grid>
-                    </Grid>
-            {/*>> ->CONTAINER=>Seller&Buyer */}
-                    <Grid container spacing={2} > 
-                        <Grid item xs={12} sm={6}> 
-                            {/* <FormGroupContextProvider name="inv_Seller"> */}
-  <InvoiceSellerForm dataUser={dataSeller} />
-                            {/* </FormGroupContextProvider> */}
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            
-                            <Grid item xs={12} > 
-                                {/* <FormGroupContextProvider name="Buyer"> */}
-                                    <InvoiceBuyerForm/>
-                                {/* </FormGroupContextProvider> */}
-                            </Grid>
-                        </Grid>
-                    </Grid>  
-            {/* X <-CONTAINER=>Seller&Buyer */}
-            {/*>> ->CONTAINER=>SalesProductTable */}
-                    <Grid container spacing={3}  >
-                        <Grid  item xs={12} >
-                            {/* <ArrayInput label="" source="sales_list"> */}
-                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}   />
-                            {/* </ArrayInput> */}
-                        </Grid>
-                    </Grid>
-            {/* X <-CONTAINER=>SalesProductTable */}
-            {/*>> ->CONTAINER=>DatagridProducts*/}
-                    <Grid container spacing={3} >
-                        <Grid item xs={12} >
-                            {/* <InvoiceHeaderList>
-                                <InvoiceItemCreate fullWidth />
-                            </InvoiceHeaderList> */}
-                        </Grid>
-                {/*>> ->subCONTAINER=>SelectChoices&Sum*/}
-                        <Grid item container spacing={6} >
-                            <Grid item  xs={12} sm={4} >
-                                <SelectArrayInput source="groups" resource="customers" choices={segments} fullWidth /> 
-                                <NullableBooleanInput source="has_newsletter" resource="customers" />
-                            </Grid>
-                            <Grid item xs={12} sm={8}  >
-                                <SumItemListIteratorForm />
-                            </Grid>
-                        </Grid>
-                {/* X <- CONTAINER=>SelectChoices&Sum*/}
-                    </Grid>  
-            {/* X <-CONTAINER=>DatagridProducts*/}
-            {/*>> ->CONTAINER=>AddedInfo*/}
-                <Grid container spacing={3} >
-                    <Grid item  xs={12}  >
-                        <InvoiceFooterForm />
-                    </Grid>
-                </Grid>
-                    
-            {/* X <-CONTAINER=>AddedInfo*/}
-            {/*>> ->CONTAINER=>Button*/}
-                <Grid container spacing={3} >
-                    <Grid item  xs={12}  >
-                    <Toolbar>
-                    <Box display="flex" justifyContent="space-between" width="100%">
-                        
-                        <SaveButton 
-                            saving={formProps.saving}
-                        />
-                        {/* <DeleteButton record={formProps.record} /> */}
-                    </Box>
-                </Toolbar>
-                    </Grid>
-                </Grid>
-            {/* X <-CONTAINER=>Button*/}
-        {/*<- MAIN CONTAINER */}
-        {/* //     </SimpleForm>
-        // </Create> */}
-        </Grid>
-               
-              
-            )}
+                    </form>
+                );
+                }
+            }
         />
     );
 };

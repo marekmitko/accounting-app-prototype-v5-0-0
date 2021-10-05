@@ -37,9 +37,9 @@ import { Create, useCreateController, CreateContextProvider, } from 'react-admin
 }
 
 const CreateHomePage = props => (
-    <MyCreate {...props}>
-      <AddInvCreate {...props}  />
-      </MyCreate>
+    <Create {...props}>
+      <AddInvCreate   />
+      </Create>
   
 );
 

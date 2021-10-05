@@ -761,6 +761,59 @@
       ],
       "createAt": "2021-10-01T01:26:56.396Z",
       "id": 26
+    },
+    {
+      "published_at": "2021-10-05",
+      "dataTwoAdd14": "2021-09-21",
+      "nb_views": 0,
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "myNoBank": "00158282852858525",
+      "payment_method": "cash",
+      "id": 27,
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": null,
+          "sum_item_netto": "",
+          "item_name": "Maciek"
+        }
+      ],
+      "send_invoice_by": [
+        "mail",
+        "post"
+      ]
+    },
+    {
+      "published_at": "2021-10-05",
+      "dataTwoAdd14": "2021-09-21",
+      "nb_views": 0,
+      "sales_list": [
+        {
+          "id": "",
+          "sales_item": "",
+          "sum_item_brutto": null,
+          "sum_item_netto": ""
+        }
+      ],
+      "myCompany": "Biuro Podróży Pawłowice",
+      "myStreet": "Widawska 128",
+      "myZIPCode": "58-202",
+      "myCity": "Wrocław",
+      "myPhoneNo": "501069054",
+      "myEmail": "kowalskitravel@gmail.com",
+      "myMVA": "9973786",
+      "myNoBank": "00158282852858525",
+      "send_invoice_by": [
+        "post"
+      ],
+      "id": 28
     }
   ],
   "tradePartners_list": [

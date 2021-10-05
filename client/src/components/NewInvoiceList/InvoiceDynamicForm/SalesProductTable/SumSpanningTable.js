@@ -23,7 +23,8 @@ import Button from '@material-ui/core/Button';
 
 import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
 
-import createDecorator from 'final-form-calculate'
+import createDecorator from 'final-form-calculate';
+import { getIn } from 'final-form';
 import SalesTableHeader from './componentsSalesTable/SalesTableHeader';
 import AdditionalOptions from './componentsSubSalesTable/AdditionalOptions';
 import SumSalesItems from './componentsSubSalesTable/SumSalesItems';
@@ -85,18 +86,10 @@ function subtotal(items) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
 }
 
-const calculator = createDecorator(
-    // Calculations:
-  {
-     field: 'number1', // when the value of foo changes...
-     updates: {
-       number2: (fooValue, allValues) => allValues["number1"] * 2
-     }
-  })
-  
+
 
 const item_type = [
-    { label: 'Usługa', id: 'usługi', name: 'Usugi' },
+    { label: 'Usługa', id: 'usługi', name: 'Usługi' },
     { label: 'Towar', id: 'towar', name: 'Towary' },
     { label: 'Najem', id: 'najem', name: 'Najem' },
     { label: 'Prowizja', id: 'Prowizja', name: 'Prowizja' },
@@ -115,6 +108,29 @@ const item_tax = [
                 {/*>> ->CONTAINER=>HeadlineDate */}
                 {/* X <-CONTAINER=>HeadlineDate */}
 
+const calculator = createDecorator(
+
+    {
+        field: /sales_list\[\d+\]\.item_netto/,
+        updates: (value, name, allValues) => {
+            const totalField = name.replace(".item_netto", ".total");
+            const quantityField = name.replace(".item_netto", ".item_qty");
+            return {
+            [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
+            };
+        },
+    },
+    {
+        field: /sales_list\[\d+\]\.item_qty/,
+        updates: (value, name, allValues) => {
+            const totalField = name.replace(".item_qty", ".total");
+            const priceField = name.replace(".item_qty", ".item_netto");
+            return {
+            [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
+            };
+        },
+        }
+);
 
 
 const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
@@ -127,8 +143,10 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
         setTypeItem(event.target.value);
     };
 
+
+
     return (  
-        <FieldArray name="sales_list" decorators={[calculator]} > 
+        <FieldArray name="sales_list" > 
             {(fieldProps) => {
                     return (
                         <TableContainer component={Paper}>
@@ -141,7 +159,7 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
             {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
                             {fieldProps.fields.map((sales_item, index) => {
                                     return (
-                                        <TableRow  hover tabIndex={-1} key={index}>  
+                                        <TableRow   hover tabIndex={-1} key={index}>  
                                             <TableCell style={{ padding: 10 }} align="center"   >
                                                 {index+1}
                                             </TableCell>  
@@ -162,10 +180,24 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                                                         className={ classes.helperTextIsNONE } />
                                                 </Field>
                                             </TableCell>  
+                                            {/* <TableCell>  
+                                                <Field
+                                                name={`sales_list[${index}].total`}
+                                                component={TextField}
+                                                placeholder="Total"
+                                                />
+                                            </TableCell>   */}
                                             <TableCell align="center">  
-                                                <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} 
-                                                                className={ classes.helperTextIsNONE } 
-                                                                style={{ maxWidth: 90 }} />
+                                                <Field
+                                                        name={`sales_list[${index}].item_qty`}
+                                                        component="NumberInput" >
+                                                    <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} 
+                                                                    // name={[...props.input.name]}
+                                                                    // value={[...props.input.value]}
+                                                                    // onChange={[...props.input.onChange]}
+                                                                    className={ classes.helperTextIsNONE } 
+                                                                    style={{ maxWidth: 90 }} />
+                                                </Field>
                                             </TableCell>  
                                             <TableCell align="center" >
                                                 <Field
@@ -176,14 +208,16 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                                 </Field>
                                             </TableCell>   
                                             <TableCell align="left">  
-                                                <Field
-                                                    name={`sales_list[${index}].item_tax`}
+                                                {/* <Field
+                                                   
+                                                    name={`sales_list[${index}].item_tax`} 
                                                     component="SelectInput" >
                                                         <SelectInput    label="VAT" variant ="outlined" source={`sales_list[${index}].item_tax`} choices={item_tax}
                                                                         className={ classes.helperTextIsNONE }
                                                                         style={{ maxWidth: 40 }}
+                                                                        
                                                                          />
-                                                </Field>
+                                                </Field> */}
                                             </TableCell>  
                                     {/*sumNETTO ->tabCELL=>sum_item_netto*/}
                                             <TableCell align="right">  
