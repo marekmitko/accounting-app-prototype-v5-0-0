@@ -21,7 +21,7 @@ import { Children } from "react";
 const InvoiceBuyerForm = (props) => (
 // console.log(UserProfile("Profile12356x"));
 <ResourceContextProvider resource='NewInvoiceList' >
-    <CreateBase basePath='/NewInvoiceList/create' >
+    <CreateBase basePath='/new_invoiceRC/create' >
         <myGridSanitized  container spacing={3}>
         <Grid container item xs={12} spacing={3}>
         <Card variant="outlined" p="1em">

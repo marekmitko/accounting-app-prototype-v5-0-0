@@ -7,7 +7,7 @@ import BoxItemNumberInput from '../../../../myComponentsMui/myMuiForm/BoxItemNum
 import BoxTextInput from '../../../../myComponentsMui/myMuiForm/BoxTextInput';
 import BoxBootstrapInput  from '../../../../myComponentsMui/myMuiForm/BoxBootstrapInput.js';
 
-import SalesTableHeader from '../../InvoiceDynamicForm/SalesProductTable/componentsSalesTable/SalesTableHeader';
+import SalesTableHeader from '../../InvoiceForm/SalesProductTable/componentsSalesTable/SalesTableHeader';
 
 const useStyles = makeStyles({
     inlineBlock: { display: 'inline-flex',

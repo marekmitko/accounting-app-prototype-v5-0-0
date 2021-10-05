@@ -22,20 +22,20 @@ import { Form, useForm, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 
 import myGridSanitized from '../../myComponents/myGridSanitized';
-import InvoiceNo from './InvoiceDynamicForm/contractorsDataForm/InvoiceNo';
-import InvoiceSellerForm from './InvoiceDynamicForm/contractorsDataForm/InvoiceSellerForm.js';
-import InvoiceBuyerForm from './InvoiceDynamicForm/contractorsDataForm/InvoiceBuyerForm.js';
-import InvoiceHeaderLogotype from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderLogotype.js'
-import InvoiceHeaderData from './InvoiceDynamicForm/InvoiceHeader/InvoiceHeaderData.js';
-import SumItemListIteratorForm from './InvoiceDynamicForm/InvoiceInfoForm/SumItemListIteratorForm.js'
-import InvoiceFooterForm from './InvoiceDynamicForm/InvoiceFooter/InvoiceFooterForm.js';
-import AddTradePartnerItemButton from './InvoiceDynamicForm/contractorsDataForm/AddTradePartnerItemButton.js';
-import SumSpanningTable from './InvoiceDynamicForm/SalesProductTable/SumSpanningTable';
+import InvoiceNo from './invoiceFormRC/contractorsDataForm/InvoiceNo';
+import InvoiceSellerForm from './invoiceFormRC/contractorsDataForm/InvoiceSellerForm.js';
+import InvoiceBuyerForm from './invoiceFormRC/contractorsDataForm/InvoiceBuyerForm.js';
+import InvoiceHeaderLogotype from './invoiceFormRC/InvoiceHeader/InvoiceHeaderLogotype.js'
+import InvoiceHeaderData from './invoiceFormRC/InvoiceHeader/InvoiceHeaderData.js';
+import SumItemListIteratorForm from './invoiceFormRC/InvoiceInfoForm/SumItemListIteratorForm.js'
+import InvoiceFooterForm from './invoiceFormRC/InvoiceFooter/InvoiceFooterForm.js';
+import AddTradePartnerItemButton from './invoiceFormRC/contractorsDataForm/AddTradePartnerItemButton.js';
+import SumSpanningTable from './invoiceFormRC/SalesProductTable/SumSpanningTable.js';
 
 import Save from '@material-ui/icons/Save';
 import MuiTextField from '@material-ui/core/TextField'
 import MuiButton from '@material-ui/core/Button';
-// ad  ./components/NewInvoiceList/InvoiceDynamicForm/SalesProductTable/SumSpanningTable.js
+// ad  ./components/new_invoiceRC/InvoiceForm/SalesProductTable/SumSpanningTable.js
 
 const payment_method = [
     ];
@@ -111,8 +111,8 @@ const useStyles = makeStyles(() => ({
 
 
 
-// const AddInvCreate = (props) => {
-const AddInvCreate = (props) => {
+// const InvoiceForm = (props) => {
+const InvoiceForm = (props) => {
         
 
   
@@ -297,7 +297,7 @@ const AddInvCreate = (props) => {
 
 
 
-export default AddInvCreate;
+export default InvoiceForm;
 
 
 

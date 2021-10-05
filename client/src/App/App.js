@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Admin, Resource, ListGuesser } from 'react-admin'
 import restProvider from 'ra-data-simple-rest'
 import clients from '../pages/clients'
-import homepage from '../components/NewInvoiceList/homepage'
+import homepage from '../components/new_invoiceRC/homepage'
 
 // import { Route } from "react-router-dom";
 // import { UserList } from '../xprofile/users';
