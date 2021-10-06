@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useMemo } from 'react';
+import { useMemo, useEffect, } from 'react';
 import {
     FormWithRedirect,
     DateInput,
@@ -12,7 +12,7 @@ import {
     FormDataConsumer,
 } from 'react-admin';
 import { Card, Typography, Box, Toolbar,} from '@material-ui/core';
-import { useFormState } from 'react-final-form';
+import { useFormState, useForm, } from 'react-final-form';
 
 
 
@@ -24,6 +24,13 @@ const InvoiceHeaderData = props => {
     // const date14DefaultValue = useMemo(() => new Date(), []);
 
     
+    const {change} = useForm();
+    const { values: { test_first_input }} = useFormState({ subscription: { values: true } });
+
+    useEffect(() => {
+        change('test_second_input', test_first_input / 100);
+      }, [change, test_first_input]);
+
     const dateFormatter = v => {
         // v is a `Date` object
         if (!(v instanceof Date) || isNaN(v)) return;
@@ -68,9 +75,11 @@ const InvoiceHeaderData = props => {
     return (
         <Card variant="outlined" p="1em">
             <Box display="flex" m="1em">
+            <NumberInput  source="test_first_input"/>
                 <Box flex={1} mr="0.5em">
                     <Typography variant="h6" gutterBottom>Data</Typography>
                 </Box>
+                <NumberInput defaultValue={test_first_input / 100} source="test_second_input"/>
                     <DateInput source="published_at" defaultValue={dateDefaultValue}  />
                     <FormDataConsumer>
                         {({ formData, ...rest }) => (

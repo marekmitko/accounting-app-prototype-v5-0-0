@@ -20,6 +20,8 @@ import { Grid,  makeStyles,  withStyles, CardContent, Typography, Box, } from '@
 import { sanitizeEmptyValues } from 'react-admin';
 import { Form, useForm, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
+import  createDecorator  from 'final-form-calculate';
+import { getIn } from 'final-form';
 
 import myGridSanitized from '../../myComponents/myGridSanitized';
 import InvoiceNo from './invoiceFormRC/contractorsDataForm/InvoiceNo';
@@ -84,36 +86,36 @@ const useStyles = makeStyles(() => ({
     };
 
 
-    // const calculator = createDecorator(
+    
 
-    //     {
-    //         field: /sales_list\[\d+\]\.item_netto/,
-    //         updates: (value, name, allValues) => {
-    //             const totalField = name.replace(".item_netto", ".total");
-    //             const quantityField = name.replace(".item_netto", ".item_qty");
-    //             return {
-    //             [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
-    //             };
-    //         },
-    //     },
-    //     {
-    //         field: /sales_list\[\d+\]\.item_qty/,
-    //         updates: (value, name, allValues) => {
-    //             const totalField = name.replace(".item_qty", ".total");
-    //             const priceField = name.replace(".item_qty", ".item_netto");
-    //             return {
-    //             [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
-    //             };
-    //         },
-    //         }
-    // );
-
-
-
-
-// const InvoiceForm = (props) => {
-const InvoiceForm = (props) => {
-        
+    
+    
+   
+    const InvoiceForm = (props) => {
+            
+        const calculator = createDecorator(
+    
+            {
+                field: /sales_list\[\d+\]\.item_netto/,
+                updates: (value, name, allValues) => {
+                    const totalField = name.replace(".item_netto", ".total");
+                    const quantityField = name.replace(".item_netto", ".item_qty");
+                    return {
+                    [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
+                    };
+                },
+            },
+            {
+                field: /sales_list\[\d+\]\.item_qty/,
+                updates: (value, name, allValues) => {
+                    const totalField = name.replace(".item_qty", ".total");
+                    const priceField = name.replace(".item_qty", ".item_netto");
+                    return {
+                    [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
+                    };
+                },
+                }
+        );
 
   
 
@@ -154,7 +156,12 @@ const InvoiceForm = (props) => {
  
     // render={({ handleSubmit, form, submitting, pristine, values }) => (
     return (
-        <FormWithRedirect { ...props }
+        <FormWithRedirect  { ...props }
+                mutators={{...arrayMutators,}}
+                decorators={[calculator]}
+                initialValues={{
+                    sales_list: [ ],
+                }}
             // initialValues={record}
             // onSubmit={submit}
             // onSubmit={submit}
@@ -163,7 +170,10 @@ const InvoiceForm = (props) => {
             // key={version} // support for refresh button
             // keepDirtyOnReinitialize
             
-            render={(formProps) => {
+            render={({   
+                ...formProps, 
+                // mutators: {push, pop},
+                }) => {
                 console.log('InvFormProps', formProps);
                 return (
                 <form>
@@ -231,9 +241,9 @@ const InvoiceForm = (props) => {
                             {/*>> ->CONTAINER=>SalesProductTable */}
                                     <Grid container spacing={3}  >
                                         <Grid  item xs={12} >
-                                            <ArrayInput label="" source="sales_list">
+                                            {/* <ArrayInput label="" source="sales_list"> */}
                                                 <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}   />
-                                            </ArrayInput>
+                                            {/* </ArrayInput> */}
                                         </Grid>
                                     </Grid>
                             {/* X <-CONTAINER=>SalesProductTable */}

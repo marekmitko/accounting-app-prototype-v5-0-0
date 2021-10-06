@@ -9,7 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
-import {  Field, } from 'react-final-form';
+import {  Field, useFormState, useForm, } from 'react-final-form';
 import  { NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
 }  from 'react-admin';
 
@@ -108,29 +108,29 @@ const item_tax = [
                 {/*>> ->CONTAINER=>HeadlineDate */}
                 {/* X <-CONTAINER=>HeadlineDate */}
 
-const calculator = createDecorator(
+// const calculator = createDecorator(
 
-    {
-        field: /sales_list\[\d+\]\.item_netto/,
-        updates: (value, name, allValues) => {
-            const totalField = name.replace(".item_netto", ".total");
-            const quantityField = name.replace(".item_netto", ".item_qty");
-            return {
-            [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
-            };
-        },
-    },
-    {
-        field: /sales_list\[\d+\]\.item_qty/,
-        updates: (value, name, allValues) => {
-            const totalField = name.replace(".item_qty", ".total");
-            const priceField = name.replace(".item_qty", ".item_netto");
-            return {
-            [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
-            };
-        },
-        }
-);
+//     {
+//         field: /sales_list\[\d+\]\.item_netto/,
+//         updates: (value, name, allValues) => {
+//             const totalField = name.replace(".item_netto", ".total");
+//             const quantityField = name.replace(".item_netto", ".item_qty");
+//             return {
+//             [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
+//             };
+//         },
+//     },
+//     {
+//         field: /sales_list\[\d+\]\.item_qty/,
+//         updates: (value, name, allValues) => {
+//             const totalField = name.replace(".item_qty", ".total");
+//             const priceField = name.replace(".item_qty", ".item_netto");
+//             return {
+//             [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
+//             };
+//         },
+//         }
+// );
 
 
 const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
@@ -158,6 +158,10 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                         <TableBody className={classes.IteratorRowProduct } >  
             {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
                             {fieldProps.fields.map((sales_item, index) => {
+
+                                   
+                                    
+
                                     return (
                                         <TableRow   hover tabIndex={-1} key={index}>  
                                             <TableCell style={{ padding: 10 }} align="center"   >
@@ -327,7 +331,8 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                             <Button
                                                 type="button"
                                                 onClick={
-                                                    () => fieldProps.fields.push({ id: '', sales_item: '', sum_item_brutto: '', sum_item_netto: '', })}
+                                                    () => fieldProps.fields.push({ sales_list: undefined, } )}
+                                                 
                                                     color="secondary"
                                                 variant="contained"
                                                 style={{ marginTop: '16px', marginLeft: '16px' }}
