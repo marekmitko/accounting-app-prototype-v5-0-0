@@ -37,6 +37,10 @@ import SumSpanningTable from './invoiceFormRC/SalesProductTable/SumSpanningTable
 import Save from '@material-ui/icons/Save';
 import MuiTextField from '@material-ui/core/TextField'
 import MuiButton from '@material-ui/core/Button';
+
+import get from SimpleFormIterator from 'react-admin';
+
+
 // ad  ./components/new_invoiceRC/InvoiceForm/SalesProductTable/SumSpanningTable.js
 
 const payment_method = [
@@ -161,6 +165,8 @@ const useStyles = makeStyles(() => ({
                 decorators={[calculator]}
                 initialValues={{
                     sales_list: [ ],
+                    invoice_date: new Date(),
+                    invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
                 }}
             // initialValues={record}
             // onSubmit={submit}
@@ -172,9 +178,14 @@ const useStyles = makeStyles(() => ({
             
             render={({   
                 ...formProps, 
-                // mutators: {push, pop},
+                form: {  mutators: { push, pop } },
+                pristine,
+                form,
+                submitting,
+                values
                 }) => {
                 console.log('InvFormProps', formProps);
+                console.log('InvForm ', form);
                 return (
                 <form>
 
@@ -184,13 +195,12 @@ const useStyles = makeStyles(() => ({
                         //     <SimpleForm    className={classes.gridSimpleForm} > */}
                         {/*-> MAIN CONTAINER */}
                             {/*>> ->CONTAINER=>HeadlineDate */}
-                                    <Grid container spacing={2}  >
-                                        <Grid item xs={12} sm={4} >
+                                    <Grid container spacing={1}  >
+                                        <Grid item xs={12} sm={1} >
                                             <InvoiceHeaderLogotype />
                                         </Grid>
-                                        <Grid item xs={12} sm={8} >
-                                            
-                    <InvoiceHeaderData />
+                                        <Grid item xs={12} sm={11} >
+                                            {/* <InvoiceHeaderData /> */}
                                         </Grid>
                                     </Grid>
                             {/* X <-CONTAINER=>HeadlineDate */}

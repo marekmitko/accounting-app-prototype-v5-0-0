@@ -32,12 +32,16 @@ import SumSalesItemsHeader from './SumSalesItemsHeader';
 
 
 
-export default function SumSalesItems ({ fieldProps }) {
+export default function SumSalesItems (...fieldProps ) {
 
     function ccyFormat(num) {
         return `${num.toFixed(2)}`;
     }
+
+    const formGroupState = useFormGroup("IteratorItem");
+
     console.log( 'fieldProps', fieldProps );
+    console.log( 'IteratorItem', formGroupState );
     return (
         <Table>
             <SumSalesItemsHeader/>

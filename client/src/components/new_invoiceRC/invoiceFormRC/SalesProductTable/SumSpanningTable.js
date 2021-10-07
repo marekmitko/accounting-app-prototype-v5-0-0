@@ -10,7 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray } from 'react-final-form-arrays';
 import {  Field, useFormState, useForm, } from 'react-final-form';
-import  { NumberInput, SelectInput, FormDataConsumer, useFormGroup, useRecordContext, useResourceContext,
+import  {   NumberInput, SelectInput, FormDataConsumer, useRecordContext, useResourceContext,
+            useFormGroup, FormGroupContextProvider, 
 }  from 'react-admin';
 
 import TextField from '@material-ui/core/TextField';
@@ -164,6 +165,9 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
 
                                     return (
                                         <TableRow   hover tabIndex={-1} key={index}>  
+                                        <FormGroupContextProvider name="IteratorItem">
+                                 
+                            
                                             <TableCell style={{ padding: 10 }} align="center"   >
                                                 {index+1}
                                             </TableCell>  
@@ -315,6 +319,8 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                                     <Delete style={{ color: 'red' }} />
                                                 </Button>
                                             </TableCell>  
+                                   
+                                        </FormGroupContextProvider>
                                         </TableRow>  
                                     );
                                 }
@@ -350,6 +356,7 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                 <Grid item xs={12} sm={6}>
                         {/*>> ->subCONTAINER=> AdditionalOptions in Table */}
                                     <AdditionalOptions />
+
                         {/* X <-subCONTAINER=> AdditionalOptions in Table */}
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 

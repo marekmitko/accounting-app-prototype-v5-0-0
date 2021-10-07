@@ -24,6 +24,13 @@ const InvoiceHeaderData = props => {
     // const date14DefaultValue = useMemo(() => new Date(), []);
 
     
+    const {change} = useForm();
+    const { values: { test_first_input }} = useFormState({ subscription: { values: true } });
+
+    useEffect(() => {
+        change('test_second_input', test_first_input / 100);
+      }, [change, test_first_input]);
+
     const dateFormatter = v => {
         // v is a `Date` object
         if (!(v instanceof Date) || isNaN(v)) return;
@@ -52,49 +59,27 @@ const InvoiceHeaderData = props => {
     };
    
     const dateDefaultValue = useMemo(() => new Date(), []);
-    
+
     const added14 = (dateStart) => {
         let added14 = undefined;
         return dateStart.setDate();
     };
 
-
-    //bin start 
-    const {change} = useForm();
-    const { values: { test_first_input }} = useFormState({ subscription: { values: true } });
-
-    useEffect(() => {
-        change('test_second_input', test_first_input / 100);
-      }, [change, test_first_input]);
-
-    //bin stop
-    
     const { values: { todayDate }} = useFormState({ subscription: { values: true } });
-    
+
     const date14DefaultValue = useMemo(() => new Date(), []);
     const add14day = 12096e5;
     const date14 = new Date();
-    
-    
-    const { values: { invoice_date  }} = useFormState({ subscription: { values: true } });
 
-    
-    useEffect(() => {
-        change('invoice_due_date ',  () => { new Date(Math.abs(invoice_date.getTime() + (14*24*60*60*1000))) } );
-      }, [change, invoice_date]);
 
     return (
         <Card variant="outlined" p="1em">
             <Box display="flex" m="1em">
-            <DateInput defaultValue={dateDefaultValue} source="invoice_date"/>
-                {/* <Box flex={1} mr="0.5em">
+            <NumberInput  source="test_first_input"/>
+                <Box flex={1} mr="0.5em">
                     <Typography variant="h6" gutterBottom>Data</Typography>
-                </Box> */}
-            <FormDataConsumer>
-    {({ formData, ...rest }) => (
-                <DateInput defaultValue={  new Date(Math.abs(formData.invoice_date.getTime() + (14*24*60*60*1000)))  } source="invoice_due_date" {...rest} />
-                )}
-            </FormDataConsumer>
+                </Box>
+                <NumberInput defaultValue={test_first_input / 100} source="test_second_input"/>
                     <DateInput source="published_at" defaultValue={dateDefaultValue}  />
                     <FormDataConsumer>
                         {({ formData, ...rest }) => (
@@ -107,17 +92,9 @@ const InvoiceHeaderData = props => {
                     <DateInput  defaultValue={todayDate} format={dateAdded14} source="dataAddcalcul" />
                 </Box>
                 <Box flex={2} ml="0.5em">
-                <FormDataConsumer>
-                        {({ formData, ...rest }) => (
-                        <DateInput defaultValue={formData.invoice_date + (14*24*60*60*1000) }  source="dataTwo " {...rest} />
-                        )}
-                </FormDataConsumer>
                     <NumberInput source="nb_views" defaultValue={0} />
+                    
                 </Box>
-                <Box flex={2} ml="0.5em">
-                <NumberInput  source="test_first_input"/>
-                <NumberInput defaultValue={test_first_input / 100} source="test_second_input"/>
-                </Box >
             </Box>
         </Card>
     );
