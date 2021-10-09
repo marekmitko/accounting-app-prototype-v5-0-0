@@ -38,8 +38,6 @@ import Save from '@material-ui/icons/Save';
 import MuiTextField from '@material-ui/core/TextField'
 import MuiButton from '@material-ui/core/Button';
 
-import get from SimpleFormIterator from 'react-admin';
-
 
 // ad  ./components/new_invoiceRC/InvoiceForm/SalesProductTable/SumSpanningTable.js
 
