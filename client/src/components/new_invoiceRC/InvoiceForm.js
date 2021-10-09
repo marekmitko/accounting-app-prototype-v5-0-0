@@ -40,7 +40,7 @@ import Save from '@material-ui/icons/Save';
 import MuiTextField from '@material-ui/core/TextField'
 import MuiButton from '@material-ui/core/Button';
 
-
+import MyFormIterator from '../new_invoiceRC/invoiceFormRC/SalesProductTable/componentsSalesTable/MyFormIterator';
 // ad  ./components/new_invoiceRC/InvoiceForm/SalesProductTable/SumSpanningTable.js
 
 const payment_method = [
@@ -235,6 +235,11 @@ const useStyles = makeStyles(() => ({
                                     <Grid container spacing={  2}  > 
                                                 <AddedRowIterator />
                                     </Grid>
+                                    {/* <Grid container spacing={  2}  > 
+                                        <ArrayInput source="New_iterator" {...props} >
+                                                <MyFormIterator />
+                                        </ArrayInput>
+                                    </Grid> */}
                             {/*>> ->CONTAINER=>Seller&Buyer */}
                                     <Grid container spacing={2} > 
                                         <Grid item xs={12} sm={6}> 
