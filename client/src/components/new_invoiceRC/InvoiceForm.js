@@ -34,6 +34,8 @@ import InvoiceFooterForm from './invoiceFormRC/InvoiceFooter/InvoiceFooterForm.j
 import AddTradePartnerItemButton from './invoiceFormRC/contractorsDataForm/AddTradePartnerItemButton.js';
 import SumSpanningTable from './invoiceFormRC/SalesProductTable/SumSpanningTable.js';
 
+import AddedRowIterator from './invoiceFormRC/SalesProductTable/componentsSalesTable/AddedRowIterator';
+
 import Save from '@material-ui/icons/Save';
 import MuiTextField from '@material-ui/core/TextField'
 import MuiButton from '@material-ui/core/Button';
@@ -210,6 +212,7 @@ const useStyles = makeStyles(() => ({
                                                     <InvoiceNo/>
                                                 </Grid>
                                             </Grid>
+                                          
                                         </Grid>
                             {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
                                         <Grid item xs={12} sm={6}> 
@@ -228,6 +231,9 @@ const useStyles = makeStyles(() => ({
                                             </Grid>
                             {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
                                         </Grid>
+                                    </Grid>
+                                    <Grid container spacing={  2}  > 
+                                                <AddedRowIterator />
                                     </Grid>
                             {/*>> ->CONTAINER=>Seller&Buyer */}
                                     <Grid container spacing={2} > 
