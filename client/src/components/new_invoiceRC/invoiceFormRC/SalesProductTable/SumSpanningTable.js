@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -8,10 +8,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { FieldArray } from 'react-final-form-arrays';
+import { FieldArray, useFieldArray, } from 'react-final-form-arrays';
 import {  Field, useFormState, useForm, } from 'react-final-form';
-import  {   NumberInput, SelectInput, FormDataConsumer, useRecordContext, useResourceContext,
-            useFormGroup, FormGroupContextProvider, 
+import  {   NumberInput, SelectInput, FormGroupContextProvider, FormDataConsumer,
+    //  useRecordContext, useResourceContext,   SimpleFormIteratorController, useFormGroup, 
 }  from 'react-admin';
 
 import TextField from '@material-ui/core/TextField';
@@ -134,21 +134,52 @@ const item_tax = [
 // );
 
 
-const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
+const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeItem, source, record, resource, defaultValue, ...rest}) => {
+
+    //czy ja tu mogę dodać motode do objektu? 
+    const [count, setCount] = useState(0);
+ 
+    const initOnClickValue = { sales_list: undefined,
+        sales_item: "",
+        id: "",
+        item_name: "",
+        item_type: "Wybierz",
+        item_qty: 1,
+        item_netto: 0.00,
+        item_tax: "Wybierz",
+        sum_item_netto: 0.00,
+        sum_item_tax: 0.00,
+        sum_item_brutto: 0.00,
+    };
+
+    
+
+    const fieldProps = useFieldArray(source, {initialValue: defaultValue, ...rest, });
     // const formGroupState = useFormGroup();
     const classes = useStyles();
-    const record = useRecordContext();
-    const resource = useResourceContext();
+    // const record = useRecordContext();
 
     const handleChangeSelectType = (event) => {
         setTypeItem(event.target.value);
     };
 
+      const formState = useFormState();
+      const formStateData = formState.values;
 
+
+
+
+    //   const {change} = useForm();
+    //   const { values: { test_first_input }} = useFormState({ subscription: { values: true } });
+  
+    //   useEffect(() => {
+    //       change('test_second_input', test_first_input / 10);
+    //   }, [change, test_first_input]);
 
     return (  
-        <FieldArray name="sales_list" > 
+        <FieldArray fieldProps={fieldProps} name="sales_list" > 
             {(fieldProps) => {
+                // console.log('arrfProps', fieldProps);
                     return (
                         <TableContainer component={Paper}>
         {/*>> ->CONTAINER=> SalesTable in Table */}
@@ -160,9 +191,12 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
             {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
                             {fieldProps.fields.map((sales_item, index) => {
 
-                                   
+                              
                                     
-
+                                console.log('formState', formState);
+                                console.log('formStateData', formStateData);
+                                console.log('record', record);
+                                console.log('record', record.value);
                                     return (
                                         <TableRow   hover tabIndex={-1} key={index}>  
                                         <FormGroupContextProvider name="IteratorItem">
@@ -197,12 +231,13 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                             </TableCell>   */}
                                             <TableCell align="center">  
                                                 <Field
+                                                        type="number"
                                                         name={`sales_list[${index}].item_qty`}
                                                         component="NumberInput" >
                                                     <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} 
                                                                     // name={[...props.input.name]}
                                                                     // value={[...props.input.value]}
-                                                                    // onChange={[...props.input.onChange]}
+                                                                    // onChange={[...props.input.onChange]} SumSalesItems
                                                                     className={ classes.helperTextIsNONE } 
                                                                     style={{ maxWidth: 90 }} />
                                                 </Field>
@@ -231,7 +266,7 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                             <TableCell align="right">  
                                                 {/* <FormDataConsumer  subscription={{ values: true }} > */}
                                                     {() => {     
-                                                        console.log('fieldProps', fieldProps.fields.value);    
+                                                        // console.log('fieldProps', fieldProps.fields.value);    
                                                             if(typeof fieldProps.fields["sales_list"][index]["item_netto"] !== 'undefined' ) {
                                                                 fieldProps.fields["sales_list"][index]["sum_item_netto"] = 
                                                                                                                 fieldProps.fields["sales_list"][index]["item_netto"] * fieldProps.fields["sales_list"][index]["item_qty"];
@@ -259,29 +294,21 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                             </TableCell>
                                             <TableCell align="center">  
                                     {/*sumTAX ->tabCELL=>sum_item_tax*/}
-                                                <FormDataConsumer  subscription={{ values: true }} >
-                                                        {({ formData, ...rest  }) => {       
-                                                            if(typeof formData["sales_list"][index]["item_tax"] !== 'undefined' ) {
-                                                                formData["sales_list"][index]["sum_item_tax"] = 
-                                                                                                                (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
-                                                                                                                * formData["sales_list"][index]["item_tax"];
-                                                                return (                                                                       
-                                                                    <Field
-                                                                    name={`sales_list[${index}].sum_item_tax`}
-                                                                    initialValues={formData["sales_list"][index]["sum_item_tax"]}
-                                                                        component="NumberInput" >
-                                                                            <NumberInput    label="Kwota netto" variant ="field"  source={`sales_list[${index}].sum_item_tax`} 
-                                                                                            className={ classes.helperTextIsNONE } />
-                                                                    </Field>
-                                                                );}  else {
-                                                                    return( 
-                                                                        <Field
-                                                                            name={`sales_list[${index}].sum_item_tax`}
-                                                                            component="NumberInput" >
-                                                                                <NumberInput    label="Kwota netto" variant ="outlined"  source={`sales_list[${index}].sum_item_tax`} 
-                                                                                                className={ classes.helperTextIsNONE } />
-                                                                        </Field>
-                                                                    );}            
+                                                <FormDataConsumer  subscription={{ values: true }} index={index} >
+                                                    
+                                                        {({ formData, scopedFormData, getSource, ...rest  }) => {  
+                                                 
+                                                            if (typeof scopedFormData !== 'undefined') {   
+                                                                scopedFormData.total = scopedFormData.item_qty * 10;
+                                                                
+                                                                return (
+                                                                    <NumberInput disabled defaultValue={scopedFormData.total} label="Total" source={getSource('total')} />
+                                                                )
+                                                                } else {
+                                                                  return(
+                                                                    <NumberInput disabled label="Total" source={getSource('total')} />
+                                                                  )  
+                                                             }       
                                                             }
                                                         } 
                                                 </FormDataConsumer>
@@ -289,8 +316,9 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                             </TableCell>  
                                             <TableCell align="left">  
                                     {/*sumBRUTTO ->tabCELL=>sum_item_brutto*/}
-                                                <FormDataConsumer  subscription={{ values: true }} >
-                                                        {({ formData, ...rest  }) => {        
+                                    <FormDataConsumer  subscription={{ values: true }} index={index} >
+                                                    
+                                                    {({ formData, scopedFormData, getSource, ...rest  }) => {        
                                                             if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
                                                                 formData["sales_list"][index]["sum_item_brutto"] = 
                                                                                                                 (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
@@ -337,7 +365,7 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                             <Button
                                                 type="button"
                                                 onClick={
-                                                    () => fieldProps.fields.push({ sales_list: undefined, } )}
+                                                    () => fieldProps.fields.push(initOnClickValue)}
                                                  
                                                     color="secondary"
                                                 variant="contained"
@@ -361,7 +389,7 @@ const SumSpanningTable = (    {typeItem, setTypeItem, source, ...props}) => {
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 
                         {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
-                                    <SumSalesItems fieldProps={fieldProps} />
+                                    <SumSalesItems setSumTable={setSumTable} sumTable={sumTable} form={form} dataArray={formStateData} fieldProps={fieldProps} record={record} resource={resource}   />
                         {/* X <-subCONTAINER=> SubTableSumSales in Table */}
                                 </Grid>
                             </Grid >

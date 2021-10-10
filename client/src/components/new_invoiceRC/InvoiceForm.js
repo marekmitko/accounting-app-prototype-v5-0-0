@@ -18,7 +18,7 @@ import {
 import { Grid,  makeStyles,  withStyles, CardContent, Typography, Box, } from '@material-ui/core';
 
 import { sanitizeEmptyValues } from 'react-admin';
-import { Form, useForm, Field } from 'react-final-form';
+import { Form, useForm, Field, useFormState } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import  createDecorator  from 'final-form-calculate';
 import { getIn } from 'final-form';
@@ -139,6 +139,8 @@ const useStyles = makeStyles(() => ({
             // empty dependency array means this effect will only run once (like componentDidMount in classes)
         }, dataSeller);
 
+
+
         const classes = useStyles();
     const transform = data => ({
             ...data,
@@ -149,12 +151,22 @@ const useStyles = makeStyles(() => ({
     const handleChange = useCallback(() => setVersionPartnerList(versionPartnerList + 1), [versionPartnerList]);
     
     const [typeItem, setTypeItem] = useState(true);
+
+    const [sumTable, setSumTable] = useState(0);
+
+
+   
     
-    // const submit = values => {
-    //     // React-final-form removes empty values from the form state.
-    //     // To allow users to *delete* values, this must be taken into account 
-    //     save(sanitizeEmptyValues(record, values));
-    // };
+    function totalSumItem(data){
+        var sumTotalQty = 0; 
+       if(data){
+        sumTotalQty = data.reduce(( accumulator, obj ) => {
+            return accumulator + (obj['item_qty'] || 0 ) }, 0 )
+    console.log("sumTotalQty", sumTotalQty );
+} else {
+    return sumTotalQty
+};
+}
 
 
  
@@ -167,7 +179,10 @@ const useStyles = makeStyles(() => ({
                     sales_list: [ ],
                     invoice_date: new Date(),
                     invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
+                    sumTable,
                 }}
+                setSumTable={setSumTable}
+                
             // initialValues={record}
             // onSubmit={submit}
             // onSubmit={submit}
@@ -175,7 +190,7 @@ const useStyles = makeStyles(() => ({
             // subscription={defaultSubscription} // don't redraw entire form each time one field changes
             // key={version} // support for refresh button
             // keepDirtyOnReinitialize
-            
+   
             render={({   
                 ...formProps, 
                 form: {  mutators: { push, pop } },
@@ -184,8 +199,8 @@ const useStyles = makeStyles(() => ({
                 submitting,
                 values
                 }) => {
-                console.log('InvFormProps', formProps);
-                console.log('InvForm ', form);
+                // console.log('InvFormProps', formProps);
+                // console.log('InvForm ', form);
                 return (
                 <form>
 
@@ -233,7 +248,9 @@ const useStyles = makeStyles(() => ({
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={  2}  > 
-                                                <AddedRowIterator />
+                                        {/* <ArrayInput source="New_iterator" {...props} > */}
+                                            <AddedRowIterator />
+                                        {/* </ArrayInput> */}
                                     </Grid>
                                     {/* <Grid container spacing={  2}  > 
                                         <ArrayInput source="New_iterator" {...props} >
@@ -260,9 +277,9 @@ const useStyles = makeStyles(() => ({
                             {/*>> ->CONTAINER=>SalesProductTable */}
                                     <Grid container spacing={3}  >
                                         <Grid  item xs={12} >
-                                            {/* <ArrayInput label="" source="sales_list"> */}
-                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}   />
-                                            {/* </ArrayInput> */}
+                                            <ArrayInput label="" source="sales_list" {...props}>
+                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem} setSumTable={setSumTable} form={form} sumTable={sumTable}  />
+                                            </ArrayInput>
                                         </Grid>
                                     </Grid>
                             {/* X <-CONTAINER=>SalesProductTable */}

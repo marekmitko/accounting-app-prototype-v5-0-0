@@ -892,6 +892,80 @@
         }
       ],
       "id": 32
+    },
+    {
+      "sales_list": [
+        {
+          "sum_item_brutto": null,
+          "item_name": "Koń",
+          "item_type": "najem"
+        },
+        {
+          "sum_item_brutto": null,
+          "item_name": "Krowa "
+        }
+      ],
+      "invoice_date": "2021-10-10T13:16:25.490Z",
+      "invoice_due_data": "2021-10-24T13:16:25.490Z",
+      "id": 33
+    },
+    {
+      "sales_list": [
+        {
+          "sales_item": "",
+          "id": "",
+          "item_name": "",
+          "item_type": "Wybierz",
+          "item_qty": 1,
+          "item_netto": 0,
+          "item_tax": "Wybierz",
+          "sum_item_netto": 0,
+          "sum_item_tax": 0,
+          "sum_item_brutto": null
+        },
+        {
+          "sales_item": "",
+          "id": "",
+          "item_name": "",
+          "item_type": "Wybierz",
+          "item_qty": 1,
+          "item_netto": 0,
+          "item_tax": "Wybierz",
+          "sum_item_netto": 0,
+          "sum_item_tax": 0,
+          "sum_item_brutto": null
+        },
+        {
+          "sales_item": "",
+          "id": "",
+          "item_name": "",
+          "item_type": "Wybierz",
+          "item_qty": 1,
+          "item_netto": 0,
+          "item_tax": "Wybierz",
+          "sum_item_netto": 0,
+          "sum_item_tax": 0,
+          "sum_item_brutto": null
+        },
+        {
+          "sales_item": "",
+          "id": "",
+          "item_name": "",
+          "item_type": "Wybierz",
+          "item_qty": 1,
+          "item_netto": 0,
+          "item_tax": "Wybierz",
+          "sum_item_netto": 0,
+          "sum_item_tax": 0,
+          "sum_item_brutto": null
+        }
+      ],
+      "invoice_date": "2021-10-10T19:10:15.559Z",
+      "invoice_due_data": "2021-10-24T19:10:15.559Z",
+      "sumTable": 0,
+      "test_second_input": null,
+      "sumTableTest": 0,
+      "id": 34
     }
   ],
   "tradePartners_list": [
