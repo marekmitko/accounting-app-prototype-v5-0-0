@@ -152,36 +152,27 @@ const useStyles = makeStyles(() => ({
     
     const [typeItem, setTypeItem] = useState(true);
 
-    const [sumTable, setSumTable] = useState(0);
+    const [total_sum_sales, setTotalSumSales] = useState({
+            sum_items_netto: 0,
+            sum_items_tax: 0,
+            sum_items_brutto: 0,
+    });
 
 
    
-    
-    function totalSumItem(data){
-        var sumTotalQty = 0; 
-       if(data){
-        sumTotalQty = data.reduce(( accumulator, obj ) => {
-            return accumulator + (obj['item_qty'] || 0 ) }, 0 )
-    console.log("sumTotalQty", sumTotalQty );
-} else {
-    return sumTotalQty
-};
-}
 
 
- 
-    // render={({ handleSubmit, form, submitting, pristine, values }) => (
     return (
         <FormWithRedirect  { ...props }
                 mutators={{...arrayMutators,}}
-                decorators={[calculator]}
+                // decorators={[calculator]}
                 initialValues={{
                     sales_list: [ ],
                     invoice_date: new Date(),
                     invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
-                    sumTable,
+                    total_sum_sales,
                 }}
-                setSumTable={setSumTable}
+           
                 
             // initialValues={record}
             // onSubmit={submit}
@@ -247,11 +238,11 @@ const useStyles = makeStyles(() => ({
                             {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
                                         </Grid>
                                     </Grid>
-                                    <Grid container spacing={  2}  > 
-                                        {/* <ArrayInput source="New_iterator" {...props} > */}
+                                    {/* <Grid container spacing={  2}  > 
+                                         <ArrayInput source="New_iterator" {...props} > 
                                             <AddedRowIterator />
-                                        {/* </ArrayInput> */}
-                                    </Grid>
+                                         </ArrayInput> 
+                                    </Grid> */}
                                     {/* <Grid container spacing={  2}  > 
                                         <ArrayInput source="New_iterator" {...props} >
                                                 <MyFormIterator />
@@ -278,7 +269,7 @@ const useStyles = makeStyles(() => ({
                                     <Grid container spacing={3}  >
                                         <Grid  item xs={12} >
                                             <ArrayInput label="" source="sales_list" {...props}>
-                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem} setSumTable={setSumTable} form={form} sumTable={sumTable}  />
+                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}  form={form} total_sum_sales={total_sum_sales}  />
                                             </ArrayInput>
                                         </Grid>
                                     </Grid>

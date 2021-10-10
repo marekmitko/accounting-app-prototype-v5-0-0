@@ -10,22 +10,15 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray, useFieldArray, } from 'react-final-form-arrays';
 import {  Field, useFormState, useForm, } from 'react-final-form';
-import  {   NumberInput, SelectInput, FormGroupContextProvider, FormDataConsumer,
-    //  useRecordContext, useResourceContext,   SimpleFormIteratorController, useFormGroup, 
-}  from 'react-admin';
-
+import  {   NumberInput, SelectInput, FormGroupContextProvider, FormDataConsumer,}  from 'react-admin';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-
 import Add from '@material-ui/icons/Add';
 import Delete from '@material-ui/icons/HighlightOff';
 import Button from '@material-ui/core/Button';
-
 import BoxNumberInput from '../../../../myComponentsMui/myMuiForm/BoxNumberInput';
-
 import createDecorator from 'final-form-calculate';
-import { getIn } from 'final-form';
 import SalesTableHeader from './componentsSalesTable/SalesTableHeader';
 import AdditionalOptions from './componentsSubSalesTable/AdditionalOptions';
 import SumSalesItems from './componentsSubSalesTable/SumSalesItems';
@@ -50,7 +43,6 @@ const useStyles = makeStyles({
                         minWidth: 80,
                         },
                     },
-                     
             },
         },
 
@@ -72,22 +64,10 @@ const useStyles = makeStyles({
 
 });
 
-// function ccyFormat(num) {
-//   return `${num.toFixed(2)}`;
-// }
-
-// { ({ fieldProps }) => { 
-//     console.log("propFieldsValue", typeof(fieldProps.fields.value ), fieldProps.fields.value )
-//     console.log("propFields", typeof(fieldProps.fields ), fieldProps.fields["sales_list"] )
-
-//         }      
-// }
 
 function subtotal(items) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
 }
-
-
 
 const item_type = [
     { label: 'Usługa', id: 'usługi', name: 'Usługi' },
@@ -106,35 +86,8 @@ const item_tax = [
     { id: 0,    name: '0 %',  label: '0%', value: 0    },
 ];
 
-                {/*>> ->CONTAINER=>HeadlineDate */}
-                {/* X <-CONTAINER=>HeadlineDate */}
 
-// const calculator = createDecorator(
-
-//     {
-//         field: /sales_list\[\d+\]\.item_netto/,
-//         updates: (value, name, allValues) => {
-//             const totalField = name.replace(".item_netto", ".total");
-//             const quantityField = name.replace(".item_netto", ".item_qty");
-//             return {
-//             [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
-//             };
-//         },
-//     },
-//     {
-//         field: /sales_list\[\d+\]\.item_qty/,
-//         updates: (value, name, allValues) => {
-//             const totalField = name.replace(".item_qty", ".total");
-//             const priceField = name.replace(".item_qty", ".item_netto");
-//             return {
-//             [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
-//             };
-//         },
-//         }
-// );
-
-
-const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeItem, source, record, resource, defaultValue, ...rest}) => {
+const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem, setTypeItem, source, record, resource, defaultValue, ...rest}) => {
 
     //czy ja tu mogę dodać motode do objektu? 
     const [count, setCount] = useState(0);
@@ -146,7 +99,7 @@ const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeIte
         item_type: "Wybierz",
         item_qty: 1,
         item_netto: 0.00,
-        item_tax: "Wybierz",
+        item_tax: undefined,
         sum_item_netto: 0.00,
         sum_item_tax: 0.00,
         sum_item_brutto: 0.00,
@@ -166,16 +119,6 @@ const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeIte
       const formState = useFormState();
       const formStateData = formState.values;
 
-
-
-
-    //   const {change} = useForm();
-    //   const { values: { test_first_input }} = useFormState({ subscription: { values: true } });
-  
-    //   useEffect(() => {
-    //       change('test_second_input', test_first_input / 10);
-    //   }, [change, test_first_input]);
-
     return (  
         <FieldArray fieldProps={fieldProps} name="sales_list" > 
             {(fieldProps) => {
@@ -191,17 +134,9 @@ const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeIte
             {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
                             {fieldProps.fields.map((sales_item, index) => {
 
-                              
-                                    
-                                console.log('formState', formState);
-                                console.log('formStateData', formStateData);
-                                console.log('record', record);
-                                console.log('record', record.value);
                                     return (
                                         <TableRow   hover tabIndex={-1} key={index}>  
                                         <FormGroupContextProvider name="IteratorItem">
-                                 
-                            
                                             <TableCell style={{ padding: 10 }} align="center"   >
                                                 {index+1}
                                             </TableCell>  
@@ -251,7 +186,7 @@ const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeIte
                                                 </Field>
                                             </TableCell>   
                                             <TableCell align="left">  
-                                                {/* <Field
+                                                <Field
                                                    
                                                     name={`sales_list[${index}].item_tax`} 
                                                     component="SelectInput" >
@@ -260,7 +195,7 @@ const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeIte
                                                                         style={{ maxWidth: 40 }}
                                                                         
                                                                          />
-                                                </Field> */}
+                                                </Field>
                                             </TableCell>  
                                     {/*sumNETTO ->tabCELL=>sum_item_netto*/}
                                             <TableCell align="right">  
@@ -389,7 +324,7 @@ const SumSpanningTable = (    {setSumTable, sumTable, form, typeItem, setTypeIte
                                 </Grid >
                                 <Grid item xs={12} sm={6}> 
                         {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
-                                    <SumSalesItems setSumTable={setSumTable} sumTable={sumTable} form={form} dataArray={formStateData} fieldProps={fieldProps} record={record} resource={resource}   />
+                                    <SumSalesItems setTotalSumSales={setTotalSumSales} total_sum_sales={total_sum_sales} form={form} dataArray={formStateData} fieldProps={fieldProps} record={record} resource={resource}   />
                         {/* X <-subCONTAINER=> SubTableSumSales in Table */}
                                 </Grid>
                             </Grid >
