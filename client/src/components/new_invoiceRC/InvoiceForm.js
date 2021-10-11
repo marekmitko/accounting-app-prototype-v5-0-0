@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useMemo, useEffect, useState, useCallback } from 'react';
-import {
-    SelectArrayInput,
+import col from '../../colorCLI';
+import {    useMemo, useEffect, useState, useCallback } from 'react';
+import {    SelectArrayInput,
     NullableBooleanInput,
     ArrayInput,
     ReferenceInput,
@@ -17,7 +17,6 @@ import {
 } from 'react-admin';
 import { Grid,  makeStyles,  withStyles, CardContent, Typography, Box, } from '@material-ui/core';
 
-import { sanitizeEmptyValues } from 'react-admin';
 import { Form, useForm, Field, useFormState } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import  createDecorator  from 'final-form-calculate';
@@ -34,14 +33,10 @@ import InvoiceFooterForm from './invoiceFormRC/InvoiceFooter/InvoiceFooterForm.j
 import AddTradePartnerItemButton from './invoiceFormRC/contractorsDataForm/AddTradePartnerItemButton.js';
 import SumSpanningTable from './invoiceFormRC/SalesProductTable/SumSpanningTable.js';
 
-import AddedRowIterator from './invoiceFormRC/SalesProductTable/componentsSalesTable/AddedRowIterator';
-
 import Save from '@material-ui/icons/Save';
 import MuiTextField from '@material-ui/core/TextField'
 import MuiButton from '@material-ui/core/Button';
 
-import MyFormIterator from '../new_invoiceRC/invoiceFormRC/SalesProductTable/componentsSalesTable/MyFormIterator';
-// ad  ./components/new_invoiceRC/InvoiceForm/SalesProductTable/SumSpanningTable.js
 
 const payment_method = [
     ];
@@ -63,25 +58,19 @@ const useStyles = makeStyles(() => ({
         gridSimpleForm: { flexGrow: 1 },
     }));
 
-
-
-
-
-
-
-    const TextInput = withStyles({
+const TextInput = withStyles({
         root: {
             margin: '16px 0px'
         }
-     })(MuiTextField);
-     
-     const Button = withStyles({
-         root: {
-             margin: '16px 0px'
-         }
-     })(MuiButton);
+    })(MuiTextField);
 
-    const defaultSubscription = {
+    const Button = withStyles({
+        root: {
+            margin: '16px 0px'
+        }
+    })(MuiButton);
+
+const defaultSubscription = {
         submitting: true,
         pristine: true,
         valid: true,
@@ -89,39 +78,7 @@ const useStyles = makeStyles(() => ({
         validating: true,
     };
 
-
-    
-
-    
-    
-   
-    const InvoiceForm = (props) => {
-            
-        const calculator = createDecorator(
-    
-            {
-                field: /sales_list\[\d+\]\.item_netto/,
-                updates: (value, name, allValues) => {
-                    const totalField = name.replace(".item_netto", ".total");
-                    const quantityField = name.replace(".item_netto", ".item_qty");
-                    return {
-                    [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
-                    };
-                },
-            },
-            {
-                field: /sales_list\[\d+\]\.item_qty/,
-                updates: (value, name, allValues) => {
-                    const totalField = name.replace(".item_qty", ".total");
-                    const priceField = name.replace(".item_qty", ".item_netto");
-                    return {
-                    [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
-                    };
-                },
-                }
-        );
-
-  
+const InvoiceForm = (props) => {
 
         
         
@@ -130,15 +87,20 @@ const useStyles = makeStyles(() => ({
     // const { values: { todayDate }} = useFormState({ subscription: { values: true } });
 
 
-    const [dataSeller, setSellerData] = useState({});
-        useEffect((dataSeller) => {
+    const [dataUser, setDataUser] = useState({});
+    const [versionDataUser, setVersionDataUser] = useState(0);
+        useMemo((dataUser) => {
             // GET request using fetch inside useEffect React hook
             fetch('http://localhost:3000//userProfile/Profile12356x')
             .then(response => response.json())
-            .then(data => setSellerData(data));
+            .then(data => setDataUser(data));
             // empty dependency array means this effect will only run once (like componentDidMount in classes)
-        }, dataSeller);
+        }, [versionDataUser]);
 
+
+// useMemo(() => {
+//     change('test_second_input', test_first_input / 10);
+// }, [change, test_first_input]);
 
 
         const classes = useStyles();
@@ -160,41 +122,36 @@ const useStyles = makeStyles(() => ({
 
 
    
-
-
+    
     return (
         <FormWithRedirect  { ...props }
                 mutators={{...arrayMutators,}}
-                // decorators={[calculator]}
                 initialValues={{
-                    sales_list: [ ],
+                    dataSeller: {...dataUser},
+                    salesTable: {sales_list: undefined, total_sum_sales},
                     invoice_date: new Date(),
                     invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
-                    total_sum_sales,
-                }}
-           
+                  
+                    }
+                }
                 
-            // initialValues={record}
-            // onSubmit={submit}
-            // onSubmit={submit}
-            // mutators={{ ...arrayMutators }} // necessary for ArrayInput
-            // subscription={defaultSubscription} // don't redraw entire form each time one field changes
-            // key={version} // support for refresh button
-            // keepDirtyOnReinitialize
-   
-            render={({   
-                ...formProps, 
-                form: {  mutators: { push, pop } },
-                pristine,
-                form,
-                submitting,
-                values
-                }) => {
-                // console.log('InvFormProps', formProps);
-                // console.log('InvForm ', form);
-                return (
-                <form>
-
+                render={({   
+                    ...formProps, 
+                    form: {  mutators: { push, pop } },
+                    pristine,
+                    form,
+                    submitting,
+                    values,
+                    
+                    }) => {
+console.log("%c props ", "color:white; font-weight:900; background-color:#154360;", 
+        props);
+console.log("%c formProps ", "color:white; font-weight:900; background-color:#1F618D;", 
+            formProps);
+                // console.log("%c initialValues ", "color:blue; font-weight:900; background-color:skyblue;", 
+                //         dataUser);
+                    return (
+                        <form>
                         <Grid container spacing={3} formClassName={classes.gridSimpleForm} >
                             {/* <myGridSanitized container spacing={3} formClassName={classes.gridSimpleForm} > */}
                         {/* // <Create {...props} transform={ transform }>
@@ -218,7 +175,6 @@ const useStyles = makeStyles(() => ({
                                                     <InvoiceNo/>
                                                 </Grid>
                                             </Grid>
-                                          
                                         </Grid>
                             {/* X <-CONTAINER=>NewTradePartnerItemButton*/}
                                         <Grid item xs={12} sm={6}> 
@@ -252,7 +208,7 @@ const useStyles = makeStyles(() => ({
                                     <Grid container spacing={2} > 
                                         <Grid item xs={12} sm={6}> 
                                             {/* <FormGroupContextProvider name="inv_Seller"> */}
-                    <InvoiceSellerForm dataUser={dataSeller} />
+                    <InvoiceSellerForm initSeller={dataUser} />
                                             {/* </FormGroupContextProvider> */}
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
@@ -268,8 +224,8 @@ const useStyles = makeStyles(() => ({
                             {/*>> ->CONTAINER=>SalesProductTable */}
                                     <Grid container spacing={3}  >
                                         <Grid  item xs={12} >
-                                            <ArrayInput label="" source="sales_list" {...props}>
-                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}  form={form} total_sum_sales={total_sum_sales}  />
+                                            <ArrayInput label="" source="salesTable"  >
+                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}  total_sum_sales={total_sum_sales} />
                                             </ArrayInput>
                                         </Grid>
                                     </Grid>
@@ -338,5 +294,31 @@ export default InvoiceForm;
 
 
 
+
+
+            
+// const calculator = createDecorator(
+    
+//     {
+//         field: /sales_list\[\d+\]\.item_netto/,
+//         updates: (value, name, allValues) => {
+//             const totalField = name.replace(".item_netto", ".total");
+//             const quantityField = name.replace(".item_netto", ".item_qty");
+//             return {
+//             [totalField]: parseInt(value) * parseInt(getIn(allValues, quantityField)),
+//             };
+//         },
+//     },
+//     {
+//         field: /sales_list\[\d+\]\.item_qty/,
+//         updates: (value, name, allValues) => {
+//             const totalField = name.replace(".item_qty", ".total");
+//             const priceField = name.replace(".item_qty", ".item_netto");
+//             return {
+//             [totalField]: parseInt(value) * parseInt(getIn(allValues, priceField)),
+//             };
+//         },
+//         }
+// );
 
 

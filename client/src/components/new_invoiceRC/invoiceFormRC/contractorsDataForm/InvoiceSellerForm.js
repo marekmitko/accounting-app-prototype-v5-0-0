@@ -11,12 +11,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const InvoiceSellerForm = ( { dataUser }) => {
+const InvoiceSellerForm = (dataSeller) => {
 
 // const { data } = useGetOne('userProfile', {userProfile.Profile12356x});
 
-   
-    const dataSeller = dataUser;
+ 
 
     const classes = useStyles();
 

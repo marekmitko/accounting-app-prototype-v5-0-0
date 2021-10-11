@@ -92,7 +92,7 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
     //czy ja tu mogę dodać motode do objektu? 
     const [count, setCount] = useState(0);
  
-    const initOnClickValue = { sales_list: undefined,
+    const initOnClickValue =  { 
         sales_item: "",
         id: "",
         item_name: "",
@@ -107,10 +107,10 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
 
     
 
-    const fieldProps = useFieldArray(source, {initialValue: defaultValue, ...rest, });
-    // const formGroupState = useFormGroup();
+    const TablefieldProps = useFieldArray(source, {initialValue: defaultValue, ...rest, });
+  
     const classes = useStyles();
-    // const record = useRecordContext();
+    
 
     const handleChangeSelectType = (event) => {
         setTypeItem(event.target.value);
@@ -120,10 +120,12 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
       const formStateData = formState.values;
 
     return (  
-        <FieldArray fieldProps={fieldProps} name="sales_list" > 
+        <FieldArray fieldProps={TablefieldProps} name='sales_list'  > 
             {(fieldProps) => {
-                // console.log('arrfProps', fieldProps);
+    console.log("%c fieldProps ", "color:white; font-weight:900; background-color:#5499C7;", 
+            fieldProps);
                     return (
+
                         <TableContainer component={Paper}>
         {/*>> ->CONTAINER=> SalesTable in Table */}
                     <Table className={classes.table } aria-label="sales list table">
@@ -300,7 +302,7 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
                                             <Button
                                                 type="button"
                                                 onClick={
-                                                    () => fieldProps.fields.push(initOnClickValue)}
+                                                    () => fieldProps.fields.push([initOnClickValue])}
                                                  
                                                     color="secondary"
                                                 variant="contained"

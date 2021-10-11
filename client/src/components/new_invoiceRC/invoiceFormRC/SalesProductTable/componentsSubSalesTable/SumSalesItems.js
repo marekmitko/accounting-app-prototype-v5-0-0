@@ -17,21 +17,21 @@ export default function SumSalesItems ({ total_sum_sales, form, record, resource
     const dataSalesList =  dataArray.sales_list;
     const a = dataSalesList;
 
-    var total_netto = 0;
+    let total_netto = 0;
     for(let i=0; i<a.length; i++){
         total_netto+= ((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto));
         // do poprawy prze funkcje set !!!
         total_sum_sales.sum_items_netto = total_netto;
     }
 
-    var total_tax = 0;
+    let total_tax = 0;
     for(let i=0; i<a.length && dataSalesList[i].item_tax >= 0; i++){
         total_tax+= (((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto))*(dataSalesList[i].item_tax));
         // do poprawy prze
         total_sum_sales.sum_items_tax = total_tax;
     }
     
-    var total_brutto = 0;
+    let total_brutto = 0;
     for(let i=0; i<a.length && dataSalesList[i].item_tax >= 0 && dataSalesList[i].item_netto; i++){
         total_brutto+= (((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto))*(dataSalesList[i].item_tax + 1));
         // do poprawy prze funkcje set 
@@ -44,7 +44,6 @@ export default function SumSalesItems ({ total_sum_sales, form, record, resource
         <Table>
             <SumSalesItemsHeader/>
             <TableBody>
-
                 <TableRow align="right">
                     <TableCell >Total</TableCell>
                     <TableCell align="center"><strong>{total_netto}</strong></TableCell>
