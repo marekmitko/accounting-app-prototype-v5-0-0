@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -118,25 +118,30 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
 
       const formState = useFormState();
       const formStateData = formState.values;
-
+ 
     return (  
-        <FieldArray fieldProps={TablefieldProps} name='sales_list'  > 
-            {(fieldProps) => {
-    console.log("%c fieldProps ", "color:white; font-weight:900; background-color:#5499C7;", 
-            fieldProps) && console.count(fieldProps);
+
+        <TableContainer component={Paper}>
+      
+ {/*>> ->CONTAINER=> SalesTable in Table */}
+         <FieldArray fieldProps={TablefieldProps} name='sales_list'  > 
+              {(fieldProps) => {
+      console.log("%c fieldProps ", "color:white; font-weight:900; background-color:#5499C7;", 
+             fieldProps) && console.count(fieldProps);
                     return (
 
-                        <TableContainer component={Paper}>
-        {/*>> ->CONTAINER=> SalesTable in Table */}
+        <React.Fragment> 
                     <Table className={classes.table } aria-label="sales list table">
             {/*>>  ->subCONTAINER=> HEADER-> sales_list in TableHead--SalesTable */}
                         <SalesTableHeader/>
             {/* X <-subCONTAINER=> Header-> sales_list in TableHead--SalesTable */}
                         <TableBody className={classes.IteratorRowProduct } >  
             {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
+          
                             {fieldProps.fields.map((sales_item, index) => {
 
                                     return (
+                                    <React.Fragment> 
                                         <TableRow   hover tabIndex={-1} key={index}>  
                                         <FormGroupContextProvider name="IteratorItem">
                                             <TableCell style={{ padding: 10 }} align="center"   >
@@ -287,16 +292,18 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
                                    
                                         </FormGroupContextProvider>
                                         </TableRow>  
+                        </React.Fragment> 
                                     );
+
                                 }
                             )}
-            {/* X <-subCONTAINER=> sales_item in TableRow--iteratorForm */}
                         </TableBody>  
+            {/* X <-subCONTAINER=> sales_item in TableRow--iteratorForm */}
                     </Table>
-        {/* X <-CONTAINER=> SalesTable in Table */}
-            {/*>>  ->subCONTAINER=> addButton in TableRow--capition */}
+
                         <capition>
                             <Grid container  formClassName={classes.gridSimpleForm} >
+                            {/*>>  ->subCONTAINER=> addButton in TableRow--capition */}
                                 <Grid item xs={12}> 
                                     <div>
                                             <Button
@@ -312,9 +319,9 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
                                             </Button>
                                     </div>
                                 </Grid>
+                            {/* X <-subCONTAINER=> addButton in TableRow--capition */}
                             </Grid>
                         </capition>
-            {/* X <-subCONTAINER=> addButton in TableRow--capition */}
                     <TableContainer>
                 {/*>> ->CONTAINER=> additional options on the invoice */}
                             <Grid container  formClassName={classes.gridSimpleForm} >
@@ -332,11 +339,13 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
                             </Grid >
                 {/* X <-subCONTAINER=> additional options on the invoice */}
                     </TableContainer>
-                </TableContainer>
+        </React.Fragment> 
                     );
                 }
             }
         </FieldArray>
+        {/* X <-CONTAINER=> SalesTable in Table */}
+    </TableContainer>
     )
 };
 export default SumSpanningTable;

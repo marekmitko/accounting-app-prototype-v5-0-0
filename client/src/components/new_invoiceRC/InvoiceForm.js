@@ -135,7 +135,8 @@ const InvoiceForm = (props) => {
                     }
                 }
                 
-                render={({  ...formProps, 
+                render={({  ...formProps,
+                     
                     initialValues,
                     form: {  mutators: { push, pop } },
                     // pristine,
