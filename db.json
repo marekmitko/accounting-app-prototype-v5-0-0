@@ -966,6 +966,109 @@
       "test_second_input": null,
       "sumTableTest": 0,
       "id": 34
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_item_row": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        }
+      },
+      "invoice_date": "2021-10-12T15:25:16.705Z",
+      "invoice_due_data": "2021-10-26T15:25:16.705Z",
+      "sales_list": [
+        {
+          "sales_item": "",
+          "id": "",
+          "item_name": "",
+          "item_type": "Wybierz",
+          "item_qty": 1,
+          "item_netto": 0,
+          "sum_item_netto": 0,
+          "sum_item_tax": 0,
+          "sum_item_brutto": null
+        }
+      ],
+      "id": 35
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_item_row": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        }
+      },
+      "invoice_date": "2021-10-12T16:21:44.361Z",
+      "invoice_due_data": "2021-10-26T16:21:44.361Z",
+      "id": 36
     }
   ],
   "tradePartners_list": [

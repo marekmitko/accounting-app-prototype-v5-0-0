@@ -128,7 +128,7 @@ const InvoiceForm = (props) => {
                 mutators={{...arrayMutators,}}
                 initialValues={{
                     dataSeller: {...dataUser},
-                    salesTable: {sales_list: undefined, total_sum_sales},
+                    salesTable: {sales_item_row: undefined, total_sum_sales},
                     invoice_date: new Date(),
                     invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
                   
@@ -136,7 +136,7 @@ const InvoiceForm = (props) => {
                 }
                 
                 render={({  ...formProps,
-                     
+
                     initialValues,
                     form: {  mutators: { push, pop } },
                     // pristine,
@@ -146,10 +146,10 @@ const InvoiceForm = (props) => {
                      
                     
                     }) => {
-                console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
-                    props, console.count('count'));
-                    console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
-                        formProps, console.count('count'));
+            console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
+                props, console.count('count'));
+                console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
+                    formProps, console.count('count'));
              
             
                     return (
@@ -227,7 +227,7 @@ const InvoiceForm = (props) => {
                                     <Grid container spacing={3}  >
                                         <Grid  item xs={12} >
                                             <ArrayInput label="" source="salesTable"  >
-                                                <SumSpanningTable typeItem={typeItem} setTypeItem={setTypeItem}  total_sum_sales={total_sum_sales} />
+                                                <SumSpanningTable  />
                                             </ArrayInput>
                                         </Grid>
                                     </Grid>
@@ -265,14 +265,15 @@ const InvoiceForm = (props) => {
                                     <Grid item  xs={12}  >
                                         <Toolbar>
                                             <Box display="flex" justifyContent="space-between" width="100%">
-                                                {/* <SaveButton
+                                                <SaveButton
                                                         saving={formProps.saving}
                                                         handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
-                                                /> */}
+                                                /> 
                                                 
                                                 {/* 
                                                 //moze to tylko w edit jest 
-                                                <DeleteButton record={formProps.record} /> */}
+                                                <DeleteButton record={formProps.record} />
+                                                */}
                                             </Box>
                                         </Toolbar>
                                     </Grid>

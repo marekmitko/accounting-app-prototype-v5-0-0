@@ -12,7 +12,7 @@ export default function SumSalesItems ({ total_sum_sales, form, record, resource
 
     function ccyFormat(num) { return `${num.toFixed(2)}`; }
         console.log("dataArray", dataArray);
-        console.log('sum_items_netto', total_sum_sales.sum_items_netto );
+        // console.log('sum_items_netto', total_sum_sales.sum_items_netto );
 
     const dataSalesList =  dataArray.salesTable;
     const a = dataSalesList;
