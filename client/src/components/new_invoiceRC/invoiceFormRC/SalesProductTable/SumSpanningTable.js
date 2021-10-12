@@ -123,7 +123,7 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
         <FieldArray fieldProps={TablefieldProps} name='sales_list'  > 
             {(fieldProps) => {
     console.log("%c fieldProps ", "color:white; font-weight:900; background-color:#5499C7;", 
-            fieldProps);
+            fieldProps) && console.count(fieldProps);
                     return (
 
                         <TableContainer component={Paper}>
@@ -302,7 +302,7 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
                                             <Button
                                                 type="button"
                                                 onClick={
-                                                    () => fieldProps.fields.push([initOnClickValue])}
+                                                    () => fieldProps.fields.push(initOnClickValue)}
                                                  
                                                     color="secondary"
                                                 variant="contained"

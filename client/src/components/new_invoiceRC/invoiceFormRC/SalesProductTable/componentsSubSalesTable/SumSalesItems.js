@@ -14,7 +14,7 @@ export default function SumSalesItems ({ total_sum_sales, form, record, resource
         console.log("dataArray", dataArray);
         console.log('sum_items_netto', total_sum_sales.sum_items_netto );
 
-    const dataSalesList =  dataArray.sales_list;
+    const dataSalesList =  dataArray.salesTable;
     const a = dataSalesList;
 
     let total_netto = 0;

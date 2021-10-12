@@ -135,21 +135,22 @@ const InvoiceForm = (props) => {
                     }
                 }
                 
-                render={({   
-                    ...formProps, 
+                render={({  ...formProps, 
+                    initialValues,
                     form: {  mutators: { push, pop } },
-                    pristine,
+                    // pristine,
                     form,
-                    submitting,
+                    // submitting,
                     values,
+                     
                     
                     }) => {
-console.log("%c props ", "color:white; font-weight:900; background-color:#154360;", 
-        props);
-console.log("%c formProps ", "color:white; font-weight:900; background-color:#1F618D;", 
-            formProps);
-                // console.log("%c initialValues ", "color:blue; font-weight:900; background-color:skyblue;", 
-                //         dataUser);
+                console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
+                    props, console.count('count'));
+                    console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
+                        formProps, console.count('count'));
+             
+            
                     return (
                         <form>
                         <Grid container spacing={3} formClassName={classes.gridSimpleForm} >
@@ -263,10 +264,10 @@ console.log("%c formProps ", "color:white; font-weight:900; background-color:#1F
                                     <Grid item  xs={12}  >
                                         <Toolbar>
                                             <Box display="flex" justifyContent="space-between" width="100%">
-                                                <SaveButton
+                                                {/* <SaveButton
                                                         saving={formProps.saving}
                                                         handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
-                                                />
+                                                /> */}
                                                 
                                                 {/* 
                                                 //moze to tylko w edit jest 
