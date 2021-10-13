@@ -128,7 +128,7 @@ const InvoiceForm = (props) => {
                 mutators={{...arrayMutators,}}
                 initialValues={{
                     dataSeller: {...dataUser},
-                    salesTable: {sales_item_row: undefined, total_sum_sales},
+                    salesTable: {sales_list: undefined, total_sum_sales, subSalesTable: undefined, },
                     invoice_date: new Date(),
                     invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
                   

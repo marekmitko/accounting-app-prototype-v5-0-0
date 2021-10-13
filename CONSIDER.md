@@ -19,3 +19,23 @@
 
 
  2) Aktualizacja 1 https://marmelab.com/blog/2020/12/14/react-admin-v3-userprofile.html
+
+
+ #  "todo-tree.general.tags"
+ &)        "todo-tree.general.tags": [
+            "BUG",
+            "HACK",
+            "FIXME",
+            "TODO",
+            "XXX",
+            "?dev",
+            "*edu",
+            "CHECK",
+            "*see",
+            "Ver",
+            "Oki",
+            "A-Ok",
+            "?ver",
+            "infO",
+            "notE",
+            "reCSS"

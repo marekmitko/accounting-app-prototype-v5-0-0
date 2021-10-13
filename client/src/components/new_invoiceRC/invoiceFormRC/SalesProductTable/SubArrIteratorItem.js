@@ -96,7 +96,6 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
     const [count, setCount] = useState(0);
  
     const initOnClickValue =  { 
-        sales_item: "",
         id: "",
         item_name: "",
         item_type: "Wybierz",
@@ -109,9 +108,6 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
     };
 
     
-
-    const fieldProps = useFieldArray(source, {initialValue: defaultValue, ...rest, });
-  
     const classes = useStyles();
     
 
@@ -129,7 +125,7 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                 //     ource, defaultValue, rest , console.count('count'));
 
                         return (
-                            <FieldArray  name='salesTable.subSalesTable' fieldProps={fieldProps} > 
+                            <FieldArray  name='salesTable.subSalesTable'  > 
                                 {(fieldProps) => {
                                     console.log("%c fieldProps ", "color:white; font-weight:900; background-color:#5549C7;", 
                                         fieldProps, console.count('count'));
@@ -147,17 +143,19 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                         <SalesTableHeader/>
                                             {/* X <-subCONTAINER=> Header-> sales_list in TableHead--SalesTable */}
                                                         <TableBody className={classes.IteratorRowProduct } >  
+
+
                                             {/*>>  ->subCONTAINER=> sales_item in TableRow--iteratorForm */}
+                    {/* console.log("%c iteratorRow ", "color:#FF33FF; font-weight:900; background-color:#0033FF;", 
+                        fieldProps.fields, sales_item, console.count('count'));
+                        console.log("%c name ", "color:#FF11FF; font-weight:900; background-color:#3CBAF5;", 
+                            fieldProps.fields.name, sales_item, console.count('count')); */}
                                         
+
+
+
                                                             {fieldProps.fields.map((sales_item, index) => {
-                                                console.log("%c iteratorRow ", "color:#FF33FF; font-weight:900; background-color:#0033FF;", 
-                                                    fieldProps.fields, sales_item, console.count('count'));
-                                                    console.log("%c name ", "color:#FF11FF; font-weight:900; background-color:#3CBAF5;", 
-                                                        fieldProps.fields.name, sales_item, console.count('count'));
-
-
                                                                 const sourceSalesItemList = fieldProps.fields.name;
-
 
                                                                     return (
                                                                     <React.Fragment> 
@@ -195,7 +193,7 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                         type="number"
                                                                                         name={`${sourceSalesItemList}[${index}].item_qty`}
                                                                                         component="NumberInput" >
-                                                                                    <NumberInput    label="Ilość" variant ="outlined" source={`sales_list[${index}].item_qty`} 
+                                                                                    <NumberInput    label="Ilość" variant ="outlined" source={`${sourceSalesItemList}[${index}].item_qty`} 
                                                                                                     // name={[...props.input.name]}
                                                                                                     // value={[...props.input.value]}
                                                                                                     // onChange={[...props.input.onChange]} SumSalesItems
@@ -207,7 +205,7 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                 <Field
                                                                                     name={`${sourceSalesItemList}[${index}].item_netto`}
                                                                                     component="NumberInput" >
-                                                                                        <NumberInput    label="Kwota netto" variant ="outlined"  source={`sales_list[${index}].item_netto`} 
+                                                                                        <NumberInput    label="Kwota netto" variant ="outlined"  source={`${sourceSalesItemList}[${index}].item_netto`} 
                                                                                                         className={ classes.helperTextIsNONE } />
                                                                                 </Field>
                                                                             </TableCell>   
@@ -228,13 +226,13 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                 {/* <FormDataConsumer  subscription={{ values: true }} > */}
                                                                                     {() => {     
                                                                                         // console.log('fieldProps', fieldProps.fields.value);    
-                                                                                            if(typeof fieldProps.fields["sales_list"][index]["item_netto"] !== 'undefined' ) {
-                                                                                                fieldProps.fields["sales_list"][index]["sum_item_netto"] = 
-                                                                                                                                                fieldProps.fields["sales_list"][index]["item_netto"] * fieldProps.fields["sales_list"][index]["item_qty"];
+                                                                                            if(typeof sourceSalesItemList[index]["item_netto"] !== 'undefined' ) {
+                                                                                                sourceSalesItemList[index]["sum_item_netto"] = 
+                                                                                                                            sourceSalesItemList[index]["item_netto"] * sourceSalesItemList[index]["item_qty"];
                                                                                                 return ( 
                                                                                                         <Field
                                                                                                             name={`${sourceSalesItemList}[${index}].sum_item_netto`}
-                                                                                                            initialValues={fieldProps.fields["sales_list"][index]["sum_item_netto"]}
+                                                                                                            initialValues={sourceSalesItemList[index]["sum_item_netto"]}
                                                                                                             render={({input}) => (
                                                                                                                 <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="standart" 
                                                                                                                             InputLabelProps={{ shrink: true }}  />
@@ -320,7 +318,7 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                             {/* X <-subCONTAINER=> sales_item in TableRow--iteratorForm */}
                                                     </Table>
 
-                                                        <capition>
+                                                    <capition>
                                                             <Grid container  formClassName={classes.gridSimpleForm} >
                                                             {/*>>  ->subCONTAINER=> addButton in TableRow--capition */}
                                                                 <Grid item xs={12}> 
@@ -354,8 +352,8 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                         {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
                                                                     <SumSalesItems
                                                                             // setTotalSumSales={setTotalSumSales} total_sum_sales={total_sum_sales} form={form}
-                                                                            dataArray={formStateData} fieldProps={fieldProps} record={record} resource={resource}   />
-                                                        {/* X <-subCONTAINER=> SubTableSumSales in Table */}
+                                                                            dataArray={formStateData.salesTable} fieldProps={fieldProps} record={record} resource={resource}   /> 
+                                                        {/* X <-subCONTAINER=> SubTableSumSales in Table*/}
                                                                 </Grid>
                                                             </Grid >
                                                 {/* X <-subCONTAINER=> additional options on the invoice */}

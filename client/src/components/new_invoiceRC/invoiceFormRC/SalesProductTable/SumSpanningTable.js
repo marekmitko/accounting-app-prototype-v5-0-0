@@ -94,20 +94,6 @@ const SumSpanningTable = ({source, resource, ...rest}) => {
     //czy ja tu mogę dodać motode do objektu? 
     const [count, setCount] = useState(0);
  
-    const initOnClickValue =  { 
-        sales_item: "",
-        id: "",
-        item_name: "",
-        item_type: "Wybierz",
-        item_qty: 1,
-        item_netto: 0.00,
-        item_tax: undefined,
-        sum_item_netto: 0.00,
-        sum_item_tax: 0.00,
-        sum_item_brutto: 0.00,
-    };
-
-    
 
     // const TablefieldProps = useFieldArray(source, {initialValue: defaultValue, ...rest, });
   
