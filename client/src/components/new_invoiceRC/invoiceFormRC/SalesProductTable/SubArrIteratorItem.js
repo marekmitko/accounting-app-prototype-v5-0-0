@@ -65,48 +65,21 @@ const useStyles = makeStyles({
 });
 
 
-function subtotal(items) {
-  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
+// function subtotal(items) {
+//   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+// }
 
-const item_type = [
-    { label: 'Usługa', id: 'usługi', name: 'Usługi' },
-    { label: 'Towar', id: 'towar', name: 'Towary' },
-    { label: 'Najem', id: 'najem', name: 'Najem' },
-    { label: 'Prowizja', id: 'Prowizja', name: 'Prowizja' },
-    { label: 'MVA', id: 'MVA', name: 'MVA' },
-    { label: 'O% MVA', id: 'Sprzedaż 0% MVA', name: '0% MVA' },
-    { label: 'Zwolniona', id: 'Sprzedaż zwolniona MVA', name: 'Zwolniony' },
-];
-const item_tax = [
-    { id: 0.25, name: '25 %', label: '25%', value: 0.25 },
-    { id: 0.15, name: '15 %', label: '15%', value: 0.15 },
-    { id: 0.12, name: '12 %', label: '12%', value: 0.12 },
-    { id: 0.06, name: '6 %',  label: '6%', value: 0.06 },
-    { id: 0,    name: '0 %',  label: '0%', value: 0    },
-];
 
 
 // const SubArrIteratorItem = (    {setTotalSumSales, total_sum_sales, form, typeItem, setTypeItem, source, record, resource, defaultValue, ...rest}) => {
 
 
-const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) => {
+const SubArrIteratorItem = ({ propsSalesTable }) => {
 
     //czy ja tu mogę dodać motode do objektu? 
-    const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
  
-    const initOnClickValue =  { 
-        id: "",
-        item_name: "",
-        item_type: "Wybierz",
-        item_qty: 1,
-        item_netto: 0.00,
-        item_tax: undefined,
-        sum_item_netto: 0.00,
-        sum_item_tax: 0.00,
-        sum_item_brutto: 0.00,
-    };
-
+   
     
     const classes = useStyles();
     
@@ -115,33 +88,35 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
     //     setTypeItem(event.target.value);
     // };
 
-      const formState = useFormState();
-      const formStateData = formState.values;
-
-      const sourceName = 'salesTable.subSalesTable.sales_list';
+      const sourceName = 'salesTable.sales_items_list';
 
 
                 // console.log("%c rest ", "color:white; font-weight:900; background-color:#FFAA33;", 
                 //     ource, defaultValue, rest , console.count('count'));
 
-                        return (
-                            <FieldArray  name='salesTable.subSalesTable'  > 
-                                {(fieldProps) => {
-                                    console.log("%c fieldProps ", "color:white; font-weight:900; background-color:#5549C7;", 
-                                        fieldProps, console.count('count'));
+                console.log("%c propsSalesTable ", "color:pink; font-weight:900; background-color:#FF5733;", 
+                    propsSalesTable, console.count('count'))   
+                
+                return (
+                            <FieldArray  name='salesTable'  > 
+                                        {(fieldProps) => {
+
+                                    // console.log("%c fieldProps ", "color:white; font-weight:900; background-color:#5549C7;", 
+                                    //     fieldProps, console.count('count'));
+
                                         return (
 
                                         <FieldArray  name={sourceName}  > 
                                             {(fieldProps) => {
-                                    console.log("%c subFieldProps ", "color:blue; font-weight:900; background-color:#DDEE55;", 
-                                            fieldProps, sourceName, console.count('count'));
+                                    // console.log("%c subFieldProps ", "color:blue; font-weight:900; background-color:#DDEE55;", 
+                                    //         fieldProps, sourceName, console.count('count'));
                                                     return (
 
                                         <React.Fragment> 
                                                     <Table className={classes.table } aria-label="sales list table">
-                                            {/*>>  ->subCONTAINER=> HEADER-> sales_list in TableHead--SalesTable */}
+                                            {/*>>  ->subCONTAINER=> HEADER-> sales_items_list in TableHead--SalesTable */}
                                                         <SalesTableHeader/>
-                                            {/* X <-subCONTAINER=> Header-> sales_list in TableHead--SalesTable */}
+                                            {/* X <-subCONTAINER=> Header-> sales_items_list in TableHead--SalesTable */}
                                                         <TableBody className={classes.IteratorRowProduct } >  
 
 
@@ -156,7 +131,7 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
 
                                                             {fieldProps.fields.map((sales_item, index) => {
                                                                 const sourceSalesItemList = fieldProps.fields.name;
-
+                                                                            console.log( fieldProps.fields['salesTable.sales_items_list'] );
                                                                     return (
                                                                     <React.Fragment> 
                                                                         <TableRow   hover tabIndex={-1} key={index}>  
@@ -169,7 +144,9 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                 name={`${sourceSalesItemList}[${index}].item_name`}
                                                                                 render={({input}) => (
                                                                                     
-                                                                                    <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="outlined" 
+                                                                                    <TextField  label="Nazwa" name={input.name} value={input.value} 
+                                                                                    // onChange={input.onChange} 
+                                                                                    variant="outlined" 
                                                                                                 InputLabelProps={{ shrink: true }}  />
                                                                                     )}  type="text" />
                                                                             </TableCell>  
@@ -177,17 +154,18 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                 <Field
                                                                                     name={`${sourceSalesItemList}[${index}].item_type`}
                                                                                     component="SelectInput" >
-                                                                                        <SelectInput    label="Wybierz" variant ="outlined" source={`sales_list[${index}].item_type`} choices={item_type}
+                                                                                        <SelectInput    label="Wybierz" variant ="outlined" source={`${sourceSalesItemList}[${index}].item_type`} 
+                                                                                                        choices={propsSalesTable.dataSelectFieldSalesItem.item_type}
                                                                                                         className={ classes.helperTextIsNONE } />
                                                                                 </Field>
                                                                             </TableCell>  
-                                                                            {/* <TableCell>  
+                                                                            <TableCell>  
                                                                                 <Field
                                                                                 name={`${sourceSalesItemList}[${index}].total`}
                                                                                 component={TextField}
                                                                                 placeholder="Total"
                                                                                 />
-                                                                            </TableCell>   */}
+                                                                            </TableCell>  
                                                                             <TableCell align="center">  
                                                                                 <Field
                                                                                         type="number"
@@ -214,16 +192,73 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                 
                                                                                     name={`${sourceSalesItemList}[${index}].item_tax`} 
                                                                                     component="SelectInput" >
-                                                                                        <SelectInput    label="VAT" variant ="outlined" source={`sales_list[${index}].item_tax`} choices={item_tax}
-                                                                                                        className={ classes.helperTextIsNONE }
-                                                                                                        style={{ maxWidth: 40 }}
+                                                                                        <SelectInput    label="VAT" variant ="outlined" source={`sales_items_list[${index}].item_tax`} 
+                                                                                                        choices={propsSalesTable.dataSelectFieldSalesItem.item_tax}
+                                                                                                        className={ classes.helperTextIsNONE } style={{ maxWidth: 40 }}
                                                                                                         
                                                                                                         />
                                                                                 </Field>
                                                                             </TableCell>  
                                                                     {/*sumNETTO ->tabCELL=>sum_item_netto*/}
-                                                                            <TableCell align="right">  
+
+                                                                    <TableCell align="right">  
+                                                                            
+                                                                          
+                                                                            {     () => {
+                                                                           
+                                                                              
+                                                                                    if(propsSalesTable.fields.value["sales_items_list"][index]["item_netto"]) {
+                                                                                        propsSalesTable.fields.value["sales_items_list"][index]["sum_item_netto"] = 
+                                                                                                    propsSalesTable.fields.value["sales_items_list"][index]["item_netto"] * propsSalesTable.fields.value["sales_items_list"][index]["item_qty"];
+                                                                                        return (   <Field
+                                                                                                    name={`${sourceSalesItemList}[${index}].sum_item_netto`}
+                                                                                                    initialValues={propsSalesTable.fields.value["sales_items_list"][index]["sum_item_netto"]}
+                                                                                                    render={({input}) => (
+                                                                                                        <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="standart" 
+                                                                                                                    InputLabelProps={{ shrink: true }}  />
+                                                                                                        )}  type="number" />  
+                                                                                        );}  else {
+                                                                                                return(  <Field
+                                                                                                    name={`${sourceSalesItemList}[${index}].sum_item_netto`}
+                                                                                                    initialValues={0}
+                                                                                                    render={({input}) => (
+                                                                                                        <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="standart" 
+                                                                                                                    InputLabelProps={{ shrink: true }}  />
+                                                                                                        )}  type="number" /> 
+                                                                                                );}            
+                                                                                }
+                                            }
+                                                                        
+                                                                            </TableCell>
+                                                                            {/* {() => {     
+                                                                              
+                                                                                    if(typeof fieldProps.fields["sales_list"][index]["item_netto"] !== 'undefined' ) {
+                                                                                        fieldProps.fields["sales_list"][index]["sum_item_netto"] = 
+                                                                                                                                        fieldProps.fields["sales_list"][index]["item_netto"] * fieldProps.fields["sales_list"][index]["item_qty"];
+                                                                                        return ( 
+                                                                                                <Field
+                                                                                                    name={`${sourceSalesItemList}[${index}].sum_item_netto`}
+                                                                                                    initialValues={fieldProps.fields["sales_list"][index]["sum_item_netto"]}
+                                                                                                    render={({input}) => (
+                                                                                                        <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="standart" 
+                                                                                                                    InputLabelProps={{ shrink: true }}  />
+                                                                                                        )}  type="number" />
+                                                                                        );}  else {
+                                                                                                return( <Field
+                                                                                                    name={`${sourceSalesItemList}[${index}].sum_item_netto`}
+                                                                                                    initialValues={0}
+                                                                                                    render={({input}) => (
+                                                                                                        <TextField  label="Nazwa" name={input.name} value={input.value} onChange={input.onChange} variant="standart" 
+                                                                                                                    InputLabelProps={{ shrink: true }}  />
+                                                                                                        )}  type="number" />
+                                                                                                );}            
+                                                                                }
+                                                                            }  */}
+                                                                    
+
+
                                                                                 {/* <FormDataConsumer  subscription={{ values: true }} > */}
+                                                                            {/* <TableCell align="right">  
                                                                                     {() => {     
                                                                                         // console.log('fieldProps', fieldProps.fields.value);    
                                                                                             if(typeof sourceSalesItemList[index]["item_netto"] !== 'undefined' ) {
@@ -249,8 +284,8 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                         }
                                                                                     } 
                                                                             
+                                                                            </TableCell> */}
                                                                     {/*sumNETTO <-tabCELL=>sum_item_netto*/}
-                                                                            </TableCell>
                                                                             <TableCell align="center">  
                                                                     {/*sumTAX ->tabCELL=>sum_item_tax*/}
                                                                                 <FormDataConsumer  subscription={{ values: true }} index={index} >
@@ -258,14 +293,16 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                                         {({ formData, scopedFormData, getSource, ...rest  }) => {  
                                                                                 
                                                                                             if (typeof scopedFormData !== 'undefined') {   
-                                                                                                scopedFormData.total = scopedFormData.item_qty * 10;
                                                                                                 
+                                                                                                propsSalesTable.fields.value["sales_items_list"][index]["total"] = 
+                                                                                                                                                (10 * propsSalesTable.fields.value["sales_items_list"][index]["item_qty"])
+                                                                                                    
                                                                                                 return (
-                                                                                                    <NumberInput disabled defaultValue={scopedFormData.total} label="Total" source={getSource('total')} />
+                                                                                                    <NumberInput disabled defaultValue={propsSalesTable.fields.value["sales_items_list"][index]["total"]} label="Total"  source={`${sourceSalesItemList}[${index}].total`}  />
                                                                                                 )
                                                                                                 } else {
                                                                                                 return(
-                                                                                                    <NumberInput disabled label="Total" source={getSource('total')} />
+                                                                                                    <NumberInput disabled label="Total" source={`${sourceSalesItemList}[${index}].total`} />
                                                                                                 )  
                                                                                             }       
                                                                                             }
@@ -275,25 +312,25 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                             </TableCell>  
                                                                             <TableCell align="left">  
                                                                     {/*sumBRUTTO ->tabCELL=>sum_item_brutto*/}
-                                                                    {/* <FormDataConsumer  subscription={{ values: true }} index={index} >
+                                                                    <FormDataConsumer  subscription={{ values: true }} index={index} >
                                                                                     
                                                                                     {({ formData, scopedFormData, getSource, ...rest  }) => {        
-                                                                                            if(typeof formData["sales_list"][index]["sum_item_netto"] && formData["sales_list"][index]["sum_item_tax"] !== 'undefined' ) {
-                                                                                                formData["sales_list"][index]["sum_item_brutto"] = 
-                                                                                                                                                (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"])
-                                                                                                                                                * (formData["sales_list"][index]["item_tax"] + 1);
+                                                                                            if(typeof propsSalesTable.fields.value["sales_items_list"][index]["sum_item_netto"] && propsSalesTable.fields.value["sales_items_list"][index]["sum_item_tax"] !== 'undefined' ) {
+                                                                                                propsSalesTable.fields.value["sales_items_list"][index]["sum_item_brutto"] = 
+                                                                                                                                                (propsSalesTable.fields.value["sales_items_list"][index]["item_netto"] * propsSalesTable.fields.value["sales_items_list"][index]["item_qty"])
+                                                                                                                                                * (propsSalesTable.fields.value["sales_items_list"][index]["item_tax"] + 1);
 
-                                                                                                                return ( <BoxNumberInput   source={`sales_list[${index}].sum_item_brutto`} label="Wartość brutto" variant="standard"   {...rest} 
+                                                                                                                return ( <BoxNumberInput   source={`${sourceSalesItemList}[${index}].sum_item_brutto`} label="Wartość brutto" variant="standard"   {...rest} 
                                                                                                                                     className={ classes.helperTextIsNONE }  disabled >
-                                                                                                            {formData["sales_list"][index]["sum_item_brutto"] = (formData["sales_list"][index]["item_netto"] * formData["sales_list"][index]["item_qty"]) * (formData["sales_list"][index]["item_tax"] + 1)}
+                                                                                                            {propsSalesTable.fields.value["sales_items_list"][index]["sum_item_brutto"] = (propsSalesTable.fields.value["sales_items_list"][index]["item_netto"] * propsSalesTable.fields.value["sales_items_list"][index]["item_qty"]) * (propsSalesTable.fields.value["sales_items_list"][index]["item_tax"] + 1)}
                                                                                                                 </BoxNumberInput>
                                                                                                                 );}  else {
-                                                                                                                    return( <BoxNumberInput  mt="-0.75em" ml="0.5em" label="Wartość brutto" source={`sales_list[${index}].sum_item_brutto`}  variant="standard"   mr="0.5em" 
+                                                                                                                    return( <BoxNumberInput  mt="-0.75em" ml="0.5em" label="Wartość brutto" source={`${sourceSalesItemList}[${index}].sum_item_brutto`}  variant="standard"   mr="0.5em" 
                                                                                                                                         className={ classes.helperTextIsNONE }  />
                                                                                                                         );}            
                                                                                                                     }
                                                                                                                 } 
-                                                                                    </FormDataConsumer> */}
+                                                                                    </FormDataConsumer>
                                                                         {/*sumBRUTTO <-tabCELL=>sum_item_brutto*/}
                                                                                 </TableCell> 
                                                                             <TableCell colSpan={2} align="center" >  
@@ -326,7 +363,7 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                             <Button
                                                                                 type="button"
                                                                                 onClick={
-                                                                                    () => fieldProps.fields.push(initOnClickValue)}
+                                                                                    () => fieldProps.fields.push( propsSalesTable.dataInitOnClickAddItem )}
                                                                                 
                                                                                     color="secondary"
                                                                                 variant="contained"
@@ -350,9 +387,7 @@ const SubArrIteratorItem = ({record, source, defaultValue, resource, ...rest}) =
                                                                 </Grid >
                                                                 <Grid item xs={12} sm={6}> 
                                                         {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
-                                                                    <SumSalesItems
-                                                                            // setTotalSumSales={setTotalSumSales} total_sum_sales={total_sum_sales} form={form}
-                                                                            dataArray={formStateData.salesTable} fieldProps={fieldProps} record={record} resource={resource}   /> 
+                                                                    <SumSalesItems   dataArray={propsSalesTable.fields.value}    /> 
                                                         {/* X <-subCONTAINER=> SubTableSumSales in Table*/}
                                                                 </Grid>
                                                             </Grid >

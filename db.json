@@ -1069,6 +1069,603 @@
       "invoice_date": "2021-10-12T16:21:44.361Z",
       "invoice_due_data": "2021-10-26T16:21:44.361Z",
       "id": 36
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        },
+        "subSalesTable": {
+          "sales_list": [
+            {
+              "id": "",
+              "item_name": "sdasd",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            },
+            {
+              "id": "",
+              "item_name": "kot",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            }
+          ]
+        }
+      },
+      "invoice_date": "2021-10-13T14:54:16.965Z",
+      "invoice_due_data": "2021-10-27T14:54:16.965Z",
+      "id": 37
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        },
+        "subSalesTable": {
+          "sales_list": [
+            {
+              "id": "",
+              "item_name": "",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            },
+            {
+              "id": "",
+              "item_name": "",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            },
+            {
+              "id": "",
+              "item_name": "",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            }
+          ]
+        }
+      },
+      "invoice_date": "2021-10-13T14:57:52.404Z",
+      "invoice_due_data": "2021-10-27T14:57:52.404Z",
+      "id": 38
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        },
+        "subSalesTable": {
+          "sales_list": [
+            {
+              "id": "",
+              "item_name": "sdasd",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            },
+            {
+              "id": "",
+              "item_name": "kot",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            }
+          ]
+        }
+      },
+      "invoice_date": "2021-10-13T15:07:37.195Z",
+      "invoice_due_data": "2021-10-27T15:07:37.195Z",
+      "id": 39
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        },
+        "subSalesTable": null
+      },
+      "invoice_date": "2021-10-13T15:07:51.600Z",
+      "invoice_due_data": "2021-10-27T15:07:51.600Z",
+      "id": 40
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        },
+        "subSalesTable": {
+          "sales_list": [
+            {
+              "id": "",
+              "item_name": "",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            },
+            {
+              "id": "",
+              "item_name": "",
+              "item_type": "Wybierz",
+              "item_qty": 1,
+              "item_netto": 0,
+              "sum_item_netto": 0,
+              "sum_item_tax": 0,
+              "sum_item_brutto": 0
+            }
+          ]
+        }
+      },
+      "invoice_date": "2021-10-13T15:08:11.623Z",
+      "invoice_due_data": "2021-10-27T15:08:11.623Z",
+      "id": 41
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": null,
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        },
+        "subSalesTable": null
+      },
+      "invoice_date": "2021-10-13T15:15:31.437Z",
+      "invoice_due_data": "2021-10-27T15:15:31.437Z",
+      "groups": [
+        "compulsive"
+      ],
+      "id": 42
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": [
+          {
+            "id": "",
+            "item_name": "",
+            "item_type": "Wybierz",
+            "item_qty": 1,
+            "item_netto": 0,
+            "sum_item_netto": 0,
+            "sum_item_tax": 0,
+            "sum_item_brutto": 0
+          },
+          {
+            "id": "",
+            "item_name": "",
+            "item_type": "Wybierz",
+            "item_qty": 1,
+            "item_netto": 0,
+            "sum_item_netto": 0,
+            "sum_item_tax": 0,
+            "sum_item_brutto": 0
+          }
+        ],
+        "total_sum_sales": {
+          "sum_items_netto": 0,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        },
+        "subSalesTable": null
+      },
+      "invoice_date": "2021-10-13T15:16:08.064Z",
+      "invoice_due_data": "2021-10-27T15:16:08.064Z",
+      "groups": [
+        "compulsive"
+      ],
+      "id": 43
+    },
+    {
+      "dataSeller": {
+        "id": "Profile12356x",
+        "myCompany": "Biuro Podróży Pawłowice",
+        "myFullname": "Marek Kowalski",
+        "myName": {
+          "myForename": "Marek",
+          "mySurname": "Kowalski"
+        },
+        "address_id": "145",
+        "myStreet": "Widawska 128",
+        "myCity": "Wrocław",
+        "myZIPCode": "58-202",
+        "myAddress": {
+          "id": "145",
+          "street": "Widawska 128",
+          "city": "Wrocław",
+          "ZIPCode": "58-202"
+        },
+        "myEmail": "kowalskitravel@gmail.com",
+        "myPhone": "501069054",
+        "contact": {
+          "email": "kowalskitravel@gmail.com",
+          "telephoneNumber": "5858585",
+          "faxNumber": "44475757575"
+        },
+        "myMVA": "9973786",
+        "orgId": {
+          "orgNumber": "15032603596",
+          "MVA": "true"
+        },
+        "noBank": "00158282852858525"
+      },
+      "salesTable": {
+        "sales_list": [
+          {
+            "id": "",
+            "item_name": "",
+            "item_type": "Wybierz",
+            "item_qty": 1,
+            "item_netto": "10",
+            "sum_item_netto": 0,
+            "sum_item_tax": 0,
+            "sum_item_brutto": 0
+          },
+          {
+            "id": "",
+            "item_name": "",
+            "item_type": "Wybierz",
+            "item_qty": 1,
+            "item_netto": "10",
+            "sum_item_netto": 0,
+            "sum_item_tax": 0,
+            "sum_item_brutto": 0
+          }
+        ],
+        "total_sum_sales": {
+          "sum_items_netto": 20,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        }
+      },
+      "invoice_date": "2021-10-13T15:25:14.337Z",
+      "invoice_due_data": "2021-10-27T15:25:14.337Z",
+      "sales_list": [
+        {
+          "item_tax": 0.15
+        },
+        {
+          "item_tax": 0.15
+        }
+      ],
+      "id": 44
+    },
+    {
+      "dataSeller": {
+        "dataUser": {
+          "id": "Profile12356x",
+          "myCompany": "Biuro Podróży Pawłowice",
+          "myFullname": "Marek Kowalski",
+          "myName": {
+            "myForename": "Marek",
+            "mySurname": "Kowalski"
+          },
+          "address_id": "145",
+          "myStreet": "Widawska 128",
+          "myCity": "Wrocław",
+          "myZIPCode": "58-202",
+          "myAddress": {
+            "id": "145",
+            "street": "Widawska 128",
+            "city": "Wrocław",
+            "ZIPCode": "58-202"
+          },
+          "myEmail": "kowalskitravel@gmail.com",
+          "myPhone": "501069054",
+          "contact": {
+            "email": "kowalskitravel@gmail.com",
+            "telephoneNumber": "5858585",
+            "faxNumber": "44475757575"
+          },
+          "myMVA": "9973786",
+          "orgId": {
+            "orgNumber": "15032603596",
+            "MVA": "true"
+          },
+          "noBank": "00158282852858525"
+        }
+      },
+      "salesTable": {
+        "sales_items_list": [
+          {
+            "id": "",
+            "item_qty": 1,
+            "item_netto": "10",
+            "sum_item_netto": 0,
+            "sum_item_tax": 0,
+            "sum_item_brutto": null
+          },
+          {
+            "id": "",
+            "item_qty": 1,
+            "item_netto": "150",
+            "sum_item_netto": 0,
+            "sum_item_tax": 0,
+            "sum_item_brutto": null
+          }
+        ],
+        "total_sum_sales": {
+          "sum_items_netto": 160,
+          "sum_items_tax": 0,
+          "sum_items_brutto": 0
+        }
+      },
+      "invoice_date": "2021-10-13T18:51:59.978Z",
+      "invoice_due_data": "2021-10-27T18:51:59.978Z",
+      "sales_items_list": [
+        {
+          "item_tax": 0.15
+        },
+        {
+          "item_tax": 0.15
+        }
+      ],
+      "id": 45
     }
   ],
   "tradePartners_list": [

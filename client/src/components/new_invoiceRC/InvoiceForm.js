@@ -1,5 +1,4 @@
 import * as React from "react";
-import col from '../../colorCLI';
 import {    useMemo, useEffect, useState, useCallback } from 'react';
 import {    SelectArrayInput,
     NullableBooleanInput,
@@ -37,6 +36,40 @@ import Save from '@material-ui/icons/Save';
 import MuiTextField from '@material-ui/core/TextField'
 import MuiButton from '@material-ui/core/Button';
 
+
+
+ 
+const dataInitOnClickAddItem =  { 
+    id: "",
+    item_name: undefined,
+    item_type: undefined,
+    item_qty: 1,
+    item_netto: 0.00,
+    item_tax: undefined,
+    sum_item_netto: 0.00,
+    sum_item_tax: 0.00,
+    sum_item_brutto: 0.00,
+};
+
+
+const dataSelectFieldSalesItem = {
+    item_type: [
+        { label: 'Usługa', id: 'usługi', name: 'Usługi' },
+        { label: 'Towar', id: 'towar', name: 'Towary' },
+        { label: 'Najem', id: 'najem', name: 'Najem' },
+        { label: 'Prowizja', id: 'Prowizja', name: 'Prowizja' },
+        { label: 'MVA', id: 'MVA', name: 'MVA' },
+        { label: 'O% MVA', id: 'Sprzedaż 0% MVA', name: '0% MVA' },
+        { label: 'Zwolniona', id: 'Sprzedaż zwolniona MVA', name: 'Zwolniony' },
+    ],
+    item_tax: [
+        { id: 0.25, name: '25 %', label: '25%', value: 0.25 },
+        { id: 0.15, name: '15 %', label: '15%', value: 0.15 },
+        { id: 0.12, name: '12 %', label: '12%', value: 0.12 },
+        { id: 0.06, name: '6 %',  label: '6%',  value: 0.06 },
+        { id: 0,    name: '0 %',  label: '0%',  value: 0    },
+    ]
+};
 
 const payment_method = [
     ];
@@ -80,16 +113,10 @@ const defaultSubscription = {
 
 const InvoiceForm = (props) => {
 
-        
-        
-        
-        // const { values: { todayDate }} = useFormState({ subscription: { values: true } });
     // const { values: { todayDate }} = useFormState({ subscription: { values: true } });
-
-
-    const [dataUser, setDataUser] = useState({});
     const [versionDataUser, setVersionDataUser] = useState(0);
-        useMemo((dataUser) => {
+    const [dataUser, setDataUser] = useState({});
+    useMemo((dataUser) => {
             // GET request using fetch inside useEffect React hook
             fetch('http://localhost:3000//userProfile/Profile12356x')
             .then(response => response.json())
@@ -97,61 +124,44 @@ const InvoiceForm = (props) => {
             // empty dependency array means this effect will only run once (like componentDidMount in classes)
         }, [versionDataUser]);
 
-
 // useMemo(() => {
 //     change('test_second_input', test_first_input / 10);
 // }, [change, test_first_input]);
 
-
-        const classes = useStyles();
-    const transform = data => ({
-            ...data,
-            createAt: new Date(),
-        })
-    const dateDefaultValue = useMemo(() => new Date(), []);
+    const classes = useStyles();
+    // const transform = data => ({
+    //         ...data,
+    //         createAt: new Date(),
+        // })
+    const dateDefaultValuse = useMemo(() => new Date(), []);
     const [versionPartnerList, setVersionPartnerList] = useState(0);
     const handleChange = useCallback(() => setVersionPartnerList(versionPartnerList + 1), [versionPartnerList]);
-    
-    const [typeItem, setTypeItem] = useState(true);
 
-    const [total_sum_sales, setTotalSumSales] = useState({
-            sum_items_netto: 0,
-            sum_items_tax: 0,
-            sum_items_brutto: 0,
-    });
-
-
-   
-    
     return (
         <FormWithRedirect  { ...props }
                 mutators={{...arrayMutators,}}
                 initialValues={{
-                    dataSeller: {...dataUser},
-                    salesTable: {sales_list: undefined, total_sum_sales, subSalesTable: undefined, },
+                    dataSeller: {dataUser},
+                    salesTable: {   sales_items_list: [], 
+                                    total_sum_sales: { sum_items_netto: 0, sum_items_tax: 0, sum_items_brutto: 0 } 
+                                },
                     invoice_date: new Date(),
                     invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
                   
                     }
                 }
+                dataInitOnClickAddItem={dataInitOnClickAddItem}
+                dataSelectFieldSalesItem={dataSelectFieldSalesItem}
+                choices={segments}
                 
                 render={({  ...formProps,
-
-                    initialValues,
-                    form: {  mutators: { push, pop } },
-                    // pristine,
-                    form,
-                    // submitting,
-                    values,
-                     
-                    
+                    initialValues,  values, 
+                    // form: {  mutators: { push, pop } },  pristine, form, submitting,
                     }) => {
-            console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
-                props, console.count('count'));
-                console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
-                    formProps, console.count('count'));
-             
-            
+            // console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
+            //     props, console.count('count'));
+            //     console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
+            //         formProps, console.count('count'));
                     return (
                         <form>
                         <Grid container spacing={3} formClassName={classes.gridSimpleForm} >
@@ -210,7 +220,7 @@ const InvoiceForm = (props) => {
                                     <Grid container spacing={2} > 
                                         <Grid item xs={12} sm={6}> 
                                             {/* <FormGroupContextProvider name="inv_Seller"> */}
-                    <InvoiceSellerForm initSeller={dataUser} />
+                                            <InvoiceSellerForm initSeller={dataUser} />
                                             {/* </FormGroupContextProvider> */}
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
@@ -226,8 +236,10 @@ const InvoiceForm = (props) => {
                             {/*>> ->CONTAINER=>SalesProductTable */}
                                     <Grid container spacing={3}  >
                                         <Grid  item xs={12} >
-                                            <ArrayInput label="" source="salesTable"  >
-                                                <SumSpanningTable  />
+                                            <ArrayInput label="" source="salesTable"    >
+                                                <SumSpanningTable 
+                                                    dataInitOnClickAddItem={dataInitOnClickAddItem}
+                                                    dataSelectFieldSalesItem={dataSelectFieldSalesItem}  />
                                             </ArrayInput>
                                         </Grid>
                                     </Grid>
@@ -291,8 +303,6 @@ const InvoiceForm = (props) => {
     );
 };
 
-
-
 export default InvoiceForm;
 
 
@@ -303,7 +313,7 @@ export default InvoiceForm;
 // const calculator = createDecorator(
     
 //     {
-//         field: /sales_list\[\d+\]\.item_netto/,
+//         field: /sales_items_list\[\d+\]\.item_netto/,
 //         updates: (value, name, allValues) => {
 //             const totalField = name.replace(".item_netto", ".total");
 //             const quantityField = name.replace(".item_netto", ".item_qty");
@@ -313,7 +323,7 @@ export default InvoiceForm;
 //         },
 //     },
 //     {
-//         field: /sales_list\[\d+\]\.item_qty/,
+//         field: /sales_items_list\[\d+\]\.item_qty/,
 //         updates: (value, name, allValues) => {
 //             const totalField = name.replace(".item_qty", ".total");
 //             const priceField = name.replace(".item_qty", ".item_netto");

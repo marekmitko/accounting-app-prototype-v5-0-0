@@ -8,15 +8,16 @@ import TableRow from '@material-ui/core/TableRow';
 import SumSalesItemsHeader from './SumSalesItemsHeader';
 
 
-export default function SumSalesItems ({ total_sum_sales, form, record, resource, dataArray, ...fieldProps }) {
+export default function SumSalesItems ({dataArray}) {
 
     function ccyFormat(num) { return `${num.toFixed(2)}`; }
         console.log("dataArray", dataArray);
         // console.log('sum_items_netto', total_sum_sales.sum_items_netto );
 
-    // const dataSalesList =  dataArray.subSalesTable;
+    const dataSalesList =  dataArray.sales_items_list;
+    const total_sum_sales = dataArray.total_sum_sales;
     // // const dataSalesList =  dataArray;
-    // const a = [1,2];
+    const a = dataSalesList;
     
 
     let total_netto = 0;
@@ -108,9 +109,9 @@ export default function SumSalesItems ({ total_sum_sales, form, record, resource
 {/* <FormDataConsumer  subscription={{ values: true }} >
                             {({ formData, ...rest  }) => { 
                                 // console.log('fromData', formData);
-                                if(formData.sales_list && formData.sales_list.length > 0 ) {
+                                if(formData.sales_items_list && formData.sales_items_list.length > 0 ) {
 
-                                    var sumBrutto = formData.sales_list.reduce(( accumulator, obj ) => {
+                                    var sumBrutto = formData.sales_items_list.reduce(( accumulator, obj ) => {
                                                     return accumulator + (obj['sum_item_brutto'] || 0 ) }, 0 )
                                             // console.log("sumBrutto", sumBrutto );
                                     }

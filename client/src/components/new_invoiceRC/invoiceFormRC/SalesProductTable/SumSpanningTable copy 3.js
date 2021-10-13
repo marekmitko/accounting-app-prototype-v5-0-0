@@ -215,9 +215,9 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
                                                                             </TableCell>  
                                                                     {/*sumNETTO ->tabCELL=>sum_item_netto*/}
                                                                             <TableCell align="right">  
-                                                                                {/* <FormDataConsumer  subscription={{ values: true }} > */}
+                                                                            
                                                                                     {() => {     
-                                                                                        // console.log('fieldProps', fieldProps.fields.value);    
+                                                                                      
                                                                                             if(typeof fieldProps.fields["sales_list"][index]["item_netto"] !== 'undefined' ) {
                                                                                                 fieldProps.fields["sales_list"][index]["sum_item_netto"] = 
                                                                                                                                                 fieldProps.fields["sales_list"][index]["item_netto"] * fieldProps.fields["sales_list"][index]["item_qty"];
@@ -241,8 +241,8 @@ const SumSpanningTable = (    {setTotalSumSales, total_sum_sales, form, typeItem
                                                                                         }
                                                                                     } 
                                                                             
-                                                                    {/*sumNETTO <-tabCELL=>sum_item_netto*/}
                                                                             </TableCell>
+                                                                    {/*sumNETTO <-tabCELL=>sum_item_netto*/}
                                                                             <TableCell align="center">  
                                                                     {/*sumTAX ->tabCELL=>sum_item_tax*/}
                                                                                 <FormDataConsumer  subscription={{ values: true }} index={index} >
