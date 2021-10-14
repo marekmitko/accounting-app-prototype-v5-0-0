@@ -159,9 +159,9 @@ const InvoiceForm = (props) => {
                     // form: {  mutators: { push, pop } },  pristine, form, submitting,
                     }) => {
             // console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
-            //     props, console.count('count'));
+            //     props, console.count('count'));     //cLog props
             //     console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
-            //         formProps, console.count('count'));
+            //         formProps, console.count('count')); //cLog formProps
                     return (
                         <form>
                         <Grid container spacing={3} formClassName={classes.gridSimpleForm} >

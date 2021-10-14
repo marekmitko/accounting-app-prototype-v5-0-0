@@ -91,12 +91,10 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
       const sourceName = 'salesTable.sales_items_list';
 
 
-                // console.log("%c rest ", "color:white; font-weight:900; background-color:#FFAA33;", 
-                //     ource, defaultValue, rest , console.count('count'));
 
-                //cLog
-                console.log("%c propsSalesTable ", "color:pink; font-weight:900; background-color:#FF5733;", 
-                    propsSalesTable, console.count('count'))   
+
+        // console.log("%c propsSalesTable ", "color:pink; font-weight:900; background-color:#FF5733;",  
+        //     propsSalesTable, console.count('count'))    //cLog protoSalesTable
                 
                 return (
                             <FieldArray  name='salesTable'  > 
@@ -126,11 +124,9 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
                         fieldProps.fields, sales_item, console.count('count'));
                         console.log("%c name ", "color:#FF11FF; font-weight:900; background-color:#3CBAF5;", 
                             fieldProps.fields.name, sales_item, console.count('count')); */}
-                                        
-
-
 
                                                             {fieldProps.fields.map((item, index) => {
+//notE Calculation method sum item value for fields item_netto/tax/brutto 
                                                                 const sourceSalesItemList = fieldProps.fields.name;
                                                                 const itemValue = fieldProps.fields.value[index];
 //?ver ? Sprawdzić if NaN => isNaN 
@@ -143,9 +139,9 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
 
 
                                                                 let sum_tax = 0;
-                                                                    if(fieldProps.fields.value[index].item_tax >=0){
+                                                                    if(fieldProps.fields.value[index].item_tax >=0) 
                                                                         sum_tax = ((+itemValue.item_qty) * (+itemValue.item_netto)) * itemValue.item_tax;
-                                                                    }
+                                                                    
                                                                     itemValue.sum_item_tax = sum_tax
 
                                                                 let sum_brutto = 0;

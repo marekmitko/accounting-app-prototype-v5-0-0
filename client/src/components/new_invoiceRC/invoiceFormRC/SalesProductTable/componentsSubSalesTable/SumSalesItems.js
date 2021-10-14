@@ -11,12 +11,15 @@ import SumSalesItemsHeader from './SumSalesItemsHeader';
 export default function SumSalesItems ({dataArray}) {
 
     function ccyFormat(num) { return `${num.toFixed(2)}`; }
-        console.log("dataArray", dataArray);
-        // console.log('sum_items_netto', total_sum_sales.sum_items_netto );
+
+    console.log("%c dataArray ", "color:#FF5733; font-weight:900; background-color:#7F3;",  
+        dataArray, console.count('count'))    //cLog dataArray => dataSalesTable for total_sum_items_list
+
+//notE Calculation method total sum sale list items for data {...total_sum_sales}
 
     const dataSalesList =  dataArray.sales_items_list;
     const total_sum_sales = dataArray.total_sum_sales;
-    // // const dataSalesList =  dataArray;
+
     const a = dataSalesList;
     
 
