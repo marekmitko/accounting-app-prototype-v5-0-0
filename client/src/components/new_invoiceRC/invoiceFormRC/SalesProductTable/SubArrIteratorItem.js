@@ -131,20 +131,28 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
 
                                                             {fieldProps.fields.map((item, index) => {
                                                                 const sourceSalesItemList = fieldProps.fields.name;
-                                                                          
-                                                                                  
-                                                                                    fieldProps.fields.value[index].sum_item_netto = (+fieldProps.fields.value[index].item_qty) * (+fieldProps.fields.value[index].item_netto)
-                                                                                 let sum_netto =   fieldProps.fields.value[index].sum_item_netto;
-                                                                                  
-                                                                                if(fieldProps.fields.value[index].item_tax >=0)
-                                                                                    fieldProps.fields.value[index].sum_item_tax =  fieldProps.fields.value[index].item_tax * ((+fieldProps.fields.value[index].item_qty) * (+fieldProps.fields.value[index].item_netto))
-                                                                                 let sum_tax =   fieldProps.fields.value[index].sum_item_tax;
-                                                                                
-                                                                                 if(fieldProps.fields.value[index].item_tax >=0 )
-                                                                                    fieldProps.fields.value[index].sum_item_brutto =   ((+fieldProps.fields.value[index].item_qty) * (+fieldProps.fields.value[index].item_netto)) * ( fieldProps.fields.value[index].item_tax + 1) 
-                                                                                 let sum_brutto =   fieldProps.fields.value[index].sum_item_brutto;
-                                                                                    
-                                                                                    
+                                                                const itemValue = fieldProps.fields.value[index];
+
+                                                                let sum_netto = 0;
+                                                                    if(Number(fieldProps.fields.value[index].item_netto) != NaN){
+                                                                        sum_netto =  (+itemValue.item_qty)*(+itemValue.item_netto);
+                                                                    }
+                                                                    itemValue.sum_item_netto = sum_netto;
+
+
+                                                                let sum_tax = 0;
+                                                                    if(fieldProps.fields.value[index].item_tax >=0){
+                                                                        sum_tax = ((+itemValue.item_qty) * (+itemValue.item_netto)) * itemValue.item_tax;
+                                                                    }
+                                                                    itemValue.sum_item_tax = sum_tax
+
+                                                                let sum_brutto = 0;
+                                                                    if(fieldProps.fields.value[index].item_tax >=0 )
+                                                                        sum_brutto = ((+itemValue.item_qty) * (+itemValue.item_netto)) * ( itemValue.item_tax + 1);
+
+                                                                    itemValue.sum_item_brutto = sum_brutto
+                                                                    
+
                                                                                     
                                                                                     // console.log("%c subFieldProps ", "color:blue; font-weight:900; background-color:#DDEE55;", 
                                                                                     // sum_qty, sum_netto, sum_qqqq , console.count('count'));

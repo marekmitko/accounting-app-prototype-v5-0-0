@@ -22,9 +22,11 @@ export default function SumSalesItems ({dataArray}) {
 
     let total_netto = 0;
     for(let i=0; i<a.length; i++){
+        if(Number(dataSalesList[i].item_netto) === Number){
         total_netto+= ((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto));
         // do poprawy prze funkcje set !!!
         total_sum_sales.sum_items_netto = total_netto;
+        }
     }
 
     let total_tax = 0;
