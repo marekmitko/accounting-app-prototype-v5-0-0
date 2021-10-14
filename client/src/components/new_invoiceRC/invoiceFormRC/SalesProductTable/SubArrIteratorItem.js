@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { FieldArray, useFieldArray, } from 'react-final-form-arrays';
 import {  Field, useFormState, useForm, } from 'react-final-form';
-import  {   NumberInput, SelectInput, FormGroupContextProvider, FormDataConsumer, ArrayInput, }  from 'react-admin';
+import  {   NumberInput, SelectInput, FormGroupContextProvider, FormDataConsumer, ArrayInput, TextInput, }  from 'react-admin';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -94,6 +94,7 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
                 // console.log("%c rest ", "color:white; font-weight:900; background-color:#FFAA33;", 
                 //     ource, defaultValue, rest , console.count('count'));
 
+                //cLog
                 console.log("%c propsSalesTable ", "color:pink; font-weight:900; background-color:#FF5733;", 
                     propsSalesTable, console.count('count'))   
                 
@@ -132,11 +133,12 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
                                                             {fieldProps.fields.map((item, index) => {
                                                                 const sourceSalesItemList = fieldProps.fields.name;
                                                                 const itemValue = fieldProps.fields.value[index];
-
+//?ver ? Sprawdzić if NaN => isNaN 
+ //  if(!Number.isNaN(fieldProps.fields.value[index].item_netto))
                                                                 let sum_netto = 0;
-                                                                    if(Number(fieldProps.fields.value[index].item_netto) != NaN){
+                                                                    if(+(fieldProps.fields.value[index].item_netto) !== 0){
                                                                         sum_netto =  (+itemValue.item_qty)*(+itemValue.item_netto);
-                                                                    }
+                                                                    }  else {sum_netto = 0;}
                                                                     itemValue.sum_item_netto = sum_netto;
 
 
@@ -163,11 +165,15 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
                                                                         <FormGroupContextProvider name="IteratorItem">
                                                                             <TableCell style={{ padding: 10 }} align="center">{index+1}</TableCell>  
                                                                             <TableCell colSpan={2} >  
-                                                                                <Field name={`${sourceSalesItemList}[${index}].item_name`}
+                                                                                {/* <Field name={`${sourceSalesItemList}[${index}].item_name`}
                                                                                         render={({input}) => (
                                                                                             <TextField  label="Nazwa" name={input.name} value={input.value} 
                                                                                             onChange={input.onChange}  variant="outlined"   InputLabelProps={{ shrink: true }}  />
-                                                                                        )}  type="text" />
+                                                                                        )}  type="text" /> */}
+                                                                                        <TextInput resettable label="Nazwa" variant ="outlined" source={`${sourceSalesItemList}[${index}].item_name`}  
+                                                                                        className={ classes.helperTextIsNONE }   
+                                                                                        // style={{ maxWidth: 90 }} 
+                                                                                        />
                                                                             </TableCell>  
                                                                             <TableCell align="center">  
                                                                                 <Field

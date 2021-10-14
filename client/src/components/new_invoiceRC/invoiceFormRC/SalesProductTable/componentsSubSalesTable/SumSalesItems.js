@@ -22,27 +22,35 @@ export default function SumSalesItems ({dataArray}) {
 
     let total_netto = 0;
     for(let i=0; i<a.length; i++){
-        if(Number(dataSalesList[i].item_netto) === Number){
+        if(+dataSalesList[i].item_netto !== 0){
         total_netto+= ((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto));
         // do poprawy prze funkcje set !!!
         total_sum_sales.sum_items_netto = total_netto;
-        }
+        } else {total_netto+= 0;}
     }
 
     let total_tax = 0;
     for(let i=0; i<a.length && dataSalesList[i].item_tax >= 0; i++){
+        // if(+dataSalesList[i].item_netto !== 0){
         total_tax+= (((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto))*(dataSalesList[i].item_tax));
         // do poprawy prze
         total_sum_sales.sum_items_tax = total_tax;
+        // } else {total_tax+= 0;}
     }
     
     let total_brutto = 0;
     for(let i=0; i<a.length && dataSalesList[i].item_tax >= 0 && dataSalesList[i].item_netto; i++){
-        total_brutto+= (((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto))*(dataSalesList[i].item_tax + 1));
+        // if(+dataSalesList[i].item_netto !== 0){
+        total_brutto+= (((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto))*(1 + dataSalesList[i].item_tax));
         // do poprawy prze funkcje set 
         total_sum_sales.sum_items_brutto = total_brutto;
+        // } else {total_brutto+= 0;}
     }
 
+
+ 
+    //
+    //  if(!Number.isNaN(fieldProps.fields.value[index].item_netto))
 
 
     return (
