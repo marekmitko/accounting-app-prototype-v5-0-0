@@ -46,13 +46,14 @@ export default function AdditionalOptions ({props}) {
     return (
         <React.Fragment>
                     <TableRow >
-                        <TableCell className={ classes.borderNull } colSpan={4} /> 
+                        <TableCell className={ classes.borderNull } colSpan={5} /> 
                     </TableRow >
             <Table size="small" className={ classes.tableBorder } >
             {/*>> ->subCONTAINER=> AddPaymentMethod TableCell__TableRow */}
                     <TableRow className={ classes.helperTextIsNONE }align="left">
-                        <TableCell  />                                        
                         <TableCell  /> 
+                        <TableCell  />                                        
+                        <TableCell  />                                        
             {/*>> ->subCONTAINER=> AddPaymentMethod TableCell__TableRow */}
                         <TableCell  className={ classes.helperTextIsNONE } >
                             <RadioButtonGroupInput className={ classes.helperTextIsNONE } label="WYBIERZ FORMĘ PŁATNOŚCI:" source="payment_method" choices={[
@@ -70,6 +71,7 @@ export default function AdditionalOptions ({props}) {
                     <TableRow align="left">
                         <TableCell  />   
                         <TableCell  /> 
+                        <TableCell  /> 
             {/*>> ->subCONTAINER=> AddMethodSendBy  TableCell__TableRow */}
                         <TableCell className={ classes.helperTextIsNONE } >
                             <CheckboxGroupInput label="PRZEŚLIJ FAKTURĘ ZA POŚREDNICTEM:" source="send_invoice_by" choices={[
@@ -83,6 +85,7 @@ export default function AdditionalOptions ({props}) {
                     </TableRow>
                     <TableRow align="left">
                         <TableCell  />
+                        <TableCell  />
                         <TableCell  />   
             {/*>> ->subCONTAINER=> AddOptionEHF  TableCell__TableRow */}
                         <TableCell  className={ classes.helperTextIsNONE }  >
@@ -94,7 +97,7 @@ export default function AdditionalOptions ({props}) {
                     </TableRow>
             </Table>
             <TableRow >
-                <TableCell colSpan={4} /> 
+                <TableCell colSpan={5} /> 
             </TableRow >
         </React.Fragment>
     );

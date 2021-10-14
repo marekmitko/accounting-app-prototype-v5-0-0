@@ -46,7 +46,7 @@ export default function SumSalesItems ({dataArray}) {
     return (
         <Table>
             <SumSalesItemsHeader/>
-            <TableBody>
+            <TableBody align="right">
                 <TableRow align="right">
                     <TableCell >Total</TableCell>
                     <TableCell align="center"><strong>{total_netto}</strong></TableCell>
