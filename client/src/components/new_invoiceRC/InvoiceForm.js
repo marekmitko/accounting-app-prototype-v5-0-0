@@ -136,8 +136,13 @@ const InvoiceForm = (props) => {
     const dateDefaultValuse = useMemo(() => new Date(), []);
     const [versionPartnerList, setVersionPartnerList] = useState(0);
     const handleChange = useCallback(() => setVersionPartnerList(versionPartnerList + 1), [versionPartnerList]);
+        
+    
 
-    return (
+            console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
+                props, console.count('count'));     //cLog props    
+                
+        return (
         <FormWithRedirect  { ...props }
                 mutators={{...arrayMutators,}}
                 initialValues={{
@@ -146,7 +151,7 @@ const InvoiceForm = (props) => {
                                     total_sum_sales: { sum_items_netto: 0, sum_items_tax: 0, sum_items_brutto: 0 } 
                                 },
                     invoice_date: new Date(),
-                    invoice_due_data: new Date(new Date().getTime() + (14*24*60*60*1000)),
+                    invoice_due_date: new Date(new Date().getTime() + (14*24*60*60*1000)),
                   
                     }
                 }
@@ -160,8 +165,8 @@ const InvoiceForm = (props) => {
                     }) => {
             // console.log("%c props ", "color:white; font-weight:900; background-color:#1B2631;", 
             //     props, console.count('count'));     //cLog props
-            //     console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
-            //         formProps, console.count('count')); //cLog formProps
+                console.log("%c formProps ", "color:white; font-weight:900; background-color:#154360;", 
+                    ...formProps.record,  console.count('count')); //cLog formProps
                     return (
                         <form>
                         <Grid container spacing={3} formClassName={classes.gridSimpleForm} >
@@ -171,11 +176,11 @@ const InvoiceForm = (props) => {
                         {/*-> MAIN CONTAINER */}
                             {/*>> ->CONTAINER=>HeadlineDate */}
                                     <Grid container spacing={1}  >
-                                        <Grid item xs={12} sm={1} >
+                                        <Grid item xs={12} sm={3} >
                                             <InvoiceHeaderLogotype />
                                         </Grid>
-                                        <Grid item xs={12} sm={11} >
-                                            {/* <InvoiceHeaderData /> */}
+                                        <Grid item xs={12} sm={8} >
+                                            <InvoiceHeaderData />
                                         </Grid>
                                     </Grid>
                             {/* X <-CONTAINER=>HeadlineDate */}
@@ -237,7 +242,8 @@ const InvoiceForm = (props) => {
                                     <Grid container spacing={3}  >
                                         <Grid  item xs={12} >
                                             <ArrayInput label="" source="salesTable"    >
-                                                <SumSpanningTable 
+
+                                                <SumSpanningTable       //CHECK InvoiceFor__SumSpanningTable
                                                     dataInitOnClickAddItem={dataInitOnClickAddItem}
                                                     dataSelectFieldSalesItem={dataSelectFieldSalesItem}  />
                                             </ArrayInput>

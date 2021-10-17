@@ -19,7 +19,9 @@ const SumSpanningTable = ({source, fields,  dataInitOnClickAddItem,  dataSelectF
             <TableContainer component={Paper}>
         {/*>> ->CONTAINER=> SalesTable in Table */}
             {/* <ArrayInput source='subSalesTable' label="" > */}
-                <SubArrIteratorItem propsSalesTable={{source, fields,  dataInitOnClickAddItem,  dataSelectFieldSalesItem, }}  />
+
+                <SubArrIteratorItem     //CHECK SumSpanningTable__SubArrIteratorItem
+                    propsSalesTable={{source, fields,  dataInitOnClickAddItem,  dataSelectFieldSalesItem, }}  />
             {/* </ArrayInput> */}
         {/* X <-CONTAINER=> SalesTable in Table */}
         </TableContainer>

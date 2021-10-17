@@ -1827,6 +1827,175 @@
       "invoice_date": "2021-10-14T16:21:46.240Z",
       "invoice_due_data": "2021-10-28T16:21:46.240Z",
       "id": 47
+    },
+    {
+      "dataSeller": {
+        "dataUser": {
+          "id": "Profile12356x",
+          "myCompany": "Biuro Podróży Pawłowice",
+          "myFullname": "Marek Kowalski",
+          "myName": {
+            "myForename": "Marek",
+            "mySurname": "Kowalski"
+          },
+          "address_id": "145",
+          "myStreet": "Widawska 128",
+          "myCity": "Wrocław",
+          "myZIPCode": "58-202",
+          "myAddress": {
+            "id": "145",
+            "street": "Widawska 128",
+            "city": "Wrocław",
+            "ZIPCode": "58-202"
+          },
+          "myEmail": "kowalskitravel@gmail.com",
+          "myPhone": "501069054",
+          "contact": {
+            "email": "kowalskitravel@gmail.com",
+            "telephoneNumber": "5858585",
+            "faxNumber": "44475757575"
+          },
+          "myMVA": "9973786",
+          "orgId": {
+            "orgNumber": "15032603596",
+            "MVA": "true"
+          },
+          "noBank": "00158282852858525"
+        }
+      },
+      "salesTable": {
+        "sales_items_list": [
+          {
+            "id": "",
+            "item_qty": "10",
+            "item_netto": "10",
+            "item_tax": 0.15,
+            "sum_item_netto": 100,
+            "sum_item_tax": 15,
+            "sum_item_brutto": 114.99999999999999
+          },
+          {
+            "id": "",
+            "item_qty": "10",
+            "item_netto": "10",
+            "item_tax": 0.15,
+            "sum_item_netto": 100,
+            "sum_item_tax": 15,
+            "sum_item_brutto": 114.99999999999999
+          },
+          {
+            "id": "",
+            "item_qty": "10",
+            "item_netto": "10",
+            "item_tax": 0,
+            "sum_item_netto": 100,
+            "sum_item_tax": 0,
+            "sum_item_brutto": 100
+          },
+          {
+            "id": "",
+            "item_qty": "10",
+            "item_netto": "10",
+            "item_tax": 0.15,
+            "sum_item_netto": 100,
+            "sum_item_tax": 15,
+            "sum_item_brutto": 114.99999999999999
+          }
+        ],
+        "total_sum_sales": {
+          "sum_items_netto": 400,
+          "sum_items_tax": 45,
+          "sum_items_brutto": 445
+        }
+      },
+      "invoice_date": "2021-10-14T17:15:01.068Z",
+      "invoice_due_data": "2021-10-28T17:15:01.068Z",
+      "id": 48
+    },
+    {
+      "dataSeller": {
+        "dataUser": {
+          "id": "Profile12356x",
+          "myCompany": "Biuro Podróży Pawłowice",
+          "myFullname": "Marek Kowalski",
+          "myName": {
+            "myForename": "Marek",
+            "mySurname": "Kowalski"
+          },
+          "address_id": "145",
+          "myStreet": "Widawska 128",
+          "myCity": "Wrocław",
+          "myZIPCode": "58-202",
+          "myAddress": {
+            "id": "145",
+            "street": "Widawska 128",
+            "city": "Wrocław",
+            "ZIPCode": "58-202"
+          },
+          "myEmail": "kowalskitravel@gmail.com",
+          "myPhone": "501069054",
+          "contact": {
+            "email": "kowalskitravel@gmail.com",
+            "telephoneNumber": "5858585",
+            "faxNumber": "44475757575"
+          },
+          "myMVA": "9973786",
+          "orgId": {
+            "orgNumber": "15032603596",
+            "MVA": "true"
+          },
+          "noBank": "00158282852858525"
+        }
+      },
+      "salesTable": {
+        "sales_items_list": [
+          {
+            "id": "",
+            "item_qty": 1,
+            "item_netto": "10",
+            "item_tax": 0.15,
+            "sum_item_netto": 10,
+            "sum_item_tax": 1.5,
+            "sum_item_brutto": 11.5
+          },
+          {
+            "id": "",
+            "item_qty": 1,
+            "item_netto": "10",
+            "item_tax": 0.15,
+            "sum_item_netto": 10,
+            "sum_item_tax": 1.5,
+            "sum_item_brutto": 11.5
+          },
+          {
+            "id": "",
+            "item_qty": 1,
+            "item_netto": "10",
+            "item_tax": 0.06,
+            "sum_item_netto": 10,
+            "sum_item_tax": 0.6,
+            "sum_item_brutto": 10.600000000000001
+          },
+          {
+            "id": "",
+            "item_qty": 1,
+            "item_netto": "10",
+            "item_tax": 0.25,
+            "sum_item_netto": 10,
+            "sum_item_tax": 2.5,
+            "sum_item_brutto": 12.5
+          }
+        ],
+        "total_sum_sales": {
+          "sum_items_netto": 40,
+          "sum_items_tax": 6.1,
+          "sum_items_brutto": 46.1
+        }
+      },
+      "invoice_date": "2021-10-14",
+      "invoice_due_date": "2021-10-28",
+      "nb_views": 0,
+      "id": 49
     }
   ],
   "tradePartners_list": [

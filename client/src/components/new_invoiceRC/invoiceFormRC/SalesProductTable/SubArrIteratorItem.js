@@ -135,20 +135,20 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
                                                                     if(+(fieldProps.fields.value[index].item_netto) !== 0){
                                                                         sum_netto =  (+itemValue.item_qty)*(+itemValue.item_netto);
                                                                     }  else {sum_netto = 0;}
-                                                                    itemValue.sum_item_netto = sum_netto;
+                                                                    // itemValue.sum_item_netto = sum_netto;
 
 
                                                                 let sum_tax = 0;
                                                                     if(fieldProps.fields.value[index].item_tax >=0) 
                                                                         sum_tax = ((+itemValue.item_qty) * (+itemValue.item_netto)) * itemValue.item_tax;
                                                                     
-                                                                    itemValue.sum_item_tax = sum_tax
+                                                                    // itemValue.sum_item_tax = sum_tax
 
                                                                 let sum_brutto = 0;
                                                                     if(fieldProps.fields.value[index].item_tax >=0 )
                                                                         sum_brutto = ((+itemValue.item_qty) * (+itemValue.item_netto)) * ( itemValue.item_tax + 1);
 
-                                                                    itemValue.sum_item_brutto = sum_brutto
+                                                                    // itemValue.sum_item_brutto = sum_brutto
                                                                     
 
                                                                                     
@@ -241,7 +241,7 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
                                                             {/*>>  ->subCONTAINER=> addButton in TableRow--capition */}
                                                                 <Grid item xs={12}> 
                                                                     <div>
-                                                                            <Button
+                                                                            <Button         //CHECK SubArrIteratorItem__Btn--AddNewItem
                                                                                 type="button"
                                                                                 onClick={
                                                                                     () => fieldProps.fields.push( propsSalesTable.dataInitOnClickAddItem )}
@@ -262,13 +262,16 @@ const SubArrIteratorItem = ({ propsSalesTable }) => {
                                                             <Grid container  formClassName={classes.gridSimpleForm} >
                                                                 <Grid item xs={12} sm={6}>
                                                         {/*>> ->subCONTAINER=> AdditionalOptions in Table */}
-                                                                    <AdditionalOptions />
+
+                                                                    <AdditionalOptions      //CHECK SubArrIteratorItem__AdditionalOptions 
+                                                                    />
 
                                                         {/* X <-subCONTAINER=> AdditionalOptions in Table */}
                                                                 </Grid >
                                                                 <Grid item xs={12} sm={6}> 
                                                         {/*>> ->subCONTAINER=> SubTableSumSales in Table */}
-                                                                    <SumSalesItems   dataArray={propsSalesTable.fields.value}    /> 
+                                                                 < SumSalesItems    //CHECK SubArrIteratorItem__SumSalesItems 
+                                                                        dataArray={propsSalesTable.fields.value}    /> 
                                                         {/* X <-subCONTAINER=> SubTableSumSales in Table*/}
                                                                 </Grid>
                                                             </Grid >

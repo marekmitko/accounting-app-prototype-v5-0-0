@@ -28,7 +28,7 @@ export default function SumSalesItems ({dataArray}) {
         if(+dataSalesList[i].item_netto !== 0){
         total_netto+= ((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto));
         // do poprawy prze funkcje set !!!
-        total_sum_sales.sum_items_netto = total_netto;
+        // total_sum_sales.sum_items_netto = total_netto;
         } else {total_netto+= 0;}
     }
 
@@ -37,7 +37,7 @@ export default function SumSalesItems ({dataArray}) {
         // if(+dataSalesList[i].item_netto !== 0){
         total_tax+= (((+dataSalesList[i].item_qty)*(+dataSalesList[i].item_netto))*(dataSalesList[i].item_tax));
         // do poprawy prze
-        total_sum_sales.sum_items_tax = total_tax;
+        // total_sum_sales.sum_items_tax = total_tax;
         // } else {total_tax+= 0;}
     }
     

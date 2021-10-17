@@ -1,0 +1,18 @@
+#  "todo-tree.general.tags": [
+            "BUG",
+            "HACK",
+            "FIXME",
+            "TODO",
+            "XXX",
+            "?dev",
+            "*edu",
+            "CHECK",
+            "*see",
+            "Ver",
+            "Oki",
+            "A-Ok",
+            "?ver",
+            "infO",
+            "notE",
+            "reCSS",
+            
